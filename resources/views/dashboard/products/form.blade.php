@@ -27,7 +27,6 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Image <span class="text-danger">*</span></label>
         <div class="col-lg-9">
-            {{-- <input class="form-control @error('image_name') is-invalid @enderror" value="{{Request::old('image_name') ? Request::old('image_name') : $model->image_name}}" type="file" name="image_name" autocomplete="off"> --}}
             <input class="form-control @error('image_name') is-invalid @enderror" value="{{Request::old('image_name') ? Request::old('image_name') : $model->image_name}}" type="file" name="image_name" autocomplete="off">
             @error('image_name')
             <span class="invalid-feedback" role="alert">
@@ -38,21 +37,9 @@
     </div>
 
     <div class="form-group row">
-        <label class="form-label col-lg-3">Price <span class="text-danger">*</span></label>
-        <div class="col-lg-9">
-            <input class="form-control @error('price') is-invalid @enderror" value="{{Request::old('price') ? Request::old('price') : $model->price}}" type="text" name="price" placeholder="Enter product price" autocomplete="off">
-            @error('price')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-    </div>
-
-    <div class="form-group row">
         <label class="form-label col-lg-3">Discount</label>
         <div class="col-lg-9">
-            <select name="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
+            <select name="discount" id="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
                 <option name="" value="" disabled selected>---------- Please select a discount ----------</option>
                 <?php 
                     for($d = 0.00 ; $d < 1.01 ; $d = $d + 0.01){ //for(start ; end ; increment/decrement)
@@ -62,8 +49,19 @@
                     }
                 ?>
             </select>
-
             @error('discount')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="form-label col-lg-3">Price <span class="text-danger">*</span></label>
+        <div class="col-lg-9">
+            <input class="form-control @error('price') is-invalid @enderror" value="{{Request::old('price') ? Request::old('price') : $model->price}}" type="text" name="price" placeholder="Enter product price" onkeyup="$('#gain_value').val($(this).val() - ( $(this).val() * $('#discount').val() ) );" autocomplete="off">
+            @error('price')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -74,7 +72,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Sale Price </label>
         <div class="col-lg-9">
-            <input class="form-control" value="" type="text" name="" placeholder="Final price after discount" disabled>
+            <input class="form-control" value="" type="text" name="" id="gain_value" placeholder="Final price after discount" disabled>
         </div>
     </div>
 
