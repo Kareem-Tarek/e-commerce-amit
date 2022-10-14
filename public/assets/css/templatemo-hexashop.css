@@ -2484,7 +2484,7 @@ responsive
 #preloader {
   overflow: hidden;
   /* background-color: #2a2a2a; */
-  background-color: rgba(96, 133, 172, 0.95);
+  background-color: rgb(96, 133, 172);
   left: 0;
   right: 0;
   top: 0;

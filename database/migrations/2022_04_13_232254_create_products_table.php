@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->decimal('discount')->default(0)->nullable();
             // $table->unsignedBigInteger('user_id'); // for supplier relationship (from users table)
             // $table->foreign('user_id')->references('id')->on('users');
+            // $table->integer('supplier_id');
             $table->integer('create_user_id')->nullable();
             $table->integer('update_user_id')->nullable();
             $table->timestamps();
