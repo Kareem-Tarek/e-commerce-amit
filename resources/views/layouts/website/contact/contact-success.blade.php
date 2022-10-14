@@ -33,13 +33,15 @@ setInterval(function(){
     if (count == 0 /* ending */) {
         window.location = 'http://localhost:8000/home'; //the action (such as execute/print/echo) 
     }
-    else if(count < 0){ //extra ending condition to handle any kind of decrementation errors
+    else if(count < 0){ //extra ending condition to handle any kind of decrementation errors (counting in negatives)
         window.location = 'http://localhost:8000/home'; //execute the same action or result!
     }
     else if(count == 4 || count == 2){
+        document.querySelector('.countDown').style.backgroundColor = '#D3D3D3';
         document.querySelector('.countDown').style.color = 'black';
     }
     else if(count == 5 || count == 3 || count == 1){
+        document.querySelector('.countDown').style.backgroundColor = '#D3D3D3';
         document.querySelector('.countDown').style.color = 'red';
     }
 },1000);
