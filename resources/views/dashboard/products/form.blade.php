@@ -72,7 +72,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Sale Price/Final Price </label>
         <div class="col-lg-9">
-            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="text" name="" id="gain_value" placeholder="Final price after discount" style="background-color: rgb(226, 255, 226); color: black;" disabled>
+            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="text" name="" id="gain_value" placeholder="Final price after discount" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
         </div>
     </div>
 
