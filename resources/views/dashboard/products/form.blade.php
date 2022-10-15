@@ -42,7 +42,7 @@
             <select name="discount" id="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
                 <option name="" value="" disabled selected>---------- Please select a discount ----------</option>
                 <?php 
-                    for($d = 0.00 ; $d < 1.01 ; $d = $d + 0.01){ //for(start ; end ; increment/decrement)
+                    for($d = 0.00 ; $d < 1 ; $d = $d + 0.01){ //for(start ; end ; increment/decrement)
                 ?>
                         <option value="{{ $d }}" {{ isset($model) && $model->discount == $d ? 'selected'  : '' }}>{{ $d * 100 }}%</option>
                 <?php 

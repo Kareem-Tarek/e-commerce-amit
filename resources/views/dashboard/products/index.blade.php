@@ -39,6 +39,7 @@
                                         <th scope="col" class="text-center">Name</th>
                                         <th scope="col" class="text-center">Image</th>
                                         {{-- <th scope="col" class="text-center">Description</th> --}}
+                                        <th scope="col" class="text-center">Discount</th>
                                         <th scope="col" class="text-center">Price</th>
                                         <th scope="col" class="text-center">Category</th>
                                         <th scope="col" class="text-center">Clothing type</th>
@@ -57,7 +58,14 @@
                                         <td class="text-center" style="width: 20%;">{{$product->name}}</td>
                                         <td class="text-center">{{$product->image_name}}</td>
                                         {{-- <td class="text-center">{{$product->description}}</td> --}}
-                                        <td class="text-center" style="width: 11%;">{{$product->price." EGP"}}</td>
+                                        <td>{{ $product->discount * 100 }}%</td>
+                                        @if($product->discount > 0)
+                                            <td class="text-center" style="width: 18%;">
+                                                <span class="font-danger"><del>{{$product->price." EGP"}}</del></span> <label class="font-secondary">&RightArrow;</label> <span class="font-primary">{{$product->price - ($product->price * $product->discount)." EGP"}}</span>
+                                            </td>
+                                        @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
+                                            <td class="text-center" style="width: 18%;">{{$product->price." EGP"}}</td>
+                                        @endif
                                         <td class="text-center">{{ucwords($product->product_category)}}</td> <!-- ucwords($variable), capitalizes first letter in each word -->
                                         {{-- <td class="text-center">{{Str::upper($product->product_category)}}</td> --}} <!-- uppercasing all letters in each word -->
                                         <td class="text-center">
@@ -73,8 +81,8 @@
                                         </td>
                                         {{-- <td class="text-center"><a href="{{ route('categories.index') }}">{{$product->category->name ?? 'No Clothing Type'}}</a></td> --}}
                                         <td class="text-center" style="width: 18%;">{{$product->created_at->translatedFormat('d/m/Y - h:m A')}}</td>
-                                        <td class="text-center">{{$product->create_user->name ?? '???'}}</td>
-                                        <td class="text-center">{{$product->update_user->name ?? '???'}}</td>
+                                        <td class="text-center">{{$product->create_user->name ?? '??'}}</td>
+                                        <td class="text-center">{{$product->update_user->name ?? '??'}}</td>
                                         @if(auth()->user()->user_type == "admin")
                                             <td class="text-center" style="width: 15%;">
                                                 {!! Form::open([
