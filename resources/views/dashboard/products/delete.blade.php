@@ -37,6 +37,7 @@
                                         <th scope="col" class="text-center">#</th>
                                         <th scope="col" class="text-center">Name</th>
                                         <th scope="col" class="text-center">Image</th>
+                                        <th scope="col" class="text-center">Discount</th>
                                         <th scope="col" class="text-center">Price</th>
                                         <th scope="col" class="text-center">Category</th>
                                         <th scope="col" class="text-center">Clothing Type</th>
@@ -55,7 +56,14 @@
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
                                         <td class="text-center">{{$product->name}}</td>
                                         <td class="text-center">{{$product->image_name}}</td>
-                                        <td class="text-center">{{$product->price." EGP"}}</td>
+                                        <td>{{ $product->discount * 100 }}%</td>
+                                        @if($product->discount > 0)
+                                            <td class="text-center" style="width: 18%;">
+                                                <span class="font-danger"><del>{{$product->price." EGP"}}</del></span> <label class="font-secondary">&RightArrow;</label> <span class="font-primary">{{$product->price - ($product->price * $product->discount)." EGP"}}</span>
+                                            </td>
+                                        @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
+                                            <td class="text-center" style="width: 18%;">{{$product->price." EGP"}}</td>
+                                        @endif
                                         <td class="text-center">{{$product->product_category}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('categories.index') }}" style="color: rgb(63, 82, 205);">
