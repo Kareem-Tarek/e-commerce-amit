@@ -47,6 +47,7 @@
                                         <th scope="col" class="text-center">Discount (%)</th>
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Quantity</th>
+                                        <th scope="col" class="text-center">Total Amount (EGP)</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
                                         <th scope="col" class="text-center">Date of Creation</th>
                                         <th scope="col" class="text-center">Date of Deletion</th>
@@ -64,6 +65,7 @@
                                         <td class="text-center">
                                             @if(strlen($cart->customer_phone) == 11)
                                                 {{ '(+20) '.$cart->customer_phone ?? 'No Number!' }} <!-- Egypt's country code (+20) -->
+                                                <span class="badge badge-info">Egypt</span>
                                             @else
                                                 {{ $cart->customer_phone ?? 'No Number!' }}
                                             @endif
@@ -93,6 +95,13 @@
                                             <td class="text-center">{{$cart->price}}</td>
                                         @endif
                                         <td class="text-center">{{$cart->quantity}}</td>
+                                        <td class="text-center">
+                                            @if($cart->discount > 0)
+                                                <span class="font-danger"><del>{{$cart->quantity * $cart->price}}</del></span> <label class="font-secondary">&RightArrow;</label> <span class="font-primary">{{ $cart->quantity * ($cart->price - ($cart->price * $cart->discount)) }}</span>
+                                            @elseif($cart->discount <= 0 || $cart->discount == null || $cart->discount == "")
+                                                <span>{{$cart->quantity * $cart->price}}</span>
+                                            @endif
+                                        </td>
                                         <td class="text-center">{{$product->update_user->name ?? '???'}}</td>
                                         <td class="text-center" title="{{$cart->created_at->format('Y-D-M h:m h:m A')}}">{{$cart->created_at->format('Y-D-M h:m A')}}</td>
                                         <td class="text-center" title="{{$cart->deleted_at->format('Y-D-M h:m h:m A')}}">{{$cart->deleted_at->format('Y-D-M h:m A')}}</td>
