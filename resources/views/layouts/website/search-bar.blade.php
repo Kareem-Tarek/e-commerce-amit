@@ -1,5 +1,5 @@
 <div class="search-container">
-    <form action="{{ route('search') }}" method="GET">
+    <form action="{{ url('/search') }}" method="GET">
 
       {{-- <input type="text" placeholder="Search for a certain product?" name="query" style="width: 30%;">
       <button type="submit" style="background-color: black; padding: 0.10% 0.5%; border-radius: 5px;"><i style="color: snow;" class="fa fa-search"></i></button>
@@ -11,7 +11,7 @@
 
       <ul class="nav justify-content-center">
         <li>
-          <input class="search-box" type="text" placeholder="Search for a certain product?" name="query">
+          <input class="search-box" type="text" placeholder="Search for a certain product?" name="search_query">
           <button class="search-box-btn px-2" type="submit"><i class="fa fa-search search-box-btn-icon"></i></button>
         </li>
 

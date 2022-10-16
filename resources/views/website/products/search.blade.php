@@ -75,7 +75,7 @@
     </table> --}}
     <?php /********************************** End Dashboard Table for Product (for dashboard!) **********************************/ ?>
 
-    <section class="product-results-section">
+    <section class="product-results-section" style="padding: 0% 2%;">
             @if($search_text == "")
                 <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto;  width: 40%;">
                     <span style="font-size: 110%; font-weight: bold;">The search box is empty. You didn't enter anything in it!</span>
@@ -93,7 +93,7 @@
                         @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
                             <div class="d-flex justify-content-center">
                                 Try to add a new product from&nbsp;<a href="{{route('products.create')}}" class="" style="" type="" title="Add New Product">here</a>.
-                            </div>    
+                            </div>
                         @endif
                      @endauth
                 @else
@@ -152,7 +152,7 @@
 
                 <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap;">
                     @forelse($products_result as $product)
-                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border">
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-3 pt-3 pb-3 bg-light border">
                                 <div class="curriculum-event-thumb">
                                     <a href="{{ route('single_product_page' , $product->id) }}"><img src="{{$product->image_name}}" alt="{{$product->name}}" style="width: 180px; height: 200px; border: 2px solid black;"></a>
                                 </div>

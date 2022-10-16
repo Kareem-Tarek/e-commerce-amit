@@ -82,9 +82,9 @@
         </div>
     @endif
 
-    <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap;">
+    <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap; padding: 0% 2%;">
         @foreach($casual_all as $product)
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="margin-top: 3%;">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-3 pt-3 pb-3 bg-light border">
                     <div class="curriculum-event-thumb">
                         <a href="{{ route('single_product_page' , $product->id) }}"><img src="{{$product->image_name}}" alt="{{$product->name}}" style="width: 180px; height: 200px; border: 2px solid black;"></a>
                     </div>

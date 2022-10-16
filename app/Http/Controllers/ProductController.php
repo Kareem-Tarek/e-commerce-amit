@@ -27,7 +27,10 @@ class ProductController extends Controller
     public function search(Request $request)
     //public function search()
     {
-        $search_text     = $request->get('query'); //also same result for "$search_text = $_GET['query'];" or "$request->query;"  //and here is the entered query (word) in the text input (the search bar)
+        $search_text     = $request->search_query; //Laravel method (1) //also same result for "$search_text = $_GET['query'];" or "$request->query;"  //and here is the entered query (word) in the text input (the search bar)
+        //$search_text     = $request->get('query'); //Laravel method (2)
+        // $search_text     = $_GET['query']; // Native
+
         $products_result = Product::where('name','LIKE',"%{$search_text}%")->get(); ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
         // $products_result       = Product::when(!empty($search_text), function($query) use ($search_text){
         //     return $query->where('name', 'like', '%'.$search_text.'%');
@@ -39,8 +42,8 @@ class ProductController extends Controller
         //     return view('products.search', compact('products_result' , 'search_text' , 'products_result_count'));
         // }
 
-        return view('website.products.search', compact('products_result' , 'search_text' , 'products_result_count'))
-        ->with('i' , ($request->input('page', 1) - 1) * 5);
+        return view('website.products.search', compact('products_result' , 'search_text' , 'products_result_count'));
+            // ->with('i' , ($request->input('page', 1) - 1) * 5);
 
     }
 
