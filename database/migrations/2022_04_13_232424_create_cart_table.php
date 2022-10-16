@@ -25,7 +25,7 @@ class CreateCartTable extends Migration
             $table->string('clothing_type')->nullable(); //relationship with categories (clothing types of products) table
             $table->enum('product_category',['men','women','kids']);
             $table->decimal('price');
-            $table->decimal('discount');
+            $table->decimal('discount')->nullable(); //it could be null (because it might be left null when a product is inserted in products table)
             $table->integer('quantity');
             $table->string('product_id');
             $table->string('customer_id'); //relationship with users (customers ONLY!) table
