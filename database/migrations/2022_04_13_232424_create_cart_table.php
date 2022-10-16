@@ -27,6 +27,7 @@ class CreateCartTable extends Migration
             $table->decimal('price');
             $table->decimal('discount');
             $table->integer('quantity');
+            $table->string('product_id');
             $table->string('customer_id'); //relationship with users (customers ONLY!) table
             $table->integer('update_user_id')->nullable(); // for the dashboard!
             $table->rememberToken();

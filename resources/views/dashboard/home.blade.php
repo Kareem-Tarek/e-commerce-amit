@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-Home
+    Home
 @endsection
 
 @push('css')
@@ -40,7 +40,7 @@ Home
 
 @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
     <!-- Container-fluid starts-->
-    <div class="container-fluid dashboard-default-sec">
+    <div class="container-fluid dashboard-default-sec mt-5">
 
         <div class="row">
             <div class="col-xl-6 box-col-12 des-xl-100">
@@ -70,6 +70,48 @@ Home
                                 </div>
                                 <h6>All Products</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::count()}}</span><br>
+                                <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+                                <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
+                                Show
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xl-6 box-col-12 des-xl-100">
+                <div class="row">
+
+                    <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
+                        <div class="card income-card">
+                            <div class="card-body text-center">
+                                <div class="round-box">
+                                    <i class="fa-solid fa-box-open" style="font-size: 180%;"></i>&nbsp;
+                                    <i class="fa-solid fa-percent" style="font-size: 160%;"></i>&nbsp;&nbsp;
+                                    <i class="fa-solid fa-circle-xmark" style="font-size: 120%;"></i>
+                                </div>
+                                <h6>All Products (with no sales)</h6>
+                                <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('discount' , '<=' , 0)->orWhere('discount' , '=' , null)->count()}}</span><br>
+                                <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+                                <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
+                                Show
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
+                        <div class="card income-card">
+                            <div class="card-body text-center">
+                                <div class="round-box">
+                                    <i class="fa-solid fa-box-open" style="font-size: 180%;"></i>&nbsp;
+                                    <i class="fa-solid fa-percent" style="font-size: 160%;"></i>&nbsp;&nbsp;
+                                    <i class="fa-solid fa-circle-check" style="font-size: 120%;"></i>
+                                </div>
+                                <h6>All Products (with sales)</h6>
+                                <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('discount' , '>' , 0)->count()}}</span><br>
                                 <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
                                 <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
                                 Show
@@ -128,7 +170,7 @@ Home
                                 <div class="round-box">
                                     Icon
                                 </div>
-                                <h6>Men' Wear</h6>
+                                <h6>Men's Wear</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('product_category','men')->count()}}</span><br>
                                 <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
                                 <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
@@ -144,10 +186,10 @@ Home
                                 <div class="round-box">
                                     Icon
                                 </div>
-                                <h6>Accessories</h6>
-                                <span class="number-count" style="font-size: 180%;">0</span><br>
+                                <h6>All Accessories</h6>
+                                <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('is_accessory','yes')->count()}}</span><br>
                                 <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
-                                <a class="btn-arrow arrow-primary show-btn" href="" >
+                                <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
                                 Show
                                 </a>
                             </div>
@@ -156,6 +198,45 @@ Home
 
                 </div>
             </div>
+
+            <div class="col-xl-12 box-col-12 des-xl-100">
+                <div class="row">
+
+                    <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
+                        <div class="card income-card">
+                            <div class="card-body text-center">
+                                <div class="round-box">
+                                    Icon
+                                </div>
+                                <h6>Ratings</h6>
+                                <span class="number-count" style="font-size: 180%;">{{\App\Models\Rating::count()}}</span><br>
+                                <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+                                <a class="btn-arrow arrow-primary show-btn" href="javascript:void(0);" >
+                                Show
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
+                        <div class="card income-card">
+                            <div class="card-body text-center">
+                                <div class="round-box">
+                                    <i class="fa-solid fa-cart-shopping" style="font-size: 230%;"></i>
+                                </div>
+                                <h6>Carts</h6>
+                                <span class="number-count" style="font-size: 180%;">{{\App\Models\Cart::count()}}</span><br>
+                                <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
+                                <a class="btn-arrow arrow-primary show-btn" href="{{ route('carts.index') }}" >
+                                Show
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <hr>

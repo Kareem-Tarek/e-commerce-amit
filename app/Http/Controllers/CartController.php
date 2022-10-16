@@ -64,6 +64,7 @@ class CartController extends Controller
             elseif($request->quantity < 0){ // wrong condition (3): quantity is equals to "negative" value
                 return redirect()->back()->with('quantity_is_negative_message' , 'You entered ['.$request->quantity.'] value for the quantity. The entered value for the quantity for "'.$cart->product_name.'" product is in negative!');
             }
+            $cart->product_id       = $product->id;
             $cart->customer_id      = $user->id;
             $cart->save(); 
 

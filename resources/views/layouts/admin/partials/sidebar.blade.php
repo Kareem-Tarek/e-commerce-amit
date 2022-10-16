@@ -123,10 +123,10 @@
                                 <span>Carts</span>
                             </a>
                             <ul class="nav-submenu menu-content" style="">
-                                <li><a href="javascript:void(0);" class="javascript:void(0);">Create Cart</a></li>
+                                {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Create Cart</a></li> --}}
                                 <li><a href="{{ route('carts.index') }}" class="{{ route('carts.index') }}">All Carts</a></li>
                                 @if(auth()->user()->user_type == "admin")
-                                    <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Carts</a></li>
+                                    <li><a href="{{ route('carts.delete') }}" class="javascript:void(0);">Deleted Carts</a></li>
                                 @endif
                             </ul>
                         </li>
@@ -134,26 +134,27 @@
 
 
                         <!------------- Start route tags ------------->
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <a class="nav-link menu-title" href="javascript:void(0)">
                                 <i data-feather="hash"></i>
                                 <span>Tags</span>
                             </a>
-                            {{-- <ul class="nav-submenu menu-content" style="display: @if(routeActive('tags.index') || routeActive('tags.create')  || routeActive('tags.delete')) block @else none @endif ;"> --}}
+                            <ul class="nav-submenu menu-content" style="display: @if(routeActive('tags.index') || routeActive('tags.create')  || routeActive('tags.delete')) block @else none @endif ;">
                                 <ul class="nav-submenu menu-content" style="">
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Create Tag</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">All Tags</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Tags</a></li>
-                                {{-- <li><a href="{{ route('tags.create') }}" class="{{routeActive('tags.create')}}">Create Tag</a></li>
+                                
+                                <li><a href="{{ route('tags.create') }}" class="{{routeActive('tags.create')}}">Create Tag</a></li>
                                 <li><a href="{{ route('tags.index') }}" class="{{routeActive('tags.index')}}">All Tags</a></li>
-                                <li><a href="{{ route('tags.delete') }}" class="{{routeActive('tags.delete')}}">Deleted Tags</a></li> --}}
+                                <li><a href="{{ route('tags.delete') }}" class="{{routeActive('tags.delete')}}">Deleted Tags</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!------------- End route tags ------------->
 
 
                         <!------------- Start route countries ------------->
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <a class="nav-link menu-title" href="javascript:void(0)">
                                 <i class="fa fa-globe" style="font-size: 140%;"></i> &nbsp; &nbsp;
                                 <span>Countries</span>
@@ -163,12 +164,12 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">All Countries</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Countries</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!------------- End route countries ------------->
 
 
                         <!------------- Start route governorates ------------->
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <a class="nav-link menu-title" href="javascript:void(0)">
                                 <i data-feather="map"></i>
                                 <span>Governorates</span>
@@ -178,12 +179,12 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">All Governorates</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Governorates</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!------------- End route governorates ------------->
 
 
                         <!------------- Start route cities ------------->
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <a class="nav-link menu-title" href="javascript:void(0)">
                                 <i data-feather="map-pin"></i>
                                 <span>Cities</span>
@@ -193,7 +194,7 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">All Cities</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Cities</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!------------- End route cities ------------->
 
                      @elseif(auth()->user()->user_type == "supplier")

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 // use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 // use App\Models\Category;
-use App\Models\Product;
+// use App\Models\Product;
 use App\Models\Cart;
 
 class DashboardCartController extends Controller
@@ -17,24 +17,24 @@ class DashboardCartController extends Controller
         return view('dashboard.carts.index',compact('carts'));
     }
 
-    public function create()
-    {
-        return view('dashboard.carts.create');
-    }
+    // public function create()
+    // {
+    //     return view('dashboard.carts.create');
+    // }
 
-    public function store(Request $request)
-    {
-        $carts = new Cart();
-        $carts->save();
+    // public function store(Request $request)
+    // {
+    //     $carts = new Cart();
+    //     $carts->save();
 
-        return redirect()->route('carts.index')
-            ->with(['message' => 'Added successfully!']);
-    }
+    //     return redirect()->route('carts.index')
+    //         ->with(['message' => 'Added successfully!']);
+    // }
 
-    public function show()
-    {
-        return abort('404');
-    }
+    // public function show()
+    // {
+    //     return abort('404');
+    // }
 
     public function edit($id)
     {
@@ -62,7 +62,7 @@ class DashboardCartController extends Controller
     public function delete()
     {
         $carts = Cart::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
-        return view('dashboard.categories.delete',compact('carts'));
+        return view('dashboard.carts.delete',compact('carts'));
     }
 
     public function restore($id)

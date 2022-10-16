@@ -1,16 +1,16 @@
 <div class="page-main-header">
     <div class="main-header-right row m-0">
         <div class="main-header-left">
-            <div class="logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(1).png')}}" alt="Anywhere Anytime" style="width: 40%; border-radius:10px;"></a></div>
-            <div class="dark-logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(2).png')}}" alt="Anywhere Anytime" style="width: 40%; border-radius:10px; color:snow;"></a></div>
+            <div class="logo-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(1).png')}}" alt="Anywhere Anytime" style="width: 40%; border-radius:10px;"></a></div>
+            <div class="dark-logo-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(2).png')}}" alt="Anywhere Anytime" style="width: 40%; border-radius:10px; color:snow;"></a></div>
             <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle" onmouseover="this.style.color='grey'" onmouseout="this.style.color=''"> </i></div>
         </div>
         <div class="left-menu-header col">
             <ul>
                 <li>
-                    <form class="form-inline search-form">
+                    <form class="form-inline search-form" action="" method="GET">
                         <div class="search-bg"><i class="fa fa-search"></i>
-                            <input class="form-control-plaintext" placeholder="Search here.....">
+                            <input class="form-control-plaintext" placeholder="Search here..." name="dashboard_search_query">
                         </div>
                     </form>
                     <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
