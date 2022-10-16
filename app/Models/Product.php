@@ -48,6 +48,11 @@ class Product extends Model
         return $this->BelongsTo(Favorite::class);
     }
 
+    public function size(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(Size::class);
+    }
+
     public function create_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);

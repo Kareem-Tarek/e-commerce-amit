@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="form-label col-lg-3">Description <span class="text-danger">*</span></label>
+        <label class="form-label col-lg-3">Description </label>
         <div class="col-lg-9">
             <input class="form-control @error('description') is-invalid @enderror" value="{{Request::old('description') ? Request::old('description') : $model->description}}" type="text" name="description" placeholder="Enter product description" autocomplete="off">
             @error('description')
@@ -72,9 +72,30 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Sale Price/Final Price </label>
         <div class="col-lg-9">
-            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="text" name="" id="gain_value" placeholder="Final price after discount" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
+            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
         </div>
     </div>
+
+    {{-- <div class="form-group row">
+        <label class="form-label col-lg-3">Size <span class="text-danger">*</span></label>
+        <div class="col-lg-9">
+            <select name="size" class="form-control select @error('size') is-invalid @enderror" value="{{Request::old('size') ? Request::old('size') : $model->size}}">
+                <option> ---------- Please select a size ---------- </option>
+                <option value="XS" {{ isset($model) && $model->size == 'XS' ? 'selected'  : '' }}>XS</option>
+                <option value="S" {{ isset($model) && $model->size == 'S' ? 'selected'  : '' }}>S</option>
+                <option value="M" {{ isset($model) && $model->size == 'M' ? 'selected'  : '' }}>M</option>
+                <option value="L" {{ isset($model) && $model->size == 'L' ? 'selected'  : '' }}>L</option>
+                <option value="XXL" {{ isset($model) && $model->size == 'XXL' ? 'selected'  : '' }}>XXL</option>
+                <option value="XXXL" {{ isset($model) && $model->size == 'XXXL' ? 'selected'  : '' }}>XXXL</option>
+                <option value="XXXXL" {{ isset($model) && $model->size == 'XXXXL' ? 'selected'  : '' }}>XXXXL</option>
+            </select>
+            @error('size')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div> --}}
 
     <div class="form-group row">
         <label class="form-label col-lg-3">Clothing Type <span class="text-danger">*</span></label>

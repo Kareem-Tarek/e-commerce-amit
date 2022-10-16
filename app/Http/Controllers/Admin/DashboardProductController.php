@@ -64,6 +64,7 @@ class DashboardProductController extends Controller
         $products->image_name       = "assets/images/".$request->image_name;
         $products->price            = $request->price;
         $products->discount         = $request->discount;
+        // $products->size             = $request->size;
         $products->clothing_type    = $request->clothing_type;
         $products->is_accessory     = $request->is_accessory;
         $products->product_category = $request->product_category;
@@ -91,6 +92,7 @@ class DashboardProductController extends Controller
         $products->image_name       = "assets/images/".$request->image_name;
         $products->price            = $request->price;
         $products->discount         = $request->discount;
+        // $products->size             = $request->size;
         $products->clothing_type    = $request->clothing_type;
         $products->is_accessory     = $request->is_accessory;
         $products->product_category = $request->product_category;
