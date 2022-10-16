@@ -37,7 +37,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="form-label col-lg-3">Discount</label>
+        <label class="form-label col-lg-3">Discount (%)</label>
         <div class="col-lg-9">
             <select name="discount" id="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
                 <option name="" value="" disabled selected>---------- Please select a discount ----------</option>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="form-label col-lg-3">Price <span class="text-danger">*</span></label>
+        <label class="form-label col-lg-3">Price (EGP) <span class="text-danger">*</span></label>
         <div class="col-lg-9">
             <input class="form-control @error('price') is-invalid @enderror" value="{{Request::old('price') ? Request::old('price') : $model->price}}" type="text" name="price" placeholder="Enter product price" onkeyup="$('#gain_value').val($(this).val() - ( $(this).val() * $('#discount').val() ) );" autocomplete="off">
             @error('price')
@@ -70,7 +70,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="form-label col-lg-3">Sale Price/Final Price </label>
+        <label class="form-label col-lg-3">Sale Price/Final Price (EGP) </label>
         <div class="col-lg-9">
             <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
         </div>
