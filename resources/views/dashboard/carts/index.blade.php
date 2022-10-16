@@ -39,7 +39,7 @@
                                         <th scope="col" class="text-center">Discount (%)</th>
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Quantity</th>
-                                        <th scope="col" class="text-center">Total Amount (EGP)</th>
+                                        <th scope="col" class="text-center" style="background: linear-gradient(to top, #b4b18d 0%, #f8f8f8 100%);">Total Amount (EGP)</th>
                                         <th scope="col" class="text-center">Date of Creation</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
                                         @if(auth()->user()->user_type == "admin")
@@ -80,17 +80,17 @@
                                         <td>{{ $cart->discount * 100 }}%</td>
                                         @if($cart->discount > 0)
                                             <td class="text-center">
-                                                <span class="font-danger"><del>{{$cart->price}}</del></span> <label class="font-secondary">&RightArrow;</label> <span class="font-primary">{{$cart->price - ($cart->price * $cart->discount)}}</span>
+                                                <span class="font-danger"><del>{{$cart->price}}</del></span> <label class="font-secondary">&RightArrow;</label> <span style="color: rgb(9, 145, 9); font-weight: bold;">{{$cart->price - ($cart->price * $cart->discount)}}</span>
                                             </td>
                                         @elseif($cart->discount <= 0 || $cart->discount == null || $cart->discount == "")
                                             <td class="text-center">{{$cart->price}}</td>
                                         @endif
                                         <td class="text-center">{{$cart->quantity}}</td>
-                                        <td class="text-center">
+                                        <td class="text-center" style="background: linear-gradient(to top, #f8f8f8 0%, #b4b18d 100%);">
                                             @if($cart->discount > 0)
-                                                <span class="font-danger"><del>{{$cart->quantity * $cart->price}}</del></span> <label class="font-secondary">&RightArrow;</label> <span class="font-primary">{{ $cart->quantity * ($cart->price - ($cart->price * $cart->discount)) }}</span>
+                                                <span class="font-danger"><del>{{$cart->quantity * $cart->price}}</del></span> <label class="font-dark">&RightArrow;</label> <span style="color: rgb(9, 145, 9); font-weight: bold;">{{ $cart->quantity * ($cart->price - ($cart->price * $cart->discount)) }}</span>
                                             @elseif($cart->discount <= 0 || $cart->discount == null || $cart->discount == "")
-                                                <span>{{$cart->quantity * $cart->price}}</span>
+                                                <span style="font-weight: bold;">{{$cart->quantity * $cart->price}}</span>
                                             @endif
                                         </td>
                                         <td class="text-center">{{$cart->created_at->translatedFormat('d/m/Y - h:m A')}}</td>
