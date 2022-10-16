@@ -27,23 +27,23 @@ class ProductController extends Controller
     public function search(Request $request)
     //public function search()
     {
-        $search_text     = $request->search_query; //Laravel method (1) //also same result for "$search_text = $_GET['query'];" or "$request->query;"  //and here is the entered query (word) in the text input (the search bar)
-        //$search_text     = $request->get('query'); //Laravel method (2)
-        // $search_text     = $_GET['query']; // Native
+        $search_text_input     = $request->search_query; //Laravel method (1) //also same result for "$search_text_input = $_GET['query'];" or "$request->query;"  //and here is the entered query (word) in the text input (the search bar)
+        // $search_text_input     = $request->get('search_query'); //Laravel method (2)
+        // $search_text_input     = $_GET['search_query']; // Native
 
-        $products_result = Product::where('name','LIKE',"%{$search_text}%")->get(); ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
+        $products_result = Product::where('name','LIKE',"%{$search_text_input}%")->get(); ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
         // $products_result       = Product::when(!empty($search_text), function($query) use ($search_text){
         //     return $query->where('name', 'like', '%'.$search_text.'%');
         //     })->get(); //another second way for the search functionality on the entered query
         $products_result_count = $products_result->count(); //same code result as the following => $products_result = Product::where('name','LIKE',"%{$search_text}%")->count();
 
-        // if($search_text == ""){
-        //     $search_text = "There is no query!";
+        // if($search_text_input == ""){
+        //     $search_text_input = "There is no query!";
         //     return view('products.search', compact('products_result' , 'search_text' , 'products_result_count'));
         // }
 
-        return view('website.products.search', compact('products_result' , 'search_text' , 'products_result_count'));
-            // ->with('i' , ($request->input('page', 1) - 1) * 5);
+        return view('website.products.search', compact('products_result' , 'search_text_input' , 'products_result_count'))
+            ->with('i' , ($request->input('page', 1) - 1) * 5);
 
     }
 

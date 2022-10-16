@@ -4,14 +4,14 @@
 @endsection
 
 @section('title')
-    @if($search_text == "") <?php //for empty search box (no entered query!) ?>
+    @if($search_text_input == "") <?php //for empty search box (no entered query!) ?>
         Search box is empty!
     @else <?php //for wrong & correct data from the DB ?>
         @if($products_result_count == 0)
-            Results - {{ '"'.$search_text.'" ['.$products_result_count.']' }} - Not found! <?php /* "." is for concatenating static front-end 
+            Results - {{ '"'.$search_text_input.'" ['.$products_result_count.']' }} - Not found! <?php /* "." is for concatenating static front-end 
                                                                                                     codes with dynamic back-end codes */ ?>
         @else
-            Results - {{ '"'.$search_text.'" ['.$products_result_count.']' }}
+            Results - {{ '"'.$search_text_input.'" ['.$products_result_count.']' }}
         @endif
    @endif
 @endsection
@@ -75,7 +75,7 @@
     <?php /********************************** End Dashboard Table for Product (for dashboard!) **********************************/ ?>
 
     <section class="product-results-section" style="padding: 0% 2%;">
-            @if($search_text == "")
+            @if($search_text_input == "")
                 <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto;  width: 40%;">
                     <span style="font-size: 110%; font-weight: bold;">The search box is empty. You didn't enter anything in it!</span>
                 </div> 
@@ -86,7 +86,7 @@
             @else <?php //@elseif($search_text == $products_result) ?>
                 @if($products_result_count == 0)
                     <div class="alert alert-danger" style="text-align: center; margin-left: auto; margin-right: auto; width: 40%;">
-                        "{{ $search_text }}" results ({{ $products_result_count }}) - Not found!
+                        "{{ $search_text_input }}" results ({{ $products_result_count }}) - Not found!
                     </div>
                     @auth
                         @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
@@ -97,7 +97,7 @@
                      @endauth
                 @else
                     <div class="alert alert-success" style="text-align: center; margin-left: auto; margin-right: auto; width: 40%;">
-                        "{{ $search_text }}" results ({{ $products_result_count }})
+                        "{{ $search_text_input }}" results ({{ $products_result_count }})
                     </div>
                     @auth
                         @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
