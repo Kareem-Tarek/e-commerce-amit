@@ -92,7 +92,7 @@
                                     <i class="fa-solid fa-percent" style="font-size: 160%;"></i>&nbsp;&nbsp;
                                     <i class="fa-solid fa-circle-xmark" style="font-size: 120%;"></i>
                                 </div>
-                                <h6>All Products (with no sales)</h6>
+                                <h6>Products (with no sales)</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('discount' , '<=' , 0)->orWhere('discount' , '=' , null)->count()}}</span><br>
                                 <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
                                 <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
@@ -110,7 +110,7 @@
                                     <i class="fa-solid fa-percent" style="font-size: 160%;"></i>&nbsp;&nbsp;
                                     <i class="fa-solid fa-circle-check" style="font-size: 120%;"></i>
                                 </div>
-                                <h6>All Products (with sales)</h6>
+                                <h6>Products (with sales)</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('discount' , '>' , 0)->count()}}</span><br>
                                 <span class="no-select-line">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
                                 <a class="btn-arrow arrow-primary show-btn" href="{{ route('products.index') }}" >
@@ -130,7 +130,7 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    Icon
+                                    <i class="fa-solid fa-children" style="font-size: 230%;"></i>
                                 </div>
                                 <h6>Kids' Wear</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('product_category','kids')->count()}}</span><br>
@@ -146,7 +146,7 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    Icon
+                                    <i class="fa-solid fa-person-dress" style="font-size: 230%;"></i>
                                 </div>
                                 <h6>Women's Wear</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('product_category','women')->count()}}</span><br>
@@ -168,7 +168,7 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    Icon
+                                    <i class="fa-solid fa-person" style="font-size: 230%;"></i>
                                 </div>
                                 <h6>Men's Wear</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('product_category','men')->count()}}</span><br>
@@ -184,7 +184,7 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    Icon
+                                    <i class="fa-solid fa-hands-asl-interpreting" style="font-size: 230%;"></i>
                                 </div>
                                 <h6>All Accessories</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Product::where('is_accessory','yes')->count()}}</span><br>
@@ -206,7 +206,7 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    Icon
+                                    <i class="fa-solid fa-star" style="font-size: 230%;"></i>
                                 </div>
                                 <h6>Ratings</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\Rating::count()}}</span><br>
@@ -283,7 +283,8 @@
                         <div class="card income-card">
                             <div class="card-body text-center">
                                 <div class="round-box">
-                                    <i class="fa-solid fa-file-signature" style="font-size: 180%;"></i>
+                                    {{-- <i class="fa-solid fa-user-check" style="font-size: 180%;"></i> --}}
+                                    <i class="fa-solid fa-user-gear" style="font-size: 180%;"></i>
                                 </div>
                                 <h6>Suppliers</h6>
                                 <span class="number-count" style="font-size: 180%;">{{\App\Models\User::where('user_type','supplier')->count()}}</span><br>
