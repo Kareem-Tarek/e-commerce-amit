@@ -7,7 +7,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Deleted Products</h3>
+            <h3 class="mt-4">Deleted Products</h3>
         @endslot
         <li class="breadcrumb-item"><a href="{{route('products.index')}}">Products</a> </li>
         <li class="breadcrumb-item active">Deleted Products</li>

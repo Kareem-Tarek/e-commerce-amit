@@ -7,7 +7,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Deleted Carts</h3>
+            <h3 class="mt-4">Deleted Carts</h3>
         @endslot
         <li class="breadcrumb-item"><a href="{{route('carts.index')}}">Carts</a> </li>
         <li class="breadcrumb-item active">Deleted Carts</li>
@@ -47,7 +47,6 @@
                                         <th scope="col" class="text-center">Discount (%)</th>
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Quantity</th>
-                                        <th scope="col" class="text-center">Added By</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
                                         <th scope="col" class="text-center">Date of Creation</th>
                                         <th scope="col" class="text-center">Date of Deletion</th>
@@ -94,7 +93,6 @@
                                             <td class="text-center">{{$cart->price}}</td>
                                         @endif
                                         <td class="text-center">{{$cart->quantity}}</td>
-                                        <td class="text-center">{{$product->create_user->name ?? '???'}}</td>
                                         <td class="text-center">{{$product->update_user->name ?? '???'}}</td>
                                         <td class="text-center" title="{{$cart->created_at->format('Y-D-M h:m h:m A')}}">{{$cart->created_at->format('Y-D-M h:m A')}}</td>
                                         <td class="text-center" title="{{$cart->deleted_at->format('Y-D-M h:m h:m A')}}">{{$cart->deleted_at->format('Y-D-M h:m A')}}</td>

@@ -7,7 +7,7 @@
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Categories</h3>
+            <h3 class="mt-4">Categories</h3>
         @endslot
         <li class="breadcrumb-item active">Categories</li>
         @slot('bookmark')

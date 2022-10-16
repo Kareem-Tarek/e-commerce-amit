@@ -9,7 +9,7 @@
 
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Create Product</h3>
+            <h3 class="mt-4">Create Product</h3>
         @endslot
         <li class="breadcrumb-item"><a href="{{route('products.index')}}">Products</a> </li>
         <li class="breadcrumb-item active">Create Product</li>
