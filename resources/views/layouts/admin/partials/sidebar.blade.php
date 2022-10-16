@@ -59,7 +59,7 @@
                                 <span>Users</span>
                             </a>
                             <ul class="nav-submenu menu-content" style="">
-                                <li class="dropdown">
+                                {{-- <li class="dropdown">
                                     <span class="drop-down-all-users">All Users</span>
                                     <div class="dropdown-content">
                                         <a href="javascript:void(0); "class="javascript:void(0);">Admins</a>
@@ -67,8 +67,13 @@
                                         <a href="javascript:void(0); "class="javascript:void(0);">Suppliers</a>
                                         <a href="javascript:void(0); "class="javascript:void(0);">Customers</a>
                                     </div>
-                                </li>
+                                </li> --}}
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Create User</a></li>
+                                <li><a href="javascript:void(0);" class="javascript:void(0);">All Users</a></li>
+                                <li><a href="javascript:void(0); "class="javascript:void(0);">Customers</a></li>
+                                <li><a href="javascript:void(0); "class="javascript:void(0);">Suppliers</a></li>
+                                <li><a href="javascript:void(0); "class="javascript:void(0);">Moderators</a></li>
+                                <li><a href="javascript:void(0); "class="javascript:void(0);">Admins</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Users</a></li>
                             </ul>
                         </li>
