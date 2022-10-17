@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         // User::factory(25)->create();
 
         $user = User::create([ //ID = 1 (admin)
-            'name'      => "Karim Tarek",
+            'name'      => "Karim DEV",
             'username'  => 'KarimDev',
             'phone'     => '01010110457',
             'bio'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus pariatur accusantium rerum rem alias consequuntur iusto harum maiores enim perferendis vitae inventore temporibus sint, doloremque iste natus commodi aut voluptas.',

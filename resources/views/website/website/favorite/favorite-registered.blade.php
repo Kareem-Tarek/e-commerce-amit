@@ -79,7 +79,7 @@
         </div>
     @endif
 
-    <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap;">
+    <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap; padding: 0% 2%;">
         @forelse($favoriteItems as $favoriteItem)
             @if($now->between($start, $end))
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="border: 1px solid black; color: black;">

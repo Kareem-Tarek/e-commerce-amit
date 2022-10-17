@@ -184,9 +184,9 @@ Route::group([
 
         /********************** Start carts route. **********************/
         Route::resource('/carts', DashboardCartController::class);
-        // Route::get('/cart/delete', [DashboardCartController::class, 'delete'])->name('carts.delete');
-        // Route::get('/cart/restore/{id}/', [DashboardCartController::class, 'restore'])->name('carts.restore');
-        // Route::delete('/cart/forceDelete/{id}/', [DashboardCartController::class, 'forceDelete'])->name('carts.forceDelete');
+        Route::get('/cart/delete', [DashboardCartController::class, 'delete'])->name('carts.delete');
+        Route::get('/cart/restore/{id}/', [DashboardCartController::class, 'restore'])->name('carts.restore');
+        Route::delete('/cart/forceDelete/{id}/', [DashboardCartController::class, 'forceDelete'])->name('carts.forceDelete');
         /********************** End carts route. **********************/
 
         //-------------------- Start users route. --------------------//

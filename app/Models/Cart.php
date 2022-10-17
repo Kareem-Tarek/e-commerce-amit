@@ -26,6 +26,7 @@ class Cart extends Model
         'price' ,
         'discount' ,
         'quantity' ,
+        'product_id' ,
         'customer_id' ,
     ];
 

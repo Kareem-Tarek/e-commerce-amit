@@ -1,29 +1,37 @@
 @extends('layouts.admin.master')
 
-@section('title') 
-    All Carts
+@section('title')
+    Deleted Carts
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3 class="mt-4">Carts</h3>
+            <h3 class="mt-4">Deleted Carts</h3>
         @endslot
-        <li class="breadcrumb-item active">Carts</li>
+        <li class="breadcrumb-item"><a href="{{route('carts.index')}}">Carts</a> </li>
+        <li class="breadcrumb-item active">Deleted Carts</li>
+        @slot('bookmark')
+            <a href="{{route('carts.create')}}" class="btn btn-pill btn-air-success btn-success-gradien" type="button" title="Add New Category">Add New Category</a>
+        @endslot
     @endcomponent
-
     @include('layouts.admin.partials.messages.message')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Show Carts - <span class="b-b-success">{{App\Models\Cart::count()}}</span></h5>
+                        <h5>Show deleted carts - <span class="b-b-success">{{App\Models\Category::onlyTrashed()->count()}}</span></h5>
+                        <span>
+                            All deleted carts. If you want to create and add new sections, 
+                            you must click the (Add New Carts) button at the top of the page, 
+                            and if you want to restore any section, press (Restore) next to each cart.
+                        </span>
                     </div>
                     <div class="card-block row">
                         <div class="col-sm-12 col-lg-12 col-xl-12">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th scope="col" class="text-center">#</th>
@@ -40,8 +48,9 @@
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Quantity</th>
                                         <th scope="col" class="text-center" style="background: linear-gradient(to top, #b4b18d 0%, #f8f8f8 100%);">Total Amount (EGP)</th>
-                                        <th scope="col" class="text-center">Date of Creation</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
+                                        <th scope="col" class="text-center">Date of Creation</th>
+                                        <th scope="col" class="text-center">Date of Deletion</th>
                                         @if(auth()->user()->user_type == "admin")
                                             <th scope="col" class="text-center">Action</th>
                                         @endif
@@ -93,17 +102,17 @@
                                                 <span style="font-weight: bold;">{{$cart->quantity * $cart->price}}</span>
                                             @endif
                                         </td>
-                                        <td class="text-center">{{$cart->created_at->translatedFormat('d/m/Y - h:m A')}}</td>
-                                        <td class="text-center">{{$cart->update_user->name ?? '???'}}</td>
+                                        <td class="text-center">{{$product->update_user->name ?? '???'}}</td>
+                                        <td class="text-center" title="{{$cart->created_at->format('Y-D-M h:m h:m A')}}">{{$cart->created_at->format('Y-D-M h:m A')}}</td>
+                                        <td class="text-center" title="{{$cart->deleted_at->format('Y-D-M h:m h:m A')}}">{{$cart->deleted_at->format('Y-D-M h:m A')}}</td>
                                         @if(auth()->user()->user_type == "admin")
                                             <td class="text-center">
                                                 {!! Form::open([
-                                                    'route' => ['carts.destroy',$cart->id],
+                                                    'route' => ['carts.forceDelete',$cart->id],
                                                     'method' => 'delete'
                                                 ])!!}
-                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Deleting the cart using its ID as the following.. => cart (ID)\n\nAre you sure that you want to delete cart ({{ $cart->id }})?\nThe cart was made by ({{ $cart->customer_name }})');" type="submit" title="{{'Delete'." ($cart->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
-
-                                                <a href="{{route('categories.edit',$cart->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($cart->id)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to permanently delete - Cart with ID [{{ $cart->id }}]?');" type="submit" title="{{'Permanent Delete'." (Cart with ID [.$cart->id.']')"}}"><i class="fa-solid fa-trash"></i> Permanent Delete </button>
+                                                <a href="{{route('carts.restore',$cart->id)}}" onclick="return confirm('Are you sure that you want to restore - Cart with ID [{{ $cart->id }}]?');" class="btn btn-primary btn-xs" type="button" title="{{'Restore'." (Cart with ID [.$cart->id.']')"}}"><i class="fa-solid fa-trash-arrow-up"></i> Restore</a>
                                                 {!! Form::close() !!}
                                             </td>
                                         @endif

@@ -25,6 +25,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'men', 
             'is_accessory'     => 'no',
             'discount'         => 0.12,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -37,6 +38,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'men',
             'is_accessory'     => 'no',
             'discount'         => 0,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -49,6 +51,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'men',
             'is_accessory'     => 'no',
             'discount'         => 0.15,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -61,6 +64,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0.10,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -73,7 +77,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -85,6 +90,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0.05,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -97,6 +103,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'no',
             'discount'         => 0.05,
+            'create_user_id'   => 1,
             
         ]);
         
@@ -109,6 +116,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'no',
             'discount'         => 0.08,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -121,6 +129,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'no',
             'discount'         => 0.03,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -133,7 +142,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'men',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -145,7 +155,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -157,7 +168,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -168,7 +180,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'men',
             'is_accessory'     => 'yes',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -179,6 +192,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'yes',
             'discount'         => 0.02,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -190,7 +204,8 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'yes',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -198,32 +213,38 @@ class ProductSeeder extends Seeder
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/instagram-03.jpg',
             'price'            => 600,
+            'clothing_type'    => '2',
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0.50,
+            'create_user_id'   => 1,
             
         ]);
 
         $product = Product::create([
-            'name'             => 'winter costume for him',
+            'name'             => 'winter costume for HIM',
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/team-member-02.jpg',
             'price'            => 214,
+            'clothing_type'    => '2',
             'product_category' => 'men',
             'is_accessory'     => 'no',
             'discount'         => 0.20,
+            'create_user_id'   => 1,
             
         ]);
 
         $product = Product::create([
-            'name'             => 'winter costume for her',
+            'name'             => 'winter costume for HER',
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/team-member-01.jpg',
             'price'            => 199,
+            'clothing_type'    => '2',
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -231,9 +252,11 @@ class ProductSeeder extends Seeder
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/kid-01.jpg',
             'price'            => 173,
+            'clothing_type'    => '2',
             'product_category' => 'kids',
             'is_accessory'     => 'no',
             'discount'         => 0.05,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -242,10 +265,12 @@ class ProductSeeder extends Seeder
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/instagram-01.jpg',
             'price'            => 420,
+            'clothing_type'    => '2',
             'product_category' => 'women',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -253,10 +278,12 @@ class ProductSeeder extends Seeder
             'description'      => 'xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz',
             'image_name'       => 'assets/images/men-4.jpg',
             'price'            => 310,
+            'clothing_type'    => '2',
             'product_category' => 'men',
             'is_accessory'     => 'no',
             'discount'         => 0,
-            
+  
+            'create_user_id'   => 1,
         ]);
 
         $product = Product::create([
@@ -267,6 +294,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'men',
             'is_accessory'     => 'yes',
             'discount'         => 0.30,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -278,6 +306,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'women',
             'is_accessory'     => 'yes',
             'discount'         => 0.15,
+            'create_user_id'   => 1,
             
         ]);
 
@@ -289,7 +318,7 @@ class ProductSeeder extends Seeder
             'product_category' => 'kids',
             'is_accessory'     => 'yes',
             'discount'         => 0,
-            
+            'create_user_id'   => 1,
         ]);
 
     }

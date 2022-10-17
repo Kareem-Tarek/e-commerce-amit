@@ -6,7 +6,7 @@
 
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>Edit ({{$model->name}})</h3>
+            <h3 class="mt-4">Edit ({{$model->name}})</h3>
         @endslot
         <li class="breadcrumb-item"><a href="{{route('products.index')}}">Products</a> </li>
         <li class="breadcrumb-item active">Edit ({{$model->name}})</li>
