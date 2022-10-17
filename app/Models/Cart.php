@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Cart extends Model
 {
     use HasApiTokens , HasFactory , SoftDeletes;
-    
+
     public $table = 'cart';
 
     protected $fillable = [

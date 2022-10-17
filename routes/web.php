@@ -68,7 +68,7 @@ Route::get('/email-verification', [VerificationController::class, 'index'])->nam
 /******************************************** End email verification Route ********************************************/
 
 /******************************************** Start Forgot Password (reset by Email) Route ********************************************/
-Route::get('/reset-password', [ForgotPasswordController::class, 'index'])->name('reset-password');
+Route::get('/reset-password', [ForgotPasswordController::class, 'add toindex'])->name('reset-password');
 /******************************************** End Forgot Password (reset by Email) Route ********************************************/
 
 /******************************************** Start reset Password (change password by using the email that was used for "Forgot Password") Route ********************************************/
@@ -148,7 +148,7 @@ Route::post('/addRating/{id}', [RatingController::class, 'addRating'])->middlewa
 /******************************************** End Rating Route ********************************************/
 Route::group([
     'middleware' => ['unregistered_users' , 'only_admins_and_moderators']
-], function () { 
+], function () {
     Route::get('/contact-info-submitted', [ContactController::class, 'contact_success_view'])->name('contact_info_submitted');
 });
 Route::post('/contact-submit' , [ContactController::class, 'submit_contact_form']);
