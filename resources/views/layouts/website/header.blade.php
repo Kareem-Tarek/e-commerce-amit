@@ -80,7 +80,7 @@
                                 {{-- <div class="badge-bottom">
                                     <a href="{{ route('register') }}"><span class="badge badge-primary">Register Now!</span></a>
                                 </div> --}}
-                            </li> 
+                            </li>
                         @else <!---------- = registered user (any user type in the system) ---------->
                             <li class="submenu">
                                 <a class="name" href="javascript:void(0);">{{auth()->user()->name}}</a>
@@ -102,7 +102,7 @@
                                 <li style="margin-top: 1.10%;">
                                     <label style="color:#8197ac;">
                                         <!-- ucfirst(), is a back-end built-in function that capitalizes the first letter in each word -->
-                                        @if(auth()->user()->user_type == 'admin') 
+                                        @if(auth()->user()->user_type == 'admin')
                                             {{ ucfirst(auth()->user()->user_type) }} <!-- same as "Admin" -->
                                         @elseif(auth()->user()->user_type == 'moderator')
                                             {{ ucfirst(auth()->user()->user_type) }} <!-- same as "Moderator" -->
