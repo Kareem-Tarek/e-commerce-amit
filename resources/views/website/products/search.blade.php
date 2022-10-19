@@ -106,48 +106,48 @@
                             </div>    
                         @endif
                     @endauth
-            @endif
+                @endif
 
-    @if(session()->has('addCart_message'))
-        <div class="alert alert-success text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
-        </div>
-    @elseif(session()->has('quantity_is_null_message'))
-        <div class="alert alert-danger text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('quantity_is_null_message') }}
-        </div>
-    @elseif(session()->has('quantity_is_zero_message'))
-        <div class="alert alert-danger text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('quantity_is_zero_message') }}
-        </div>
-    @elseif(session()->has('quantity_is_negative_message'))
-        <div class="alert alert-danger text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('quantity_is_negative_message') }}
-        </div>
-    @endif
-    
-    @if(session()->has('addRating_message'))
-        <div class="alert alert-success text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('addRating_message') }}
-        </div>
-    @endif
+                @if(session()->has('addCart_message'))
+                    <div class="alert alert-success text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
+                    </div>
+                @elseif(session()->has('quantity_is_null_message'))
+                    <div class="alert alert-danger text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('quantity_is_null_message') }}
+                    </div>
+                @elseif(session()->has('quantity_is_zero_message'))
+                    <div class="alert alert-danger text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('quantity_is_zero_message') }}
+                    </div>
+                @elseif(session()->has('quantity_is_negative_message'))
+                    <div class="alert alert-danger text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('quantity_is_negative_message') }}
+                    </div>
+                @endif
+                
+                @if(session()->has('addRating_message'))
+                    <div class="alert alert-success text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('addRating_message') }}
+                    </div>
+                @endif
 
-    @if(session()->has('addFavorite_message'))
-        <div class="alert alert-success text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('addFavorite_message') }}<a href="{{ route('favorites-registered') }}"> Check your favorites</a>.
-        </div>
-    @elseif(session()->has('addFavorite_already_added_message'))
-        <div class="alert alert-danger text-center session-message">
-            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-            {{ session()->get('addFavorite_already_added_message') }}
-        </div>
-    @endif
+                @if(session()->has('addFavorite_message'))
+                    <div class="alert alert-success text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('addFavorite_message') }}<a href="{{ route('favorites-registered') }}"> Check your favorites</a>.
+                    </div>
+                @elseif(session()->has('addFavorite_already_added_message'))
+                    <div class="alert alert-danger text-center session-message">
+                        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+                        {{ session()->get('addFavorite_already_added_message') }}
+                    </div>
+                @endif
 
                 <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap;">
                     @forelse($products_result as $product)
