@@ -71,9 +71,9 @@
                                             @endif
                                         </td>
                                         <td class="text-center">{{$cart->customer_email}}</td>
-                                        <td class="text-center">{{$cart->customer_address ?? '???'}}</td>
+                                        <td class="text-center">{{$cart->customer_address ?? 'No Address!'}}</td>
                                         <th class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}" class="font-secondary">{{$cart->product_name}}</a></th>
-                                        <td class="text-center">{{$cart->product_category}}</td>
+                                        <td class="text-center">{{ucfirst($cart->product_category)}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('categories.index') }}" style="color: rgb(63, 82, 205);">
                                                 @if($cart->clothing_type == '1')
@@ -85,7 +85,7 @@
                                                 @endif
                                             </a>
                                         </td>
-                                        <td class="text-center">{{$cart->is_accessory}}</td>
+                                        <td class="text-center">{{ucfirst($cart->is_accessory)}}</td>
                                         <td>{{ $cart->discount * 100 }}%</td>
                                         @if($cart->discount > 0)
                                             <td class="text-center">
