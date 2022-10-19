@@ -190,7 +190,7 @@ class CartController extends Controller
     {
         $cartItem = Cart::findOrFail($id);
         $cartItem->forceDelete();
-        if($cartItem->count() == 0){
+        if($cartItem->count() == 0){ //when in checkout page items count is equals to ero redirect to "cart-registered" route
             return redirect()->route('cart-registered');
         }
         else{
