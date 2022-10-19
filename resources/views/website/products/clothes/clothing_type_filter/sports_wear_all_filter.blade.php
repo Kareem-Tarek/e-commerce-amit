@@ -28,7 +28,7 @@
             <span>Sports Clothes ({{ $sports_wear_all_count }})</span>
         </div>
     @else
-        <div class="alert alert-success" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
+        <div class="alert alert-primary" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
             <span>Sports Clothes ({{ $sports_wear_all_count }})</span>
         </div>
     @endif

@@ -96,7 +96,7 @@
                         @endif
                      @endauth
                 @else
-                    <div class="alert alert-success" style="text-align: center; margin-left: auto; margin-right: auto; width: 40%;">
+                    <div class="alert alert-primary" style="text-align: center; margin-left: auto; margin-right: auto; width: 40%;">
                         "{{ $search_text_input }}" results ({{ $products_result_count }})
                     </div>
                     @auth
