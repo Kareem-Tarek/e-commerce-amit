@@ -133,7 +133,7 @@
                 @endif
                 <td>
                     {!! Form::open([
-                        'route' => ['carts.destroy',$cartItem->id],
+                        'route' => ['cart_and_checkout.destroy',$cartItem->id],
                         'method' => 'delete'
                     ])!!}
                     <button class="btn btn-danger btn-sm" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$cartItem->product_name.'] item(s) from your cart?')}}');" type="submit" title="{{__('Remove all')." [$cartItem->product_name] item(s)"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
