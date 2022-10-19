@@ -3,14 +3,14 @@
         <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{auth()->user()->photo ?? ''}}" alt="{{auth()->user()->name ?? ''}} avatar" />
         @php $data = Carbon\Carbon::parse(Auth::user()->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
         @if($data <= 7) <!---------- in weeks ---------->
-            <div class="badge-bottom" style="padding-top: 5%;">
+            <div class="badge-bottom mt-2">
                 <span class="badge badge-primary">New</span>
             </div>
         @endif
     <a href="javascript:void(0);">
         <h6 class="mt-3 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
     </a>
-    <p class="mb-0 font-roboto">{{auth()->user()->email ?? ''}}</p>
+    <p class="mb-0 mt-4 font-roboto">{{auth()->user()->email ?? ''}}</p>
     </div>
 
     <div class="sidebar-main-title text-center" style="color: #0083FF;">
@@ -96,6 +96,23 @@
                         <!------------- End route categories ------------->
 
 
+                        <!------------- Start route carts ------------->
+                        <li class="dropdown">
+                            <a class="nav-link menu-title" href="javascript:void(0)">
+                                <i class="fa-solid fa-cart-shopping"></i></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>Carts</span>
+                            </a>
+                            <ul class="nav-submenu menu-content" style="">
+                                {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Create Cart</a></li> --}}
+                                <li><a href="{{ route('carts.index') }}" class="{{ route('carts.index') }}">All Carts</a></li>
+                                @if(auth()->user()->user_type == "admin")
+                                    <li><a href="{{ route('carts.delete') }}" class="javascript:void(0);">Deleted Carts</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                        <!------------- End route carts ------------->
+
+
                         <!------------- Start route products ------------->
                         <li class="dropdown">
                             <a class="nav-link menu-title" href="javascript:void(0);">
@@ -119,23 +136,6 @@
                             </ul>
                         </li>
                         <!------------- End route products ------------->
-
-
-                        <!------------- Start route carts ------------->
-                        <li class="dropdown">
-                            <a class="nav-link menu-title" href="javascript:void(0)">
-                                <i class="fa-solid fa-cart-shopping"></i></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span>Carts</span>
-                            </a>
-                            <ul class="nav-submenu menu-content" style="">
-                                {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Create Cart</a></li> --}}
-                                <li><a href="{{ route('carts.index') }}" class="{{ route('carts.index') }}">All Carts</a></li>
-                                @if(auth()->user()->user_type == "admin")
-                                    <li><a href="{{ route('carts.delete') }}" class="javascript:void(0);">Deleted Carts</a></li>
-                                @endif
-                            </ul>
-                        </li>
-                        <!------------- End route carts ------------->
 
 
                         <!------------- Start route tags ------------->

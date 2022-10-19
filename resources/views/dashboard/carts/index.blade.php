@@ -62,9 +62,9 @@
                                             @endif
                                         </td>
                                         <td class="text-center">{{$cart->customer_email}}</td>
-                                        <td class="text-center">{{$cart->customer_address ?? '???'}}</td>
+                                        <td class="text-center">{{$cart->customer_address ?? 'No Address!'}}</td>
                                         <th class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}" class="font-secondary">{{$cart->product_name}}</a></th>
-                                        <td class="text-center">{{$cart->product_category}}</td>
+                                        <td class="text-center">{{ucfirst($cart->product_category)}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('categories.index') }}" style="color: rgb(63, 82, 205);">
                                                 @if($cart->clothing_type == '1')
@@ -76,7 +76,7 @@
                                                 @endif
                                             </a>
                                         </td>
-                                        <td class="text-center">{{$cart->is_accessory}}</td>
+                                        <td class="text-center">{{ucfirst($cart->is_accessory)}}</td>
                                         <td>{{ $cart->discount * 100 }}%</td>
                                         @if($cart->discount > 0)
                                             <td class="text-center">
@@ -103,7 +103,7 @@
                                                 ])!!}
                                                 <button class="btn btn-danger btn-xs" onclick="return confirm('Deleting the cart using its ID as the following.. => cart (ID)\n\nAre you sure that you want to delete cart ({{ $cart->id }})?\nThe cart was made by ({{ $cart->customer_name }})');" type="submit" title="{{'Delete'." ($cart->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
 
-                                                <a href="{{route('categories.edit',$cart->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($cart->id)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                <a href="{{route('carts.edit',$cart->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($cart->id)"}}"><li class="icon-pencil"></li> Edit</a>
                                                 {!! Form::close() !!}
                                             </td>
                                         @endif

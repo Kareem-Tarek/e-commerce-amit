@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male','female'])->nullable();
             $table->date('dob')->nullable();
             //admin -> CRUD //moderator -> CR //supplier CRUD for products only! //customer CRUD for cart only!
-            $table->enum('user_type',['admin','moderator','supplier','customer']);
+            $table->enum('user_type',['admin','moderator','supplier','customer'])->default('customer');
             $table->string('address')->nullable();
             $table->integer('country_id')->nullable(); // still on wait (no table yet!)
             $table->integer('governorate_id')->nullable(); // still on wait (no table yet!)

@@ -106,9 +106,9 @@
                             </div>
                         @endif
                     @endauth
-                @endif
+            @endif
 
-                @if(session()->has('addCart_message'))
+    @if(session()->has('addCart_message'))
         <div class="alert alert-success text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
