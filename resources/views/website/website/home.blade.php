@@ -13,6 +13,20 @@
     .hover-content{background-color: rgba(117, 117, 117, 0.4);}
     .hover-content-for-product-items{padding: 2% 0%;}
     .inline-item{display: inline;}
+    .browse-products-link{
+        background-color: #000000; 
+        color: snow;
+        font-size: 80%; 
+        font-weight: bold; 
+        padding: 1%; 
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+    }
+    .browse-products-link:hover{
+        background-color: #293240; 
+        color: snow;
+    }
 </style>
 
 <!-- ***** Search bar Start ***** -->
@@ -202,10 +216,10 @@
 <div class="product-items">
     <section class="section" id="women">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-heading">
-                        <h3 style="font-weight: bolder; ">Here are some of our products...</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="section-heading text-center">
+                        <h1 style="font-weight: bolder;">Here are some of our products...</h1>
                         {{-- @if(session()->has('addRating_women_message'))
                             <div class="alert alert-success text-center" style="width: %; margin-top: 5%; margin-left: auto; margin-right: auto;">
                                 <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -277,6 +291,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+                <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a>
             </div>
         </div>
     </section>
