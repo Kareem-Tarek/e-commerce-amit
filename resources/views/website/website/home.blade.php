@@ -253,7 +253,21 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <a href="{{ route('single_product_page' , $product->id) }}"><img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;"></a>
+                                        <a href="{{ route('single_product_page' , $product->id) }}">
+                                            <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black; position: relative;">
+                                            @php
+                                                $product_created_at = ($product->created_at);
+                                                $date_now = Carbon\Carbon::now();
+                                                $date_now_plus_period = $date_now->addMinutes(1);
+                                            @endphp                                            
+                                            @if($date_now_plus_period) <!---------- in days ---------->
+                                                <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                    <h3 style="font-weight: bolder;">NEW</h3>
+                                                </span>
+                                            @else
+                                                nope
+                                            @endif
+                                        </a>
                                     </div>
                                     <div class="down-content">
                                         <h4><a href="{{ route('single_product_page' , $product->id) }}" style="color: black;">{{ $product->name }}</a></h4>

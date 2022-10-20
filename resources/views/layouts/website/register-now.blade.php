@@ -14,6 +14,7 @@
         position: fixed;
         left: 0px;
         top: 13.5%;
+
         /* bottom: 0px;
         right: 50%; */
         padding: ;
