@@ -232,6 +232,7 @@
             </div>
         </div>
         <div class="container">
+            <!-------------------- first row -------------------->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="men-item-carousel">
@@ -293,6 +294,7 @@
                 </div>
             </div>
 
+            <!-------------------- second row -------------------->
             <div class="row justify-content-center mt-4">
                 <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a>
             </div>
