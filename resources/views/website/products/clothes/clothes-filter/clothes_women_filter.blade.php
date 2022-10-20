@@ -98,7 +98,7 @@
                                 @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
                                     <div class="c-red"><u>Price:</u> {{$product->price}} EGP</div>
                                 @endif
-                                <div class="c-red"><u>Category:</u> {{$product->product_category}}</div>
+                                <div class="c-red"><u>Category:</u> {{ucfirst($product->product_category)}}</div>
                                 @if($product->is_accessory == 'no')
                                     <div class="c-red"><u>Clothing Type:</u>
                                         @if($product->clothing_type == '1')

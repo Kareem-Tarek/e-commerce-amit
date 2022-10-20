@@ -39,7 +39,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Discount (%)</label>
         <div class="col-lg-9">
-            <select name="discount" id="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
+            <select class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}" name="discount" id="discount">
                 <option name="" value="" disabled selected>---------- Please select a discount ----------</option>
                 <?php 
                     for($d = 0.00 ; $d < 1 ; $d = $d + 0.01){ //for(start ; end ; increment/decrement)
@@ -72,7 +72,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Sale Price/Final Price (EGP) </label>
         <div class="col-lg-9">
-            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
+            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) ?? $model->price}}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
         </div>
     </div>
 

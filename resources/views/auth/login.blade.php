@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center" style="background-color: black; color: snow;"><h4>{{ __('Login') }}</h4></div>
+                <div class="card-header text-center" style="background: linear-gradient(to top left, #466dce, #000000); color: snow;"><h4>{{ __('Login') }}</h4></div>
 
                 <div class="card-body" style="background-color: rgb(223, 223, 223); border: 1px solid black;">
                     <form method="POST" action="{{ route('login') }}">

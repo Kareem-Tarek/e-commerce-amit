@@ -10,7 +10,7 @@
                         <div class="c-red"><u>Title:</u> {{$product->product_name}}</div>
                         <div class="c-red"><u>Quantity:</u> {{$product->quantity}}</div>
                         <div class="c-red"><u>Price/Unit:</u> {{$product->price}} EGP</div>
-                        <div class="c-red"><u>Category:</u> {{$product->product_category}}</div>
+                        <div class="c-red"><u>Category:</u> {{ucfirst($product->product_category)}}</div>
                         @if($product->is_accessory == 'no')
                             <div class="c-red"><u>Clothing Type:</u>
                                 @if($product->clothing_type == '1')
