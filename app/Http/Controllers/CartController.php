@@ -185,22 +185,12 @@ class CartController extends Controller
         // ]);
         //////----------------------------------------------------------------------------------------------------------//////
     } // end of (update_cart_items_quantity) function
-    
-    public function destroy_for_cart($id)
+
+    public function destroy_for_cart_and_checkout($id)
     {
         $cartItem = Cart::findOrFail($id);
         $cartItem->forceDelete();
-
-        return redirect()->route('cart-registered')
-            ->with(['cart_item_deleted_message' => '"'.$cartItem->product_name.'" product is successfully deleted from your cart!']);
-            
-    } // end of "destroy_for_cart" function
-
-    public function destroy_for_cart_checkout($id)
-    {
-        $cartItem = Cart::findOrFail($id);
-        $cartItem->forceDelete();
-        if($cartItem->count() == 0){
+        if($cartItem->count() == 0){ //when in checkout page items count is equals to ero redirect to "cart-registered" route
             return redirect()->route('cart-registered');
         }
         else{
@@ -208,7 +198,7 @@ class CartController extends Controller
                 ->with(['cart_checkout_item_deleted_message' => '"'.$cartItem->product_name.'" product is successfully deleted from your cart!']);
         }
             
-    } // end of "destroy_for_cart_checkout" function
+    } // end of "destroy_for_cart_and_checkout" function
 
 }
 ?>

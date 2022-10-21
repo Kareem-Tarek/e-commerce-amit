@@ -13,7 +13,7 @@
         <!------------------------------------------------------------------------------------------------------------>
 
         <select name="rating_level" class="form-control" onchange="this.form.submit()"> <!-- onchange="this.form.submit()" submits the form without the use of input/button type submit -->
-            <option value="" selected>--- Select Your Rating ---</option>
+            <option value="" disabled selected>--- Select Your Rating ---</option>
             <option value="1">Poor</option>      <!----- Poor ----->
             <option value="2">Average</option>   <!----- Average ----->
             <option value="3">Good</option>      <!----- Good ----->

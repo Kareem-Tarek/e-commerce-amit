@@ -100,7 +100,7 @@
                         {{-- <button class="btn btn-default button-submit-quantity">AJAX Submit</button> --}}
 
                         {{-- <button type="button" class="button-minus" name="quantity_value_minus" style="background-color: #DC3545; border-radius: 15px;" onmouseover="this.style.backgroundColor='#C82333'" onmouseout="this.style.backgroundColor='#DC3545'"><i class="fa-solid fa-minus" style="color: snow;"></i></button> --}}
-                            <input type="number" class="quantity_value" name="quantity_value" value="{{ $cartItem->quantity }}" style="width: 20%;">
+                            <input type="number" class="quantity_value" name="quantity_value" value="{{ $cartItem->quantity }}" min="0" style="width: 20%;">
                         {{-- <button  type="button" class="button-plus" name="quantity_value_plus" style="background-color: #28A745; border-radius: 15px;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28A745'"><i class="fa-solid fa-plus" style="color: snow;"></i></button> --}}
                     </form>
                 </td>
@@ -133,7 +133,7 @@
                 @endif
                 <td>
                     {!! Form::open([
-                        'route' => ['carts.destroy',$cartItem->id],
+                        'route' => ['cart_and_checkout.destroy',$cartItem->id],
                         'method' => 'delete'
                     ])!!}
                     <button class="btn btn-danger btn-sm" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$cartItem->product_name.'] item(s) from your cart?')}}');" type="submit" title="{{__('Remove all')." [$cartItem->product_name] item(s)"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>

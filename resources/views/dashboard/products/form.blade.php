@@ -39,7 +39,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Discount (%)</label>
         <div class="col-lg-9">
-            <select name="discount" id="discount" class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}">
+            <select class="form-control select @error('discount') is-invalid @enderror" value="{{Request::old('discount') ? Request::old('discount') : $model->discount}}" name="discount" id="discount">
                 <option name="" value="" disabled selected>---------- Please select a discount ----------</option>
                 <?php 
                     for($d = 0.00 ; $d < 1 ; $d = $d + 0.01){ //for(start ; end ; increment/decrement)
@@ -72,7 +72,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Sale Price/Final Price (EGP) </label>
         <div class="col-lg-9">
-            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) }}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
+            <input class="form-control" value="{{ $model->price - ($model->price * $model->discount) ?? $model->price}}" type="number" name="" id="gain_value" placeholder="Price After Discount/Final Price" style="background-color: rgb(226, 255, 226); color: black; border: 1px solid green;" disabled>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
                 'class'       => 'form-control select'. ( $errors->has('clothing_type') ? ' is-invalid' : '' ),
             ]) !!} --}}
             <select name="clothing_type" class="form-control select @error('clothing_type') is-invalid @enderror" value="{{Request::old('clothing_type') ? Request::old('clothing_type') : $model->clothing_type}}">
-                <option> ---------- Please select a clothing type ---------- </option>
+                <option value="" disabled selected> ---------- Please select a clothing type ---------- </option>
                 <option value="1" {{ isset($model) && $model->clothing_type == 1 ? 'selected'  : '' }}>Formal</option>
                 <option value="2" {{ isset($model) && $model->clothing_type == 2 ? 'selected'  : '' }}>Casual</option>
                 <option value="3" {{ isset($model) && $model->clothing_type == 3 ? 'selected'  : '' }}>Sports Wear</option>
@@ -123,7 +123,7 @@
         <label class="form-label col-lg-3">Accessory? <span class="text-danger">*</span></label>
         <div class="col-lg-9">
             <select name="is_accessory" class="form-control select @error('is_accessory') is-invalid @enderror" value="{{Request::old('is_accessory') ? Request::old('is_accessory') : $model->is_accessory}}">
-                <option> ---------- Is it an accessory? ---------- </option>
+                <option value="" disabled selected> ---------- Is it an accessory? ---------- </option>
                 <option value="yes" {{ isset($model) && $model->is_accessory == 'yes' ? 'selected'  : '' }}>Yes</option>
                 <option value="no" {{ isset($model) && $model->is_accessory == 'no' ? 'selected'  : '' }}>No</option>
             </select>
@@ -139,7 +139,7 @@
         <label class="form-label col-lg-3">Product Category <span class="text-danger">*</span></label>
         <div class="col-lg-9">
             <select name="product_category" class="form-control select @error('product_category') is-invalid @enderror" value="{{Request::old('product_category') ? Request::old('product_category') : $model->product_category}}">
-                <option> ---------- Please select a category ---------- </option>
+                <option value="" disabled selected> ---------- Please select a category ---------- </option>
                 <option value="men" {{ isset($model) && $model->product_category == 'men' ? 'selected'  : '' }}>Men</option>
                 <option value="women" {{ isset($model) && $model->product_category == 'women' ? 'selected'  : '' }}>Women</option>
                 <option value="kids" {{ isset($model) && $model->product_category == 'kids' ? 'selected'  : '' }}>Kids</option>

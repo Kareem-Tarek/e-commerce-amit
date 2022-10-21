@@ -28,7 +28,7 @@
             <span>Kids' Accessories ({{ $accessories_kids_count }})</span>
         </div>
     @else
-        <div class="alert alert-success" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
+        <div class="alert alert-primary" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
             <span>Kids' Accessories ({{ $accessories_kids_count }})</span>
         </div>
     @endif
@@ -98,7 +98,7 @@
                                 @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
                                     <div class="c-red"><u>Price:</u> {{$product->price}} EGP</div>
                                 @endif
-                                <div class="c-red"><u>Category:</u> {{$product->product_category}}</div>
+                                <div class="c-red"><u>Category:</u> {{ucfirst($product->product_category)}}</div>
                             </div>
                         </div>
                     </div>

@@ -122,7 +122,7 @@ Route::group([
     Route::post('/update-cart-items-quantity/{id}', [CartController::class, 'update_cart_items_quantity']);
     Route::get('/checkout/get/items', [CartController::class, 'getCartItemsForCheckout']); // total amount!
     Route::get('/checkout-items-details', [CartController::class, 'cartCheckOutView'])->name('checkout_details');
-    Route::delete('/checkout-items-details/{id}', [CartController::class, 'destroy_for_cart_checkout'])->name('carts_checkout.destroy');
+    Route::delete('/checkout-items-details/{id}', [CartController::class, 'destroy_for_cart_and_checkout'])->name('cart_and_checkout.destroy');
 });
 
 // Route::resource('/carts', DashboardCartController::class)->except(['index', 'create', 'store', 'show', 'update', 'edit']); //the 'destroy' resource function will be the one used only!
@@ -167,7 +167,7 @@ Route::group([
 ], function () {
 
     Route::prefix('dashboard')->group(function () {
-        Route::get('/', [DashboardHomeController::class, 'index'])->name('dashboard'); //Dashborad home route
+        Route::get('/', [DashboardHomeController::class, 'index'])->name('dashboard'); //Dashboard home route
         /********************** Start products route. **********************/
         Route::resource('/products', DashboardProductController::class);
         Route::get('/product/delete', [DashboardProductController::class, 'delete'])->name('products.delete');
