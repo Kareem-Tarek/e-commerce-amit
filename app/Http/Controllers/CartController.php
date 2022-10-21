@@ -68,7 +68,7 @@ class CartController extends Controller
             $cart->customer_id      = $user->id;
             $cart->save(); 
 
-            return redirect()->back()->with('addCart_message' , '"'.$product->name.'" [Quantity: '.$cart->quantity.'] - added successfully to your cart!');
+            return redirect()->back()->with('addCart_message' , '"'.$product->name.'" (Quantity: '.$cart->quantity.') - added successfully to your cart!');
         }
 
         // else{ //it is shaded because there is already if condition in any of the product blades for guest "if(Auth::guest())..."
