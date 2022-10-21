@@ -16,12 +16,13 @@ class ProductController extends Controller
 
     public function index()
     {
+        $products         = Product::all();
         $clothes_men      = Product::all()->where('is_accessory','no')->where('product_category', '=', 'men'); //same as => Product::all()->where('product_category', 'men');
         $clothes_women    = Product::all()->where('is_accessory','no')->where('product_category', '=', 'women'); //same as => Product::all()->where('product_category', 'women');
         $clothes_kids     = Product::all()->where('is_accessory','no')->where('product_category', '=', 'kids'); //same as => Product::all()->where('product_category', 'kids');
-        $some_accessories = Product::all()->where('is_accessory','yes'); //sample of some accessories
+        $accessories      = Product::all()->where('is_accessory','yes'); //sample of some accessories
 
-        return view('website.products.product', compact('clothes_men','clothes_women','clothes_kids','some_accessories'));
+        return view('website.products.product', compact('products','clothes_men','clothes_women','clothes_kids','accessories'));
     }
 
     public function search(Request $request)
