@@ -194,7 +194,7 @@ class CartController extends Controller
             return redirect()->route('cart-registered');
         }
         else{
-            return redirect()->back()
+            return redirect()->back() //redirect()->back() => to "cart" or "checkout" page depending on the location of the remove action
                 ->with(['cart_checkout_item_deleted_message' => '"'.$cartItem->product_name.'" product is successfully deleted from your cart!']);
         }
             
