@@ -120,7 +120,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -217,7 +217,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -313,7 +313,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -409,7 +409,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
