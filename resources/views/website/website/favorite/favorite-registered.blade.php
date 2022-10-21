@@ -23,17 +23,6 @@
 <!-- ***** Search bar End ***** -->
 
 <section style="margin-top: 2%;">
-    <?php
-        // the following condition is made on the "light" layout (and the other condition "dark" layout will be handled by else in a if condition)
-        $now   = Carbon\Carbon::now();
-        $start = Carbon\Carbon::createFromTimeString('00:00'); // 12:00 AM
-        $end   = Carbon\Carbon::createFromTimeString('12:00')->addDay(); // 12:00 PM
-
-        // if ($now->between($start, $end)) {  
-        //     echo ....;
-        // }
-    ?>
-
     @if($favoriteItems_count == 0)
         <!-- empty area (because the "empty" from forelse loop will handle that error) -->
     @else
@@ -81,13 +70,33 @@
 
     <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap; padding: 0% 2%;">
         @forelse($favoriteItems as $favoriteItem)
+
+            @php
+            // the following condition is made on the "light" layout (and the other condition "dark" layout will be handled by else in a if condition)
+            $now   = Carbon\Carbon::now();
+            $start = Carbon\Carbon::createFromTimeString('00:00'); // 12:00 AM
+            $end   = Carbon\Carbon::createFromTimeString('12:00')->addDay(); // 12:00 PM
+
+            // if ($now->between($start, $end)) {  
+            //     echo ....;
+            // }
+             @endphp
+
             @if($now->between($start, $end))
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="border: 1px solid black; color: black;">
             @else
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-dark border" style="border: 1px solid black; color: snow;">
             @endif
                     <div class="curriculum-event-thumb">
-                        <a href="{{ route('single_product_page' , $favoriteItem->id) }}"><img src="{{$favoriteItem->product_image}}" alt="{{$favoriteItem->product_name}}" style="width: 180px; height: 200px; border: 2px solid black;"></a>
+                        <a href="{{ route('single_product_page' , $favoriteItem->id) }}">
+                            @php $data = Carbon\Carbon::parse($favoriteItem->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
+                            @if($data <= 7) <!---------- in days ---------->
+                                <span class="mt-2" style="position: absolute; background: rgba(0, 69, 175, 0.65); width: 180px; height: 35px; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
+                                    <h3 style="font-weight: bolder;">NEW</h3>
+                                </span>
+                            @endif
+                            <img class="mt-2" src="{{$favoriteItem->product_image}}" alt="{{$favoriteItem->product_name}}" style="width: 180px; height: 200px; border: 2px solid black;">
+                        </a>
                     </div>
                     <div class="curriculum-event-content d-flex justify-content-center" >
                         <div class="row">

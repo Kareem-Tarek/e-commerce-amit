@@ -254,18 +254,16 @@
                                             </ul>
                                         </div>
                                         <a href="{{ route('single_product_page' , $product->id) }}">
-                                            <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black; position: relative;">
-                                            @php
-                                                $product_created_at = ($product->created_at);
-                                                $date_now = Carbon\Carbon::now();
-                                                $date_now_plus_period = $date_now->addMinutes(1);
-                                            @endphp                                            
-                                            @if($date_now_plus_period) <!---------- in days ---------->
+                                            <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
+                                            @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
+                                            @if($data <= 7) <!---------- in days ---------->
                                                 <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
                                                     <h3 style="font-weight: bolder;">NEW</h3>
                                                 </span>
-                                            @else
-                                                nope
+                                            {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
+                                                <span style="position: absolute;  top: 1px; background: rgba(175, 105, 0, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                    <h3 style="font-weight: bolder;">OLD</h3>
+                                                </span> --}}
                                             @endif
                                         </a>
                                     </div>

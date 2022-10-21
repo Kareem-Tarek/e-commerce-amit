@@ -86,7 +86,15 @@
         @foreach($casual_all as $product)
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-3 pt-3 pb-3 bg-light border">
                     <div class="curriculum-event-thumb">
-                        <a href="{{ route('single_product_page' , $product->id) }}"><img src="{{$product->image_name}}" alt="{{$product->name}}" style="width: 180px; height: 200px; border: 2px solid black;"></a>
+                        <a href="{{ route('single_product_page' , $product->id) }}">
+                            @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
+                            @if($data <= 7) <!---------- in days ---------->
+                                <span class="mt-2" style="position: absolute; background: rgba(0, 69, 175, 0.65); width: 180px; height: 35px; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
+                                    <h3 style="font-weight: bolder;">NEW</h3>
+                                </span>
+                            @endif
+                            <img class="mt-2" src="{{$product->image_name}}" alt="{{$product->name}}" style="width: 180px; height: 200px; border: 2px solid black;">
+                        </a>
                     </div>
                     <div class="curriculum-event-content d-flex justify-content-center">
                         <div class="row">

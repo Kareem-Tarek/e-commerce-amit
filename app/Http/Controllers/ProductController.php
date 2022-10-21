@@ -139,6 +139,8 @@ class ProductController extends Controller
 
     public function single_product_page($id)
     {
+        // $product = Product::findOrFail($id);
+        //OR
         $product = Product::find($id);
         if($product == null || $product == ""){ // this condition is instead of using findOrFail -> $product = Product::findOrFail($id);
             return abort('404');
