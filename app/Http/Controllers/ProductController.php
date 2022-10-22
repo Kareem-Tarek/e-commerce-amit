@@ -216,7 +216,7 @@ class ProductController extends Controller
         return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
     }
 
-    public function single_product_page($id)
+    public function single_product_page($id) // SPA (Single Page Application)
     {
         // $product = Product::findOrFail($id);
         //OR
