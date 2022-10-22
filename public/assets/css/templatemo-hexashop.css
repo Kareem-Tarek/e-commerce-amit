@@ -1758,7 +1758,8 @@ Products Page
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  /* background-image: url(../images/products-page-heading.jpg); */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/product-single-page-bg.jpeg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

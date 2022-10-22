@@ -14,8 +14,8 @@
         <span style="font-size: 500%; font-weight: bolder; color: snow;">Oops!</span><br>
         <h5 class="mb-4" style="font-weight: bold; color: snow;">404 - PAGE NOT FOUND</h5>
         <h6 class="mb-5" style="color: snow;">
-            The page you are looking for might have been removed, <br>
-            had its name changed or temporaraily unavailable.
+            The product's page you are looking for might have been removed, <br>
+            had its name changed or temporarily unavailable.
         </h6>
         <a href="{{ route('products') }}" class="back-to-products-page-link">Back To Products Page</a>
     </div>

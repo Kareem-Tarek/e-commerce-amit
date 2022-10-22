@@ -31,8 +31,8 @@ class ProductController extends Controller
         // $search_text_input     = $request->get('search_query'); //Laravel method (2)
         // $search_text_input     = $_GET['search_query']; // Native
 
-        $products_result = Product::where('name','LIKE',"%{$search_text_input}%") ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
-                                    ->orWhere('discount','LIKE',"%{$search_text_input}%")->get();
+        $products_result = Product::where('name','LIKE',"%{$search_text_input}%"); ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
+                                    // ->orWhere('discount','LIKE',"%{$search_text_input}%")->get();
         // $products_result       = Product::when(!empty($search_text), function($query) use ($search_text){
         //     return $query->where('name', 'like', '%'.$search_text.'%');
         //     })->get(); //another second way for the search functionality on the entered query
@@ -216,16 +216,19 @@ class ProductController extends Controller
         return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
     }
 
-    public function single_product_page($id)
+    public function single_product_page($id/*, $name*/)
     {
+        // $product_name = Product::find($id)->name;
+
         // $product = Product::findOrFail($id);
         //OR
+        $productItem_id = Product::all()->where('id',$id);
         $product = Product::find($id);
         if($product == null || $product == ""){
-            return view('website.products.productsErrors.404-product-not-found' , compact('product'));
+            return view('website.products.productsErrors.404-product-not-found');
         }
 
-        return view('website.products.single-product' , compact('product'));
+        return view('website.products.single-product' , compact('product' , 'productItem_id'));
         // return view('website.products.single-product')->withProduct($product);
         // return view('website.products.single-product');
     }
