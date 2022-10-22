@@ -45,7 +45,11 @@
         </li>
 
         <li class="dropdown">
-          <a href="javascript:void(0);" style="color:#ffa200; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#ffa200'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Check Discounts!<span class="caret"></span></a>
+          <a href="javascript:void(0);" style="color:#ffa200; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#ffa200'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Check Discounts!
+            <span class="caret"></span>
+            <img src="assets/images/subscription_discount.gif" alt="subscription_discount" style="width: 9%;">
+          </a>
            <ul class="dropdown-menu" role="menu">
             {{-- <li><a href="javascript:void(0);">0%</a></li> --}}
               <li><a href="{{ route('0per-to-10per') }}">1% ~ 10%</a></li>
