@@ -222,7 +222,7 @@ class ProductController extends Controller
         //OR
         $product = Product::find($id);
         if($product == null || $product == ""){
-            return view('website.products.productsErrors.404-product-not-found');
+            return view('website.products.productsErrors.404-product-page-not-found');
         }
         // $product->name = $name;
         $productItem_id = Product::all()->where('id',$id);
