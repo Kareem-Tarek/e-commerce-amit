@@ -139,7 +139,24 @@
                                             <span class="input-group-btn" style="width: 5px;"></span>
                                     
                                             <!-- declaration for second field -->
-                                            <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name="">
+                                            {{-- <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name=""> --}}
+                                            <div class="main-border-button"><a onclick="submit_addCart_form.submit()" href="javascript:void(0);">Add To Cart</a></div>
+                                            <style>
+                                                .main-border-button a {
+                                                    font-size: 13px;
+                                                    color: #2a2a2a;
+                                                    border: 1px solid #2a2a2a;
+                                                    padding: 9px 25px;
+                                                    display: inline-block;
+                                                    font-weight: 500;
+                                                    transition: all .3s;
+                                                }
+
+                                                .main-border-button a:hover {
+                                                    background-color: #2a2a2a;
+                                                    color: snow;
+                                                }
+                                            </style>
                                         </div>
                                     </form>
                                 <!-- end add to cart -->

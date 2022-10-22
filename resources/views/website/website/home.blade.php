@@ -243,7 +243,7 @@
                                     <div class="thumb">
                                         <div class="hover-content hover-content-for-product-items">
                                             <ul>
-                                                <li><a href="{{ route('single_product_page' , [$product->id, $product->name]) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="{{ route('single_product_page' , $product->id) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
                                                 <li><a href="javascript:void(0);" class="products-hover-icons star-button"><i class="fa fa-star"></i></a></li>
                                                 <li>
                                                     <a href="javascript:void(0)" class="products-hover-icons add-to-cart-button" product-id="{{ $product->id }}"
@@ -308,7 +308,25 @@
 
             <!-------------------- second row -------------------->
             <div class="row justify-content-center mt-4">
-                <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a>
+                {{-- <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a> --}}
+                <div class="main-border-browse-button"><a href="{{ route('products') }}">Browse More..</a></div>
+                <style>
+                    .main-border-browse-button a {
+                        font-size: 13px;
+                        color: black;
+                        border: 1px solid #2a2a2a;
+                        padding: 12px 30px;
+                        display: inline-block;
+                        font-weight: 500;
+                        transition: all .3s;
+                    }
+
+                    .main-border-browse-button a:hover {
+                        background-color: #09244b;
+                        border: 1px solid #05009a;
+                        color: snow;
+                    }
+                </style>
             </div>
         </div>
     </section>
