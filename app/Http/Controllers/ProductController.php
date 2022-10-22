@@ -221,8 +221,8 @@ class ProductController extends Controller
         // $product = Product::findOrFail($id);
         //OR
         $product = Product::find($id);
-        if($product == null || $product == ""){ // this condition is instead of using findOrFail -> $product = Product::findOrFail($id);
-            return abort('404');
+        if($product == null || $product == ""){
+            return view('website.products.productsErrors.404-product-not-found' , compact('product'));
         }
 
         return view('website.products.single-product' , compact('product'));
