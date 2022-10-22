@@ -243,7 +243,7 @@
                                     <div class="thumb">
                                         <div class="hover-content hover-content-for-product-items">
                                             <ul>
-                                                <li><a href="{{ route('single_product_page' , $product->id) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="{{ route('single_product_page' , [$product->id, $product->name]) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
                                                 <li><a href="javascript:void(0);" class="products-hover-icons star-button"><i class="fa fa-star"></i></a></li>
                                                 <li>
                                                     <a href="javascript:void(0)" class="products-hover-icons add-to-cart-button" product-id="{{ $product->id }}"

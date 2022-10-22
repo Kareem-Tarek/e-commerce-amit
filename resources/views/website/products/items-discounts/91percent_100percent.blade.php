@@ -25,11 +25,11 @@
 <section style="margin-top: 3%;">
     @if($items_count == 0)
         <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
-            <span>Discounts on items between 91% ~ 100% - results ({{ $items_count }})</span>
+            <span>Discounts on items between [91% ~ 100%] - results ({{ $items_count }})</span>
         </div>
     @else
         <div class="alert alert-primary" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
-            <span>Discounts on items between 91% ~ 100% - results ({{ $items_count }})</span>
+            <span>Discounts on items between [91% ~ 100%] - results ({{ $items_count }})</span>
         </div>
     @endif
 

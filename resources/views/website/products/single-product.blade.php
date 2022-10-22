@@ -159,9 +159,12 @@
 
                         <hr>
 
-                        {{-- <span>{{ $product->description }}</span> --}}
                         <div class="quote">
-                            <i class="fa fa-quote-left"></i><p>{{ $product->description }}</p>
+                            <span style="font-size: 100%;"><u>Product description:</u></span>
+                            <i class="fa fa-quote-left"></i><br>
+                            <p>{{ $product->description }}.</p>
+                            <i class="fa fa-quote-right" style="float: right;"></i>
+                            <br>
                         </div>
 
                         @auth
