@@ -218,7 +218,7 @@ class ProductController extends Controller
 
     public function single_product_page($id) // SPA (Single Page Application)
     {
-        // $product = Product::findOrFail($id);
+        // $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
         //OR
         $product = Product::find($id);
         if($product == null || $product == ""){
