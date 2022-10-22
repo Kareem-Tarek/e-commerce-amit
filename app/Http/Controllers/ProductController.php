@@ -138,7 +138,7 @@ class ProductController extends Controller
 
     public function _1_percent_to_10_percent()
     {
-        $products = Product::all()->where('discount','>',0)->where('discount','<=',0.10);
+        $products = Product::all()->where('discount','>',0.00)->where('discount','<=',0.10);
         $items_count  = $products->count();
 
         return view('website.products.items-discounts.1percent_10percent', compact('products' , 'items_count'));
