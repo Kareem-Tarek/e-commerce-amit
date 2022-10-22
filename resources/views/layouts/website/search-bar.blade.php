@@ -43,6 +43,23 @@
               <li><a href="{{ route('accessories_kids_filter') }}">Kids</a></li>
            </ul>
         </li>
+
+        <li class="dropdown">
+          <a href="javascript:void(0);" style="color:#0083FF; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold;" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#0083FF'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Check Discounts!<span class="caret"></span></a>
+           <ul class="dropdown-menu" role="menu">
+            {{-- <li><a href="javascript:void(0);">0%</a></li> --}}
+              <li><a href="{{ route('0per-to-10per') }}">1% ~ 10%</a></li>
+              <li><a href="{{ route('11per-to-20per') }}">11% ~ 20%</a></li>
+              <li><a href="{{ route('21per-to-30per') }}">21% ~ 30%</a></li>
+              <li><a href="{{ route('31per-to-40per') }}">31% ~ 40%</a></li>
+              <li><a href="{{ route('41per-to-50per') }}">41% ~ 50%</a></li>
+              <li><a href="{{ route('51per-to-60per') }}">51% ~ 60%</a></li>
+              <li><a href="{{ route('61per-to-70per') }}">61% ~ 70%</a></li>
+              <li><a href="{{ route('71per-to-80per') }}">71% ~ 80%</a></li>
+              <li><a href="{{ route('81per-to-90per') }}">81% ~ 90%</a></li>
+              <li><a href="{{ route('91per-to-100per') }}">91% ~ 100%</a></li>
+           </ul>
+        </li>
       </ul>
     </form>
 </div>

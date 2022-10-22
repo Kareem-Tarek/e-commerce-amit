@@ -89,6 +89,16 @@ Route::get('/all-accessories', [ProductController::class, 'accessories_all_filte
 Route::get('/kids-accessories', [ProductController::class, 'accessories_kids_filter'])->name('accessories_kids_filter'); //kids-accessories-page-only
 Route::get('/men-accessories', [ProductController::class, 'accessories_men_filter'])->name('accessories_men_filter'); //men-accessories-page-only
 Route::get('/women-accessories', [ProductController::class, 'accessories_women_filter'])->name('accessories_women_filter'); //women-accessories-page-only
+Route::get('/products-discounts-0%-to-10%', [ProductController::class, '_1_percent_to_10_percent'])->name('0per-to-10per'); //products-discounts-between-0-to-10-percent-only
+Route::get('/products-discounts-11%-to-20%', [ProductController::class, '_11_percent_to_20_percent'])->name('11per-to-20per'); //products-discounts-between-11-to-20-percent-only
+Route::get('/products-discounts-21%-to-30%', [ProductController::class, '_21_percent_to_30_percent'])->name('21per-to-30per'); //products-discounts-between-21-to-30-percent-only
+Route::get('/products-discounts-31%-to-40%', [ProductController::class, '_31_percent_to_40_percent'])->name('31per-to-40per'); //products-discounts-between-31-to-30-percent-only
+Route::get('/products-discounts-41%-to-50%', [ProductController::class, '_41_percent_to_50_percent'])->name('41per-to-50per'); //products-discounts-between-41-to-40-percent-only
+Route::get('/products-discounts-51%-to-60%', [ProductController::class, '_51_percent_to_60_percent'])->name('51per-to-60per'); //products-discounts-between-51-to-60-percent-only
+Route::get('/products-discounts-61%-to-70%', [ProductController::class, '_61_percent_to_70_percent'])->name('61per-to-70per'); //products-discounts-between-61-to-70-percent-only
+Route::get('/products-discounts-71%-to-80%', [ProductController::class, '_71_percent_to_80_percent'])->name('71per-to-80per'); //products-discounts-between-71-to-80-percent-only
+Route::get('/products-discounts-81%-to-90%', [ProductController::class, '_81_percent_to_90_percent'])->name('81per-to-90per'); //products-discounts-between-81-to-90-percent-only
+Route::get('/products-discounts-91%-to-100%', [ProductController::class, '_91_percent_to_100_percent'])->name('91per-to-100per'); //products-discounts-between-91-to-100-percent-only
 Route::get('/product/{id}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
 /******************************************** End Products Routes ********************************************/
 

@@ -136,6 +136,86 @@ class ProductController extends Controller
         return view('website.products.accessories.accessories-filter.accessories_women_filter', compact('accessories_women' , 'accessories_women_count'));
     }
 
+    public function _1_percent_to_10_percent()
+    {
+        $products = Product::all()->where('discount','>',0)->where('discount','<=',0.10);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.1percent_10percent', compact('products' , 'items_count'));
+    }
+
+    public function _11_percent_to_20_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.11)->where('discount','<=',0.20);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.11percent_20percent', compact('products' , 'items_count'));
+    }
+
+    public function _21_percent_to_30_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.21)->where('discount','<=',0.30);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.21percent_30percent', compact('products' , 'items_count'));
+    }
+
+    public function _31_percent_to_40_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.31)->where('discount','<=',0.40);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.31percent_40percent', compact('products' , 'items_count'));
+    }
+
+    public function _41_percent_to_50_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.41)->where('discount','<=',0.50);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.41percent_50percent', compact('products' , 'items_count'));
+    }
+
+    public function _51_percent_to_60_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.51)->where('discount','<=',0.60);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.51percent_60percent', compact('products' , 'items_count'));
+    }
+
+    public function _61_percent_to_70_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.61)->where('discount','<=',0.70);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.61percent_70percent', compact('products' , 'items_count'));
+    }
+
+    public function _71_percent_to_80_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.71)->where('discount','<=',0.80);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.71percent_80percent', compact('products' , 'items_count'));
+    }
+
+    public function _81_percent_to_90_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.81)->where('discount','<=',0.90);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.81percent_90percent', compact('products' , 'items_count'));
+    }
+
+    public function _91_percent_to_100_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.91)->where('discount','<=',1.00);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
+    }
+
     public function single_product_page($id)
     {
         // $product = Product::findOrFail($id);
