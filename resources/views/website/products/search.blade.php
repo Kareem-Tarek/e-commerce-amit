@@ -232,7 +232,7 @@
                      @empty
                         {{-- <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
                             <span>{{ $search_text }} not found!</span>
-                        </div> 
+                        </div>
                         <?php 
                             /*
                             Note: 
