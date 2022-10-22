@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="inner-content">
-                            <p style="color: snow; font-size: 350%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
+                            <p style="color: snow; font-size: 300%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
                         </div>
                     </div>
                 </div>

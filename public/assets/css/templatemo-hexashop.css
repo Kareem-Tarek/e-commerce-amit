@@ -1756,6 +1756,8 @@ Products Page
 */
 
 .page-heading {
+  padding-top: 4%;
+  padding-bottom: 5%;
   margin-top: 160px;
   margin-bottom: 30px;
   /* background-image: url(../images/products-page-heading.jpg); */
