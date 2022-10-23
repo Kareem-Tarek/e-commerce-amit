@@ -55,7 +55,13 @@
                   <li><a href="{{ route('11per-to-20per') }}">11% ~ 20%</a></li>
                   <li><a href="{{ route('21per-to-30per') }}">21% ~ 30%</a></li>
                   <li><a href="{{ route('31per-to-40per') }}">31% ~ 40%</a></li>
-                  <li><a href="{{ route('41per-to-50per') }}">41% ~ 50%</a></li>
+                  <li>
+                    <a href="{{ route('41per-to-50per') }}">41% ~ 50%</a>
+                    {{-- @php $data = Carbon\Carbon::parse($products_41per_50per->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
+                    @if($data <= 7) <!---------- in days ----------> --}}
+                      &nbsp;&nbsp;<span class="bdadge badge-pill badge-danger" style="font-size: 70%;">NEW</span>
+                    {{-- @endif --}}
+                  </li>
                   <li><a href="{{ route('51per-to-60per') }}">51% ~ 60%</a></li>
                   <li><a href="{{ route('61per-to-70per') }}">61% ~ 70%</a></li>
                   <li><a href="{{ route('71per-to-80per') }}">71% ~ 80%</a></li>

@@ -48,6 +48,13 @@ class ProductController extends Controller
 
     }
 
+    // public function search_bar_discounts_announcements()
+    // {
+    //     $products_41per_50per = Product::all()->where('discount','>=',0.41)->where('discount','<=',0.50);
+
+    //     return view('layouts.website.search-bar', compact('products'));
+    // }
+
     public function clothes_all_filter()
     {
         $clothes_all       = Product::all()->where('is_accessory','no');
@@ -175,6 +182,8 @@ class ProductController extends Controller
 
         return view('website.products.items-discounts.41percent_50percent', compact('products' , 'items_count'));
     }
+
+
 
     public function _51_percent_to_60_percent()
     {
