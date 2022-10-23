@@ -122,7 +122,7 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .dropdown{padding-right: 50px; margin-top: 3%;}
 
-.percent-icon{color: snow; background-color: black; padding: 4px; padding-top: 2.5px; padding-bottom: 2.5px; border-radius: 9px;}
+.percent-icon{color: snow; background-color: black; padding-right: 5px; padding-left: 5px; padding-top: 2.5px; padding-bottom: 2.5px; border-radius: 12px;}
 
 .dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s ease-in-out;}
 
