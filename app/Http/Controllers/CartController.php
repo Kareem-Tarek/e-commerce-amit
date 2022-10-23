@@ -17,12 +17,11 @@ class CartController extends Controller
      */
     public function cart_registered()
     {
-        $cartItems                 = Cart::where('customer_id',auth()->user()->id)->get();
-        $cartItems_count           = Cart::where('customer_id',auth()->user()->id)->count();
-        $cartItem_discounts_true   = Cart::where('customer_id',auth()->user()->id)->where('discount','>','0');
-        $cartItem_discounts_false  = Cart::where('customer_id',auth()->user()->id)
-                                            ->where('discount','<=','0')
-                                            ->orWhere('discount','=',null);
+        $each_customer_cartItems  = Cart::where('customer_id',auth()->user()->id);
+        $cartItems                = $each_customer_cartItems->get();
+        $cartItems_count          = $each_customer_cartItems->count();
+        $cartItem_discounts_true  = $each_customer_cartItems->where('discount','>','0');
+        $cartItem_discounts_false = $each_customer_cartItems->where('discount','<=','0')->orWhere('discount','=',null);
 
         return view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
     }
