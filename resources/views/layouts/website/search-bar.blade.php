@@ -14,7 +14,7 @@
           </li> --}}
   
           <li class="dropdown">
-              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Clothes <span class="caret"></span></a>
+              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Clothing Category <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                   <li><a href="{{ route('clothes_all_filter') }}">All Clothes</a></li>
                   <li><a href="{{ route('clothes_men_filter') }}">Men's Wear</a></li>
