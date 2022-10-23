@@ -314,7 +314,7 @@
                     .main-border-browse-button a {
                         font-size: 13px;
                         color: black;
-                        border: 1px solid #2a2a2a;
+                        border: 2px solid #2a2a2a;
                         padding: 12px 30px;
                         display: inline-block;
                         font-weight: 500;
@@ -323,7 +323,7 @@
 
                     .main-border-browse-button a:hover {
                         background-color: #09244b;
-                        border: 1px solid #05009a;
+                        border: 2px solid #05009a;
                         color: snow;
                     }
                 </style>
