@@ -118,16 +118,14 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .percent-icon{color: snow; background-color: black; padding: 4px; padding-top: 2.5px; padding-bottom: 2.5px; border-radius: 9px;}
 
-.dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s ease-in-out}
+.dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s ease-in-out;}
 
 .dropdown-menu{border: 1px solid var(--black_color);}
 
-/* .dropdown .dropdown-menu li{padding-left: 5%;} */
+.dropdown .dropdown-menu{padding-left: 4%;}
 
 .dropdown a, .dropdown .dropdown-menu li a {color: var(--black_color);}
 
-.dropdown .dropdown-menu li a:hover {color: #0083FF;}
-
-/* li{padding-left: 2%;} */
+.dropdown .dropdown-menu li a:hover {color: #0083FF; transition: all 0.30s ease-in-out;}
 </style>
 

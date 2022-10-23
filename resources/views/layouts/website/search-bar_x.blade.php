@@ -122,7 +122,7 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .dropdown .dropdown-menu li a:hover {color: #0083FF;}
 
-li{padding-left: 2%;}
+.dropdown .dropdown-menu{padding-left: 2%;}
 </style>
 
 
