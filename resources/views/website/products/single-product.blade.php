@@ -183,7 +183,7 @@
                                     
                                             <!-- declaration for second field -->
                                             {{-- <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name=""> --}}
-                                            <div class="main-border-button"><a onclick="submit_addCart_form.submit()" href="javascript:void(0);">Add To Cart</a></div>
+                                            <div class="main-border-button"><a style="padding: 9px 25px !important;" onclick="submit_addCart_form.submit()" href="javascript:void(0);">Add To Cart</a></div>
                                         </div>
                                     </form>
                                     <!-- end add to cart -->

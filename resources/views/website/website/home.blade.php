@@ -27,6 +27,21 @@
         background-color: #293240; 
         color: snow;
     }
+
+    .main-border-button a {
+        font-size: 13px;
+        color: #fff !important; 
+        border: 1px solid #fff !important;
+        padding: 12px 25px;
+        display: inline-block;
+        font-weight: 500;
+        transition: all .3s;
+    }
+
+    .main-border-button a:hover {
+        background-color: #fff !important;
+        color: #2a2a2a !important;
+    }
 </style>
 
 <!-- ***** Search bar Start ***** -->
