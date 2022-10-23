@@ -124,7 +124,9 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .percent-icon{color: snow; background-color: black; padding-right: 5px; padding-left: 5px; padding-top: 2.5px; padding-bottom: 2.5px; border-radius: 12px;}
 
-.dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s ease-in-out;}
+.dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s linear;}
+
+.dropdown .check-discount:not(:hover) .percent-icon{color: snow; background-color: rgb(0, 0, 0); transition: all 0.45s linear;}
 
 .dropdown-menu{border: 1px solid var(--black_color);}
 
