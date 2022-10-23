@@ -139,22 +139,22 @@
                                             <span class="input-group-btn" style="width: 5px;"></span>
                                     
                                             <!-- declaration for second field -->
-                                            {{-- <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name=""> --}}
-                                            <div class="main-border-button"><a onclick="submit_addCart_form.submit()" href="javascript:void(0);">Add To Cart</a></div>
+                                            <input class="submit-addcart-btn" type="submit" value="Add To Cart" name="">
                                             <style>
-                                                .main-border-button a {
+                                                .submit-addcart-btn {
                                                     font-size: 13px;
-                                                    color: #2a2a2a;
-                                                    border: 1px solid #2a2a2a;
+                                                    background-color: #fff !important;
+                                                    color: #2a2a2a !important;
+                                                    border: 1px solid #2a2a2a !important;
                                                     padding: 9px 25px;
                                                     display: inline-block;
                                                     font-weight: 500;
                                                     transition: all .3s;
                                                 }
 
-                                                .main-border-button a:hover {
-                                                    background-color: #2a2a2a;
-                                                    color: snow;
+                                                .submit-addcart-btn:hover {
+                                                    background-color: #2a2a2a !important;
+                                                    color: snow !important;
                                                 }
                                             </style>
                                         </div>

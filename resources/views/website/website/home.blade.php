@@ -13,7 +13,7 @@
     .hover-content{background-color: rgba(117, 117, 117, 0.4);}
     .hover-content-for-product-items{padding: 2% 0%;}
     .inline-item{display: inline;}
-    .browse-products-link{
+    /* .browse-products-link{
         background-color: #293240; 
         color: snow;
         font-size: 80%; 
@@ -26,7 +26,7 @@
     .browse-products-link:hover{
         background-color: #293240; 
         color: snow;
-    }
+    } */
 </style>
 
 <!-- ***** Search bar Start ***** -->
@@ -113,7 +113,7 @@
                             <span class="px-3">
                                 Awesome clothes in different styles. Checkout our latest Formal, Casual, &amp; Sports Wear
                             </span>
-                            <div class="main-border-button-discover-more px-3">
+                            <div class="main-border-button px-3">
                                 <a href="{{ route('about') }}">More..</a>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                         <div class="inner">
                                             <h4>Formal</h4>
                                             <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                            <div class="main-border-button-discover-more">
+                                            <div class="main-border-button">
                                                 <a href="{{ route('formal_clothes_all_filter') }}">Discover More</a>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                                         <div class="inner">
                                             <h4>Casual</h4>
                                             <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                            <div class="main-border-button-discover-more">
+                                            <div class="main-border-button">
                                                 <a href="{{ route('casual_clothes_all_filter') }}">Discover More</a>
                                             </div>
                                         </div>
@@ -175,7 +175,7 @@
                                         <div class="inner">
                                             <h4>Sports Wear</h4>
                                             <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                            <div class="main-border-button-discover-more">
+                                            <div class="main-border-button">
                                                 <a href="{{ route('sports_wear_clothes_all_filter') }}">Discover More</a>
                                             </div>
                                         </div>
@@ -195,7 +195,7 @@
                                         <div class="inner">
                                             <h4>Accessories</h4>
                                             <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                            <div class="main-border-button-discover-more">
+                                            <div class="main-border-button">
                                                 <a href="{{ route('accessories_all_filter') }}">Discover More</a>
                                             </div>
                                         </div>
@@ -346,7 +346,7 @@
                     </div>
                     <p>There are 5 pages included in this AA Template and we are providing it to you for absolutely free of charge at our TemplateMo website. There are web development costs for us.</p>
                     <p>If this template is beneficial for your website or business, please kindly <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">support us</a> a little via PayPal. Please also tell your friends about our great website. Thank you.</p>
-                    <div class="main-border-button-discover-more">
+                    <div class="main-border-button">
                         <a href="{{ route('products') }}">Discover More</a>
                     </div>
                 </div>
@@ -429,21 +429,6 @@
     .admin-moderator-user-type{
         color:#4bdbff; 
         font-family: cursive;
-    }
-
-    .main-border-button-discover-more a {
-        font-size: 13px;
-        color: #fff !important;
-        border: 1px solid #fff !important;
-        padding: 9px 25px;
-        display: inline-block;
-        font-weight: 500;
-        transition: all .3s;
-    }
-
-    .main-border-button-discover-more a:hover {
-        background-color: #fff !important;
-        color: #2a2a2a !important;
     }
 </style>
 

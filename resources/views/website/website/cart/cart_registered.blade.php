@@ -9,6 +9,10 @@
 
 @section('content')
 
+<!-- ***** Search bar Start ***** -->
+@include('layouts.website.search-bar')
+<!-- ***** Search bar End ***** -->
+
 @if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then 
                                 hide the table's heading because it is out of the loop already ---->
 <style>
@@ -41,14 +45,14 @@
     </div>
 @endif
 
-@if(session()->has('cart_item_deleted_message'))
+@if(session()->has('cart_checkout_item_deleted_message'))
     <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-        {{ session()->get('cart_item_deleted_message') }}
+        {{ session()->get('cart_checkout_item_deleted_message') }}
     </div>
 @endif
 
-<table border="1" cellpadding="5" class="table-search-results" style="text-align: center; margin-left:auto; margin-right:auto; width: 80%;">
+<table border="1" cellpadding="5" class="table-search-results" style="text-align: center; margin-left:auto; margin-right:auto; margin-top:3%; width: 80%;">
     <thead>
         <tr style="padding: 5%;">
             <th scope = "col">#</th>
@@ -100,7 +104,7 @@
                         {{-- <button class="btn btn-default button-submit-quantity">AJAX Submit</button> --}}
 
                         {{-- <button type="button" class="button-minus" name="quantity_value_minus" style="background-color: #DC3545; border-radius: 15px;" onmouseover="this.style.backgroundColor='#C82333'" onmouseout="this.style.backgroundColor='#DC3545'"><i class="fa-solid fa-minus" style="color: snow;"></i></button> --}}
-                            <input type="number" class="quantity_value" name="quantity_value" value="{{ $cartItem->quantity }}" min="0" style="width: 20%;">
+                            <input type="number" class="quantity_value" name="new_quantity" value="{{ $cartItem->quantity }}" min="0" style="width: 20%;">
                         {{-- <button  type="button" class="button-plus" name="quantity_value_plus" style="background-color: #28A745; border-radius: 15px;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28A745'"><i class="fa-solid fa-plus" style="color: snow;"></i></button> --}}
                     </form>
                 </td>
