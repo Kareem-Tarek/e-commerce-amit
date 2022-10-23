@@ -171,22 +171,7 @@
                             @if(auth()->user()->user_type == "customer")
                                 <hr>
                                 <div class="total">
-                                    <!-- start add to cart -->
-                                    <form id="submit_addCart_form" action="{{ url('addCart' , $product->id) }}" method="POST" style="margin-top: 2%; margin-bottom: 3%;">
-                                        @csrf
-                                        <div class="input-group">
-                                            <!-- declaration for first field -->
-                                            <input class="form-control input-sm" type="number" value="1" min="0" name="quantity" placeholder="Quantity">
-                                    
-                                            <!-- reducong the gap between them to zero -->
-                                            <span class="input-group-btn" style="width: 30px;"></span>
-                                    
-                                            <!-- declaration for second field -->
-                                            {{-- <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name=""> --}}
-                                            <div class="main-border-button"><a style="padding: 9px 25px !important;" onclick="submit_addCart_form.submit()" href="javascript:void(0);">Add To Cart</a></div>
-                                        </div>
-                                    </form>
-                                    <!-- end add to cart -->
+                                    @include('layouts.website.addCart-form')
                                 </div>
                             @elseif(auth()->user()->user_type == "admin")
                                 <hr>
