@@ -17,9 +17,10 @@ class HomeController extends Controller
     public function index()
     {
         //sample of some of the products (in the main website's home page)
-        $products = Product::orderBy('created_at' , 'DESC')->paginate(10);
+        $products        = Product::orderBy('created_at' , 'DESC')->paginate(10);
+        $latest_products = Product::orderBy('id' , 'DESC')->latest()->limit(1)->get();
 
-        return view('website.website.home' , compact('products'));
+        return view('website.website.home' , compact('products' , 'latest_products'));
     }
 
 }

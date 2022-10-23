@@ -371,8 +371,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="leather">
-                                <h4>Leather Bags</h4>
-                                <span>Latest Collection</span>
+                                <h4>
+                                    @foreach($latest_products as $latest_product)
+                                        {{ $latest_product->name ?? 'No product found!' }}
+                                    @endforeach
+                                </h4>
+                                <span>Checkout Latest Items</span>
+                                {{-- <h4>Leather Bags</h4> --}}
+                                {{-- <span>Latest Collection</span> --}}
                             </div>
                         </div>
                         <div class="col-lg-6">
