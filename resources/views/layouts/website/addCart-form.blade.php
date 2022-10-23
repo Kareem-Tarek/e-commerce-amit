@@ -13,8 +13,8 @@
                 <style>
                     .main-border-button a {
                         font-size: 13px;
-                        color: #2a2a2a;
-                        border: 1px solid #2a2a2a;
+                        color: #2a2a2a !important;
+                        border: 1px solid #2a2a2a !important;
                         padding: 9px 25px;
                         display: inline-block;
                         font-weight: 500;
@@ -22,8 +22,8 @@
                     }
 
                     .main-border-button a:hover {
-                        background-color: #2a2a2a;
-                        color: snow;
+                        background-color: #2a2a2a !important;
+                        color: snow !important;
                     }
                 </style>
     </div>
