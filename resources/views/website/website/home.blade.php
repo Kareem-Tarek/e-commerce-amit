@@ -377,8 +377,6 @@
                                     @endforeach
                                 </h4>
                                 <span>Checkout Latest Items</span>
-                                {{-- <h4>Leather Bags</h4> --}}
-                                {{-- <span>Latest Collection</span> --}}
                             </div>
                         </div>
                         <div class="col-lg-6">
