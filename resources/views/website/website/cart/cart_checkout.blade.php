@@ -32,7 +32,7 @@
 @endif
 
 <div class="mt-5">
-    <table border="1" cellpadding="5" style="text-align: center; margin-left:auto; margin-right:auto; width: 45%;">
+    <table border="1" cellpadding="5" style="text-align: center; margin-left:auto; margin-right:auto; width: 55%;">
             <thead>
                 <tr>
                     {{-- <th>#</th> --}}
@@ -73,7 +73,7 @@
                                 <span>{{ $cartItem->quantity.' X '.$cartItem->price.' = '.$cartItem->quantity * $cartItem->price }} EGP</span>
                             @endif
                         </td>
-                        <td style="width: 18%;">
+                        <td style="width: 29%;">
                             {!! Form::open([
                                 'route' => ['cart_and_checkout.destroy',$cartItem->id],
                                 'method' => 'delete'

@@ -139,7 +139,7 @@
                         <h4>{{ $product->name }}</h4>
                         @if($product->discount > 0)
                             <span style="display:inline-block; font-size: 100%;">Old Price:</span>&nbsp;<span class="old-price" style="font-size: 100%; color: red; display:inline-block;"><del>{{ $product->price }} EGP</del></span><br>
-                            <span style="display:inline-block; font-size: 100%;">Sale Price:</span>&nbsp;<span class="price" style="font-size: 150%; color: green; display:inline-block;">{{ $product->price - ($product->price * $product->discount) }} EGP</span>
+                            <span style="display:inline-block; font-size: 100%;">Sale Price:</span>&nbsp;<span class="price" style="font-size: 150%; color: green; display:inline-block;">{{ $product->price - ($product->price * $product->discount) }} EGP <label style="color:rgb(155, 31, 151); font-size: 70%;">({{ $product->discount * 100 }}% OFF)</label></span>
                         @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
                         <span style="display:inline-block; font-size: 100%;">Price:</span>&nbsp;<span class="price" style="display:inline-block; font-size: 130%;">{{ $product->price }} EGP</span>
                         @endif
