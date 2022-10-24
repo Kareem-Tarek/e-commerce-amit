@@ -149,10 +149,44 @@ body {
   }
 }
 
+/* start browse more button for products (in home page) */
+
+/* .browse-more-products-link{
+        background-color: #293240; 
+        color: snow;
+        font-size: 80%; 
+        font-weight: bold; 
+        padding: 1%; 
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+    }
+    .browse-more-products-link:hover{
+        background-color: #293240; 
+        color: snow;
+    } */
+
+.main-border-browse-more-button a {
+  font-size: 13px;
+  color: black;
+  border: 2px solid #2a2a2a;
+  padding: 12px 30px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.main-border-browse-more-button a:hover {
+  background-color: #09244b;
+  border: 2px solid #05009a;
+  color: snow;
+}
+/* end browse more button for products (in home page) */
+
 /* start add cart button (for customer & guest) */
 .add-to-cart-btn {
   font-size: 13px;
-  background-color: rgb(235, 232, 247) !important;
+  background-color: rgba(65, 16, 240, 0.08) !important;
   color: #2a2a2a !important;
   border: 1px solid #2a2a2a !important;
   padding: 9px 25px;
@@ -170,7 +204,7 @@ body {
 /* start add favorite button (for customer & guest) */
 .add-to-favorites-btn {
   font-size: 13px;
-  background-color: rgb(231, 246, 234) !important;
+  background-color: rgba(0, 255, 51, 0.08) !important;
   color: #2a2a2a !important;
   border: 1px solid #2a2a2a !important;
   padding: 9px 25px;

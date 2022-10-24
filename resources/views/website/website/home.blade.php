@@ -13,20 +13,6 @@
     .hover-content{background-color: rgba(117, 117, 117, 0.4);}
     .hover-content-for-product-items{padding: 2% 0%;}
     .inline-item{display: inline;}
-    /* .browse-products-link{
-        background-color: #293240; 
-        color: snow;
-        font-size: 80%; 
-        font-weight: bold; 
-        padding: 1%; 
-        padding-left: 2%;
-        padding-right: 2%;
-        border-radius: 3px;
-    }
-    .browse-products-link:hover{
-        background-color: #293240; 
-        color: snow;
-    } */
 </style>
 
 <!-- ***** Search bar Start ***** -->
@@ -294,7 +280,7 @@
                                         @if(Auth::guest())
                                             <div style="margin-top: 2%; margin-bottom: 2%;">
                                                 <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
-                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
+                                                <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                             </div>
                                         @endif
                                     </div>
@@ -308,25 +294,8 @@
 
             <!-------------------- second row -------------------->
             <div class="row justify-content-center mt-4">
-                {{-- <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a> --}}
-                <div class="main-border-browse-button"><a href="{{ route('products') }}">Browse More..</a></div>
-                <style>
-                    .main-border-browse-button a {
-                        font-size: 13px;
-                        color: black;
-                        border: 2px solid #2a2a2a;
-                        padding: 12px 30px;
-                        display: inline-block;
-                        font-weight: 500;
-                        transition: all .3s;
-                    }
-
-                    .main-border-browse-button a:hover {
-                        background-color: #09244b;
-                        border: 2px solid #05009a;
-                        color: snow;
-                    }
-                </style>
+                {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
+                <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
             </div>
         </div>
     </section>
