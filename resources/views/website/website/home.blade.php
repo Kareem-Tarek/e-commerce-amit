@@ -294,7 +294,7 @@
                                         @if(Auth::guest())
                                             <div style="margin-top: 2%; margin-bottom: 2%;">
                                                 <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
-                                                <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
+                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                             </div>
                                         @endif
                                     </div>
