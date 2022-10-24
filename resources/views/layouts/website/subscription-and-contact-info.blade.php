@@ -58,6 +58,11 @@
                                         </button>
                                     </fieldset>
                                 </div>
+                                <div class="col-lg-12 text-left mt-1">
+                                    <fieldset>
+                                        <span>By subscribing you accept our <a href="javascript:void(0);"><u>Privacy Policy</u></a>.</span>
+                                    </fieldset>
+                                </div>
                             </div>
                         </form>
 

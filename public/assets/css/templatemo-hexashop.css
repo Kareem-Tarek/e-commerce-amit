@@ -2285,6 +2285,7 @@ About Us Page
 
 .our-team .team-item .thumb {
   position: relative;
+ 
 }
 
 .our-team .team-item .thumb img {
@@ -2305,7 +2306,7 @@ About Us Page
 }
 
 .our-team .team-item .thumb:hover .hover-effect {
-  opacity: 1;
+  opacity: 0.70;
   visibility: visible;
 }
 
