@@ -51,14 +51,14 @@
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-dark-button">
                                             <i class="fa fa-paper-plane"></i>
                                         </button>
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-12 text-left mt-1">
+                                <div class="col-lg-12 text-left mt-2">
                                     <fieldset>
                                         <span>By subscribing you accept our <a href="javascript:void(0);"><u>Privacy Policy</u></a>.</span>
                                     </fieldset>
