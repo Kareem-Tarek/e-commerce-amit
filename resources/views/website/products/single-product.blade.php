@@ -182,8 +182,8 @@
                         @if(!auth()->user())
                             <hr>
                             <div>
-                                <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                             </div>
                         @endif
                     </div>

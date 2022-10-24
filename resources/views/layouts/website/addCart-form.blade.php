@@ -8,24 +8,7 @@
         <span class="input-group-btn" style="width: 5px;"></span>
 
         <!-- declaration for second field -->
-        <input class="submit-addcart-btn" type="submit" value="Add To Cart" name="">
-        <style>
-            .submit-addcart-btn {
-                font-size: 13px;
-                background-color: #fff !important;
-                color: #2a2a2a !important;
-                border: 1px solid #2a2a2a !important;
-                padding: 9px 25px;
-                display: inline-block;
-                font-weight: 500;
-                transition: all .3s;
-            }
-
-            .submit-addcart-btn:hover {
-                background-color: #2a2a2a !important;
-                color: snow !important;
-            }
-        </style>
+        <input class="add-to-cart-btn" type="submit" value="Add To Cart" name="">
     </div>
 
     {{-- <input class="form-control" type="number" value="1" min="1" name="quantity" style="width: 20%; margin-right: auto; margin-left: auto;">

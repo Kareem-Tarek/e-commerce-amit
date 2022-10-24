@@ -149,6 +149,42 @@ body {
   }
 }
 
+/* start add cart button (for customer & guest) */
+.add-to-cart-btn {
+  font-size: 13px;
+  background-color: rgb(235, 232, 247) !important;
+  color: #2a2a2a !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 9px 25px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #2a2a2a !important;
+  color: snow !important;
+}
+/* end add cart button (for customer & guest) */
+
+/* start add favorite button (for customer & guest) */
+.add-to-favorites-btn {
+  font-size: 13px;
+  background-color: rgb(231, 246, 234) !important;
+  color: #2a2a2a !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 9px 25px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.add-to-favorites-btn:hover {
+  background-color: #1b9e12 !important;
+  color: snow !important;
+}
+/* end  add favorite button (for customer & guest) */
+
 .main-border-button a {
   font-size: 13px;
   color: #fff;
