@@ -111,7 +111,7 @@
                 @if(session()->has('addCart_message'))
                     <div class="alert alert-success text-center session-message">
                         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                        {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
+                        {{ session()->get('addCart_message') }}<a href="{{ route('cart-page') }}"> Check your cart</a>.
                     </div>
                 @elseif(session()->has('quantity_is_null_message'))
                     <div class="alert alert-danger text-center session-message">
@@ -207,7 +207,7 @@
                                         @include('layouts.website.admin-product-control-website')
                                     @elseif(auth()->user()->user_type == 'customer')
                                         {{-- <div style="margin-top: 4%; margin-bottom: 5%;">
-                                            <a href="{{ route('cart-registered') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
+                                            <a href="{{ route('cart-page') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
                                                 Add Cart
                                             </a>
                                         </div> --}}
@@ -221,10 +221,10 @@
 
                                 @if(Auth::guest())
                                     <div style="margin-top: 2%; margin-bottom: 3%;">
-                                        {{-- <a href="{{ route('cart-unregistered') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
+                                        {{-- <a href="{{ route('cart-page') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
                                             Add Cart
                                         </a> --}}
-                                        <a class="submit-addcart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                        <a class="submit-addcart-btn" href="{{ route('cart-page') }}" name="">Add To Cart</a>
                                         <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
                                     </div>
                                 @endif

@@ -35,15 +35,15 @@
                 z-index: 99;
             }
 
-    @media only screen and (min-width:350px) and (max-width:505px) {
+    @media only screen and (min-width:320px) and (max-width:480px) {
+        .sticky-clock-container{display: none;}
+    }
+
+    /* @media only screen and (min-width:350px) and (max-width:505px) {
         .sticky-clock-container{display: none;}
     }
     
     @media only screen and (min-width:505px) and (max-width:768px) {
-        .sticky-clock-container{display: none;}
-    }
-    
-    /* @media only screen and (min-width:768px) and (max-width:1005px) {
         .sticky-clock-container{display: none;}
     } */
 </style>

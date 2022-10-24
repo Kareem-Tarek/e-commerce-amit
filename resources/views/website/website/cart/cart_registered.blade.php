@@ -61,9 +61,7 @@
             <th scope = "col">Category</th>
             <th scope = "col">Clothing Type</th>
             <th scope = "col">Quantity</th>
-            {{-- @if($cartItem_discounts_true) --}}
             <th scope = "col">Discount</th>
-            {{-- @endif --}}
             <th scope = "col">Price/Unit</th>
             <th scope = "col">Total Price</th>
             <th scope = "col">
@@ -149,8 +147,8 @@
             </tr>
         </tbody>
     @empty
-        <div class="container cart-unregistered text-center">
-            <div class="row cart-unregistered-content" style="justify-content: center;">
+        <div class="container cart-page text-center">
+            <div class="row cart-page-content" style="justify-content: center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <img src="assets/images/cart-empty.gif" width="130" style="border-radius: 20px;"/>
                     <h5 class="pt-4">There are no items in your cart yet! Go ahead and add some cool stuff to it!</h5>

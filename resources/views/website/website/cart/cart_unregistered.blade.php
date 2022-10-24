@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-    <div class="container cart-unregistered text-center">
-        <div class="row cart-unregistered-content" style="justify-content: center;">
+    <div class="container cart-page text-center">
+        <div class="row cart-page-content" style="justify-content: center;">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <img src="assets/images/guest-login.gif" width="130" style="border-radius: 20px;"/>
                 {{-- <img src="assets/images/cart-empty(2).gif" width="130" style="border-radius: 20px;"/> --}}
