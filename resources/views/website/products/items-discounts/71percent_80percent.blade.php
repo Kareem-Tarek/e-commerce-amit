@@ -8,9 +8,7 @@
 @endsection
 
 @section('content')
-<style>
-     
-</style>
+
 
 <!-- ***** Search bar Start ***** -->
 @include('layouts.website.search-bar')
