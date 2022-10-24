@@ -8,16 +8,6 @@
 @endsection
 
 @section('content')
-<style>
-    .session-message{
-        width: 60%; 
-        margin-top: 1%; 
-        margin-bottom: 3%; 
-        margin-left: auto; 
-        margin-right: auto;
-    }
-</style>
-
 <!-- ***** Search bar Start ***** -->
 @include('layouts.website.search-bar')
 <!-- ***** Search bar End ***** -->
