@@ -43,8 +43,6 @@ class CartController extends Controller
         $each_customer_cartItems   = Cart::where('customer_id',auth()->user()->id);
         $cartItems                 = $each_customer_cartItems->get();
         $cartItems_count           = $each_customer_cartItems->count();
-        $cartItem_discounts_true   = $each_customer_cartItems->where('discount','>','0');
-        $cartItem_discounts_false  = $each_customer_cartItems->where('discount','<=','0')->orWhere('discount','=',null);
 
         return view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
     }
