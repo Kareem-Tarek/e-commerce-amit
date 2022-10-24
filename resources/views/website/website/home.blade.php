@@ -327,7 +327,9 @@
                             <div class="leather">
                                 <h4>
                                     @foreach($latest_product as $latest_product_result)
-                                        {{ $latest_product_result->name ?? 'No product found!' }}
+                                        <a href="{{ route('single_product_page' , $latest_product_result->id) }}" style="color:inherit; transition: all 0.25s ease-in-out;" onMouseOver="this.style.color='#3385ff'" onMouseOut="this.style.color='inherit'">
+                                            {{ $latest_product_result->name ?? 'No product found!' }}
+                                        </a>
                                     @endforeach
                                 </h4>
                                 <span>Checkout Latest Items</span>
