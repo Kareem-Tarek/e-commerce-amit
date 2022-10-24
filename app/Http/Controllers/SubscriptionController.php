@@ -36,16 +36,15 @@ class SubscriptionController extends Controller
         
         $user                        = auth()->user(); // Subscription is already allowed ONLY for the user type "customer" to see in the front-end
         $user_email                  = auth()->user()->email; // Customer's email column from the DB
-        
         $subscription                = new Subscription;
         $subscription->name          = $request->name;
+        $subscription->customer_name = $user->name;
         if($request->email == $user_email){ // the correct condition!
             $subscription->email = $request->email;
         }
         elseif($request->email != $user_email){ // wrong condition (1) - the entered email from the user (customer) doesn't match the email he/she used in his/her account
             return $subscription_section_dynamic->with('subscription_unsuccessful_incorrect_email_message' , 'The email that you entered is wrong! Please try to enter your email again.');
         }
-        $subscription->customer_name = $user->name;
         //$subscription->save();
         //return redirect(url()->previous().'#subscribe')->with('subscription_successful_message' , 'You successfully subscribed to our newsletter!');
 

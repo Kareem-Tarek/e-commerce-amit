@@ -12,7 +12,6 @@
 <style>
     .hover-content{background-color: rgba(117, 117, 117, 0.4);}
     .hover-content-for-product-items{padding: 2% 0%;}
-    .inline-item{display: inline;}
 </style>
 
 <!-- ***** Search bar Start ***** -->
@@ -20,10 +19,13 @@
 <!-- ***** Search bar End ***** -->
 
 @if(session()->has('addCart_message'))
-    <div class="alert alert-success text-center" style="width: 60%; margin-top: 5%; margin-bottom: -1.5%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-        {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
+        {{ session()->get('addCart_message') }}<a href="{{ route('cart-page') }}"> Check your cart</a>.
     </div>
+    <script>
+
+    </script>
 @elseif(session()->has('quantity_is_null_message'))
     <div class="alert alert-danger text-center" style="width: 60%; margin-top: 5%; margin-bottom: -1.5%; margin-left: auto; margin-right: auto;">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>

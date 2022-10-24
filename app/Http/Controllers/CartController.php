@@ -40,9 +40,9 @@ class CartController extends Controller
 
     public function cart_registered()
     {
-        $each_customer_cartItems   = Cart::where('customer_id',auth()->user()->id);
-        $cartItems                 = $each_customer_cartItems->get();
-        $cartItems_count           = $each_customer_cartItems->count();
+        $each_customer_cartItems = Cart::where('customer_id',auth()->user()->id);
+        $cartItems               = $each_customer_cartItems->get();
+        $cartItems_count         = $each_customer_cartItems->count();
 
         return view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
     }
@@ -54,8 +54,7 @@ class CartController extends Controller
 
     public function addCart(Request $request , $id) // this function is same as "store" function from the resource controller
     {
-        if(Auth::id()){
-
+        // if(Auth::id()){
             $user                   = auth()->user(); // currently logged in user account which are customer ONLY!
             $product                = Product::find($id); // find data from products table by id
             // $category_of_clothing_type = Category::find($id); // find data from categories table (clothing types of products) by id
@@ -89,7 +88,7 @@ class CartController extends Controller
             $cart->save(); 
 
             return redirect()->back()->with('addCart_message' , '"'.$product->name.'" (Quantity: '.$cart->quantity.') - added successfully to your cart!');
-        }
+        // }
 
         // else{ //it is shaded because there is already if condition in any of the product blades for guest "if(Auth::guest())..."
         //     return redirect()->route('cart-unregistered');
@@ -171,22 +170,22 @@ class CartController extends Controller
             } 
         }
 
-        if($request->quantity_value > 0){ // the correct condition!
-            $cartItem->quantity = $request->quantity_value; // "$request->get('quantity_value');" is the same as "$request->quantity_value;"
+        if($request->new_quantity > 0){ // the correct condition!
+            $cartItem->quantity = $request->new_quantity; // "$request->get('new_quantity');" is the same as "$request->new_quantity;"
         }
-        elseif($request->quantity_value == null || $request->quantity_value == ""){ // wrong condition (1)
+        elseif($request->new_quantity == null || $request->new_quantity == ""){ // wrong condition (1)
             return redirect()->back()->with(['quantity_is_null_message' => __('The quantity value is empty! Please enter a quantity for the "'.$cartItem->product_name.'" product!')]);
         }
-        elseif($request->quantity_value < 0){ // wrong condition (2)
-            return redirect()->back()->with(['quantity_is_negative_message' => __('You entered ['.$request->quantity_value.'] value for the quantity. The entered value for the quantity for "'.$cartItem->product_name.'" product is in negative!')]);
+        elseif($request->new_quantity < 0){ // wrong condition (2)
+            return redirect()->back()->with(['quantity_is_negative_message' => __('You entered ['.$request->new_quantity.'] value for the quantity. The entered value for the quantity for "'.$cartItem->product_name.'" product is in negative!')]);
         }
 
-        if($request->quantity_value == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
+        if($request->new_quantity == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
             $cartItem->quantity = 0; // the new quantity (which will be zero already in this condition!)
             $cartItem->forceDelete();
             return redirect()->back()->with(['quantity_is_zero_delete_message' => __('The quantity that you entered for product "'.$cartItem->product_name.'" is ('.$cartItem->quantity.'). The product is successfully deleted from your cart!')]);
         }
-        else{ // if($request->quantity_value > 0), because that's the only correct condition!
+        else{ // if($request->new_quantity > 0), because that's the only correct condition!
             $cartItem->save();
         }
 
