@@ -24,7 +24,7 @@ class SubscriptionController extends Controller
     public function submit_subscription(Request $request)
     {
 
-        $subscription_section_static   = redirect('http://127.0.0.1:8000/home#subscribe'); // redirecting to a specific URL to "subscribe" section (STATICALLY with home page)
+        $subscription_section_static   = redirect('http://localhost:8000/home#subscribe'); // redirecting to a specific URL to "subscribe" section (STATICALLY with home page)
         // OR
         $subscription_section_dynamic  = redirect(url()->previous().'#subscribe'); // redirecting to a specific URL to "subscribe" section (DYNAMICALLY with any page)
         // OR
