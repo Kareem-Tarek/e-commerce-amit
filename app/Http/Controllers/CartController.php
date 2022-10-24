@@ -57,7 +57,6 @@ class CartController extends Controller
         // if(Auth::id()){
             $user                   = auth()->user(); // currently logged in user account which are customer ONLY!
             $product                = Product::find($id); // find data from products table by id
-            // $category_of_clothing_type = Category::find($id); // find data from categories table (clothing types of products) by id
             $cart                   = new Cart; // new data entry for the current entity (Cart)
             $cart->customer_name    = $user->name;
             $cart->customer_phone   = $user->phone;
