@@ -12,6 +12,10 @@
               <input class="search-box" type="text" placeholder="Search for a certain product?" name="search_query">
               <button class="search-box-btn px-2" type="submit"><i class="fa fa-search search-box-btn-icon"></i></button>
           </li> --}}
+
+            <li class="dropdown">
+                <a href="{{ route('all_product_items') }}">All Products <span class="caret"></span></a>
+            </li>
   
           <li class="dropdown">
               <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Clothing Category <span class="caret"></span></a>

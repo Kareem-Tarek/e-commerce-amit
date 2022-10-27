@@ -17,7 +17,7 @@
             The product's page you are looking for might have been removed, <br>
             had its name changed or temporarily unavailable.
         </h6>
-        <a href="{{ route('products') }}" class="back-to-products-page-link">Back To Products Page</a>
+        <a href="{{ route('all_product_items') }}" class="back-to-products-page-link">Back To Products Page</a>
     </div>
 </div>
 
