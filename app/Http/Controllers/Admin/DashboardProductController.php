@@ -47,9 +47,9 @@ class DashboardProductController extends Controller
         //     'product_category' => 'required',
         // ]);
 
-        $products                   = new Product();
-        $products->name             = $request->name;
-        $products->description      = $request->description;
+        $products                      = new Product();
+        $products->name                = $request->name;
+        $products->description         = $request->description;
         // if($request->hasFile('image_name')){
         //     $file       = $request->file('image_name');
         //     $extension  = $file->getClientOriginalExtension();
@@ -61,14 +61,15 @@ class DashboardProductController extends Controller
         //     return $request;
         //     $products->image_name = '';
         // }
-        $products->image_name       = "assets/images/".$request->image_name;
-        $products->price            = $request->price;
-        $products->discount         = $request->discount;
-        // $products->size             = $request->size;
-        $products->clothing_type    = $request->clothing_type;
-        $products->is_accessory     = $request->is_accessory;
-        $products->product_category = $request->product_category;
-        $products->create_user_id   = auth()->user()->id;
+        $products->image_name         = "assets/images/".$request->image_name;
+        $products->price              = $request->price;
+        $products->discount           = $request->discount;
+        // $products->size               = $request->size;
+        $products->clothing_type      = $request->clothing_type;
+        $products->available_quantity = $request->available_quantity;
+        $products->is_accessory       = $request->is_accessory;
+        $products->product_category   = $request->product_category;
+        $products->create_user_id     = auth()->user()->id;
         $products->save();
 
         return redirect()->route('products.index')
@@ -86,17 +87,18 @@ class DashboardProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $products                   = Product::findOrFail($id);
-        $products->name             = $request->name;
-        $products->description      = $request->description;
-        $products->image_name       = "assets/images/".$request->image_name;
-        $products->price            = $request->price;
-        $products->discount         = $request->discount;
-        // $products->size             = $request->size;
-        $products->clothing_type    = $request->clothing_type;
-        $products->is_accessory     = $request->is_accessory;
-        $products->product_category = $request->product_category;
-        $products->update_user_id   = auth()->user()->id;
+        $products                     = Product::findOrFail($id);
+        $products->name               = $request->name;
+        $products->description        = $request->description;
+        $products->image_name         = "assets/images/".$request->image_name;
+        $products->price              = $request->price;
+        $products->discount           = $request->discount;
+        // $products->size               = $request->size;
+        $products->clothing_type      = $request->clothing_type;
+        $products->available_quantity = $request->available_quantity;
+        $products->is_accessory       = $request->is_accessory;
+        $products->product_category   = $request->product_category;
+        $products->update_user_id     = auth()->user()->id;
         $products->save();
 
         return redirect()->route('products.index')

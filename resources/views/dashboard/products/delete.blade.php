@@ -41,6 +41,7 @@
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Category</th>
                                         <th scope="col" class="text-center">Clothing Type</th>
+                                        <th scope="col" class="text-center">Available Quantity</th>
                                         <th scope="col" class="text-center">Added By</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
                                         <th scope="col" class="text-center">Date of Creation</th>
@@ -76,6 +77,7 @@
                                                 @endif
                                             </a>
                                         </td>
+                                        <td class="text-center">{{$product->available_quantity}}</td>
                                         <td class="text-center">{{$product->create_user->name ?? '???'}}</td>
                                         <td class="text-center">{{$product->update_user->name ?? '???'}}</td>
                                         <td class="text-center" title="{{$product->created_at->format('Y-D-M h:m h:m A')}}">{{$product->created_at->format('Y-D-M h:m A')}}</td>
