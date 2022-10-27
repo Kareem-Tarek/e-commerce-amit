@@ -152,8 +152,8 @@
             </tr>
         </tbody>
     @empty
-        <div class="container cart-page text-center mt-5">
-            <div class="row cart-page-content" style="justify-content: center;">
+        <div class="container text-center mt-5">
+            <div class="row" style="justify-content: center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <img src="assets/images/cart-empty.gif" width="130" style="border-radius: 20px;"/>
                     <h5 class="pt-4">There are no items in your cart yet! Go ahead and add some cool stuff to it!</h5>
