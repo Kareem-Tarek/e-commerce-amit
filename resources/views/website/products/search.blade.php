@@ -18,6 +18,7 @@
 
 @section('content')
 <style>
+<<<<<<< HEAD
     .session-message{
         width: 60%;
         margin-top: 1%;
@@ -25,6 +26,8 @@
         margin-left: auto;
         margin-right: auto;
     }
+=======
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
     /* .table-search-results{margin-left: auto; margin-right: auto;} */
 </style>
 
@@ -221,11 +224,8 @@
 
                                 @if(Auth::guest())
                                     <div style="margin-top: 2%; margin-bottom: 3%;">
-                                        {{-- <a href="{{ route('cart-unregistered') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
-                                            Add Cart
-                                        </a> --}}
-                                        <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                        <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                        <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                        <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                     </div>
                                 @endif
                         </div>
@@ -233,7 +233,11 @@
                         {{-- <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
                             <span>{{ $search_text }} not found!</span>
                         </div>
+<<<<<<< HEAD
                         <?php
+=======
+                        <?php 
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
                             /*
                             Note:
                             in this case (the search functionality) error is handled with if condition (in line 67 ~ 69)

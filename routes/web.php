@@ -48,8 +48,8 @@ Auth::routes(["verify" => true]);
 /////////////////////////------------------------- start website route. -------------------------/////////////////////////
 
 Route::group([], function () {    //group function for "home" route (same route name "home")
-    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 });
 
 /******************************************** Start profile & edit-profile Route ********************************************/
@@ -61,23 +61,30 @@ Route::group([
     Route::post('/edit-profile-post', [ProfileController::class, 'profileUpdatePassword'])->name('editProfile-post');
     Route::post('/edit-myProfile', [ProfileController::class, 'edit_my_Profile'])->name('editMyProfile');
 });
-/******************************************** Start profile & edit-profile Route ********************************************/
+/******************************************** End profile & edit-profile Route ********************************************/
 
 /******************************************** Start email verification Route ********************************************/
 Route::get('/email-verification', [VerificationController::class, 'index'])->name('email-verification');
-/******************************************** End email verification Route ********************************************/
+/************************************************************************************************************************/
 
+<<<<<<< HEAD
 /******************************************** Start Forgot Password (reset by Email) Route ********************************************/
 Route::get('/reset-password', [ForgotPasswordController::class, 'add toindex'])->name('reset-password');
 /******************************************** End Forgot Password (reset by Email) Route ********************************************/
+=======
+/************************************* Start Forgot Password (reset by Email) Route *************************************/
+Route::get('/reset-password', [ForgotPasswordController::class, 'index'])->name('reset-password');
+/************************************************************************************************************************/
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
 
-/******************************************** Start reset Password (change password by using the email that was used for "Forgot Password") Route ********************************************/
+/************* Start reset Password (change password by using the email that was used for "Forgot Password") Route *************/
 Route::get('/change-password', [ResetPasswordController::class, 'index'])->name('change-password');
-/******************************************** End reset Password (change password by using the email that was used for "Forgot Password") Route ********************************************/
+/*******************************************************************************************************************************/
 
-/******************************************** Start Products Routes ********************************************/
+/************************************************************ Start Products Routes ************************************************************/
 Route::get('/products', [ProductController::class, 'index'])->name('products'); //products-landing-page
 Route::get('/search' , [ProductController::class, 'search'])->name('search'); //product-results-landing-page (from the search 'query')
+Route::get('/all-product-items', [ProductController::class, 'all_product_items'])->name('all_product_items'); //all-products-page (everything in general)
 Route::get('/all-clothes', [ProductController::class, 'clothes_all_filter'])->name('clothes_all_filter'); //all-clothes-page
 Route::get('/kids-wear', [ProductController::class, 'clothes_kids_filter'])->name('clothes_kids_filter'); //kids-clothes-page-only
 Route::get('/men-wear', [ProductController::class, 'clothes_men_filter'])->name('clothes_men_filter'); //men-clothes-page-only
@@ -89,8 +96,18 @@ Route::get('/all-accessories', [ProductController::class, 'accessories_all_filte
 Route::get('/kids-accessories', [ProductController::class, 'accessories_kids_filter'])->name('accessories_kids_filter'); //kids-accessories-page-only
 Route::get('/men-accessories', [ProductController::class, 'accessories_men_filter'])->name('accessories_men_filter'); //men-accessories-page-only
 Route::get('/women-accessories', [ProductController::class, 'accessories_women_filter'])->name('accessories_women_filter'); //women-accessories-page-only
-Route::get('/product/{id}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
-/******************************************** End Products Routes ********************************************/
+Route::get('/products-discounts-1%-to-10%', [ProductController::class, '_1_percent_to_10_percent'])->name('1per-to-10per'); //products-discounts-between-0-to-10-percent-only
+Route::get('/products-discounts-11%-to-20%', [ProductController::class, '_11_percent_to_20_percent'])->name('11per-to-20per'); //products-discounts-between-11-to-20-percent-only
+Route::get('/products-discounts-21%-to-30%', [ProductController::class, '_21_percent_to_30_percent'])->name('21per-to-30per'); //products-discounts-between-21-to-30-percent-only
+Route::get('/products-discounts-31%-to-40%', [ProductController::class, '_31_percent_to_40_percent'])->name('31per-to-40per'); //products-discounts-between-31-to-30-percent-only
+Route::get('/products-discounts-41%-to-50%', [ProductController::class, '_41_percent_to_50_percent'])->name('41per-to-50per'); //products-discounts-between-41-to-40-percent-only
+Route::get('/products-discounts-51%-to-60%', [ProductController::class, '_51_percent_to_60_percent'])->name('51per-to-60per'); //products-discounts-between-51-to-60-percent-only
+Route::get('/products-discounts-61%-to-70%', [ProductController::class, '_61_percent_to_70_percent'])->name('61per-to-70per'); //products-discounts-between-61-to-70-percent-only
+Route::get('/products-discounts-71%-to-80%', [ProductController::class, '_71_percent_to_80_percent'])->name('71per-to-80per'); //products-discounts-between-71-to-80-percent-only
+Route::get('/products-discounts-81%-to-90%', [ProductController::class, '_81_percent_to_90_percent'])->name('81per-to-90per'); //products-discounts-between-81-to-90-percent-only
+Route::get('/products-discounts-91%-to-100%', [ProductController::class, '_91_percent_to_100_percent'])->name('91per-to-100per'); //products-discounts-between-91-to-100-percent-only
+Route::get('/product={id}/{name?}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
+/************************************************************ End Products Routes ************************************************************/
 
 /******************************************** Start Some static website's pages Routes ********************************************/
 Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('mission-vision');
@@ -118,6 +135,7 @@ Route::group([
 Route::group([
     'middleware' => ['unregistered_users' , 'only_customers']
 ], function () {
+    //if($product>id == $cart->product_id){};
     Route::post('/addCart/{id}', [CartController::class, 'addCart']);
     Route::post('/update-cart-items-quantity/{id}', [CartController::class, 'update_cart_items_quantity']);
     Route::get('/checkout/get/items', [CartController::class, 'getCartItemsForCheckout']); // total amount!
@@ -167,7 +185,10 @@ Route::group([
 ], function () {
 
     Route::prefix('dashboard')->group(function () {
-        Route::get('/', [DashboardHomeController::class, 'index'])->name('dashboard'); //Dashboard home route
+        Route::group([], function () {    //group function for dashboard "home" route (same route name "dashboard")
+            Route::get('/home', [DashboardHomeController::class, 'index'])->name('dashboard');
+            Route::get('/', [DashboardHomeController::class, 'index'])->name('dashboard');
+        });
         /********************** Start products route. **********************/
         Route::resource('/products', DashboardProductController::class);
         Route::get('/product/delete', [DashboardProductController::class, 'delete'])->name('products.delete');

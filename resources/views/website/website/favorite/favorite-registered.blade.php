@@ -8,15 +8,7 @@
 @endsection
 
 @section('content')
-<style>
-    .session-message{
-        width: 60%; 
-        margin-top: 1%; 
-        margin-bottom: 3%; 
-        margin-left: auto; 
-        margin-right: auto;
-    }
-</style>
+
 
 <!-- ***** Search bar Start ***** -->
 @include('layouts.website.search-bar')
@@ -82,13 +74,13 @@
             // }
              @endphp
 
-            @if($now->between($start, $end))
+             @if($now->between($start, $end))
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="border: 1px solid black; color: black;">
             @else
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-dark border" style="border: 1px solid black; color: snow;">
             @endif
                     <div class="curriculum-event-thumb">
-                        <a href="{{ route('single_product_page' , $favoriteItem->id) }}">
+                        <a href="{{ route('single_product_page' , $favoriteItem->product_id) }}">
                             @php $data = Carbon\Carbon::parse($favoriteItem->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                             @if($data <= 7) <!---------- in days ---------->
                                 <span class="mt-2" style="position: absolute; background: rgba(0, 69, 175, 0.65); width: 180px; height: 35px; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
@@ -101,7 +93,7 @@
                     <div class="curriculum-event-content d-flex justify-content-center" >
                         <div class="row">
                             <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
-                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->id) }}" style="color: rgb(3, 3, 191);"> {{ $favoriteItem->product_name }}</a></div>
+                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" style="color: rgb(3, 3, 191);"> {{ $favoriteItem->product_name }}</a></div>
                                 @if($favoriteItem->discount > 0)
                                     <div class="c-red"><u>Original Price:</u> <del style="color: red;">{{$favoriteItem->price}} EGP</del></div>
                                     <div class="c-red"><u>Sale Price:</u> <span style="color: green;">{{$favoriteItem->price - ($favoriteItem->price * $favoriteItem->discount) }} EGP</span></div>
@@ -126,26 +118,26 @@
                         </div>
                     </div>
                     @auth
-                        {{-- @if(auth()->user()->user_type == 'customer') --}}
+                        @if(auth()->user()->user_type == 'customer')
                             <div style="width: 70%; margin-left: auto; margin-right: auto;">
                                 <!-- start add to cart -->
-                                    <form action="{{ url('addCart' , $favoriteItem->id) }}" method="POST" style="margin-top: 2%; margin-bottom: 3%;">
+                                    <form action="{{ url('addCart' , $favoriteItem->product_id) }}" method="POST" style="margin-top: 2%; margin-bottom: 3%;">
                                         @csrf
                                         <div class="input-group">
                                             <!-- declaration for first field -->
-                                            <input class="form-control input-sm" type="number" value="" min="" name="quantity" placeholder="Quantity">
+                                            <input class="form-control input-sm" type="number" value="1" min="0" name="quantity" placeholder="Quantity">
                                     
                                             <!-- reducong the gap between them to zero -->
                                             <span class="input-group-btn" style="width: 5px;"></span>
                                     
                                             <!-- declaration for second field -->
-                                            <input class="btn btn-primary form-control input-xs" type="submit" value="Add to cart" name="">
+                                            <input class="add-to-cart-btn" type="submit" value="Add To Cart" name="">
                                         </div>
                                     </form>
                                 <!-- end add to cart -->
 
                                 <!-- start add rating -->
-                                    <form action="{{ url('addRating' , $favoriteItem->id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
+                                    <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
                                         @csrf
                                         <div class="input-group">                                    
                                             <select name="rating_level" class="form-control" onchange="this.form.submit()"> <!-- onchange="this.form.submit()" submits the form without the use of input/button type submit -->
@@ -166,14 +158,8 @@
                                 <button class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$favoriteItem->product_name.'] item from your favorites?')}}');" type="submit" title="{{__('Remove')." [$favoriteItem->product_name] item"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
                                 {!! Form::close() !!}
                             </div>
-                        {{-- @endif --}}
+                        @endif
                     @endauth
-
-                    @if(Auth::guest())
-                        <div style="margin-top: 2%; margin-bottom: 3%;">
-                            <a href="{{ route('favorite-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                        </div>
-                    @endif
             </div>
         @empty
             <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">

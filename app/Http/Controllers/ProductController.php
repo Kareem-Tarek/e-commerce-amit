@@ -32,8 +32,8 @@ class ProductController extends Controller
         // $search_text_input     = $request->get('search_query'); //Laravel method (2)
         // $search_text_input     = $_GET['search_query']; // Native
 
-        $products_result = Product::where('name','LIKE',"%{$search_text_input}%") ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
-                                    ->orWhere('discount','LIKE',"%{$search_text_input}%")->get();
+        $products_result = Product::where('name','LIKE',"%{$search_text_input}%")->get(); ////first way for the search functionality. The SQL statement that will check the entered query from the DB (used as a filteration for products in search by an entered query "$search_text")
+                                    // ->orWhere('discount','LIKE',"%{$search_text_input}%")->get();
         // $products_result       = Product::when(!empty($search_text), function($query) use ($search_text){
         //     return $query->where('name', 'like', '%'.$search_text.'%');
         //     })->get(); //another second way for the search functionality on the entered query
@@ -47,6 +47,21 @@ class ProductController extends Controller
         return view('website.products.search', compact('products_result' , 'search_text_input' , 'products_result_count'))
             ->with('i' , ($request->input('page', 1) - 1) * 5);
 
+    }
+
+    // public function search_bar_discounts_announcements()
+    // {
+    //     $products_41per_50per = Product::all()->where('discount','>=',0.41)->where('discount','<=',0.50);
+
+    //     return view('layouts.website.search-bar', compact('products'));
+    // }
+
+    public function all_product_items()
+    {
+        $all_product_items       = Product::all();
+        $all_product_items_count = $all_product_items->count();
+
+        return view('website.products.all-product-items', compact('all_product_items' , 'all_product_items_count'));
     }
 
     public function clothes_all_filter()
@@ -137,18 +152,101 @@ class ProductController extends Controller
         return view('website.products.accessories.accessories-filter.accessories_women_filter', compact('accessories_women' , 'accessories_women_count'));
     }
 
-    public function single_product_page($id)
+    public function _1_percent_to_10_percent()
     {
-        // $product = Product::findOrFail($id);
+        $products = Product::all()->where('discount','>',0.00)->where('discount','<=',0.10);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.1percent_10percent', compact('products' , 'items_count'));
+    }
+
+    public function _11_percent_to_20_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.11)->where('discount','<=',0.20);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.11percent_20percent', compact('products' , 'items_count'));
+    }
+
+    public function _21_percent_to_30_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.21)->where('discount','<=',0.30);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.21percent_30percent', compact('products' , 'items_count'));
+    }
+
+    public function _31_percent_to_40_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.31)->where('discount','<=',0.40);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.31percent_40percent', compact('products' , 'items_count'));
+    }
+
+    public function _41_percent_to_50_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.41)->where('discount','<=',0.50);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.41percent_50percent', compact('products' , 'items_count'));
+    }
+
+
+
+    public function _51_percent_to_60_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.51)->where('discount','<=',0.60);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.51percent_60percent', compact('products' , 'items_count'));
+    }
+
+    public function _61_percent_to_70_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.61)->where('discount','<=',0.70);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.61percent_70percent', compact('products' , 'items_count'));
+    }
+
+    public function _71_percent_to_80_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.71)->where('discount','<=',0.80);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.71percent_80percent', compact('products' , 'items_count'));
+    }
+
+    public function _81_percent_to_90_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.81)->where('discount','<=',0.90);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.81percent_90percent', compact('products' , 'items_count'));
+    }
+
+    public function _91_percent_to_100_percent()
+    {
+        $products = Product::all()->where('discount','>=',0.91)->where('discount','<=',1.00);
+        $items_count  = $products->count();
+
+        return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
+    }
+
+    public function single_product_page($id) // SPA (Single Page Application)
+    {
+        // $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
         //OR
         $product = Product::find($id);
-        if($product == null || $product == ""){ // this condition is instead of using findOrFail -> $product = Product::findOrFail($id);
-            return abort('404');
+        if($product == null || $product == ""){
+            return view('website.products.productsErrors.404-product-page-not-found');
         }
+        // $product->name = $name;
+        $productItem_id = Product::all()->where('id',$id);
 
-        return view('website.products.single-product' , compact('product'));
+        return view('website.products.single-product' , compact('product' , 'productItem_id'));
         // return view('website.products.single-product')->withProduct($product);
-        // return view('website.products.single-product');
     }
 
     /**

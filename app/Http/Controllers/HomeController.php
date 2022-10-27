@@ -16,10 +16,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        //sample of some of the products (in the main website's home page)
-        $products = Product::orderBy('created_at' , 'DESC')->paginate(10);
+        $products       = Product::orderBy('created_at' , 'DESC')->paginate(10); //sample of some of the products (in the main website's home page)
+        $latest_product = Product::orderBy('id' , 'DESC')->latest()->limit(1)->get(); //the latest add product by PK (not by date) because PK's logic is more powerful to bring the newest data
 
-        return view('website.website.home' , compact('products'));
+        return view('website.website.home' , compact('products' , 'latest_product'));
     }
 
 }

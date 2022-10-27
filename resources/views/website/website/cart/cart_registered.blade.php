@@ -9,7 +9,15 @@
 
 @section('content')
 
+<<<<<<< HEAD
 @if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then
+=======
+<!-- ***** Search bar Start ***** -->
+@include('layouts.website.search-bar')
+<!-- ***** Search bar End ***** -->
+
+@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then 
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
                                 hide the table's heading because it is out of the loop already ---->
 <style>
     table{display: none;}
@@ -18,37 +26,42 @@
 @endif
 
 @if(session()->has('quantity_is_null_message'))
-    <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_null_message') }}
     </div>
+@elseif(session()->has('quantity_same_old_new_message'))
+    <div class="alert alert-danger text-center session-message">
+        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+        {{ session()->get('quantity_same_old_new_message') }}
+    </div> 
 @elseif(session()->has('quantity_is_zero_delete_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_zero_delete_message') }}
     </div>
 @elseif(session()->has('quantity_is_negative_message'))
-    <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_negative_message') }}
     </div>
 @endif
 
 @if(session()->has('quantity_old_new_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_old_new_message') }}
     </div>
 @endif
 
-@if(session()->has('cart_item_deleted_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+@if(session()->has('cart_checkout_item_deleted_message'))
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-        {{ session()->get('cart_item_deleted_message') }}
+        {{ session()->get('cart_checkout_item_deleted_message') }}
     </div>
 @endif
 
-<table border="1" cellpadding="5" class="table-search-results" style="text-align: center; margin-left:auto; margin-right:auto; width: 80%;">
+<table border="1" cellpadding="5" class="table-search-results" style="text-align: center; margin-left:auto; margin-right:auto; margin-top:3%; width: 80%;">
     <thead>
         <tr style="padding: 5%;">
             <th scope = "col">#</th>
@@ -57,9 +70,7 @@
             <th scope = "col">Category</th>
             <th scope = "col">Clothing Type</th>
             <th scope = "col">Quantity</th>
-            {{-- @if($cartItem_discounts_true) --}}
             <th scope = "col">Discount</th>
-            {{-- @endif --}}
             <th scope = "col">Price/Unit</th>
             <th scope = "col">Total Price</th>
             <th scope = "col">
@@ -100,7 +111,7 @@
                         {{-- <button class="btn btn-default button-submit-quantity">AJAX Submit</button> --}}
 
                         {{-- <button type="button" class="button-minus" name="quantity_value_minus" style="background-color: #DC3545; border-radius: 15px;" onmouseover="this.style.backgroundColor='#C82333'" onmouseout="this.style.backgroundColor='#DC3545'"><i class="fa-solid fa-minus" style="color: snow;"></i></button> --}}
-                            <input type="number" class="quantity_value" name="quantity_value" value="{{ $cartItem->quantity }}" min="0" style="width: 20%;">
+                            <input type="number" class="quantity_value" name="new_quantity" value="{{ $cartItem->quantity }}" min="0" style="width: 20%;">
                         {{-- <button  type="button" class="button-plus" name="quantity_value_plus" style="background-color: #28A745; border-radius: 15px;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28A745'"><i class="fa-solid fa-plus" style="color: snow;"></i></button> --}}
                     </form>
                 </td>
@@ -145,8 +156,8 @@
             </tr>
         </tbody>
     @empty
-        <div class="container cart-unregistered text-center">
-            <div class="row cart-unregistered-content" style="justify-content: center;">
+        <div class="container text-center mt-5">
+            <div class="row" style="justify-content: center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <img src="assets/images/cart-empty.gif" width="130" style="border-radius: 20px;"/>
                     <h5 class="pt-4">There are no items in your cart yet! Go ahead and add some cool stuff to it!</h5>

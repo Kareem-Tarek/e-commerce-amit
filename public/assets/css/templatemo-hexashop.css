@@ -149,6 +149,87 @@ body {
   }
 }
 
+/* start back-end sessions (messages) */
+/* made with the back-end (in controllers) on the "add/update/remove cart", "add rating" & "add/remove favorite" functionalities */
+.session-message{
+  width: 65%; 
+  margin-top: 1%; 
+  /* margin-bottom: 3%;  */
+  margin-left: auto; 
+  margin-right: auto;
+}
+/* end back-end sessions (messages) */
+
+/* start browse more button for products (in home page) */
+
+/* .browse-more-products-link{
+        background-color: #293240; 
+        color: snow;
+        font-size: 80%; 
+        font-weight: bold; 
+        padding: 1%; 
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+    }
+    .browse-more-products-link:hover{
+        background-color: #293240; 
+        color: snow;
+    } */
+
+.main-border-browse-more-button a {
+  font-size: 13px;
+  color: black;
+  border: 2px solid #2a2a2a;
+  padding: 12px 30px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.main-border-browse-more-button a:hover {
+  background-color: #09244b;
+  border: 2px solid #05009a;
+  color: snow;
+}
+/* end browse more button for products (in home page) */
+
+/* start add cart button (for customer & guest) */
+.add-to-cart-btn {
+  font-size: 13px;
+  background-color: rgba(65, 16, 240, 0.08) !important;
+  color: #2a2a2a !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 9px 25px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #2a2a2a !important;
+  color: snow !important;
+}
+/* end add cart button (for customer & guest) */
+
+/* start add favorite button (for customer & guest) */
+.add-to-favorites-btn {
+  font-size: 13px;
+  background-color: rgba(0, 255, 51, 0.08) !important;
+  color: #2a2a2a !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 9px 25px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.add-to-favorites-btn:hover {
+  background-color: #1b9e12 !important;
+  color: snow !important;
+}
+/* end  add favorite button (for customer & guest) */
+
 .main-border-button a {
   font-size: 13px;
   color: #fff;
@@ -1756,9 +1837,12 @@ Products Page
 */
 
 .page-heading {
+  padding-top: 4%;
+  padding-bottom: 5%;
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  /* background-image: url(../images/products-page-heading.jpg); */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/product-single-page-bg.jpeg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2201,6 +2285,7 @@ About Us Page
 
 .our-team .team-item .thumb {
   position: relative;
+ 
 }
 
 .our-team .team-item .thumb img {
@@ -2221,7 +2306,7 @@ About Us Page
 }
 
 .our-team .team-item .thumb:hover .hover-effect {
-  opacity: 1;
+  opacity: 0.70;
   visibility: visible;
 }
 

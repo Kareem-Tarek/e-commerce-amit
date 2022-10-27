@@ -40,10 +40,10 @@
                         <li class="submenu">
                             <a href="{{ route('products') }}">Our Products</a>
                             <ul>
-                                <li class="scroll-to-section"><a href="http://127.0.0.1:8000/products#men"><i class="fa-solid fa-mars" style="font-size: 130%; padding-right: 2%;"></i>Men's Wear</a></li>
-                                <li class="scroll-to-section"><a href="http://127.0.0.1:8000/products#women"><i class="fa-solid fa-venus" style="font-size: 130%; padding-right: 2%;"></i>Women's Wear</a></li>
-                                <li class="scroll-to-section"><a href="http://127.0.0.1:8000/products#kids"><i class="fa-solid fa-person-half-dress" style="font-size: 130%; padding-right: 2%;"></i>&nbsp;Kids' Wear</a></li>
-                                <li class="scroll-to-section"><a href="http://127.0.0.1:8000/products#accessories"><i class="fa-solid fa-ring" style="font-size: 110%; padding-right: 2%;"></i>Accessories</a></li>
+                                <li class="scroll-to-section"><a href="http://localhost:8000/products#men"><i class="fa-solid fa-mars" style="font-size: 130%; padding-right: 2%;"></i>Men's Wear</a></li>
+                                <li class="scroll-to-section"><a href="http://localhost:8000/products#women"><i class="fa-solid fa-venus" style="font-size: 130%; padding-right: 2%;"></i>Women's Wear</a></li>
+                                <li class="scroll-to-section"><a href="http://localhost:8000/products#kids"><i class="fa-solid fa-person-half-dress" style="font-size: 130%; padding-right: 2%;"></i>&nbsp;Kids' Wear</a></li>
+                                <li class="scroll-to-section"><a href="http://localhost:8000/products#accessories"><i class="fa-solid fa-ring" style="font-size: 110%; padding-right: 2%;"></i>Accessories</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -64,7 +64,7 @@
                             </ul>
                         </li>
 
-                        <li class="scroll-to-section"><a href="http://127.0.0.1:8000/home#explore">Explore</a></li>
+                        <li class="scroll-to-section"><a href="http://localhost:8000/home#explore">Explore</a></li>
                         @if(!auth()->user()) <!---------- = unregistered user (which means "guest") ---------->
                             <li class="submenu">
                                 <a href="javascript:void(0);">Account</a>

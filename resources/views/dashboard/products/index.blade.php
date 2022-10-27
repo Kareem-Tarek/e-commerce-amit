@@ -43,6 +43,7 @@
                                         <th scope="col" class="text-center">Price (EGP)</th>
                                         <th scope="col" class="text-center">Category</th>
                                         <th scope="col" class="text-center">Clothing type</th>
+                                        <th scope="col" class="text-center">Available Quantity</th>
                                         <th scope="col" class="text-center">Date of Creation</th>
                                         <th scope="col" class="text-center">Added By</th>
                                         <th scope="col" class="text-center">Last Updated By</th>
@@ -80,6 +81,7 @@
                                             </a>
                                         </td>
                                         {{-- <td class="text-center"><a href="{{ route('categories.index') }}">{{$product->category->name ?? 'No Clothing Type'}}</a></td> --}}
+                                        <td class="text-center">{{$product->available_quantity}}</td>
                                         <td class="text-center" style="width: 18%;">{{$product->created_at->translatedFormat('d/m/Y - h:m A')}}</td>
                                         <td class="text-center">{{$product->create_user->name ?? '??'}}</td>
                                         <td class="text-center">{{$product->update_user->name ?? '??'}}</td>

@@ -17,6 +17,47 @@
     @include('layouts.website.search-bar')
     <!-- ***** Search bar End ***** -->
 
+    @if(session()->has('addCart_message'))
+        <div class="alert alert-success text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
+        </div>
+    @elseif(session()->has('quantity_is_null_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('quantity_is_null_message') }}
+        </div>
+    @elseif(session()->has('quantity_is_zero_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('quantity_is_zero_message') }}
+        </div>
+    @elseif(session()->has('quantity_is_negative_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('quantity_is_negative_message') }}
+        </div>
+    @endif
+    
+    @if(session()->has('addRating_message'))
+        <div class="alert alert-success text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('addRating_message') }}
+        </div>
+    @endif
+
+    @if(session()->has('addFavorite_message'))
+        <div class="alert alert-success text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('addFavorite_message') }}<a href="{{ route('favorites-registered') }}"> Check your favorites</a>.
+        </div>
+    @elseif(session()->has('addFavorite_already_added_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('addFavorite_already_added_message') }}
+        </div>
+    @endif
+
     <div class="product-items">
 
 {{--         
@@ -32,47 +73,6 @@
                 <section class="section" id="men">
 
                     <div class="container">
-                        
-                        @if(session()->has('addCart_message'))
-                            <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
-                            </div>
-                        @elseif(session()->has('quantity_is_null_message'))
-                            <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('quantity_is_null_message') }}
-                            </div>
-                        @elseif(session()->has('quantity_is_zero_message'))
-                            <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('quantity_is_zero_message') }}
-                            </div>
-                        @elseif(session()->has('quantity_is_negative_message'))
-                            <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('quantity_is_negative_message') }}
-                            </div>
-                        @endif
-
-                        @if(session()->has('addRating_message'))
-                            <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('addRating_message') }}
-                            </div>
-                        @endif
-
-                        @if(session()->has('addFavorite_message'))
-                            <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('addFavorite_message') }}<a href="{{ route('favorites-registered') }}"> Check your favorites</a>.
-                            </div>
-                        @elseif(session()->has('addFavorite_already_added_message'))
-                            <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-left: auto; margin-right: auto;">
-                                <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
-                                {{ session()->get('addFavorite_already_added_message') }}
-                            </div>
-                        @endif
                         
                         @auth
                             @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
@@ -120,7 +120,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -156,8 +156,8 @@
 
                                                     @if(Auth::guest())
                                                         <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                            <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                                            <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -217,7 +217,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -253,8 +253,8 @@
 
                                                     @if(Auth::guest())
                                                         <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                            <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                                            <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -313,7 +313,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -349,8 +349,8 @@
 
                                                     @if(Auth::guest())
                                                         <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                            <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                                            <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -409,7 +409,7 @@
                                                         <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                                         @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                                         @if($data <= 7) <!---------- in days ---------->
-                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                            <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                                 <h3 style="font-weight: bolder;">NEW</h3>
                                                             </span>
                                                         {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -445,8 +445,8 @@
 
                                                     @if(Auth::guest())
                                                         <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                            <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                                            <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                            <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                                         </div>
                                                     @endif
                                                 </div>

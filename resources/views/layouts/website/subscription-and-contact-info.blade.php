@@ -28,11 +28,11 @@
                 @if(auth()->user()->user_type == "customer")
                     <div class="col-lg-8">
                         <div class="section-heading text-left">
-                            <h3>By Subscribing To Our Newsletter You will Get 30% Off on the total amount</h3>
+                            <h3>By Subscribing To Our Newsletter You will Get 30% OFF on the total amount for one time purchase!</h3>
                             <h6>(for all the products in your cart)</h6>
-                            <h3 class="inline-item">For one time purchase!</h3>
-                            <div class="inline-item">
-                                <img src="assets/images/subscription_discount.gif" alt="subscription_discount" style="border-radius: 100px; width: 9%;">
+                            {{-- <h3 class="inline-item">For one time purchase!</h3> --}}
+                            <div style="display:inline;">
+                                <img src="assets/images/subscription_discount.gif" alt="subscription_discount" style="width: 9%;">
                             </div>
                             <br>
                             <span>Details to details is what makes AA different from the other competitors.</span>
@@ -51,12 +51,15 @@
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-dark-button">
                                             <i class="fa fa-paper-plane"></i>
                                         </button>
                                     </fieldset>
+                                </div>
+                                <div class="col-lg-12 text-left mt-2">
+                                    <span>By subscribing you accept our <a href="javascript:void(0);"><u>Privacy Policy</u></a>.</span>
                                 </div>
                             </div>
                         </form>

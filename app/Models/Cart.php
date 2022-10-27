@@ -19,6 +19,7 @@ class Cart extends Model
         'customer_email' ,
         'customer_address' ,
         'product_name' ,
+        'available_quantity' ,
         'product_image' ,
         'is_accessory' ,
         'clothing_type' ,

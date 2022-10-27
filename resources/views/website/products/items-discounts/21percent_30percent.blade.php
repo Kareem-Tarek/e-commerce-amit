@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Formal Wear
+    Discounts 21% ~ 30% - results ({{ $items_count }})
 @endsection
 
 @section('content')
@@ -15,13 +15,13 @@
 <!-- ***** Search bar End ***** -->
 
 <section style="margin-top: 3%;">
-    @if($formal_all_count == 0)
+    @if($items_count == 0)
         <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
-            <span>Formal Clothes ({{ $formal_all_count }})</span>
+            <span>Discounts on items between [21% ~ 30%] - results ({{ $items_count }})</span>
         </div>
     @else
         <div class="alert alert-primary" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%">
-            <span>Formal Clothes ({{ $formal_all_count }})</span>
+            <span>Discounts on items between [21% ~ 30%] - results ({{ $items_count }})</span>
         </div>
     @endif
 
@@ -75,7 +75,7 @@
     @endif
 
     <div style="display: flex; justify-content: flex-start; text-align: center; flex-wrap: wrap; padding: 0% 2%;">
-        @foreach($formal_all as $product)
+        @foreach($products as $product)
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-3 pt-3 pb-3 bg-light border">
                     <div class="curriculum-event-thumb">
                         <a href="{{ route('single_product_page' , $product->id) }}">
@@ -88,10 +88,10 @@
                             <img class="mt-2" src="{{$product->image_name}}" alt="{{$product->name}}" style="width: 180px; height: 200px; border: 2px solid black;">
                         </a>
                     </div>
-                    <div class="curriculum-event-content d-flex justify-content-center">
+                    <div class="curriculum-event-content d-flex justify-content-center" >
                         <div class="row">
-                            <div class="col-lg-12 col-sm-8 col-md-8 text-left">
-                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $product->id) }}" style="color: rgb(3, 3, 191);"> {{$product->name}}</a></div>
+                            <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
+                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $product->id) }}" style="color: rgb(3, 3, 191);"> {{ $product->name }}</a></div>
                                 @if($product->discount > 0)
                                     <div class="c-red"><u>Original Price:</u> <del style="color: red;">{{$product->price}} EGP</del></div>
                                     <div class="c-red"><u>Sale Price:</u> <span style="color: green;">{{$product->price - ($product->price * $product->discount) }} EGP</span> <span style="color:rgb(155, 31, 151); font-weight: bold;">({{ $product->discount * 100 }}% OFF)</span></div>
@@ -137,6 +137,16 @@
                         </div>
                     @endif
             </div>
+         {{-- @empty
+            <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
+                <span>No data found!</span>
+            </div> 
+            <?php 
+                /* 
+                @empty => acts like else from the if condition and for showing the other choice wich will be the error 
+                (or the undefined data from the DB) if the data wasn't found in the code in "forelse" loop.
+                */ 
+             ?> --}}
         @endforeach
     </div>
 </section>

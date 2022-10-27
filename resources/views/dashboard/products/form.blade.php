@@ -152,5 +152,17 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label class="form-label col-lg-3">Available Quantity <span class="text-danger">*</span></label>
+        <div class="col-lg-9">
+            <input class="form-control @error('available_quantity') is-invalid @enderror" value="{{Request::old('available_quantity') ? Request::old('available_quantity') : $model->available_quantity}}" type="number" name="available_quantity" placeholder="Enter the available quantity" autocomplete="off">
+            @error('available_quantity')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+
 </div>
 

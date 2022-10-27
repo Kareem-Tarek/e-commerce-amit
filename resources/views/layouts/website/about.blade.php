@@ -112,7 +112,7 @@
                         </div>
                     </div> --}}
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-item">
                             <div class="thumb">
                                 <div class="hover-effect">
@@ -156,21 +156,21 @@
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Formal</h4>
-                            <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                            <p>Formal wear or full dress is the Western dress code category for the most formal events, including weddings, religious events, confirmations, funerals, Easter and Christmas traditions, as well as certain state dinners, audiences, balls, and horse racing events.</p>
                             <img src="assets/images/service-01.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Casual</h4>
-                            <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                            <p>Casual wear is a Western dress code that is informal, occasional, spontaneous, and comfortable for daily use. Following the counterculture of the 1960s, casual clothes became popular in the Western world. When highlighting the comfort of casual attire, it may be referred to as loungewear or leisurewear. Casual is "informal" in the sense that it is not formal, but traditionally, "informal attire" refers to a Western dress code with suits that is one step below "semi-formal attire," making it more formal than "casual attire".</p>
                             <img src="assets/images/service-02.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Sports Wear</h4>
-                            <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                            <p>The term "sportswear" or "activewear" refers to apparel, including footwear, worn for sports or physical exercise. Most sports and physical activities require specialized gear for practical, comfort, and safety reasons.</p>
                             <img src="assets/images/service-03.jpg" alt="">
                         </div>
                     </div>

@@ -12,21 +12,6 @@
 <style>
     .hover-content{background-color: rgba(117, 117, 117, 0.4);}
     .hover-content-for-product-items{padding: 2% 0%;}
-    .inline-item{display: inline;}
-    .browse-products-link{
-        background-color: #000000; 
-        color: snow;
-        font-size: 80%; 
-        font-weight: bold; 
-        padding: 1%; 
-        padding-left: 2%;
-        padding-right: 2%;
-        border-radius: 3px;
-    }
-    .browse-products-link:hover{
-        background-color: #293240; 
-        color: snow;
-    }
 </style>
 
 <!-- ***** Search bar Start ***** -->
@@ -34,7 +19,7 @@
 <!-- ***** Search bar End ***** -->
 
 @if(session()->has('addCart_message'))
-    <div class="alert alert-success text-center" style="width: 60%; margin-top: 5%; margin-bottom: -1.5%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
     </div>
@@ -257,7 +242,7 @@
                                             <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                             @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                             @if($data <= 7) <!---------- in days ---------->
-                                                <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow;">
+                                                <span style="position: absolute;  top: 1px; background: rgba(0, 69, 175, 0.65); width:100%; font-weight: bold; text-align: center; color: snow; opacity: 0.70;">
                                                     <h3 style="font-weight: bolder;">NEW</h3>
                                                 </span>
                                             {{-- @else <!---------- any other condition which is => more than the given period in the prevoious condition ---------->
@@ -293,8 +278,8 @@
 
                                         @if(Auth::guest())
                                             <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                <a href="{{ route('cart-unregistered') }}"><input class="btn btn-primary" type="submit" value="Add to cart" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
-                                                <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                             </div>
                                         @endif
                                     </div>
@@ -308,63 +293,15 @@
 
             <!-------------------- second row -------------------->
             <div class="row justify-content-center mt-4">
-                <a href="{{ route('products') }}" class="browse-products-link">Browse More..</a>
+                {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
+                <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
             </div>
         </div>
     </section>
 </div>
 <!-- Product Items Ends -->
 
-<!-- ***** Explore Area Starts ***** -->
-<section class="section" id="explore">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="left-content">
-                    <h2>Explore Our Products</h2>
-                    <span>You are allowed to use this AA HTML CSS template. You can feel free to modify or edit this layout. You can convert this template as any kind of ecommerce CMS theme as you wish.</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>You are not allowed to redistribute this template ZIP file on any other website.</p>
-                    </div>
-                    <p>There are 5 pages included in this AA Template and we are providing it to you for absolutely free of charge at our TemplateMo website. There are web development costs for us.</p>
-                    <p>If this template is beneficial for your website or business, please kindly <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">support us</a> a little via PayPal. Please also tell your friends about our great website. Thank you.</p>
-                    <div class="main-border-button">
-                        <a href="{{ route('products') }}">Discover More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="right-content">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="leather">
-                                <h4>Leather Bags</h4>
-                                <span>Latest Collection</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="first-image">
-                                <img src="assets/images/explore-image-01.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="second-image">
-                                <img src="assets/images/explore-image-02.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="types">
-                                <h4>Different Types</h4>
-                                <span>Over {{\App\Models\Product::count()-5}} Products</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ***** Explore Area Ends ***** -->
+@include('layouts.website.explore')
 
 @include('layouts.website.subscription-and-contact-info')
 

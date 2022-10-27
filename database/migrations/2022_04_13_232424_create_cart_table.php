@@ -20,6 +20,7 @@ class CreateCartTable extends Migration
             $table->string('customer_email');
             $table->string('customer_address')->nullable();
             $table->string('product_name');
+            $table->integer('available_quantity');
             $table->string('product_image');
             $table->string('is_accessory');
             $table->string('clothing_type')->nullable(); //relationship with categories (clothing types of products) table

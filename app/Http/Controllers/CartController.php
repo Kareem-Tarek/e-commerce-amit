@@ -15,14 +15,34 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // public function cartView() // changed from cart_registered() & cart_unregistered() to "cartView()"
+    // {
+    //     if(isset($each_customer_cartItems)){
+    //         $each_customer_cartItems  = Cart::where('customer_id',auth()->user()->id);
+    //     }
+    //     if(isset($cartItems)){
+    //         $cartItems = $each_customer_cartItems->get();
+    //     }
+    //     if(isset($cartItems_count)){
+    //         $cartItems_count = $each_customer_cartItems->count();
+    //     }
+    //     if(isset($cart_registered)){
+    //         $cart_registered = view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
+    //     }
+        
+    //     $cart_unregistered        = view('website.website.cart.cart_unregistered');
+        
+    //     if(auth()->user()){ return $cart_registered; }
+
+    //     elseif(!auth()->user()){ return $cart_unregistered; }
+    // }
+
     public function cart_registered()
     {
-        $cartItems                 = Cart::where('customer_id',auth()->user()->id)->get();
-        $cartItems_count           = Cart::where('customer_id',auth()->user()->id)->count();
-        $cartItem_discounts_true   = Cart::where('customer_id',auth()->user()->id)->where('discount','>','0');
-        $cartItem_discounts_false  = Cart::where('customer_id',auth()->user()->id)
-                                            ->where('discount','<=','0')
-                                            ->orWhere('discount','=',null);
+        $each_customer_cartItems = Cart::where('customer_id',auth()->user()->id);
+        $cartItems               = $each_customer_cartItems->get();
+        $cartItems_count         = $each_customer_cartItems->count();
 
         return view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
     }
@@ -34,42 +54,53 @@ class CartController extends Controller
 
     public function addCart(Request $request , $id) // this function is same as "store" function from the resource controller
     {
-        if(Auth::id()){
-
-            $user                   = auth()->user(); // currently logged in user account which are customer ONLY!
-            $product                = Product::find($id); // find data from products table by id
-            // $category_of_clothing_type = Category::find($id); // find data from categories table (clothing types of products) by id
-            $cart                   = new Cart; // new data entry for the current entity (Cart)
-            $cart->customer_name    = $user->name;
-            $cart->customer_phone   = $user->phone;
-            $cart->customer_email   = $user->email;
-            $cart->customer_address = $user->address;
-            $cart->product_name     = $product->name;
-            $cart->product_image    = $product->image_name;
-            $cart->is_accessory     = $product->is_accessory;
-            $cart->clothing_type    = $product->clothing_type;
-            $cart->product_category = $product->product_category;
-            $cart->price            = $product->price;
-            $cart->discount         = $product->discount;
+            $user                     = auth()->user(); // currently logged in user account which are customer ONLY!
+            $product                  = Product::find($id); // find data from products table by id
+            $cart                     = new Cart; // new data entry for the current entity (Cart)
+            $cart->customer_name      = $user->name;
+            $cart->customer_phone     = $user->phone;
+            $cart->customer_email     = $user->email;
+            $cart->customer_address   = $user->address;
+            $cart->product_name       = $product->name;
+            $cart->product_image      = $product->image_name;
+            $cart->is_accessory       = $product->is_accessory;
+            $cart->clothing_type      = $product->clothing_type;
+            $cart->product_category   = $product->product_category;
+            $cart->price              = $product->price;
+            $cart->discount           = $product->discount;
+            $cart->available_quantity = $product->available_quantity;
             // NOTE for quantity: since the input type is number then it will not allow strings (a, b, c, ...z)
-            if($request->quantity > 0){ // from 1 to infinity which is the correct condition!
-                $cart->quantity     = $request->quantity;
+            if($request->quantity > 0  && $request->quantity <= $cart->available_quantity){ // from 1 to infinity which is the correct condition!
+                $cart->quantity = $request->quantity;
             }
-            elseif($request->quantity == null || $request->quantity == ""){ // wrong condition (1): quantity is equals to "null" or "" value. Which means an empty space value.
+            elseif($request->quantity > $cart->available_quantity){ // wrong condition (1): user's inout is more than the available quantity (> max) of the product
+                return 'you entered more than the available quantity (create)!';
+            }
+            elseif($request->quantity == null || $request->quantity == ""){ // wrong condition (2): quantity is equals to "null" or "" value. Which means an empty space value.
                 return redirect()->back()->with('quantity_is_null_message' , 'The quantity value is empty! Please enter a quantity for the "'.$cart->product_name.'" product!');
             }
-            elseif($request->quantity == 0){ // wrong condition (2): quantity is equals to "zero" value
+            elseif($request->quantity == 0){ // wrong condition (3): quantity is equals to "zero" value
                 return redirect()->back()->with('quantity_is_zero_message' , 'You entered ['.$request->quantity.'] value for the quantity for "'.$cart->product_name.'" product. You can not enter [zero] value for the quantity for any product!');
             }
-            elseif($request->quantity < 0){ // wrong condition (3): quantity is equals to "negative" value
+            elseif($request->quantity < 0){ // wrong condition (4): quantity is equals to "negative" value
                 return redirect()->back()->with('quantity_is_negative_message' , 'You entered ['.$request->quantity.'] value for the quantity. The entered value for the quantity for "'.$cart->product_name.'" product is in negative!');
             }
             $cart->product_id       = $product->id;
             $cart->customer_id      = $user->id;
-            $cart->save(); 
 
+            // $_cartFind        = Cart::where('id',$id)->exists();
+            // $_cart_product_id = Cart::where('product_id',$product->id)->exists();
+            // if($_cartFind == true && $_cart_product_id == true){
+            //     $cart->quantity += $request->quantity;
+            //     $cart->save();
+            //     return redirect()->back();
+            // }
+            // else{
+            //     $cart->save();
+            //     return redirect()->back()->with('addCart_message' , '"'.$product->name.'" (Quantity: '.$cart->quantity.') - added successfully to your cart!');
+            // }
+            $cart->save();
             return redirect()->back()->with('addCart_message' , '"'.$product->name.'" (Quantity: '.$cart->quantity.') - added successfully to your cart!');
-        }
 
         // else{ //it is shaded because there is already if condition in any of the product blades for guest "if(Auth::guest())..."
         //     return redirect()->route('cart-unregistered');
@@ -108,7 +139,7 @@ class CartController extends Controller
         }
 
         // return response()->json($finalData);
-        if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition
+        if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which is there is no items already in the cart to be calculated [total amount])
             return view('website.website.cart.cartErrors.cart-no-total-amount');
         }
 
@@ -130,7 +161,7 @@ class CartController extends Controller
 
     public function update_cart_items_quantity(Request $request , $id)
     {                
-        $cartItem = Cart::find($id);
+        $cartItem = Cart::where('customer_id',auth()->user()->id)->find($id);
         {// those variables are just used in the json data in the return of the function (they are not used in the update functionality itself!)
             $cartItems_count = Cart::where('customer_id',auth()->user()->id)->count();
             if($cartItems_count > 0){ // if there is items in the cart (the correct condition!)
@@ -151,27 +182,30 @@ class CartController extends Controller
             } 
         }
 
-        if($request->quantity_value > 0){ // the correct condition!
-            $cartItem->quantity = $request->quantity_value; // "$request->get('quantity_value');" is the same as "$request->quantity_value;"
+        if($request->new_quantity > $cartItem->available_quantity){ // wrong condition (1)
+            return 'you entered more than the available quantity (update)!';
         }
-        elseif($request->quantity_value == null || $request->quantity_value == ""){ // wrong condition (1)
+        elseif($cartItem->quantity == $request->new_quantity){ // wrong condition (2)
+            return redirect()->back()->with(['quantity_same_old_new_message' => __('You did not change the quantity! The quantity that you entered for product "'.$cartItem->product_name.'" is the same!')]);
+        }
+        elseif($request->new_quantity == null || $request->new_quantity == ""){ // wrong condition (3)
             return redirect()->back()->with(['quantity_is_null_message' => __('The quantity value is empty! Please enter a quantity for the "'.$cartItem->product_name.'" product!')]);
         }
-        elseif($request->quantity_value < 0){ // wrong condition (2)
-            return redirect()->back()->with(['quantity_is_negative_message' => __('You entered ['.$request->quantity_value.'] value for the quantity. The entered value for the quantity for "'.$cartItem->product_name.'" product is in negative!')]);
+        elseif($request->new_quantity < 0){ // wrong condition (4)
+            return redirect()->back()->with(['quantity_is_negative_message' => __('You entered ['.$request->new_quantity.'] value for the quantity. The entered value for the quantity for "'.$cartItem->product_name.'" product is in negative!')]);
         }
 
-        if($request->quantity_value == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
+        if($request->new_quantity == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
             $cartItem->quantity = 0; // the new quantity (which will be zero already in this condition!)
             $cartItem->forceDelete();
             return redirect()->back()->with(['quantity_is_zero_delete_message' => __('The quantity that you entered for product "'.$cartItem->product_name.'" is ('.$cartItem->quantity.'). The product is successfully deleted from your cart!')]);
         }
-        else{ // if($request->quantity_value > 0), because that's the only correct condition!
+        elseif($request->new_quantity > 0 && $request->new_quantity <= $cartItem->available_quantity){ // the correct condition! if($request->new_quantity > 0), because that's the only correct condition!
+            $cartItem->quantity = $request->new_quantity; // all are the same thing => "$_GET['new_quantity']" = "$request->get('new_quantity');" = "$request->new_quantity;"
             $cartItem->save();
-        }
-
-        return redirect()->route('cart-registered')
+            return redirect()->route('cart-registered')
             ->with(['quantity_old_new_message' => __('You changed the quantity for product "'.$cartItem->product_name.'" from ('.$cartItem_Old_Quantity.') to ('.$cartItem->quantity.').')]);
+        }
         //////------- the code below is just for checking old quantity and the updated new quantity by using json -------//////
         // return response()->json([
         //     'Cart_ID'                                       => $cartItem->id ,
