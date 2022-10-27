@@ -55,11 +55,6 @@ class SubscriptionController extends Controller
             return redirect(url()->previous().'#subscribe')->with('subscription_successful_message' , 'You successfully subscribed to our newsletter!');
         }
         catch (\Exception $exception){ // wrong condition (2) (handle exception which is here in this case -> duplication in a column which is in "email" column that holds a unique key)
-            // return response(array(
-            //     "error_code"    => 1062,
-            //     "error_message" =>"Duplicate entry " . $exception->getMessage(),
-            //     )
-            // );
             return redirect(url()->previous().'#subscribe')->with('subscription_unsuccessful_duplication_error_message' , 'You already subscribed to our newsletter!');
         }
     

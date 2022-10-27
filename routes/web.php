@@ -128,6 +128,7 @@ Route::group([
 Route::group([
     'middleware' => ['unregistered_users' , 'only_customers']
 ], function () {
+    //if($product>id == $cart->product_id){};
     Route::post('/addCart/{id}', [CartController::class, 'addCart']);
     Route::post('/update-cart-items-quantity/{id}', [CartController::class, 'update_cart_items_quantity']);
     Route::get('/checkout/get/items', [CartController::class, 'getCartItemsForCheckout']); // total amount!

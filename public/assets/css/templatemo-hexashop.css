@@ -152,7 +152,7 @@ body {
 /* start back-end sessions (messages) */
 /* made with the back-end (in controllers) on the "add/update/remove cart", "add rating" & "add/remove favorite" functionalities */
 .session-message{
-  width: 70%; 
+  width: 65%; 
   margin-top: 1%; 
   /* margin-bottom: 3%;  */
   margin-left: auto; 

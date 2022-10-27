@@ -22,31 +22,36 @@
 @endif
 
 @if(session()->has('quantity_is_null_message'))
-    <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_null_message') }}
     </div>
+@elseif(session()->has('quantity_same_old_new_message'))
+    <div class="alert alert-danger text-center session-message">
+        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+        {{ session()->get('quantity_same_old_new_message') }}
+    </div> 
 @elseif(session()->has('quantity_is_zero_delete_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_zero_delete_message') }}
     </div> 
 @elseif(session()->has('quantity_is_negative_message'))
-    <div class="alert alert-danger text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_negative_message') }}
     </div>
 @endif
 
 @if(session()->has('quantity_old_new_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_old_new_message') }}
     </div>
 @endif
 
 @if(session()->has('cart_checkout_item_deleted_message'))
-    <div class="alert alert-success text-center" style="width: 70%; margin-top: 1%; margin-bottom: 2%; margin-left: auto; margin-right: auto;">
+    <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('cart_checkout_item_deleted_message') }}
     </div>
@@ -147,7 +152,7 @@
             </tr>
         </tbody>
     @empty
-        <div class="container cart-page text-center">
+        <div class="container cart-page text-center mt-5">
             <div class="row cart-page-content" style="justify-content: center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <img src="assets/images/cart-empty.gif" width="130" style="border-radius: 20px;"/>

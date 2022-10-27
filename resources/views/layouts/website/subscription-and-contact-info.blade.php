@@ -59,9 +59,7 @@
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12 text-left mt-2">
-                                    <fieldset>
-                                        <span>By subscribing you accept our <a href="javascript:void(0);"><u>Privacy Policy</u></a>.</span>
-                                    </fieldset>
+                                    <span>By subscribing you accept our <a href="javascript:void(0);"><u>Privacy Policy</u></a>.</span>
                                 </div>
                             </div>
                         </form>

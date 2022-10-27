@@ -53,10 +53,6 @@ class FavoriteController extends Controller
                 return redirect()->back()->with('addFavorite_message' , '"'.$product->name.'" is successfully added to your favorites!'); 
             } 
             catch (\Exception $exception){ // the wrong condition (handle exception which is here in this case -> "duplication error")
-                // return response(array(
-                //     "error_code"    => 1062,
-                //     "error_message" =>"Duplicate entry " . $exception->getMessage(),
-                //     )
                 return redirect()->back()->with('addFavorite_already_added_message' , '"'.$product->name.'" was already added to your favorites!'); 
             }
 

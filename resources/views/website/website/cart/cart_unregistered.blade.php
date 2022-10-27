@@ -8,10 +8,14 @@
 @endsection
 
 @section('content')
-    <div class="container cart-page text-center">
+<!-- ***** Search bar Start ***** -->
+@include('layouts.website.search-bar')
+<!-- ***** Search bar End ***** -->
+
+    <div class="container cart-page text-center mt-5">
         <div class="row cart-page-content" style="justify-content: center;">
+            <img src="assets/images/guest-login.gif" width="130" style="border-radius: 20px;"/>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <img src="assets/images/guest-login.gif" width="130" style="border-radius: 20px;"/>
                 {{-- <img src="assets/images/cart-empty(2).gif" width="130" style="border-radius: 20px;"/> --}}
                 {{-- <img src="assets/images/cart-empty(3).gif" width="130" style="border-radius: 20px;"/> --}}
                 {{-- <img src="assets/images/cart-empty(4).gif" width="130" style="border-radius: 20px;"/> --}}

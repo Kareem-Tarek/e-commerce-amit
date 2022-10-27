@@ -214,11 +214,8 @@
 
                                 @if(Auth::guest())
                                     <div style="margin-top: 2%; margin-bottom: 3%;">
-                                        {{-- <a href="{{ route('cart-unregistered') }}" style="background-color: rgb(48, 116, 217); color: snow; padding: 1.5% 3%; border-radius: 4px;">
-                                            Add Cart
-                                        </a> --}}
-                                        <a class="submit-addcart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
-                                        <a href="{{ route('favorites-unregistered') }}"><input class="btn btn-success" type="submit" value="Add to favorites" name="" style="padding: 1.5% 3%; border-radius: 4px;"></a>
+                                        <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                        <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                     </div>
                                 @endif
                         </div>
