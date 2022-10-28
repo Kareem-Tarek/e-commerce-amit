@@ -68,7 +68,7 @@
                         <td style="width: 40%;">
                             @if($cartItem->discount > 0)
                                 <del style="color: red;">{{ $cartItem->quantity.' X '.$cartItem->price.' = '.$cartItem->quantity * $cartItem->price }} EGP</del><br>
-                                <span style="color: green;">{{ $cartItem->quantity.' X '.($cartItem->price - ($cartItem->price * $cartItem->discount))}} = <u>{{($cartItem->quantity) * ($cartItem->price - ($cartItem->price * $cartItem->discount)) }} EGP</u></span>
+                                <span style="color: green;">{{ $cartItem->quantity.' X '.($cartItem->price - ($cartItem->price * $cartItem->discount))}} = <u>{{$cartItem->quantity * ($cartItem->price - ($cartItem->price * $cartItem->discount)) }} EGP</u></span>
                             @elseif($cartItem->discount <= 0 || $cartItem->discount == null || $cartItem->discount == "")
                                 <span>{{ $cartItem->quantity.' X '.$cartItem->price.' = '.$cartItem->quantity * $cartItem->price }} EGP</span>
                             @endif
@@ -131,6 +131,9 @@
                     <td>
                         @foreach($finalData as $finalData_result)
                             {{ $finalData_result ?? '???'}} EGP
+                            <span style="color:rgb(155, 31, 151); font-weight: bold;">
+                                (?? EGP OFF)
+                            </span>
                         @endforeach
                     </td>
                 </tr>
@@ -143,7 +146,7 @@
                     <th>Total</th> <!-- total = total prices of products in cart (with tax) + shipping cost + fees + tax on fees - discount coupon -->
                     <td>
                         @foreach($finalData as $finalData_result)
-                            <span style="color: navy; font-weight: bold;">{{ $finalData_result ?? '???'}} EGP</span>                    
+                            <span style="color: navy; font-weight: bold;">{{ $finalData_result ?? '???'}} EGP</span>
                         @endforeach
                     </td>
                 </tr>
