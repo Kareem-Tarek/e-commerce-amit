@@ -128,7 +128,12 @@
             <table border="1" cellpadding="3" style="text-align: center; margin-left:auto; margin-right:auto; width: 20%;">
                 <tr>
                     <th>Subtotal</th> <!-- total price for all products in the cart currently -->
-                    <td>{{ $finalData ?? '???'}} EGP</td>
+                    <td>
+                        @foreach($finalData as $finalData_result)
+                            {{ $finalData_result ?? '???'}} 
+                        @endforeach
+                        EGP
+                    </td>
                 </tr>
                 <tr>
                     <th>Shipping</th>
@@ -137,7 +142,12 @@
                 
                 <tr>
                     <th>Total</th> <!-- total price for all products in the cart currently + shipping or/and discount coupon -->
-                    <td>{{ null ?? '???' }}</td>
+                    <td>
+                        @foreach($finalData as $finalData_result)
+                            {{ $finalData_result ?? '???'}} 
+                        @endforeach
+                        EGP
+                    </td>
                 </tr>
             </table>
         </div>

@@ -108,45 +108,45 @@ class CartController extends Controller
     } // end of "addCart" function
 
 
-    public function getCartItemsForCheckout(){ // ($id)
-        // $CartItems_ID = Cart::where('id' , $id)->get();
-        // $cartItems_ID = Cart::where('customer_id', auth()->user()->id)->where('id' , $id)->get(); // ID will be dynamic in url but total amount will not be calculated!
-        $cartItems = Cart::where('customer_id', auth()->user()->id)->get();
+    // public function getCartItemsForCheckout(){ // ($id)
+    //     // $CartItems_ID = Cart::where('id' , $id)->get();
+    //     // $cartItems_ID = Cart::where('customer_id', auth()->user()->id)->where('id' , $id)->get(); // ID will be dynamic in url but total amount will not be calculated!
+    //     $cartItems = Cart::where('customer_id', auth()->user()->id)->get();
 
-        $finalData = []; // an empty array
+    //     $finalData = []; // an empty array
 
-        $amount = 0; // will be used in the array for the summation of the total amount or price (not for each item!) for ALL THE ITEMS within the cart!!
+    //     $amount = 0; // will be used in the array for the summation of the total amount or price (not for each item!) for ALL THE ITEMS within the cart!!
 
-        if(isset($cartItems))
-        {
-            foreach($cartItems as $cartItem)
-            {
-                // $finalData['id']            = $cartItem->id; // cart ID
-                // $finalData['customer_name'] = $cartItem->customer_name;
-                // $finalData['quantity']      = $cartItem->quantity;
-                // $finalData['price']         = $cartItem->price;
-                // $finalData['discount']      = $cartItem->discount;
-                // $finalData['total']         = $cartItem->price * $cartItem->quantity;
-                if($cartItem->discount > 0){
-                    $amount                    += $cartItem->quantity * ($cartItem->price - ($cartItem->price * $cartItem->discount));
-                    $finalData['Total_Amount']  = $amount; // total amount of all items' price (after discount which is the sale price)
-                }
-                elseif($cartItem->discount <= 0 || $cartItem->discount == null || $cartItem->discount == ""){
-                    $amount                    += $cartItem->quantity * $cartItem->price;
-                    $finalData['Total_Amount']  = $amount; // total amount of all items' price (with no sale which is the original price)
-                }
-            }
-        }
+    //     if(isset($cartItems))
+    //     {
+    //         foreach($cartItems as $cartItem)
+    //         {
+    //             // $finalData['id']            = $cartItem->id; // cart ID
+    //             // $finalData['customer_name'] = $cartItem->customer_name;
+    //             // $finalData['quantity']      = $cartItem->quantity;
+    //             // $finalData['price']         = $cartItem->price;
+    //             // $finalData['discount']      = $cartItem->discount;
+    //             // $finalData['total']         = $cartItem->price * $cartItem->quantity;
+    //             if($cartItem->discount > 0){
+    //                 $amount                    += $cartItem->quantity * ($cartItem->price - ($cartItem->price * $cartItem->discount));
+    //                 $finalData['Total_Amount']  = $amount; // total amount of all items' price (after discount which is the sale price)
+    //             }
+    //             elseif($cartItem->discount <= 0 || $cartItem->discount == null || $cartItem->discount == ""){
+    //                 $amount                    += $cartItem->quantity * $cartItem->price;
+    //                 $finalData['Total_Amount']  = $amount; // total amount of all items' price (with no sale which is the original price)
+    //             }
+    //         }
+    //     }
 
-        // return response()->json($finalData);
-        if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which is there is no items already in the cart to be calculated [total amount])
-            return view('website.website.cart.cartErrors.cart-no-total-amount');
-        }
+    //     // return response()->json($finalData);
+    //     if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which is there is no items already in the cart to be calculated [total amount])
+    //         return view('website.website.cart.cartErrors.cart-no-total-amount');
+    //     }
 
-        else{ // the correct condition!
-            return response()->json($finalData);
-        }
-    } // end of "getCartItemsForCheckout" function
+    //     else{ // the correct condition!
+    //         return response()->json($finalData);
+    //     }
+    // } // end of "getCartItemsForCheckout" function
 
     public function cartCheckOutView(){ // the functionality is only available for registered users (Customers ONLY!) + it happens after the cart_registered.blade.php functionalities
         $cartItems       = Cart::where('customer_id',auth()->user()->id)->get();
@@ -155,7 +155,37 @@ class CartController extends Controller
             return redirect()->route('cart-registered');
         }
         else{ // elseif($cartItems_count > 0)
-            return view('website.website.cart.cart_checkout' , compact('cartItems' , 'cartItems_count'));
+            $finalData = []; // an empty array
+
+            $amount = 0; // will be used in the array for the summation of the total amount or price (not for each item!) for ALL THE ITEMS within the cart!!
+
+            if(isset($cartItems))
+            {
+                foreach($cartItems as $cartItem)
+                {
+                    // $finalData['id']            = $cartItem->id; // cart ID
+                    // $finalData['customer_name'] = $cartItem->customer_name;
+                    // $finalData['quantity']      = $cartItem->quantity;
+                    // $finalData['price']         = $cartItem->price;
+                    // $finalData['discount']      = $cartItem->discount;
+                    // $finalData['total']         = $cartItem->price * $cartItem->quantity;
+                    if($cartItem->discount > 0){
+                        $amount                    += $cartItem->quantity * ($cartItem->price - ($cartItem->price * $cartItem->discount));
+                        $finalData['Total_Amount']  = $amount; // total amount of all items' price (after discount which is the sale price)
+                    }
+                    elseif($cartItem->discount <= 0 || $cartItem->discount == null || $cartItem->discount == ""){
+                        $amount                    += $cartItem->quantity * $cartItem->price;
+                        $finalData['Total_Amount']  = $amount; // total amount of all items' price (with no sale which is the original price)
+                    }
+                }
+            }
+
+            if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which is there is no items already in the cart to be calculated [total amount])
+                return view('website.website.cart.cartErrors.cart-no-total-amount');
+            }
+            else{
+                return view('website.website.cart.cart_checkout' , compact('cartItems' , 'cartItems_count' , 'finalData'));
+            }
         }
     } // end of "cartCheckOutView" function
 

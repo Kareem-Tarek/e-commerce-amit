@@ -18,10 +18,14 @@
             <div class="col-lg-3" style="padding-top: 3%;">
                 <h4>Shopping &amp; Categories</h4>
                 <ul>
-                    <li><a href="http://localhost:8000/products#men">Men’s Shopping</a></li>
+                    {{-- <li><a href="http://localhost:8000/products#men">Men’s Shopping</a></li>
                     <li><a href="http://localhost:8000/products#women">Women’s Shopping</a></li>
                     <li><a href="http://localhost:8000/products#kids">Kids' Shopping</a></li>
-                    <li><a href="http://localhost:8000/products#accessories">Accessories' Shopping</a></li>
+                    <li><a href="http://localhost:8000/products#accessories">Accessories' Shopping</a></li> --}}
+                    <li><a href="{{ route('clothes_men_filter') }}">Men’s Shopping</a></li>
+                    <li><a href="{{ route('clothes_women_filter') }}">Women’s Shopping</a></li>
+                    <li><a href="{{ route('clothes_kids_filter') }}">Kids' Shopping</a></li>
+                    <li><a href="{{ route('accessories_all_filter') }}">Accessories' Shopping</a></li>
                 </ul>
             </div>
             <div class="col-lg-3" style="padding-top: 3%;">
