@@ -149,6 +149,20 @@ body {
   }
 }
 
+/* start product (in the slider view in "home" & "products" pages) */
+.product_item_title{
+  color: black;
+}
+.product_item_title:hover{
+  color: #0083FF;
+  transition: all 0.35s ease-in-out;
+}
+.product_item_title:not(:hover){
+  color: black;
+  transition: all 0.35s ease-in-out;
+}
+/* end product (in the slider view in "home" & "products" pages) */
+
 /* start back-end sessions (messages) */
 /* made with the back-end (in controllers) on the "add/update/remove cart", "add rating" & "add/remove favorite" functionalities */
 .session-message{

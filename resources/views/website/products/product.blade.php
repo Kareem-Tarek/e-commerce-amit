@@ -84,12 +84,12 @@
                             <div class="col-lg-6">
                                 <div class="section-heading">
                                     <h2>Men's Latest</h2>
-                                    @if(session()->has('addRating_men_message'))
+                                    {{-- @if(session()->has('addRating_men_message'))
                                         <div class="alert alert-success text-center" style="width: %; margin-top: 1%; margin-left: auto; margin-right: auto;">
                                             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
                                             {{ session()->get('addRating_men_message') }}
                                         </div>
-                                    @endif
+                                    @endif --}}
                                     <span>Details to details is what makes AA different from the other themes.</span>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <a href="{{ route('single_product_page' , $product->id) }}"><h4>{{ $product->name }}</h4></a>
+                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -228,7 +228,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <a href="{{ route('single_product_page' , $product->id) }}"><h4>{{ $product->name }}</h4></a>
+                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -324,7 +324,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <a href="{{ route('single_product_page' , $product->id) }}"><h4>{{ $product->name }}</h4></a>
+                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -420,7 +420,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <a href="{{ route('single_product_page' , $product->id) }}"><h4>{{ $product->name }}</h4></a>
+                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")

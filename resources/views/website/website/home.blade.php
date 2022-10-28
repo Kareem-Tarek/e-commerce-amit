@@ -253,7 +253,7 @@
                                         </a>
                                     </div>
                                     <div class="down-content">
-                                        <h4><a href="{{ route('single_product_page' , $product->id) }}" style="color: black;">{{ $product->name }}</a></h4>
+                                        <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
                                         @if($product->discount > 0)
                                             <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100  }}% OFF)</span></span>
                                         @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
