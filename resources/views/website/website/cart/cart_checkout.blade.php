@@ -127,7 +127,7 @@
         <div class="mt-2">
             <table border="1" cellpadding="3" style="text-align: center; margin-left:auto; margin-right:auto; width: 20%;">
                 <tr>
-                    <th>Subtotal</th> <!-- total price for all products in the cart currently -->
+                    <th>Subtotal</th> <!-- subtotal = total prices of products in cart (with tax) -->
                     <td>
                         @foreach($finalData as $finalData_result)
                             {{ $finalData_result ?? '???'}} EGP
@@ -140,10 +140,10 @@
                 </tr>
                 
                 <tr>
-                    <th>Total</th> <!-- total price for all products in the cart currently + shipping or/and discount coupon -->
+                    <th>Total</th> <!-- total = total prices of products in cart (with tax) + shipping cost + fees + tax on fees - discount coupon -->
                     <td>
                         @foreach($finalData as $finalData_result)
-                        {{ $finalData_result ?? '???'}} EGP                        
+                            <span style="color: navy; font-weight: bold;">{{ $finalData_result ?? '???'}} EGP</span>                    
                         @endforeach
                     </td>
                 </tr>
