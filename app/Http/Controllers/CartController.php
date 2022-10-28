@@ -143,7 +143,7 @@ class CartController extends Controller
     //         return view('website.website.cart.cartErrors.cart-no-total-amount');
     //     }
 
-    //     else{ // the correct condition!
+    //     else{ // the correct condition! elseif($finalData > 0) => which means that there is total quantity calculated or in an another meaning there is +1 product in the cart.
     //         return response()->json($finalData);
     //     }
     // } // end of "getCartItemsForCheckout" function
@@ -180,10 +180,10 @@ class CartController extends Controller
                 }
             }
 
-            if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which is there is no items already in the cart to be calculated [total amount])
+            if($finalData <= 0 || $finalData == null || $finalData == ""){ // the wrong condition (which means that there is no items already in the cart to be calculated [total amount])
                 return view('website.website.cart.cartErrors.cart-no-total-amount');
             }
-            else{
+            else{ // the correct condition! elseif($finalData > 0) => which means that there is total quantity calculated or in an another meaning there is +1 product in the cart
                 return view('website.website.cart.cart_checkout' , compact('cartItems' , 'cartItems_count' , 'finalData'));
             }
         }
