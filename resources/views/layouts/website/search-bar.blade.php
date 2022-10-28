@@ -138,6 +138,10 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .dropdown a, .dropdown .dropdown-menu li a {color: var(--black_color);}
 
+.dropdown a:hover {color: #0083FF; transition: all 0.30s ease-in-out;}
+
+.dropdown a:not(:hover) {transition: all 0.30s ease-in-out;}
+
 .dropdown .dropdown-menu li a:hover {color: #0083FF; transition: all 0.30s ease-in-out;}
 
 .dropdown .dropdown-menu li a:not(:hover) {color: #000000; transition: all 0.30s ease-in-out;}
