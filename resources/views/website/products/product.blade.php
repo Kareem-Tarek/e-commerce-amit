@@ -136,7 +136,22 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
+                                                    <h4>
+                                                        <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
+                                                            {{ $product->name }} 
+                                                            @auth
+                                                                @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                                    <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                                @elseif($product->available_quantity == 0)
+                                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                                @elseif($product->available_quantity > 10)
+                                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                                @endif
+                                                            @endauth
+                                                        </a>
+                                                    </h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -233,7 +248,22 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
+                                                    <h4>
+                                                        <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
+                                                            {{ $product->name }} 
+                                                            @auth
+                                                                @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                                    <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                                @elseif($product->available_quantity == 0)
+                                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                                @elseif($product->available_quantity > 10)
+                                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                                @endif
+                                                            @endauth
+                                                        </a>
+                                                    </h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -329,9 +359,24 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
+                                                    <h4>
+                                                        <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
+                                                            {{ $product->name }} 
+                                                            @auth
+                                                                @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                                    <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                                @elseif($product->available_quantity == 0)
+                                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                                @elseif($product->available_quantity > 10)
+                                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                                @endif
+                                                            @endauth
+                                                        </a>
+                                                    </h4>
                                                     @if($product->discount > 0)
-                                                    <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
+                                                        <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
                                                         <span>{{ $product->price }} EGP</span>
                                                     @endif
@@ -425,7 +470,22 @@
                                                     </a>
                                                 </div>
                                                 <div class="down-content">
-                                                    <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
+                                                    <h4>
+                                                        <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
+                                                            {{ $product->name }} 
+                                                            @auth
+                                                                @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                                    <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                                @elseif($product->available_quantity == 0)
+                                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                                @elseif($product->available_quantity > 10)
+                                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                                @endif
+                                                            @endauth
+                                                        </a>
+                                                    </h4>
                                                     @if($product->discount > 0)
                                                     <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100 }}% OFF)</span></span>
                                                     @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")

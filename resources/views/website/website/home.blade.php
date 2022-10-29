@@ -262,8 +262,14 @@
                                             <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
                                                 {{ $product->name }} 
                                                 @auth
-                                                    @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
-                                                        <span style="color: rgb(59, 188, 59);">(in-stock: {{ $product->available_quantity }})</span>
+                                                    @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                        <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                    @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                        <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                    @elseif($product->available_quantity == 0)
+                                                        <span style="color: red; ">(Out-of-stock)</span>
+                                                    @elseif($product->available_quantity > 10)
+                                                        <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
                                                     @endif
                                                 @endauth
                                             </a>
