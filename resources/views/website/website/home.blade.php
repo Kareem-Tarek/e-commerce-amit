@@ -263,7 +263,10 @@
                                                 {{ $product->name }} 
                                                 @auth
                                                     @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
-                                                        <span style="@if($product->available_quantity <= 10) color: red; @else color: rgb(59, 188, 59); @endif">({{ $product->available_quantity }} left in-stock)</span>
+                                                        <span style="@if($product->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
+                                                            ({{ $product->available_quantity }}
+                                                            @if($product->available_quantity <= 10) Only @endif left in-stock)
+                                                        </span>
                                                     @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
                                                         <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
                                                     @elseif($product->available_quantity == 0)
