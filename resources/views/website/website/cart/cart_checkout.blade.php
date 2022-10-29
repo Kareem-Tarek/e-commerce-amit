@@ -125,23 +125,27 @@
         </div>
 
         <div class="mt-2">
-            <table border="1" cellpadding="3" style="text-align: center; margin-left:auto; margin-right:auto; width: 20%;">
+            <table border="1" cellpadding="3" style="text-align: center; margin-left:auto; margin-right:auto; width: 25%;">
                 <tr>
                     <th>Subtotal</th> <!-- subtotal = total prices of products in cart (with tax) -->
                     <td>
                         @foreach($finalData as $finalData_result)
                             {{ $finalData_result ?? '???'}} EGP
-                            <span style="color:rgb(155, 31, 151); font-weight: bold;">
-                                (?? EGP OFF)
-                            </span>
                         @endforeach
                     </td>
                 </tr>
                 <tr>
-                    <th>Shipping</th>
-                    <td>Free</td>
+                    <th>Discount</th>
+                    <td>
+                        <span style="color:rgb(155, 31, 151); font-weight: bold;">
+                            - {{ 0 }} EGP
+                        </span>
+                    </td>
                 </tr>
-                
+                <tr>
+                    <th>Shipping</th>
+                    <td>???</td>
+                </tr>
                 <tr>
                     <th>Total</th> <!-- total = total prices of products in cart (with tax) + shipping cost + fees + tax on fees - discount coupon -->
                     <td>

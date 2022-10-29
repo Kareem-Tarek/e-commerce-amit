@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable(); //
             $table->string('image_name');
             $table->integer('available_quantity'); // //this column is for admins, moderators & suppliers only!
-            $table->integer('size')->nullable();
+            // $table->integer('size_id')->nullable();
             // $table->enum('size' , ['XS','S','M','L','XL','XXL','XXXL','XXXXL'])->nullable(); //
             $table->string('color')->nullable();
             $table->decimal('price');

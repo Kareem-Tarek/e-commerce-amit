@@ -145,7 +145,7 @@ Route::group([
 Route::group([
     'middleware' => ['unregistered_users' , 'only_customers']
 ], function () {
-    Route::post('/addFavorite/{id}', [FavoriteController::class, 'addFavorite']);
+    Route::post('/addFavorite/{id}', [FavoriteController::class, 'addFavorite'])->name('add-to-favorite');
     Route::get('/favorites', [FavoriteController::class, 'favoritesCustomer'])->name('favorites-registered');
     Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     // Route::get('/favorites/restore/{id}/', [FavoriteController::class, 'restore'])->name('favorites.restore');

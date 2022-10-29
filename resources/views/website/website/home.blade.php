@@ -23,6 +23,11 @@
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
     </div>
+@elseif(session()->has('exceeded_available_quantity_message'))
+    <div class="alert alert-danger text-center session-message">
+        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+        {{ session()->get('exceeded_available_quantity_message') }}
+    </div> 
 @elseif(session()->has('quantity_is_null_message'))
     <div class="alert alert-danger text-center" style="width: 60%; margin-top: 5%; margin-bottom: -1.5%; margin-left: auto; margin-right: auto;">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -253,7 +258,16 @@
                                         </a>
                                     </div>
                                     <div class="down-content">
-                                        <h4><a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a></h4>
+                                        <h4>
+                                            <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">
+                                                {{ $product->name }} 
+                                                @auth
+                                                    @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
+                                                        <span style="color: rgb(59, 188, 59);">(in-stock: {{ $product->available_quantity }})</span>
+                                                    @endif
+                                                @endauth
+                                            </a>
+                                        </h4>
                                         @if($product->discount > 0)
                                             <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100  }}% OFF)</span></span>
                                         @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")

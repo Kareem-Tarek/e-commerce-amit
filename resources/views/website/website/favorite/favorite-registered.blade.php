@@ -28,6 +28,11 @@
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
         </div>
+    @elseif(session()->has('exceeded_available_quantity_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('exceeded_available_quantity_message') }}
+        </div> 
     @elseif(session()->has('quantity_is_null_message'))
         <div class="alert alert-danger text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -67,7 +72,7 @@
             // the following condition is made on the "light" layout (and the other condition "dark" layout will be handled by else in a if condition)
             $now   = Carbon\Carbon::now();
             $start = Carbon\Carbon::createFromTimeString('00:00'); // 12:00 AM
-            $end   = Carbon\Carbon::createFromTimeString('12:00')->addDay(); // 12:00 PM
+            $end   = Carbon\Carbon::createFromTimeString('12:00'); // 12:00 PM
 
             // if ($now->between($start, $end)) {  
             //     echo ....;

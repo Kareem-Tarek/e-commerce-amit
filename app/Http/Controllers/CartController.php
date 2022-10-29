@@ -74,7 +74,7 @@ class CartController extends Controller
                 $cart->quantity = $request->quantity;
             }
             elseif($request->quantity > $cart->available_quantity){ // wrong condition (1): user's inout is more than the available quantity (> max) of the product
-                return 'you entered more than the available quantity (create)!';
+                return redirect()->back()->with('exceeded_available_quantity_message' , 'The quantity that you entered for product "'.$cart->product_name.'" is not available at the moment!');
             }
             elseif($request->quantity == null || $request->quantity == ""){ // wrong condition (2): quantity is equals to "null" or "" value. Which means an empty space value.
                 return redirect()->back()->with('quantity_is_null_message' , 'The quantity value is empty! Please enter a quantity for the "'.$cart->product_name.'" product!');
@@ -213,7 +213,7 @@ class CartController extends Controller
         }
 
         if($request->new_quantity > $cartItem->available_quantity){ // wrong condition (1)
-            return 'you entered more than the available quantity (update)!';
+            return redirect()->back()->with('exceeded_available_quantity_message' , 'The quantity that you entered for product "'.$cartItem->product_name.'" is not available at the moment!');
         }
         elseif($cartItem->quantity == $request->new_quantity){ // wrong condition (2)
             return redirect()->back()->with(['quantity_same_old_new_message' => __('You did not change the quantity! The quantity that you entered for product "'.$cartItem->product_name.'" is the same!')]);
