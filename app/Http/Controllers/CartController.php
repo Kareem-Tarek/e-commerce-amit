@@ -72,6 +72,10 @@ class CartController extends Controller
             // NOTE for quantity: since the input type is number then it will not allow strings (a, b, c, ...z)
             if($request->quantity > 0  && $request->quantity <= $cart->available_quantity){ // from 1 to infinity which is the correct condition!
                 $cart->quantity = $request->quantity;
+                //------ update "available_quantity" column (from product table) when adding to cart any of the products ------//
+                $product->available_quantity = $product->available_quantity - $request->quantity;
+                $product->save();
+                //-------------------------------------------------------------------------------------------------------------//
             }
             elseif($request->quantity > $cart->available_quantity){ // wrong condition (1): user's inout is more than the available quantity (> max) of the product
                 return redirect()->back()->with('exceeded_available_quantity_message' , 'The quantity that you entered for product "'.$cart->product_name.'" is not available at the moment!');
@@ -211,8 +215,15 @@ class CartController extends Controller
                 $cartItem->clothing_type = "Sports Wear";
             } 
         }
-
-        if($request->new_quantity > $cartItem->available_quantity){ // wrong condition (1)
+        if($request->new_quantity > 0 && $request->new_quantity <= $cartItem->available_quantity){ // the correct condition! if($request->new_quantity > 0), because that's the only correct condition!
+            $cartItem->quantity = $request->new_quantity; // all are the same thing => "$_GET['new_quantity']" = "$request->get('new_quantity');" = "$request->new_quantity;"
+            //------ update "available_quantity" column (from product table) when updating the products within the cart ------//
+            $product = Product::find($id);
+            $product->available_quantity = $product->available_quantity - $request->new_quantity;
+            $product->save();
+            //----------------------------------------------------------------------------------------------------------------//
+        }
+        elseif($request->new_quantity > $cartItem->available_quantity){ // wrong condition (1)
             return redirect()->back()->with('exceeded_available_quantity_message' , 'The quantity that you entered for product "'.$cartItem->product_name.'" is not available at the moment!');
         }
         elseif($cartItem->quantity == $request->new_quantity){ // wrong condition (2)
@@ -225,17 +236,15 @@ class CartController extends Controller
             return redirect()->back()->with(['quantity_is_negative_message' => __('You entered ['.$request->new_quantity.'] value for the quantity. The entered value for the quantity for "'.$cartItem->product_name.'" product is in negative!')]);
         }
 
-        if($request->new_quantity == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
+        elseif($request->new_quantity == 0){ // the logic of zero quantity which is the "force delete" action (permanent delete from the front-end & back-end)
             $cartItem->quantity = 0; // the new quantity (which will be zero already in this condition!)
             $cartItem->forceDelete();
             return redirect()->back()->with(['quantity_is_zero_delete_message' => __('The quantity that you entered for product "'.$cartItem->product_name.'" is ('.$cartItem->quantity.'). The product is successfully deleted from your cart!')]);
         }
-        elseif($request->new_quantity > 0 && $request->new_quantity <= $cartItem->available_quantity){ // the correct condition! if($request->new_quantity > 0), because that's the only correct condition!
-            $cartItem->quantity = $request->new_quantity; // all are the same thing => "$_GET['new_quantity']" = "$request->get('new_quantity');" = "$request->new_quantity;"
-            $cartItem->save();
-            return redirect()->route('cart-registered')
+
+        $cartItem->save();
+        return redirect()->route('cart-registered')
             ->with(['quantity_old_new_message' => __('You changed the quantity for product "'.$cartItem->product_name.'" from ('.$cartItem_Old_Quantity.') to ('.$cartItem->quantity.').')]);
-        }
         //////------- the code below is just for checking old quantity and the updated new quantity by using json -------//////
         // return response()->json([
         //     'Cart_ID'                                       => $cartItem->id ,
