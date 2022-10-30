@@ -20,6 +20,7 @@ class Favorite extends Model
         'customer_address' ,
         'product_id' ,
         'product_name' ,
+        'available_quantity' ,
         'product_image' ,
         'is_accessory' ,
         'clothing_type' ,

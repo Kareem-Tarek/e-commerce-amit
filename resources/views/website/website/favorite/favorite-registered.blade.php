@@ -98,7 +98,33 @@
                     <div class="curriculum-event-content d-flex justify-content-center" >
                         <div class="row">
                             <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
-                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" style="color: rgb(3, 3, 191);"> {{ $favoriteItem->product_name }}</a></div>
+                                <div class="c-red text-center">
+                                    @auth
+                                        @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $favoriteItem->available_quantity > 0)
+                                            <span style="@if($favoriteItem->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
+                                                ({{ $favoriteItem->available_quantity }}
+                                                @if($favoriteItem->available_quantity <= 10) Only @endif left in-stock)
+                                            </span>
+                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
+                                            <span style="color: rgb(255, 106, 0);">({{ $favoriteItem->available_quantity }} only left in-stock)</span>
+                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity == 0)
+                                            <span style="color: red; ">(Out-of-stock)</span>
+                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity > 10)
+                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                        @endif
+                                    @endauth
+
+                                    @if(!auth()->user())
+                                        @if($favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
+                                            <span style="color: rgb(255, 106, 0);">({{ $favoriteItem->available_quantity }} only left in-stock)</span>
+                                        @elseif($favoriteItem->available_quantity == 0)
+                                            <span style="color: red; ">(Out-of-stock)</span>
+                                        @elseif($favoriteItem->available_quantity > 10)
+                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                        @endif
+                                    @endif
+                                </div>
+                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" class="product_item_title_in_card"> {{ $favoriteItem->product_name }}</a></div>
                                 @if($favoriteItem->discount > 0)
                                     <div class="c-red"><u>Original Price:</u> <del style="color: red;">{{$favoriteItem->price}} EGP</del></div>
                                     <div class="c-red"><u>Sale Price:</u> <span style="color: green;">{{$favoriteItem->price - ($favoriteItem->price * $favoriteItem->discount) }} EGP</span></div>
