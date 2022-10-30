@@ -323,10 +323,17 @@
             </div>
 
             <!-------------------- second row -------------------->
-            <div class="row justify-content-center mt-4">
-                {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
-                <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
-            </div>
+            @if($products_count < 1)
+                <div class="row justify-content-center mt-4" style="display: none;">
+                    {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
+                    <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
+                </div>
+            @else
+                <div class="row justify-content-center mt-4">
+                    {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
+                    <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
+                </div>
+            @endif
         </div>
     </section>
 </div>
