@@ -1,6 +1,6 @@
 <div>
   <p>
-    <button onclick="topFunction()" id="myScrollUpBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <button onclick="topFunction()" id="myScrollUpBtn" title="Go To Top"><i class="fa-solid fa-arrow-up"></i></button>
   </p>
 </div>
 
@@ -25,8 +25,12 @@
 #myScrollUpBtn:hover {
   /* background-color: #555; Add a dark-grey background on hover */
   background-image: linear-gradient(#0083FF, black);
-  transition: 0.45s all ease-in-out;
+  transition: 0.40s all ease-in-out;
   color: rgb(166, 196, 240);
+}
+
+#myScrollUpBtn:not(:hover) {
+  transition: all 0.25s ease-in-out;
 }
 </style>
 
