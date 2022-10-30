@@ -17,7 +17,12 @@ class DashboardCategoryController extends Controller
 
     public function create()
     {
-        return view('dashboard.categories.create');
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.categories.create');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect()->route('dashboard');
+        }
     }
 
     public function store(Request $request)
