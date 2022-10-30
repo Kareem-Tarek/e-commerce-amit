@@ -61,7 +61,7 @@
         <div class="alert alert-success text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('removeFavorite_message') }}
-            {{-- <a href="{{route('favorites.restore',$favoriteItems->id)}}" onclick="return confirm('Are you sure that you want to restore ('$favoriteItems->product_name')';" class="btn btn-secondary btn-xs" type="button" title="{{'Restore'." ($favoriteItems->product_name)"}}"> Click here to undo action.</a> --}}
+            {{-- <a href="{{route('favorites.restore',$favoriteItems->id)}}" onclick="return confirm('Are you sure that you want to restore ('$favoriteItems->favoriteItem_name')';" class="btn btn-secondary btn-xs" type="button" title="{{'Restore'." ($favoriteItems->favoriteItem_name)"}}"> Click here to undo action.</a> --}}
         </div>
     @endif
 
@@ -79,11 +79,7 @@
             // }
              @endphp
 
-             @if($now->between($start, $end))
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="border: 1px solid black; color: black;">
-            @else
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-dark border" style="border: 1px solid black; color: snow;">
-            @endif
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 @if($now->between($start, $end)) bg-light @else bg-dark  @endif border" style="border: 1px solid black; @if($now->between($start, $end)) color: black; @else color: snow;  @endif">
                     <div class="curriculum-event-thumb">
                         <a href="{{ route('single_product_page' , $favoriteItem->product_id) }}">
                             @php $data = Carbon\Carbon::parse($favoriteItem->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
@@ -100,29 +96,14 @@
                             <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
                                 <div class="c-red text-center">
                                     @auth
-                                        @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $favoriteItem->available_quantity > 0)
-                                            <span style="@if($favoriteItem->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
-                                                ({{ $favoriteItem->available_quantity }}
-                                                @if($favoriteItem->available_quantity <= 10) Only @endif left in-stock)
-                                            </span>
-                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
+                                        @if(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
                                             <span style="color: rgb(255, 106, 0);">({{ $favoriteItem->available_quantity }} only left in-stock)</span>
-                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity == 0)
+                                        @elseif(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity == 0)
                                             <span style="color: red; ">(Out-of-stock)</span>
-                                        @elseif(auth()->user()->user_type == "customer" && $favoriteItem->available_quantity > 10)
+                                        @elseif(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity > 10)
                                             <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
                                         @endif
                                     @endauth
-
-                                    @if(!auth()->user())
-                                        @if($favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
-                                            <span style="color: rgb(255, 106, 0);">({{ $favoriteItem->available_quantity }} only left in-stock)</span>
-                                        @elseif($favoriteItem->available_quantity == 0)
-                                            <span style="color: red; ">(Out-of-stock)</span>
-                                        @elseif($favoriteItem->available_quantity > 10)
-                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
-                                        @endif
-                                    @endif
                                 </div>
                                 <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" class="product_item_title_in_card"> {{ $favoriteItem->product_name }}</a></div>
                                 @if($favoriteItem->discount > 0)
@@ -131,7 +112,7 @@
                                 @elseif($favoriteItem->discount <= 0 || $favoriteItem->discount == null || $favoriteItem->discount == "")
                                     <div class="c-red"><u>Price:</u> {{$favoriteItem->price}} EGP</div>
                                 @endif
-                                <div class="c-red"><u>Category:</u> {{$favoriteItem->product_category}}</div>
+                                <div class="c-red"><u>Category:</u> {{$favoriteItem->favoriteItem_category}}</div>
                                 @if($favoriteItem->is_accessory == 'no')
                                     <div class="c-red"><u>Clothing Type:</u>
                                         @if($favoriteItem->clothing_type == '1')
@@ -156,7 +137,7 @@
                                         @csrf
                                         <div class="input-group">
                                             <!-- declaration for first field -->
-                                            <input class="form-control input-sm" type="number" value="1" min="0" name="quantity" placeholder="Quantity">
+                                            <input class="form-control input-sm" type="number" value="1" min="1" name="quantity" placeholder="Quantity">
                                     
                                             <!-- reducong the gap between them to zero -->
                                             <span class="input-group-btn" style="width: 5px;"></span>
@@ -186,7 +167,7 @@
                                     'route' => ['favorites.destroy',$favoriteItem->id],
                                     'method' => 'delete'
                                 ])!!}
-                                <button class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$favoriteItem->product_name.'] item from your favorites?')}}');" type="submit" title="{{__('Remove')." [$favoriteItem->product_name] item"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
+                                <button class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$favoriteItem->favoriteItem_name.'] item from your favorites?')}}');" type="submit" title="{{__('Remove')." [$favoriteItem->favoriteItem_name] item"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
                                 {!! Form::close() !!}
                             </div>
                         @endif
@@ -194,7 +175,7 @@
             </div>
         @empty
             <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
-                <span>There are no products in your favorites yet!</span>
+                <span>There are no favoriteItems in your favorites yet!</span>
             </div> 
         @endforelse
 

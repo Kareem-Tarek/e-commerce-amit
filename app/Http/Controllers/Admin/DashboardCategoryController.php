@@ -40,7 +40,13 @@ class DashboardCategoryController extends Controller
     public function edit($id)
     {
         $model = Category::findOrFail($id);
-        return view('dashboard.categories.edit',compact('model'));
+        
+        if(auth()->user()->user_type == "admin"){
+            return view('dashboard.categories.edit',compact('model'));
+        }
+        elseif(auth()->user()->user_type == "moderator"){
+            return redirect('/dashboard/categories');
+        }
     }
 
     public function update(Request $request, $id)

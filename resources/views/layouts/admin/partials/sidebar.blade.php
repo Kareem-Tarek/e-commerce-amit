@@ -74,7 +74,7 @@
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Suppliers</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Moderators</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Admins</a></li>
-                                <li><a href="javascript:void(0);" class="javascript:void(0);">Deleted Users</a></li>
+                                <li><a href="javascript:void(0);" class="javascript:void(0);" style="color: rgb(152, 6, 6);" >Deleted Users</a></li>
                             </ul>
                         </li>
                         <!------------- End route users ------------->
@@ -88,9 +88,7 @@
                             <ul class="nav-submenu menu-content" style="">
                                 <li><a href="{{route('categories.create')}}" class="{{route('categories.create')}}">Create Category</a></li>
                                 <li><a href="{{ route('categories.index') }}" class="{{ route('categories.index') }}">All Categories</a></li>
-                                @if(auth()->user()->user_type == "admin")
-                                    <li><a href="{{ route('categories.delete') }}" class="{{ route('categories.delete') }}">Deleted Categories</a></li>
-                                @endif
+                                <li><a href="{{ route('categories.delete') }}" class="{{ route('categories.delete') }}" style="color: rgb(152, 6, 6);">Deleted Categories</a></li>
                             </ul>
                         </li>
                         <!------------- End route categories ------------->
@@ -105,9 +103,7 @@
                             <ul class="nav-submenu menu-content" style="">
                                 {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Create Cart</a></li> --}}
                                 <li><a href="{{ route('carts.index') }}" class="{{ route('carts.index') }}">All Carts</a></li>
-                                @if(auth()->user()->user_type == "admin")
-                                    <li><a href="{{ route('carts.delete') }}" class="javascript:void(0);">Deleted Carts</a></li>
-                                @endif
+                                <li><a href="{{ route('carts.delete') }}" class="javascript:void(0);" style="color: rgb(152, 6, 6);">Deleted Carts</a></li>
                             </ul>
                         </li>
                         <!------------- End route carts ------------->
@@ -130,9 +126,7 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Men</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Women</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Kids</a></li>
-                                @if(auth()->user()->user_type == "admin")
-                                    <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}">Deleted Products</a></li>
-                                @endif
+                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
                             </ul>
                         </li>
                         <!------------- End route products ------------->
@@ -212,7 +206,7 @@
                             <ul class="nav-submenu menu-content" style="">
                                 <li><a href="{{route('products.create')}}" class="{{route('products.create')}}">Create Product</a></li>
                                 <li><a href="{{ route('products.index') }}" class="{{ route('products.index') }}">All Products</a></li>
-                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}">Deleted Products</a></li>
+                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
                             </ul>
                         </li>
                         <!------------- End route products ------------->
