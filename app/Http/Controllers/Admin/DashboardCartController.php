@@ -43,7 +43,7 @@ class DashboardCartController extends Controller
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.carts.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator"){
+        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
             return redirect('/dashboard/carts');
         }
     }

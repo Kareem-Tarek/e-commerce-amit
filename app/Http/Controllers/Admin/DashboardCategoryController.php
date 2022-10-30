@@ -44,7 +44,7 @@ class DashboardCategoryController extends Controller
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.categories.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator"){
+        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
             return redirect('/dashboard/categories');
         }
     }

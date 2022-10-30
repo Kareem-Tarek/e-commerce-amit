@@ -81,7 +81,7 @@ class DashboardProductController extends Controller
     {
         $model = Product::findOrFail($id);
 
-        if(auth()->user()->user_type == "admin"){
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "supplier"){
             return view('dashboard.products.edit',compact('model'));
         }
         elseif(auth()->user()->user_type == "moderator"){
