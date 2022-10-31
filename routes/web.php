@@ -67,15 +67,9 @@ Route::group([
 Route::get('/email-verification', [VerificationController::class, 'index'])->name('email-verification');
 /************************************************************************************************************************/
 
-<<<<<<< HEAD
-/******************************************** Start Forgot Password (reset by Email) Route ********************************************/
-Route::get('/reset-password', [ForgotPasswordController::class, 'add toindex'])->name('reset-password');
-/******************************************** End Forgot Password (reset by Email) Route ********************************************/
-=======
 /************************************* Start Forgot Password (reset by Email) Route *************************************/
 Route::get('/reset-password', [ForgotPasswordController::class, 'index'])->name('reset-password');
 /************************************************************************************************************************/
->>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
 
 /************* Start reset Password (change password by using the email that was used for "Forgot Password") Route *************/
 Route::get('/change-password', [ResetPasswordController::class, 'index'])->name('change-password');

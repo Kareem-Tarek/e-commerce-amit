@@ -9,15 +9,11 @@
 
 @section('content')
 
-<<<<<<< HEAD
-@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then
-=======
 <!-- ***** Search bar Start ***** -->
 @include('layouts.website.search-bar')
 <!-- ***** Search bar End ***** -->
 
-@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then 
->>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
+@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then
                                 hide the table's heading because it is out of the loop already ---->
 <style>
     table{display: none;}
@@ -34,7 +30,7 @@
     <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_same_old_new_message') }}
-    </div> 
+    </div>
 @elseif(session()->has('quantity_is_zero_delete_message'))
     <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
