@@ -31,6 +31,11 @@
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_same_old_new_message') }}
     </div>
+@elseif(session()->has('exceeded_available_quantity_message'))
+    <div class="alert alert-danger text-center session-message">
+        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+        {{ session()->get('exceeded_available_quantity_message') }}
+    </div>
 @elseif(session()->has('quantity_is_zero_delete_message'))
     <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -79,7 +84,7 @@
         </tr>
     </thead>
 
- @forelse($cartItems as $cartItem)
+    @forelse($cartItems as $cartItem)
         <tbody>
             <tr>
                 <th>{{ $loop->iteration}}</th>
@@ -168,8 +173,8 @@
             @empty => acts like else from the if condition and for showing the other choice wich will be the error
             (or the undefined data from the DB) if the data wasn't found in the code in "forelse" loop.
             */
-         ?>
- @endforelse
+        ?>
+    @endforelse
 </table>
 
 <div class="proceed-to-checkout-div text-center mt-5">

@@ -39,7 +39,13 @@ class DashboardCartController extends Controller
     public function edit($id)
     {
         $model = Cart::findOrFail($id);
-        return view('dashboard.carts.edit',compact('model'));
+        
+        if(auth()->user()->user_type == "admin"){
+            return view('dashboard.carts.edit',compact('model'));
+        }
+        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard/carts');
+        }
     }
 
     public function update(Request $request, $id)

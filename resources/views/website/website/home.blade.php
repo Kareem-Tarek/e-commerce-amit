@@ -23,6 +23,11 @@
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
     </div>
+@elseif(session()->has('exceeded_available_quantity_message'))
+    <div class="alert alert-danger text-center session-message">
+        <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+        {{ session()->get('exceeded_available_quantity_message') }}
+    </div> 
 @elseif(session()->has('quantity_is_null_message'))
     <div class="alert alert-danger text-center" style="width: 60%; margin-top: 5%; margin-bottom: -1.5%; margin-left: auto; margin-right: auto;">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -253,7 +258,33 @@
                                         </a>
                                     </div>
                                     <div class="down-content">
-                                        <h4><a href="{{ route('single_product_page' , $product->id) }}" style="color: black;">{{ $product->name }}</a></h4>
+                                        <h4>
+                                            <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a>
+                                            @auth
+                                                @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                                    <span style="@if($product->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
+                                                        ({{ $product->available_quantity }}
+                                                        @if($product->available_quantity <= 10) Only @endif left in-stock)
+                                                    </span>
+                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity == 0)
+                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                @elseif(auth()->user()->user_type == "customer" && $product->available_quantity > 10)
+                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                @endif
+                                            @endauth
+
+                                            @if(!auth()->user())
+                                                @if($product->available_quantity <= 10 && $product->available_quantity != 0)
+                                                    <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                                @elseif($product->available_quantity == 0)
+                                                    <span style="color: red; ">(Out-of-stock)</span>
+                                                @elseif($product->available_quantity > 10)
+                                                    <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                                @endif
+                                            @endif
+                                        </h4>
                                         @if($product->discount > 0)
                                             <span><del style="color: red;">{{ $product->price }} EGP</del> <label style="color: #000;">&RightArrow;</label> {{ $product->price - ($product->price * $product->discount) }} EGP <span style="color:rgb(155, 31, 151); font-weight: bold; display:inline-block;">({{ $product->discount * 100  }}% OFF)</span></span>
                                         @elseif($product->discount <= 0 || $product->discount == null || $product->discount == "")
@@ -266,6 +297,9 @@
                                             <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                         </ul> --}}
+                                        <div class="text-left" style="color:rgb(72, 125, 171);">
+                                            (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                        </div>
                                         @auth
                                             @if(auth()->user()->user_type == 'admin')
                                                 @include('layouts.website.admin-product-control-website')
@@ -278,7 +312,7 @@
 
                                         @if(Auth::guest())
                                             <div style="margin-top: 2%; margin-bottom: 2%;">
-                                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" style="padding: 9px 25px;">Add To Cart</a>
                                                 <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                                             </div>
                                         @endif
@@ -292,10 +326,14 @@
             </div>
 
             <!-------------------- second row -------------------->
-            <div class="row justify-content-center mt-4">
-                {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
-                <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
-            </div>
+            @if($products_count < 1)
+                <!-- empty area -->
+            @else
+                <div class="row justify-content-center mt-4">
+                    <!-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> -->
+                    <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
+                </div>
+            @endif
         </div>
     </section>
 </div>

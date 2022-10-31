@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->enum('size' , ['XS','S','M','L','XL','XXL','XXXL','XXXXL']);
+            // $table->enum('size' , ['XS','S','M','L','XL','XXL','XXXL','XXXXL']);
+            $table->string('XS')->default('XS')->nullable();
+            $table->string('S')->default('S')->nullable();
+            $table->string('M')->default('M')->nullable();
+            $table->string('L')->default('L')->nullable();
+            $table->string('XL')->default('XL')->nullable();
+            $table->string('XXL')->default('XXL')->nullable();
+            $table->string('XXXL')->default('XXXL')->nullable();
+            $table->string('XXXXL')->default('XXXXL')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

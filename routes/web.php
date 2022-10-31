@@ -125,14 +125,12 @@ Route::group([
 ], function () {
     Route::get('/cart-guest', [CartController::class , 'cart_unregistered'])->name('cart-unregistered'); //will open a page that tells the guests to login for accessing the cart page (from the URL)
 });
-// Route::get('/checkout/get/item/{id}', [CartController::class, 'getCartItemsForCheckout']);
 Route::group([
     'middleware' => ['unregistered_users' , 'only_customers']
 ], function () {
-    //if($product>id == $cart->product_id){};
     Route::post('/addCart/{id}', [CartController::class, 'addCart']);
     Route::post('/update-cart-items-quantity/{id}', [CartController::class, 'update_cart_items_quantity']);
-    Route::get('/checkout/get/items', [CartController::class, 'getCartItemsForCheckout']); // total amount!
+    // Route::get('/checkout/get/items', [CartController::class, 'getCartItemsForCheckout']); // total amount!
     Route::get('/checkout-items-details', [CartController::class, 'cartCheckOutView'])->name('checkout_details');
     Route::delete('/checkout-items-details/{id}', [CartController::class, 'destroy_for_cart_and_checkout'])->name('cart_and_checkout.destroy');
 });
@@ -147,7 +145,7 @@ Route::group([
 Route::group([
     'middleware' => ['unregistered_users' , 'only_customers']
 ], function () {
-    Route::post('/addFavorite/{id}', [FavoriteController::class, 'addFavorite']);
+    Route::post('/addFavorite/{id}', [FavoriteController::class, 'addFavorite'])->name('add-to-favorite');
     Route::get('/favorites', [FavoriteController::class, 'favoritesCustomer'])->name('favorites-registered');
     Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     // Route::get('/favorites/restore/{id}/', [FavoriteController::class, 'restore'])->name('favorites.restore');

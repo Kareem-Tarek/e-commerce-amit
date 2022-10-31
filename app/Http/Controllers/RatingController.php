@@ -40,6 +40,7 @@ class RatingController extends Controller
             }
             $rating->customer_id      = $user->id;
             $rating->product_id       = $product->id;
+            $rating->product_name     = $product->name;
             $rating->save(); 
 
             return redirect()->back()->with('addRating_message' , 'You rated "'.$product->name.'" product as ['.$request->rating_level.']');

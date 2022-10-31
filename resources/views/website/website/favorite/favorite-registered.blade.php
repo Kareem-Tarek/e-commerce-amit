@@ -28,6 +28,11 @@
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
         </div>
+    @elseif(session()->has('exceeded_available_quantity_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('exceeded_available_quantity_message') }}
+        </div> 
     @elseif(session()->has('quantity_is_null_message'))
         <div class="alert alert-danger text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -56,7 +61,7 @@
         <div class="alert alert-success text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('removeFavorite_message') }}
-            {{-- <a href="{{route('favorites.restore',$favoriteItems->id)}}" onclick="return confirm('Are you sure that you want to restore ('$favoriteItems->product_name')';" class="btn btn-secondary btn-xs" type="button" title="{{'Restore'." ($favoriteItems->product_name)"}}"> Click here to undo action.</a> --}}
+            {{-- <a href="{{route('favorites.restore',$favoriteItems->id)}}" onclick="return confirm('Are you sure that you want to restore ('$favoriteItems->favoriteItem_name')';" class="btn btn-secondary btn-xs" type="button" title="{{'Restore'." ($favoriteItems->favoriteItem_name)"}}"> Click here to undo action.</a> --}}
         </div>
     @endif
 
@@ -67,18 +72,14 @@
             // the following condition is made on the "light" layout (and the other condition "dark" layout will be handled by else in a if condition)
             $now   = Carbon\Carbon::now();
             $start = Carbon\Carbon::createFromTimeString('00:00'); // 12:00 AM
-            $end   = Carbon\Carbon::createFromTimeString('12:00')->addDay(); // 12:00 PM
+            $end   = Carbon\Carbon::createFromTimeString('12:00'); // 12:00 PM
 
             // if ($now->between($start, $end)) {  
             //     echo ....;
             // }
              @endphp
 
-             @if($now->between($start, $end))
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-light border" style="border: 1px solid black; color: black;">
-            @else
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 bg-dark border" style="border: 1px solid black; color: snow;">
-            @endif
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3 @if($now->between($start, $end)) bg-light @else bg-dark  @endif border" style="border: 1px solid black; @if($now->between($start, $end)) color: black; @else color: snow;  @endif">
                     <div class="curriculum-event-thumb">
                         <a href="{{ route('single_product_page' , $favoriteItem->product_id) }}">
                             @php $data = Carbon\Carbon::parse($favoriteItem->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
@@ -93,14 +94,25 @@
                     <div class="curriculum-event-content d-flex justify-content-center" >
                         <div class="row">
                             <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
-                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" style="color: rgb(3, 3, 191);"> {{ $favoriteItem->product_name }}</a></div>
+                                <div class="c-red text-center">
+                                    @auth
+                                        @if(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity <= 10 && $favoriteItem->available_quantity != 0)
+                                            <span style="color: rgb(255, 106, 0);">({{ $favoriteItem->available_quantity }} only left in-stock)</span>
+                                        @elseif(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity == 0)
+                                            <span style="color: red; ">(Out-of-stock)</span>
+                                        @elseif(/* auth()->user()->user_type == "customer" && */ $favoriteItem->available_quantity > 10)
+                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                        @endif
+                                    @endauth
+                                </div>
+                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $favoriteItem->product_id) }}" class="product_item_title_in_card"> {{ $favoriteItem->product_name }}</a></div>
                                 @if($favoriteItem->discount > 0)
                                     <div class="c-red"><u>Original Price:</u> <del style="color: red;">{{$favoriteItem->price}} EGP</del></div>
                                     <div class="c-red"><u>Sale Price:</u> <span style="color: green;">{{$favoriteItem->price - ($favoriteItem->price * $favoriteItem->discount) }} EGP</span></div>
                                 @elseif($favoriteItem->discount <= 0 || $favoriteItem->discount == null || $favoriteItem->discount == "")
                                     <div class="c-red"><u>Price:</u> {{$favoriteItem->price}} EGP</div>
                                 @endif
-                                <div class="c-red"><u>Category:</u> {{$favoriteItem->product_category}}</div>
+                                <div class="c-red"><u>Category:</u> {{$favoriteItem->favoriteItem_category}}</div>
                                 @if($favoriteItem->is_accessory == 'no')
                                     <div class="c-red"><u>Clothing Type:</u>
                                         @if($favoriteItem->clothing_type == '1')
@@ -117,6 +129,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-2 mb-2" style="color:rgb(72, 125, 171);">
+                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $favoriteItem->product_id)->count() }}) 
+                    </div>
                     @auth
                         @if(auth()->user()->user_type == 'customer')
                             <div style="width: 70%; margin-left: auto; margin-right: auto;">
@@ -125,7 +140,7 @@
                                         @csrf
                                         <div class="input-group">
                                             <!-- declaration for first field -->
-                                            <input class="form-control input-sm" type="number" value="1" min="0" name="quantity" placeholder="Quantity">
+                                            <input class="form-control input-sm" type="number" value="1" min="1" name="quantity" placeholder="Quantity">
                                     
                                             <!-- reducong the gap between them to zero -->
                                             <span class="input-group-btn" style="width: 5px;"></span>
@@ -137,7 +152,7 @@
                                 <!-- end add to cart -->
 
                                 <!-- start add rating -->
-                                    <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
+                                    {{-- <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
                                         @csrf
                                         <div class="input-group">                                    
                                             <select name="rating_level" class="form-control" onchange="this.form.submit()"> <!-- onchange="this.form.submit()" submits the form without the use of input/button type submit -->
@@ -149,13 +164,61 @@
                                                 <option value="5">Excellent</option> <!----- Excellent ----->
                                             </select>
                                         </div>
+                                    </form> --}}
+                                    <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
+                                        @csrf
+                                        <div class="star-wrapper">
+                                            @foreach(range(5,1) as $i)
+                                                <input class="fas fa-star star_{{ $i }}" value="{{ $i }}" type="radio" name="rating_level" onchange="this.form.submit()"/>
+                                                <label class="fas fa-star star_{{ $i }}" class="star_{{ $i }}" for="star_{{ $i }}"></label>
+                                            @endforeach
+                                        </div>
                                     </form>
+                                    <style>
+                                        .star-wrapper {
+                                            margin-left: auto;
+                                            margin-right: auto;
+                                            position: relative;
+                                            direction: rtl;
+                                        }
+                                        .star-wrapper label {
+                                            font-size: 0.9em;
+                                            color: rgba(179, 172, 172, 0.61);
+                                            text-decoration: none;
+                                            transition: all 0.5s;
+                                            margin: 4px;
+                                        }
+                                        .star-wrapper label:hover {
+                                            color: gold;
+                                            transform: scale(1.35);
+                                        }
+                                        .star_1:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_2:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_3:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_4:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_5:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .wraper {
+                                            position: absolute;
+                                            bottom: 30px;
+                                            right: 50px;
+                                        }
+                                    </style>
                                 <!-- end add rating -->
                                 {!! Form::open([
                                     'route' => ['favorites.destroy',$favoriteItem->id],
                                     'method' => 'delete'
                                 ])!!}
-                                <button class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$favoriteItem->product_name.'] item from your favorites?')}}');" type="submit" title="{{__('Remove')." [$favoriteItem->product_name] item"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
+                                <button class="btn btn-danger btn-sm" style="width: 100%;" onclick="return confirm('{{__('Are you sure that you want to remove the ['.$favoriteItem->favoriteItem_name.'] item from your favorites?')}}');" type="submit" title="{{__('Remove')." [$favoriteItem->favoriteItem_name] item"}}"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Remove</button>
                                 {!! Form::close() !!}
                             </div>
                         @endif
@@ -163,7 +226,7 @@
             </div>
         @empty
             <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
-                <span>There are no products in your favorites yet!</span>
+                <span>There are no favoriteItems in your favorites yet!</span>
             </div> 
         @endforelse
 

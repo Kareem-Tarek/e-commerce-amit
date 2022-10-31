@@ -2,7 +2,7 @@
     @csrf
     <div class="input-group">
         <!-- declaration for first field -->
-        <input class="form-control input-sm" type="number" value="1" min="" name="quantity" placeholder="Quantity">
+        <input class="form-control input-sm" type="number" value="1" min="1" name="quantity" placeholder="Quantity">
 
         <!-- reducong the gap between them to zero -->
         <span class="input-group-btn" style="width: 5px;"></span>

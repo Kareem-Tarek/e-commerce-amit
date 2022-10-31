@@ -38,6 +38,11 @@
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
         </div>
+    @elseif(session()->has('exceeded_available_quantity_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('exceeded_available_quantity_message') }}
+        </div> 
     @elseif(session()->has('quantity_is_null_message'))
         <div class="alert alert-danger text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -91,7 +96,33 @@
                     <div class="curriculum-event-content d-flex justify-content-center">
                         <div class="row">
                             <div class="col-lg-12 col-sm-8 col-md-8 text-left mt-1">
-                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $product->id) }}" style="color: rgb(3, 3, 191);"> {{$product->name}}</a></div>
+                                <div class="c-red text-center">
+                                    @auth
+                                        @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
+                                            <span style="@if($product->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
+                                                ({{ $product->available_quantity }}
+                                                @if($product->available_quantity <= 10) Only @endif left in-stock)
+                                            </span>
+                                        @elseif(auth()->user()->user_type == "customer" && $product->available_quantity <= 10 && $product->available_quantity != 0)
+                                            <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                        @elseif(auth()->user()->user_type == "customer" && $product->available_quantity == 0)
+                                            <span style="color: red; ">(Out-of-stock)</span>
+                                        @elseif(auth()->user()->user_type == "customer" && $product->available_quantity > 10)
+                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                        @endif
+                                    @endauth
+
+                                    @if(!auth()->user())
+                                        @if($product->available_quantity <= 10 && $product->available_quantity != 0)
+                                            <span style="color: rgb(255, 106, 0);">({{ $product->available_quantity }} only left in-stock)</span>
+                                        @elseif($product->available_quantity == 0)
+                                            <span style="color: red; ">(Out-of-stock)</span>
+                                        @elseif($product->available_quantity > 10)
+                                            <span style="color: rgb(59, 188, 59); ">(In-stock)</span>
+                                        @endif
+                                    @endif
+                                </div>
+                                <div class="c-red"><u>Title:</u><a href="{{ route('single_product_page' , $product->id) }}" class="product_item_title_in_card"> {{$product->name}}</a></div>
                                 @if($product->discount > 0)
                                     <div class="c-red"><u>Original Price:</u> <del style="color: red;">{{$product->price}} EGP</del></div>
                                     <div class="c-red"><u>Sale Price:</u> <span style="color: green;">{{$product->price - ($product->price * $product->discount) }} EGP</span> <span style="color:rgb(155, 31, 151); font-weight: bold;">({{ $product->discount * 100 }}% OFF)</span></div>
@@ -118,6 +149,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-2 mb-2" style="color:rgb(72, 125, 171);">
+                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                    </div>
                     @auth
                         @if(auth()->user()->user_type == 'admin')
                             @include('layouts.website.admin-product-control-website')
@@ -132,7 +166,7 @@
 
                     @if(Auth::guest())
                         <div style="margin-top: 2%; margin-bottom: 3%;">
-                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                            <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" style="padding: 9px 25px;">Add To Cart</a>
                             <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                         </div>
                     @endif

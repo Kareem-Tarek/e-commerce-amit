@@ -14,26 +14,16 @@
     @include('layouts.website.search-bar')
     <!-- ***** Search bar End ***** -->
 
-    <div style="margin-top: -7%;">
-        <!-- ***** Main Banner Area Start ***** -->
-        <div class="page-heading" id="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="inner-content">
-                            <p style="color: snow; font-size: 300%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ***** Main Banner Area End ***** -->
-
-        @if(session()->has('addCart_message'))
+    @if(session()->has('addCart_message'))
         <div class="alert alert-success text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
             {{ session()->get('addCart_message') }}<a href="{{ route('cart-registered') }}"> Check your cart</a>.
         </div>
+    @elseif(session()->has('exceeded_available_quantity_message'))
+        <div class="alert alert-danger text-center session-message">
+            <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
+            {{ session()->get('exceeded_available_quantity_message') }}
+        </div> 
     @elseif(session()->has('quantity_is_null_message'))
         <div class="alert alert-danger text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -69,6 +59,21 @@
             {{ session()->get('addFavorite_already_added_message') }}
         </div>
     @endif
+
+    <div style="margin-top: -8%;">
+        <!-- ***** Main Banner Area Start ***** -->
+        <div class="page-heading" id="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner-content">
+                            <p style="color: snow; font-size: 300%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Main Banner Area End ***** -->
 
         <!-- ***** Product Area Starts ***** -->
         <section class="section" id="product">
@@ -142,6 +147,9 @@
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                         </ul> --}}
+                        <div class="text-center mt-3 mb-2" style="color:rgb(72, 125, 171);">
+                            (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                        </div>
                         @auth
                             @if(auth()->user()->user_type == "customer")
                                 @include('layouts.website.addRating-form')
@@ -174,7 +182,7 @@
                         @if(!auth()->user())
                             <hr>
                             <div>
-                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" name="">Add To Cart</a>
+                                <a class="add-to-cart-btn" href="{{ route('cart-unregistered') }}" style="padding: 9px 25px;">Add To Cart</a>
                                 <a class="add-to-favorites-btn" href="{{ route('favorites-unregistered') }}">Add To Favorites</a>
                             </div>
                         @endif

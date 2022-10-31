@@ -25,24 +25,25 @@ class FavoriteController extends Controller
     {
         if(Auth::id()){
 
-            $user                       = auth()->user(); // currently logged in user account which are customer ONLY!
-            $product                    = Product::find($id); // find data from products table by id
+            $user                         = auth()->user(); // currently logged in user account which are customer ONLY!
+            $product                      = Product::find($id); // find data from products table by id
 
-            $favorite                   = new Favorite; // new data entry for the current entity (Favorite)
-            $favorite->customer_name    = $user->name;
-            $favorite->customer_phone   = $user->phone;
-            $favorite->customer_email   = $user->email;
-            $favorite->customer_address = $user->address;
-            $favorite->product_id       = $product->id;
-            $favorite->product_name     = $product->name;
-            $favorite->product_image    = $product->image_name;
-            $favorite->is_accessory     = $product->is_accessory;
-            $favorite->clothing_type    = $product->clothing_type;
-            $favorite->product_category = $product->product_category;
+            $favorite                     = new Favorite; // new data entry for the current entity (Favorite)
+            $favorite->customer_name      = $user->name;
+            $favorite->customer_phone     = $user->phone;
+            $favorite->customer_email     = $user->email;
+            $favorite->customer_address   = $user->address;
+            $favorite->product_id         = $product->id;
+            $favorite->product_name       = $product->name;
+            $favorite->available_quantity = $product->available_quantity;
+            $favorite->product_image      = $product->image_name;
+            $favorite->is_accessory       = $product->is_accessory;
+            $favorite->clothing_type      = $product->clothing_type;
+            $favorite->product_category   = $product->product_category;
             // unlike the Cart -> NO Quantity because we are just adding the product to favorites
-            $favorite->price            = $product->price;
-            $favorite->discount         = $product->discount;
-            $favorite->customer_id      = $user->id;
+            $favorite->price              = $product->price;
+            $favorite->discount           = $product->discount;
+            $favorite->customer_id        = $user->id;
             // $favorite->save(); 
             // return redirect()->back()->with('addFavorite_message' , '"'.$product->name.'" is successfully added to your favorites!');
 

@@ -11,7 +11,7 @@ class Cart extends Model
 {
     use HasApiTokens , HasFactory , SoftDeletes;
 
-    public $table = 'cart';
+    public $table = 'carts';
 
     protected $fillable = [
         'customer_name' ,

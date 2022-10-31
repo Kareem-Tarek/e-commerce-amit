@@ -17,7 +17,12 @@ class DashboardCategoryController extends Controller
 
     public function create()
     {
-        return view('dashboard.categories.create');
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.categories.create');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect()->route('dashboard');
+        }
     }
 
     public function store(Request $request)
@@ -40,7 +45,13 @@ class DashboardCategoryController extends Controller
     public function edit($id)
     {
         $model = Category::findOrFail($id);
-        return view('dashboard.categories.edit',compact('model'));
+        
+        if(auth()->user()->user_type == "admin"){
+            return view('dashboard.categories.edit',compact('model'));
+        }
+        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard/categories');
+        }
     }
 
     public function update(Request $request, $id)

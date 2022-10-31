@@ -149,6 +149,32 @@ body {
   }
 }
 
+/* start product items in the card view (not the slider view!) */
+.product_item_title_in_card:hover{
+  color: rgb(3, 3, 243);
+  transition: all 0.30s ease-in-out;
+ }
+
+ .product_item_title_in_card:not(:hover){
+  color: rgb(96, 79, 204);
+  transition: all 0.30s ease-in-out;
+ }
+/* start product items in the card view (not the slider view!) */
+
+/* start product (in the slider view in "home" & "products" pages) */
+.product_item_title{
+  color: black;
+}
+.product_item_title:hover{
+  color: #0083FF;
+  transition: all 0.35s ease-in-out;
+}
+.product_item_title:not(:hover){
+  color: black;
+  transition: all 0.35s ease-in-out;
+}
+/* end product (in the slider view in "home" & "products" pages) */
+
 /* start back-end sessions (messages) */
 /* made with the back-end (in controllers) on the "add/update/remove cart", "add rating" & "add/remove favorite" functionalities */
 .session-message{
@@ -200,7 +226,7 @@ body {
   background-color: rgba(65, 16, 240, 0.08) !important;
   color: #2a2a2a !important;
   border: 1px solid #2a2a2a !important;
-  padding: 9px 25px;
+  padding: 7px 12px;
   display: inline-block;
   font-weight: 500;
   transition: all .3s;

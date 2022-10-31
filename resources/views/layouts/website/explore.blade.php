@@ -20,16 +20,16 @@
                 <div class="right-content">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="leather">
+                            @foreach($latest_product as $latest_product_result)
+                            <div class="leather" style="/* background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ 'assets/images/'.$latest_product_result->image_name }}'); */">
                                 <h4>
-                                    @foreach($latest_product as $latest_product_result)
-                                        <a href="{{ route('single_product_page' , $latest_product_result->id) }}" style="color:inherit; transition: all 0.25s ease-in-out;" onMouseOver="this.style.color='#3385ff'" onMouseOut="this.style.color='inherit'">
-                                            {{ $latest_product_result->name ?? 'No product found!' }}
-                                        </a>
-                                    @endforeach
+                                    <a href="{{ route('single_product_page' , $latest_product_result->id) }}" style="color:inherit; transition: all 0.25s ease-in-out;" onMouseOver="this.style.color='#3385ff'" onMouseOut="this.style.color='inherit'">
+                                        {{ $latest_product_result->name ?? 'No product found!' }}
+                                    </a>
                                 </h4>
                                 <span>Checkout Latest Items</span>
                             </div>
+                            @endforeach
                         </div>
                         <div class="col-lg-6">
                             <div class="first-image">
