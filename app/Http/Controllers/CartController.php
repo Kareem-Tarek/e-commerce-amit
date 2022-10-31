@@ -215,6 +215,7 @@ class CartController extends Controller
                 $cartItem->clothing_type = "Sports Wear";
             } 
         }
+        
         if($request->new_quantity > 0 && $request->new_quantity <= $cartItem->available_quantity){ // the correct condition! if($request->new_quantity > 0), because that's the only correct condition!
             $cartItem->quantity = $request->new_quantity; // all are the same thing => "$_GET['new_quantity']" = "$request->get('new_quantity');" = "$request->new_quantity;"
             //------ update "available_quantity" column (from product table) when updating the products within the cart ------//
