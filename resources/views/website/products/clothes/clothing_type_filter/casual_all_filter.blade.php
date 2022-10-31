@@ -147,6 +147,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-2 mb-2" style="color:rgb(72, 125, 171);">
+                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                    </div>
                     @auth
                         @if(auth()->user()->user_type == 'admin')
                             @include('layouts.website.admin-product-control-website')

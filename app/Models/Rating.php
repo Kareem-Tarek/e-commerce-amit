@@ -15,6 +15,7 @@ class Rating extends Model
         'rating',
         'customer_id',
         'product_id',
+        'product_name' ,
     ];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\belongsTo

@@ -15,9 +15,10 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->enum('rating_level' , [1, 2, 3, 4, 5])->nullable();
-            $table->string('customer_id')->nullable();
-            $table->string('product_id')->nullable();
+            $table->enum('rating_level' , [1, 2, 3, 4, 5]);
+            $table->string('customer_id');
+            $table->integer('product_id');
+            $table->string('product_name');
             $table->timestamps();
             $table->rememberToken();
             $table->softDeletes();

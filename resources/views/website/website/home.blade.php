@@ -297,6 +297,9 @@
                                             <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                         </ul> --}}
+                                        <div class="text-left" style="color:rgb(72, 125, 171);">
+                                            (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                        </div>
                                         @auth
                                             @if(auth()->user()->user_type == 'admin')
                                                 @include('layouts.website.admin-product-control-website')
@@ -324,13 +327,10 @@
 
             <!-------------------- second row -------------------->
             @if($products_count < 1)
-                <div class="row justify-content-center mt-4" style="display: none;">
-                    {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
-                    <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
-                </div>
+                <!-- empty area -->
             @else
                 <div class="row justify-content-center mt-4">
-                    {{-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> --}}
+                    <!-- <a href="{{ route('products') }}" class="browse-more-products-link">Browse More..</a> -->
                     <div class="main-border-browse-more-button"><a href="{{ route('products') }}">Browse More..</a></div>
                 </div>
             @endif

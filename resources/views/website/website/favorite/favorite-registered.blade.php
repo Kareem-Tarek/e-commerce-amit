@@ -129,6 +129,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-2 mb-2" style="color:rgb(72, 125, 171);">
+                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $favoriteItem->product_id)->count() }}) 
+                    </div>
                     @auth
                         @if(auth()->user()->user_type == 'customer')
                             <div style="width: 70%; margin-left: auto; margin-right: auto;">
@@ -149,7 +152,7 @@
                                 <!-- end add to cart -->
 
                                 <!-- start add rating -->
-                                    <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
+                                    {{-- <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
                                         @csrf
                                         <div class="input-group">                                    
                                             <select name="rating_level" class="form-control" onchange="this.form.submit()"> <!-- onchange="this.form.submit()" submits the form without the use of input/button type submit -->
@@ -161,7 +164,55 @@
                                                 <option value="5">Excellent</option> <!----- Excellent ----->
                                             </select>
                                         </div>
+                                    </form> --}}
+                                    <form action="{{ url('addRating' , $favoriteItem->product_id) }}" method="POST" id="addRating-form" style="margin-top: 2%; margin-bottom: 3%;">
+                                        @csrf
+                                        <div class="star-wrapper">
+                                            @foreach(range(5,1) as $i)
+                                                <input class="fas fa-star star_{{ $i }}" value="{{ $i }}" type="radio" name="rating_level" onchange="this.form.submit()"/>
+                                                <label class="fas fa-star star_{{ $i }}" class="star_{{ $i }}" for="star_{{ $i }}"></label>
+                                            @endforeach
+                                        </div>
                                     </form>
+                                    <style>
+                                        .star-wrapper {
+                                            margin-left: auto;
+                                            margin-right: auto;
+                                            position: relative;
+                                            direction: rtl;
+                                        }
+                                        .star-wrapper label {
+                                            font-size: 0.9em;
+                                            color: rgba(179, 172, 172, 0.61);
+                                            text-decoration: none;
+                                            transition: all 0.5s;
+                                            margin: 4px;
+                                        }
+                                        .star-wrapper label:hover {
+                                            color: gold;
+                                            transform: scale(1.35);
+                                        }
+                                        .star_1:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_2:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_3:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_4:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .star_5:hover ~ label {
+                                            color: gold;
+                                        }
+                                        .wraper {
+                                            position: absolute;
+                                            bottom: 30px;
+                                            right: 50px;
+                                        }
+                                    </style>
                                 <!-- end add rating -->
                                 {!! Form::open([
                                     'route' => ['favorites.destroy',$favoriteItem->id],

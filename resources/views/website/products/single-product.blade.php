@@ -14,21 +14,6 @@
     @include('layouts.website.search-bar')
     <!-- ***** Search bar End ***** -->
 
-    <div style="margin-top: -7%;">
-        <!-- ***** Main Banner Area Start ***** -->
-        <div class="page-heading" id="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="inner-content">
-                            <p style="color: snow; font-size: 300%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ***** Main Banner Area End ***** -->
-
     @if(session()->has('addCart_message'))
         <div class="alert alert-success text-center session-message">
             <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -74,6 +59,21 @@
             {{ session()->get('addFavorite_already_added_message') }}
         </div>
     @endif
+
+    <div style="margin-top: -8%;">
+        <!-- ***** Main Banner Area Start ***** -->
+        <div class="page-heading" id="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner-content">
+                            <p style="color: snow; font-size: 300%; font-weight: bolder; font-family:Verdana, Geneva, Tahoma, sans-serif;">{{ $product->name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Main Banner Area End ***** -->
 
         <!-- ***** Product Area Starts ***** -->
         <section class="section" id="product">
@@ -147,6 +147,9 @@
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                         </ul> --}}
+                        <div class="text-center mt-3 mb-2" style="color:rgb(72, 125, 171);">
+                            (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                        </div>
                         @auth
                             @if(auth()->user()->user_type == "customer")
                                 @include('layouts.website.addRating-form')

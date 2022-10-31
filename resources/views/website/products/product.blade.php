@@ -175,6 +175,9 @@
                                                         <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul> --}}
+                                                    <div class="text-left" style="color:rgb(72, 125, 171);">
+                                                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                                    </div>
                                                     @auth
                                                         @if(auth()->user()->user_type == 'admin')
                                                             @include('layouts.website.admin-product-control-website')
@@ -298,6 +301,9 @@
                                                         <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul> --}}
+                                                    <div class="text-left" style="color:rgb(72, 125, 171);">
+                                                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                                    </div>
                                                     @auth
                                                         @if(auth()->user()->user_type == 'admin')
                                                             @include('layouts.website.admin-product-control-website')
@@ -420,6 +426,9 @@
                                                         <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul> --}}
+                                                    <div class="text-left" style="color:rgb(72, 125, 171);">
+                                                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                                    </div>
                                                     @auth
                                                         @if(auth()->user()->user_type == 'admin')
                                                             @include('layouts.website.admin-product-control-website')
@@ -542,6 +551,9 @@
                                                         <li><i class="fa fa-star" style="color: orange; width:13%;"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul> --}}
+                                                    <div class="text-left" style="color:rgb(72, 125, 171);">
+                                                        (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                                    </div>
                                                     @auth
                                                         @if(auth()->user()->user_type == 'admin')
                                                             @include('layouts.website.admin-product-control-website')

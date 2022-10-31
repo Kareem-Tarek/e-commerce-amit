@@ -149,7 +149,7 @@ body {
   }
 }
 
-/**/
+/* start product items in the card view (not the slider view!) */
 .product_item_title_in_card:hover{
   color: rgb(3, 3, 243);
   transition: all 0.30s ease-in-out;
@@ -159,7 +159,7 @@ body {
   color: rgb(96, 79, 204);
   transition: all 0.30s ease-in-out;
  }
-/**/
+/* start product items in the card view (not the slider view!) */
 
 /* start product (in the slider view in "home" & "products" pages) */
 .product_item_title{
