@@ -112,7 +112,7 @@
                                 @elseif($favoriteItem->discount <= 0 || $favoriteItem->discount == null || $favoriteItem->discount == "")
                                     <div class="c-red"><u>Price:</u> {{$favoriteItem->price}} EGP</div>
                                 @endif
-                                <div class="c-red"><u>Category:</u> {{$favoriteItem->product_category}}</div>
+                                <div class="c-red"><u>Category:</u> {{ucfirst($favoriteItem->product_category)}}</div>
                                 @if($favoriteItem->is_accessory == 'no')
                                     <div class="c-red"><u>Clothing Type:</u>
                                         @if($favoriteItem->clothing_type == '1')
