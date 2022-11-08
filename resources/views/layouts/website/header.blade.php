@@ -7,7 +7,7 @@
                         {{-- <i class="fas fa-heart"></i>
                             <i class="fa-solid fa-k"></i>a</i></i><i class="fa-solid fa-r"></i></i>ee</i><i class="fa-solid fa-m"></i>
                         <i class="fas fa-heart"></i> --}}
-                        <img src="assets/images/Anywhere-Anytime(1).png" alt="AA.png"  >
+                        <img src="/assets/images/Anywhere-Anytime(1).png" alt="AA.png"  >
                     </a>
                     <!-- ***** Logo End ***** -->
 

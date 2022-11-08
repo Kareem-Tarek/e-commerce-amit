@@ -107,7 +107,7 @@
                                 <a href="{{ route('about') }}">More..</a>
                             </div>
                         </div>
-                        <img src="assets/images/left-banner-image.jpg" alt="">
+                        <img src="/assets/images/left-banner-image.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('formal_clothes_all_filter') }}"><img src="assets/images/baner-right-image-01.jpg"></a>
+                                    <a href="{{ route('formal_clothes_all_filter') }}"><img src="/assets/images/baner-right-image-01.jpg"></a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('casual_clothes_all_filter') }}"><img src="assets/images/baner-right-image-02.jpg"></a>
+                                    <a href="{{ route('casual_clothes_all_filter') }}"><img src="/assets/images/baner-right-image-02.jpg"></a>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('sports_wear_clothes_all_filter') }}"><img src="assets/images/baner-right-image-03.jpg"></a>
+                                    <a href="{{ route('sports_wear_clothes_all_filter') }}"><img src="/assets/images/baner-right-image-03.jpg"></a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{ route('accessories_all_filter') }}"><img src="assets/images/baner-right-image-04.jpg"></a>
+                                    <a href="{{ route('accessories_all_filter') }}"><img src="/assets/images/baner-right-image-04.jpg"></a>
                                 </div>
                             </div>
                         </div>

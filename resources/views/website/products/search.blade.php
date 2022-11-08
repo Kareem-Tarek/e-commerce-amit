@@ -154,7 +154,7 @@
                                     {{-- @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                     @if($data <= 7) <!---------- in days ---------->
                                         <span style="font-weight: bold; color: rgb(54, 42, 163);">
-                                            <img src="assets/images/new-icon.png" alt="new_item" style="width: 20%;">
+                                            <img src="/assets/images/new-icon.png" alt="new_item" style="width: 20%;">
                                         </span>
                                     @endif --}}
 

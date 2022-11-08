@@ -19,8 +19,8 @@
     <!-- Font Awesome-->
     @includeIf('layouts.admin.partials.css')
     <!-- icon in the title -->
-    <link rel="icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
 </head>
 <body class="">
 <div class="loader-wrapper">
