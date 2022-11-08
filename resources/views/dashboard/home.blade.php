@@ -22,16 +22,16 @@
     .show-btn{
         color: black;
         padding:2% 5%;
-        margin-top: 5%; 
-        font-weight: bold; 
-        border-radius:5px; 
+        margin-top: 5%;
+        font-weight: bold;
+        border-radius:5px;
         transition: 0.40s ease-in-out;
         border: 2px solid rgb(0, 0, 0);
     }
 
     .show-btn:hover{
         border: 2px solid #0083FF;
-        background-color:rgb(40, 37, 37); 
+        background-color:rgb(40, 37, 37);
         color: rgb(255, 255, 255);
     }
 </style>
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-xl-6 box-col-12 des-xl-100">
                 <div class="row">
-                
+
                     <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
                         <div class="card income-card">
                             <div class="card-body text-center">
@@ -262,7 +262,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <div class="col-xl-2 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
                         <div class="card income-card">
                             <div class="card-body text-center">
@@ -296,7 +296,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="col-xl-2 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
                         <div class="card income-card">
                             <div class="card-body text-center">

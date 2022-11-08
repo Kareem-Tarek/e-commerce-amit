@@ -30,9 +30,9 @@ class CartController extends Controller
     //     if(isset($cart_registered)){
     //         $cart_registered = view('website.website.cart.cart_registered' , compact('cartItems' , 'cartItems_count'));
     //     }
-        
+
     //     $cart_unregistered        = view('website.website.cart.cart_unregistered');
-        
+
     //     if(auth()->user()){ return $cart_registered; }
 
     //     elseif(!auth()->user()){ return $cart_unregistered; }
@@ -155,6 +155,7 @@ class CartController extends Controller
     public function cartCheckOutView(){ // the functionality is only available for registered users (Customers ONLY!) + it happens after the cart_registered.blade.php functionalities
         $cartItems       = Cart::where('customer_id',auth()->user()->id)->get();
         $cartItems_count = $cartItems->count();
+
         if($cartItems_count == 0){ // acts as a middleware but on the condition "count = 0"
             return redirect()->route('cart-registered');
         }
@@ -194,7 +195,7 @@ class CartController extends Controller
     } // end of "cartCheckOutView" function
 
     public function update_cart_items_quantity(Request $request , $id)
-    {                
+    {
         $cartItem = Cart::where('customer_id',auth()->user()->id)->find($id);
         {// those variables are just used in the json data in the return of the function (they are not used in the update functionality itself!)
             $cartItems_count = Cart::where('customer_id',auth()->user()->id)->count();
@@ -204,18 +205,18 @@ class CartController extends Controller
             else{ // if there is no items in the cart (the wrong condition!)
                 return redirect()->route('cart-registered');
             }
-            
+
             if($cartItem->clothing_type == 1){
                 $cartItem->clothing_type = "Formal";
-            } 
+            }
             elseif($cartItem->clothing_type == 2){
                 $cartItem->clothing_type = "Casual";
-            } 
+            }
             elseif($cartItem->clothing_type == 3){
                 $cartItem->clothing_type = "Sports Wear";
-            } 
+            }
         }
-        
+
         if($request->new_quantity > 0 && $request->new_quantity <= $cartItem->available_quantity){ // the correct condition! if($request->new_quantity > 0), because that's the only correct condition!
             $cartItem->quantity = $request->new_quantity; // all are the same thing => "$_GET['new_quantity']" = "$request->get('new_quantity');" = "$request->new_quantity;"
             //------ update "available_quantity" column (from product table) when updating the products within the cart ------//
@@ -271,7 +272,7 @@ class CartController extends Controller
             return redirect()->back() //redirect()->back() => to "cart" or "checkout" page depending on the location of the remove action
                 ->with(['cart_checkout_item_deleted_message' => '"'.$cartItem->product_name.'" product is successfully deleted from your cart!']);
         }
-            
+
     } // end of "destroy_for_cart_and_checkout" function
 
 }
