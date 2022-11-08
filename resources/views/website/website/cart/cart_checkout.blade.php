@@ -157,7 +157,7 @@
             </table>
         </div>
         <div class="text-center mt-4">
-            <img src="assets/images/verified.png" style="width: 30%;">
+            <img src="/assets/images/verified.png" style="width: 30%;">
         </div>
         
         <div class="continue-to-payment-div text-center mt-5">

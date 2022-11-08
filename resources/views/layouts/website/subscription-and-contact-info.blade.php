@@ -32,7 +32,7 @@
                             <h6>(for all the products in your cart)</h6>
                             {{-- <h3 class="inline-item">For one time purchase!</h3> --}}
                             <div style="display:inline;">
-                                <img src="assets/images/subscription_discount.gif" alt="subscription_discount" style="width: 9%;">
+                                <img src="/assets/images/subscription_discount.gif" alt="subscription_discount" style="width: 9%;">
                             </div>
                             <br>
                             <span>Details to details is what makes AA different from the other competitors.</span>

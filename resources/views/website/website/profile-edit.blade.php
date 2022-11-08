@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
     <title>{{auth()->user()->name}} - Edit Profile</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,8 +27,8 @@
     <div class="page-main-header">
         <div class="main-header-right row m-0" style="background-color: #F7F7F7;">
             <div class="main-header-left">
-                <div class="logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(1).png')}}" alt="GDP" style="width: 45%; border-radius:10px;"></a></div>
-                <div class="dark-logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('assets/images/Anywhere-Anytime(2).png')}}" alt="GDP" style="width: 45%; border-radius:10px;"></a></div>
+                <div class="logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('/assets/images/Anywhere-Anytime(1).png')}}" alt="GDP" style="width: 45%; border-radius:10px;"></a></div>
+                <div class="dark-logo-wrapper"><a href="javascript:void(0)"><img class="img-fluid" src="{{asset('/assets/images/Anywhere-Anytime(2).png')}}" alt="GDP" style="width: 45%; border-radius:10px;"></a></div>
             </div>
             
             <div class="nav-right col pull-right right-menu p-0">

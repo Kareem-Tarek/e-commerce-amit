@@ -5,7 +5,7 @@
                 <div class="first-item">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src="assets/images/Anywhere-Anytime(2).png" alt="AA.png" style="width: 200px; color: snow;">
+                            <img src="/assets/images/Anywhere-Anytime(2).png" alt="AA.png" style="width: 200px; color: snow;">
                         </a>
                     </div>
                     <ul>

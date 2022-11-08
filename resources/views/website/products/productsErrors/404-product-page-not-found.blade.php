@@ -8,9 +8,9 @@
 @endsection
 
 @section('content')
-<div style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(assets/images/bg-gif.gif); background-size: 100% auto; background-repeat: no-repeat; margin-top: -5%; margin-bottom: -4%;">
+<div style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(/assets/images/bg-gif.gif); background-size: 100% auto; background-repeat: no-repeat; margin-top: -5%; margin-bottom: -4%;">
     <div class="text-center" style="padding-bottom: 4%; padding-top: 4%;">
-        <img src="assets/images/sad-face.png" width="130" style="border-radius: 5000px;"/><br>
+        <img src="/assets/images/sad-face.png" width="130" style="border-radius: 5000px;"/><br>
         <span style="font-size: 500%; font-weight: bolder; color: snow;">Oops!</span><br>
         <h5 class="mb-4" style="font-weight: bold; color: snow;">404 - PAGE NOT FOUND</h5>
         <h6 class="mb-5" style="color: snow;">

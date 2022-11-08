@@ -21,12 +21,19 @@
     <!-- Additional CSS Files -->
     
     {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="stylesheet" href="assets/css/my-custom-css.css"> <!-- My Custom CSS file (doesn't belong to the template) -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="/assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    <link rel="stylesheet" href="/assets/css/my-custom-css.css"> <!-- My Custom CSS file (doesn't belong to the template) -->
+
+    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/templatemo-hexashop.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl-carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/my-custom-css.css') }}"> <!-- My Custom CSS file (doesn't belong to the template) --> --}}
 
     @yield('styles')
 
@@ -40,8 +47,8 @@ https://templatemo.com/tm-571-hexashop
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
     <!-- icon in the title -->
-    <link rel="icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Anywhere-Anytime(1).png" type="image/x-icon">
     </head>
 
     <body>
@@ -90,28 +97,28 @@ https://templatemo.com/tm-571-hexashop
     </div>
 
     <!-- js & jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="/assets/js/jquery-2.1.0.min.js"></script>
     {{-- <script src="{{ url('public/js/app.js') }}" defer></script> --}}
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
     <script src="{{ asset('js/app.js') }}" ></script>    <!-- My Custom JS file (doesn't belong to the template) -->
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/isotope.js"></script>
+    <script src="/assets/js/owl-carousel.js"></script>
+    <script src="/assets/js/accordions.js"></script>
+    <script src="/assets/js/datepicker.js"></script>
+    <script src="/assets/js/scrollreveal.min.js"></script>
+    <script src="/assets/js/waypoints.min.js"></script>
+    <script src="/assets/js/jquery.counterup.min.js"></script>
+    <script src="/assets/js/imgfix.min.js"></script>
+    <script src="/assets/js/slick.js"></script>
+    <script src="/assets/js/lightbox.js"></script>
+    <script src="/assets/js/isotope.js"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="/assets/js/custom.js"></script>
 
     <script>
 

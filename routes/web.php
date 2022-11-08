@@ -100,7 +100,7 @@ Route::get('/products-discounts-61%-to-70%', [ProductController::class, '_61_per
 Route::get('/products-discounts-71%-to-80%', [ProductController::class, '_71_percent_to_80_percent'])->name('71per-to-80per'); //products-discounts-between-71-to-80-percent-only
 Route::get('/products-discounts-81%-to-90%', [ProductController::class, '_81_percent_to_90_percent'])->name('81per-to-90per'); //products-discounts-between-81-to-90-percent-only
 Route::get('/products-discounts-91%-to-100%', [ProductController::class, '_91_percent_to_100_percent'])->name('91per-to-100per'); //products-discounts-between-91-to-100-percent-only
-Route::get('/product={id}/{name?}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
+Route::get('/product/{id}/{name?}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
 /************************************************************ End Products Routes ************************************************************/
 
 /******************************************** Start Some static website's pages Routes ********************************************/

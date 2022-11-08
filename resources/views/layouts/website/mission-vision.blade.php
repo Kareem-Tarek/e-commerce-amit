@@ -10,7 +10,7 @@
 @section('content')
 
 {{-- <div class="logo" style="width: 30%;">
-  <img src="assets/images/Anywhere-Anytime(1).png" alt="AA.png">
+  <img src="/assets/images/Anywhere-Anytime(1).png" alt="AA.png">
 </div> --}}
 
 <div class="row mission-vision-statement">

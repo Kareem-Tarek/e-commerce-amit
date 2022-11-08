@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             @foreach($latest_product as $latest_product_result)
-                            <div class="leather" style="/* background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ 'assets/images/'.$latest_product_result->image_name }}'); */">
+                            <div class="leather" style="/* background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ '/assets/images/'.$latest_product_result->image_name }}'); */">
                                 <h4>
                                     <a href="{{ route('single_product_page' , $latest_product_result->id) }}" style="color:inherit; transition: all 0.25s ease-in-out;" onMouseOver="this.style.color='#3385ff'" onMouseOut="this.style.color='inherit'">
                                         {{ $latest_product_result->name ?? 'No product found!' }}
@@ -33,12 +33,12 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="first-image">
-                                <img src="assets/images/explore-image-01.jpg" alt="">
+                                <img src="/assets/images/explore-image-01.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="second-image">
-                                <img src="assets/images/explore-image-02.jpg" alt="">
+                                <img src="/assets/images/explore-image-02.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6">

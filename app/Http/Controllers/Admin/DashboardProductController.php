@@ -54,14 +54,14 @@ class DashboardProductController extends Controller
         //     $file       = $request->file('image_name');
         //     $extension  = $file->getClientOriginalExtension();
         //     $filename   = time().'.'.$extenstion;
-        //     $file->move('assets/images/' , $filename);
+        //     $file->move('/assets/images/' , $filename);
         //     $products->image_name = $filename;
         // }
         // else{
         //     return $request;
         //     $products->image_name = '';
         // }
-        $products->image_name         = "assets/images/".$request->image_name;
+        $products->image_name         = "/assets/images/".$request->image_name;
         $products->price              = $request->price;
         $products->discount           = $request->discount;
         // $products->size               = $request->size;
@@ -95,7 +95,7 @@ class DashboardProductController extends Controller
         $products                     = Product::findOrFail($id);
         $products->name               = $request->name;
         $products->description        = $request->description;
-        $products->image_name         = "assets/images/".$request->image_name;
+        $products->image_name         = "/assets/images/".$request->image_name;
         $products->price              = $request->price;
         $products->discount           = $request->discount;
         // $products->size               = $request->size;
