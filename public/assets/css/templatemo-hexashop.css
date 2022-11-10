@@ -338,15 +338,15 @@ header
   width: 100px;
 }
 
-/*START user name in header*/
-.header-area .main-nav .nav li .name{
+/*START user username in header*/
+.header-area .main-nav .nav li .username{
   color: #0083FF;
 }
 
-.background-header .main-nav .nav .name {
+.background-header .main-nav .nav .username {
   color: #0083FF!important;
 }
-/*END user name in header*/
+/*END user username in header*/
 
 .background-header .main-nav .nav li:hover a {
   color: #2a2a2a!important;

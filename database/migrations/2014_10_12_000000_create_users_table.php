@@ -16,17 +16,17 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
           //$table->data_type('column_name','data_length');
             $table->id();
-            $table->string('name','500');
-            $table->string('username')->unique()->nullable(); // unique key
-            $table->string('phone')->unique()->nullable(); // unique key
-            $table->string('bio')->nullable();
+            $table->string('username')->unique(); // unique key
+            $table->string('name','500')->nullable();
             $table->string('email')->unique(); // unique key
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('gender', ['male','female'])->nullable();
-            $table->date('dob')->nullable();
             //admin -> CRUD //moderator -> CR //supplier CRUD for products only! //customer CRUD for cart only!
             $table->enum('user_type',['admin','moderator','supplier','customer'])->default('customer');
+            $table->string('phone')->unique()->nullable(); // unique key
+            $table->string('bio')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('gender', ['male','female'])->nullable();
+            $table->date('dob')->nullable();
             $table->string('address')->nullable();
             $table->integer('country_id')->nullable(); // still on wait (no table yet!)
             $table->integer('governorate_id')->nullable(); // still on wait (no table yet!)
