@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique()->nullable(); // unique key
             $table->longText('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('gender', ['male','female'])->nullable();
+            $table->enum('gender', ['male','female','unspecified'])->nullable();
             $table->date('dob')->nullable();
             $table->string('address')->nullable();
             $table->integer('country_id')->nullable(); // still on wait (no table yet!)

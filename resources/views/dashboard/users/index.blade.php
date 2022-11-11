@@ -56,8 +56,8 @@
                                     <tr>
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
                                         @if($user->name == null || $user->name == "")
-                                            <td class="text-center font-danger" style="width: 20%;">
-                                                No name yet!
+                                            <td class="text-center" style="width: 20%;">
+                                                —
                                             </td>
                                         @else
                                             <td class="text-center font-dark" style="width: 20%;">
@@ -67,17 +67,23 @@
                                         <td class="text-center font-secondary" style="font-weight: bold;">{{$user->username}}</td>
                                         <td class="text-center">
                                             @if($user->bio == null || $user->bio == "")
-                                                <span class="font-danger">No bio yet!</span>
+                                                —
                                             @else
                                                 {!! \Str::words($user->bio,'5','...') !!}
                                             @endif
                                         </td>
                                         <td class="text-center">{{$user->email}}</td>
                                         <td class="text-center">{{ucfirst($user->user_type)}}</td>
-                                        <td class="text-center">{{ucfirst($user->gender ?? 'undetermined')}}</td>
+                                        <td class="text-center">
+                                            @if($user->user_type == "customer" || $user->user_type == "admin" || $user->user_type == "moderator")
+                                                {{ucfirst($user->gender ?? 'unspecified')}}
+                                            @else
+                                                —
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             @if(strlen($user->phone) == 11)
-                                                {{ '(+20) '.$user->phone ?? 'No Number!' }} <!-- Egypt's country code (+20) -->
+                                                {{ '(+20) '.$user->phone ?? '—' }} <!-- Egypt's country code (+20) -->
                                                 <span class="badge badge-info">Egypt</span>
                                             @else
                                                 {{ $user->phone ?? 'No Number!' }}

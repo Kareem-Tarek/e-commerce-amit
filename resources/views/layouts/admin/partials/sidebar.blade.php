@@ -68,7 +68,7 @@
                                         <a href="javascript:void(0); "class="javascript:void(0);">Customers</a>
                                     </div>
                                 </li> --}}
-                                <li><a href="javascript:void(0);" class="javascript:void(0);">Create User</a></li>
+                                <li><a href="{{route('users.create')}}" class="{{route('users.create')}}">Create User</a></li>
                                 <li><a href="{{ route('users.index') }}" class="{{ route('users.index') }}">All Users</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Customers</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Suppliers</a></li>

@@ -56,14 +56,14 @@
                                         <td class="text-center">{{$cart->customer_name}}</td>
                                         <td class="text-center">
                                             @if(strlen($cart->customer_phone) == 11)
-                                                {{ '(+20) '.$cart->customer_phone ?? 'No Number!' }} <!-- Egypt's country code (+20) -->
+                                                {{ '(+20) '.$cart->customer_phone ?? '—' }} <!-- Egypt's country code (+20) -->
                                                 <span class="badge badge-info">Egypt</span>
                                             @else
-                                                {{ $cart->customer_phone ?? 'No Number!' }}
+                                                {{ $cart->customer_phone ?? '—' }}
                                             @endif
                                         </td>
                                         <td class="text-center">{{$cart->customer_email}}</td>
-                                        <td class="text-center">{{$cart->customer_address ?? 'No Address!'}}</td>
+                                        <td class="text-center">{{$cart->customer_address ?? '—'}}</td>
                                         <td class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}"><img src="{{$cart->product_image}}" alt="{{$cart->product_name.'img'}}" width="80" height="80"></a></td>
                                         <th class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}" class="font-secondary">{{$cart->product_name}}</a></th>
                                         <td class="text-center">{{ucfirst($cart->product_category)}}</td>
