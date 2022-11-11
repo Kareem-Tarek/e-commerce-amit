@@ -8,12 +8,12 @@
             </div>
         @endif
     <a href="javascript:void(0);">
-        <h6 class="mt-4 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
+        <h6 class="mt-3 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
     </a>
     <p class="mt-1 font-roboto">{{auth()->user()->email ?? ''}}</p>
     </div>
 
-    <div class="sidebar-main-title text-center" style="color: #0083FF;">
+    <div class="sidebar-main-title text-center mt-2" style="color: #0083FF; border-bottom: 1px solid #E6EDEF;">
         <h6>
             @if(auth()->user()->user_type == "admin")
                 Admin
@@ -26,7 +26,7 @@
         </h6>
     </div>
 
-    <hr>
+    
 
     <nav>
         <div class="main-navbar">
