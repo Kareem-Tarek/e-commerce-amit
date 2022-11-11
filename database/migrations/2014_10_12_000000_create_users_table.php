@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             //admin -> CRUD //moderator -> CR //supplier CRUD for products only! //customer CRUD for cart only!
             $table->enum('user_type',['admin','moderator','supplier','customer'])->default('customer');
             $table->string('phone')->unique()->nullable(); // unique key
-            $table->string('bio')->nullable();
+            $table->longText('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('gender', ['male','female'])->nullable();
             $table->date('dob')->nullable();
