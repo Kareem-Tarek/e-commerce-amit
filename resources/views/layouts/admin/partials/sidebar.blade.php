@@ -115,7 +115,7 @@
                                 <i class="fa-solid fa-box-open"></i></i>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <span>Products</span>
                             </a>
-                            <ul class="nav-submenu menu-content" style="">
+                            <ul class="nav-submenu menu-content">
                                 <li><a href="{{route('products.create')}}" class="{{route('products.create')}}">Create Product</a></li>
                                 <li><a href="{{ route('products.index') }}" class="{{ route('products.index') }}">All Products</a></li>
                                 <li><a href="{{ route('products.index') }}" class="{{ route('products.index') }}">All Clothes</a></li>
@@ -123,10 +123,11 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Formal</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Casual</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Sports Wear</a></li>
-                                <li><a href="javascript:void(0);" class="javascript:void(0);">Men</a></li>
+                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
+                                {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Men</a></li> --}}
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Women</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Kids</a></li>
-                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
+                                
                             </ul>
                         </li>
                         <!------------- End route products ------------->
