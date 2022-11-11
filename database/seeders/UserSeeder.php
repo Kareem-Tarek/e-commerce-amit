@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 
         $user = User::create([ //ID = 1 (admin)
             'avatar'    => "/assets/images/kareem.png",
+            'cover'     => "/assets/images/kareem_cover.jpg",
             'name'      => "Kareem Tarek",
             'username'  => 'KareemDev',
             'phone'     => '01010110457',

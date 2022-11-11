@@ -23,6 +23,8 @@ class User extends Authenticatable implements MustVerifyEmail
     
      //method (1) - wrting the columns from the table
         protected $fillable = [
+            'avatar', 
+            'cover', 
             'name', 
             'username',
             'phone', 
