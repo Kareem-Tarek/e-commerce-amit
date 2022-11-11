@@ -14,7 +14,13 @@ class DashboardCartController extends Controller
     public function index()
     {
         $carts = Cart::orderBy('created_at','asc')->paginate(30);
-        return view('dashboard.carts.index',compact('carts'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.carts.index',compact('carts'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
+        }
     }
 
     // public function create()
@@ -43,8 +49,11 @@ class DashboardCartController extends Controller
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.carts.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
+        elseif(auth()->user()->user_type == "moderator"){
             return redirect('/dashboard/carts');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
         }
     }
 
@@ -68,7 +77,13 @@ class DashboardCartController extends Controller
     public function delete()
     {
         $carts = Cart::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
-        return view('dashboard.carts.delete',compact('carts'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.carts.delete',compact('carts'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
+        }
     }
 
     public function restore($id)

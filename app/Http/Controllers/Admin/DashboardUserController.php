@@ -92,8 +92,11 @@ class DashboardUserController extends Controller
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.users.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
+        elseif(auth()->user()->user_type == "moderator"){
             return redirect('/dashboard/users');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
         }
     }
 
@@ -144,8 +147,13 @@ class DashboardUserController extends Controller
     public function delete()
     {
         $users = User::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
-
-        return view('dashboard.users.delete',compact('users'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.users.delete',compact('users'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
+        }
     }
 
     public function restore($id)
