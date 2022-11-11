@@ -1,6 +1,6 @@
 <header class="main-nav">
     <div class="sidebar-user text-center" style="margin-top: 15%;">
-        <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{auth()->user()->photo ?? ''}}" alt="{{auth()->user()->name ?? ''}} avatar" />
+        <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{ auth()->user()->avatar ?? ''}}" alt="{{auth()->user()->username.'avatar'}}" />
         @php $data = Carbon\Carbon::parse(Auth::user()->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
         @if($data <= 7) <!---------- in days ---------->
             <div class="badge-bottom mt-2">
