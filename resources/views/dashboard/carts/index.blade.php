@@ -32,6 +32,7 @@
                                         <th scope="col" class="text-center">Phone</th>
                                         <th scope="col" class="text-center">Email</th>
                                         <th scope="col" class="text-center">Address</th>
+                                        <th scope="col" class="text-center">Product Image</th>
                                         <th scope="col" class="text-center">Product Name</th>
                                         <th scope="col" class="text-center">Product Category</th>
                                         <th scope="col" class="text-center">Clothing Type</th>
@@ -63,6 +64,7 @@
                                         </td>
                                         <td class="text-center">{{$cart->customer_email}}</td>
                                         <td class="text-center">{{$cart->customer_address ?? 'No Address!'}}</td>
+                                        <td class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}"><img src="{{$cart->product_image}}" alt="{{$cart->product_name.'img'}}" width="80" height="80"></a></td>
                                         <th class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}" class="font-secondary">{{$cart->product_name}}</a></th>
                                         <td class="text-center">{{ucfirst($cart->product_category)}}</td>
                                         <td class="text-center">

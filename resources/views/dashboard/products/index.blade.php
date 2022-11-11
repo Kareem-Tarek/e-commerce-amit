@@ -36,8 +36,8 @@
                                     <thead>
                                     <tr>
                                         <th scope="col" class="text-center">#</th>
-                                        <th scope="col" class="text-center">Name</th>
                                         <th scope="col" class="text-center">Image</th>
+                                        <th scope="col" class="text-center">Name</th>
                                         {{-- <th scope="col" class="text-center">Description</th> --}}
                                         <th scope="col" class="text-center">Discount (%)</th>
                                         <th scope="col" class="text-center">Price (EGP)</th>
@@ -56,8 +56,8 @@
                                     @forelse($products as $product)
                                     <tr>
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
-                                        <th class="text-center font-secondary" style="width: 20%;">{{$product->name}}</th>
-                                        <td class="text-center">{{$product->image_name}}</td>
+                                        <td class="text-center"><a href="{{ route('products.edit',[$product->id]) }}"><img src="{{$product->image_name}}" alt="{{$product->name.'img'}}" width="80" height="80"></a></td>
+                                        <th class="text-center" style="width: 20%;"><a href="{{ route('products.edit',[$product->id]) }}" class="font-secondary">{{$product->name}}</a></th>
                                         {{-- <td class="text-center">{{$product->description}}</td> --}}
                                         <td>{{ $product->discount * 100 }}%</td>
                                         @if($product->discount > 0)
