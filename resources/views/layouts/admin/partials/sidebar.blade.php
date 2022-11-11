@@ -1,5 +1,5 @@
 <header class="main-nav">
-    <div class="sidebar-user text-center" style="margin-top: 15%;">
+    <div class="sidebar-user text-center" style="margin-bottom: 5%;">
         <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{ auth()->user()->avatar ?? ''}}" alt="{{auth()->user()->username.'avatar'}}" />
         @php $data = Carbon\Carbon::parse(Auth::user()->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
         @if($data <= 7) <!---------- in days ---------->
@@ -10,7 +10,7 @@
     <a href="javascript:void(0);">
         <h6 class="mt-3 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
     </a>
-    <p class="mb-0 mt-4 font-roboto">{{auth()->user()->email ?? ''}}</p>
+    <p class="mt-1 font-roboto">{{auth()->user()->email ?? ''}}</p>
     </div>
 
     <div class="sidebar-main-title text-center" style="color: #0083FF;">
@@ -123,11 +123,10 @@
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Formal</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Casual</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Sports Wear</a></li>
-                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
-                                {{-- <li><a href="javascript:void(0);" class="javascript:void(0);">Men</a></li> --}}
+                                <li><a href="javascript:void(0);" class="javascript:void(0);">Men</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Women</a></li>
                                 <li><a href="javascript:void(0);" class="javascript:void(0);">Kids</a></li>
-                                
+                                <li><a href="{{ route('products.delete') }}" class="{{ route('products.delete') }}" style="color: rgb(152, 6, 6);">Deleted Products</a></li>
                             </ul>
                         </li>
                         <!------------- End route products ------------->
