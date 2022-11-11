@@ -246,11 +246,13 @@
                                         <div class="title">
                                             <a target="_blank" href="javascript:void(0);" style="cursor: context-menu">
                                                 <h4>{{$user->name}}</h4>
-                                                @if($user->user_type =='dashboard')
-                                                    <h6>{{__('admin/home.admin_title')}}</h6>
-                                                @else
-                                                    <h6>{{$user->user_type}}</h6>
-                                                @endif
+                                                <h6 style="color: #0760b4;">
+                                                    @if($user->user_type =='dashboard')
+                                                        {{__('admin/home.admin_title')}}
+                                                    @else
+                                                        {{$user->user_type}}
+                                                    @endif
+                                                </h6>
                                             </a>
                                         </div>
                                         <div class="social-media">
