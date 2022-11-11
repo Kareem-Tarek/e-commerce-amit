@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
         // User::factory(25)->create();
 
         $user = User::create([ //ID = 1 (admin)
+            'avatar'    => "/assets/images/kareem.png",
             'name'      => "Kareem Tarek",
             'username'  => 'KareemDev',
             'phone'     => '01010110457',
@@ -50,6 +51,7 @@ class UserSeeder extends Seeder
         ]);
 
         $user = User::create([ //ID = 3 (customer)
+            'avatar'    => "/assets/images/customer.png",
             'name'      => "Maria Micheals",
             'username'  => 'Maria_EM',
             'phone'     => '01256113905',

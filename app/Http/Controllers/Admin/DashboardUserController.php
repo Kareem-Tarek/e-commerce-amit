@@ -18,7 +18,12 @@ class DashboardUserController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at','asc')->paginate(30);
-        return view('dashboard.users.index',compact('users'));
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.users.index');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect()->route('dashboard');
+        }
     }
 
     /**
