@@ -9,7 +9,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $categories_description = Category::get();
+        $categories_description = Category::all();
 
         return view('layouts.website.about', compact('categories_description'));        
     }
