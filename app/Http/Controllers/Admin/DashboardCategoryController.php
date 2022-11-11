@@ -45,7 +45,7 @@ class DashboardCategoryController extends Controller
     public function edit($id)
     {
         $model = Category::findOrFail($id);
-        
+
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.categories.edit',compact('model'));
         }
@@ -69,7 +69,7 @@ class DashboardCategoryController extends Controller
     public function destroy($id)
     {
         $categories = Category::findOrFail($id);
-        $categories->delete_user_id = auth()->user()->id; //
+        $categories->delete_user_id = auth()->user()->id; 
         $categories->delete();
         return redirect()->route('categories.index')
             ->with(['message' => "($categories->name) - Deleted successfully!"]);
