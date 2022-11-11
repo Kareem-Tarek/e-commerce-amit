@@ -118,7 +118,7 @@ class DashboardUserController extends Controller
         $users->save();
 
         return redirect()->route('users.index')
-            ->with(['message' => "($users->name) - Edited successfully!"]);
+            ->with(['message' => "($users->username) - Edited successfully!"]);
     }
 
     /**
@@ -129,6 +129,32 @@ class DashboardUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::findOrFail($id);
+        $users->delete();
+
+        return redirect()->route('users.index')
+            ->with(['message' => "($users->username) - Deleted successfully!"]);
+    }
+
+    public function delete()
+    {
+        $users = User::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
+
+        return view('dashboard.users.delete',compact('users'));
+    }
+
+    public function restore($id)
+    {
+        User::withTrashed()->find($id)->restore();
+        $users = User::findOrFail($id);
+        return redirect()->route('users.delete')
+            ->with(['message' => "($users->username) - Restored successfully!"]);
+    }
+
+    public function forceDelete($id)
+    {
+        User::where('id', $id)->forceDelete();
+        return redirect()->route('users.delete')
+            ->with(['message' => 'Permanently deleted successfully!']);
     }
 }

@@ -205,6 +205,10 @@ Route::group([
 
         //-------------------- Start users route. --------------------//
         Route::resource('/users', DashboardUserController::class);
+        Route::get('/user/delete', [DashboardUserController::class, 'delete'])->name('users.delete');
+        Route::get('/user/restore/{id}/', [DashboardUserController::class, 'restore'])->name('users.restore');
+        Route::delete('/user/forceDelete/{id}/', [DashboardUserController::class, 'forceDelete'])->name('users.forceDelete');
+
         Route::get('/profile', [DashboardProfileController::class, 'profile'])->name('profile');
         Route::get('/edit-profile', [DashboardProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/edit-profile-post', [DashboardProfileController::class, 'profileUpdatePassword'])->name('edit-profile-post');

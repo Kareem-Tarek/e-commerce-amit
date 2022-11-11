@@ -74,7 +74,7 @@
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Suppliers</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Moderators</a></li>
                                 <li><a href="javascript:void(0); "class="javascript:void(0);">Admins</a></li>
-                                <li><a href="javascript:void(0);" class="javascript:void(0);" style="color: rgb(152, 6, 6);" >Deleted Users</a></li>
+                                <li><a href="{{ route('users.delete') }}" class="{{ route('users.delete') }}" style="color: rgb(152, 6, 6);" >Deleted Users</a></li>
                             </ul>
                         </li>
                         <!------------- End route users ------------->
