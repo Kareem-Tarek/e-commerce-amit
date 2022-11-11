@@ -407,7 +407,7 @@
 
                             {{-- <nav class="m-b-30" aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center pagination-primary text-center">
-                                    {!! $cartItems->links('pagination::bootstrap-4') !!}
+                                    {!! $cartItems->links('pagination::bootstrap-5') !!}
                                 </ul>
                             </nav> --}}
                         @endif

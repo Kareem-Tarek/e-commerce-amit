@@ -82,7 +82,7 @@
                 </div>
                 <nav class="m-b-30" aria-label="Page navigation example">
                     <ul class="pagination justify-content-center pagination-primary">
-                        {!! $categories->links('pagination::bootstrap-4') !!}
+                        {!! $categories->links('pagination::bootstrap-5') !!}
                     </ul>
                 </nav>
             </div>
