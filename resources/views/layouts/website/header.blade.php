@@ -84,7 +84,7 @@
                         @else <!---------- = registered user (any user type in the system) ---------->
                             <li class="submenu">
                                 {{-- <a class="username" href="javascript:void(0);">{{auth()->user()->username ?? auth()->user()->name}}</a> --}}
-                                <a class="username" href="javascript:void(0);"><img style="border-radius: 5px;" width="40" class="username" src="{{auth()->user()->avatar}}" alt="{{auth()->user()->username.'avatar' ?? auth()->user()->name.'avatar'}}"></a>
+                                <a class="username" href="javascript:void(0);"><img style="border-radius: 4px;" width="40" class="username" src="{{auth()->user()->avatar}}" alt="{{auth()->user()->username.'avatar' ?? auth()->user()->name.'avatar'}}"></a>
                                 <ul>
                                     @if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator' || auth()->user()->user_type == 'supplier')
                                         <li><a href="{{ route('dashboard') }}"><i class="fa fa-institution" style="font-size: 130%; padding-right: 2%;"></i>Dashboard</a></li>
