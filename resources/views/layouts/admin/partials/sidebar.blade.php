@@ -1,14 +1,14 @@
 <header class="main-nav">
-    <div class="sidebar-user text-center" style="margin-bottom: 5%;">
+    <div class="sidebar-user text-center mt-2" style="margin-bottom: 1%;">
         <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{ auth()->user()->avatar ?? ''}}" alt="{{auth()->user()->username.'avatar'}}" />
         @php $data = Carbon\Carbon::parse(Auth::user()->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
         @if($data <= 7) <!---------- in days ---------->
-            <div class="badge-bottom mt-2">
+            <div class="badge-bottom mt-1">
                 <span class="badge badge-primary">New</span>
             </div>
         @endif
     <a href="javascript:void(0);">
-        <h6 class="mt-3 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
+        <h6 class="mt-4 f-14 f-w-600 name" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color=''">{{auth()->user()->name ?? ''}}</h6>
     </a>
     <p class="mt-1 font-roboto">{{auth()->user()->email ?? ''}}</p>
     </div>
