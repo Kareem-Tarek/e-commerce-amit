@@ -1,64 +1,129 @@
 @extends('layouts.admin.master')
 
-@section('title') {{__('admin/user.users')}} @endsection
+@section('title') 
+    All Users
+@endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3>{{__('admin/user.users')}}</h3>
+            <h3 class="mt-4">Users</h3>
         @endslot
-        <li class="breadcrumb-item">Users</li>
-        <li class="breadcrumb-item active">{{__('admin/user.users')}}</li>
+        <li class="breadcrumb-item active">Users</li>
+        @slot('bookmark')
+            <a href="{{route('users.create')}}" class="btn btn-pill btn-air-success btn-success-gradien" type="button" title="Add New User">Add New User</a>
+        @endslot
     @endcomponent
 
-    <div class="container-fluid user-card">
+    @include('layouts.admin.partials.messages.message')
+    <div class="container-fluid">
         <div class="row">
-            @forelse($users as $user)
-            <div class="col-md-6 col-lg-6 col-xl-4 box-col-6">
-                <div class="card custom-card">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
 
-                    <div class="card-profile"><img class="rounded-circle" src="{{$user->photo}}" alt="" /></div>
-                    <ul class="card-social">
-                        <li>
-                            <a href="https://facebook.com/{{$user->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        {{-- <li>
-                            <a href="https://twitter.com/{{$user->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </li> --}}
-                        <li>
-                            <a href="https://instagram.com/{{$user->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://whatsapp.com/{{$user->whatsapp}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
-                        </li>
-                        {{-- <li>
-                            <a href="https://t.me/{{$user->telegram}}" target="_blank"><i class="fa fa-telegram"></i></a>
-                        </li> --}}
-                    </ul>
-                    <div class="text-center profile-details">
-                        <a href="#"> <h4>{{$user->name}}</h4></a>
-                        <h6>{{$user->email}}</h6>
+                        <h5>Show Users - <span class="b-b-success">{{App\Models\User::count()}}</span></h5>
+                        <span>
+                            All users If you want to create and add new users, 
+                            you have to click on the (Add New User) button at 
+                            the top of the page from the left.
+                        </span>
                     </div>
-                    <div class="card-footer row">
-                        <div class="col-4 col-sm-4">
-                            <h6>Follower</h6>
-                            <h3 class="counter">7564</h3>
-                        </div>
-                        <div class="col-4 col-sm-4">
-                            <h6>Following</h6>
-                            <h3><span class="counter">49</span>K</h3>
-                        </div>
-                        <div class="col-4 col-sm-4">
-                            <h6>Total Post</h6>
-                            <h3><span class="counter">96</span>M</h3>
+                    <div class="card-block row">
+                        <div class="col-sm-12 col-lg-12 col-xl-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col" class="text-center">Name</th>
+                                        <th scope="col" class="text-center">Username</th>
+                                        <th scope="col" class="text-center">Bio</th>
+                                        <th scope="col" class="text-center">Email</th>
+                                        <th scope="col" class="text-center">User Type</th>
+                                        <th scope="col" class="text-center">Gender</th>
+                                        <th scope="col" class="text-center">Phone</th>
+                                        <th scope="col" class="text-center">Date of Creation</th>
+                                        <th scope="col" class="text-center">Added By</th>
+                                        <th scope="col" class="text-center">Last Updated By</th>
+                                        @if(auth()->user()->user_type == "admin")
+                                            <th scope="col" class="text-center">Action</th>
+                                        @endif
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse($users as $user)
+                                    <tr>
+                                        <th scope="row" class="text-center">{{$loop->iteration}}</th>
+                                        @if($user->name == null || $user->name == "")
+                                            <td class="text-center font-danger" style="width: 20%;">
+                                                No name yet!
+                                            </td>
+                                        @else
+                                            <td class="text-center font-dark" style="width: 20%;">
+                                                {{$user->name ?? 'No name yet!'}}
+                                            </td>
+                                        @endif
+                                        <td class="text-center font-secondary" style="font-weight: bold;">{{$user->username}}</td>
+                                        <td class="text-center">
+                                            @if($user->bio == null || $user->bio == "")
+                                                <span class="font-danger">No bio yet!</span>
+                                            @else
+                                                {!! \Str::words($user->bio,'5','...') !!}
+                                            @endif
+                                        </td>
+                                        <td class="text-center">{{$user->email}}</td>
+                                        <td class="text-center">{{ucfirst($user->user_type)}}</td>
+                                        <td class="text-center">{{ucfirst($user->gender ?? 'undetermined')}}</td>
+                                        <td class="text-center">
+                                            @if(strlen($user->phone) == 11)
+                                                {{ '(+20) '.$user->phone ?? 'No Number!' }} <!-- Egypt's country code (+20) -->
+                                                <span class="badge badge-info">Egypt</span>
+                                            @else
+                                                {{ $user->phone ?? 'No Number!' }}
+                                            @endif
+                                        </td>
+                                        <td class="text-center" style="width: 18%;">{{$user->created_at->translatedFormat('d/m/Y - h:m A')}}</td>
+                                        <td class="text-center">{{$user->create_user->name ?? '??'}}</td>
+                                        <td class="text-center">{{$user->update_user->name ?? '??'}}</td>
+                                        @if(auth()->user()->user_type == "admin")
+                                            <td class="text-center" style="width: 15%;">
+                                                {!! Form::open([
+                                                    'route' => ['users.destroy',$user->id],
+                                                    'method' => 'delete'
+                                                ])!!}
+                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
+
+                                                <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                {!! Form::close() !!}
+                                            </td>
+                                        @endif
+                                    </tr>
+
+                                    @empty
+                                        <div class="alert alert-secondary">
+                                            There are no data!
+                                        </div>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <nav class="m-b-30" aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center pagination-primary">
+                        {!! $users->links('pagination::bootstrap-4') !!}
+                    </ul>
+                </nav>
             </div>
-            @empty
-            @endforelse
         </div>
     </div>
 
+
+    @push('scripts')
+        <script src="{{asset('admin/js/bootstrap/popper.min.js')}}"></script>
+        <script src="{{asset('admin/js/bootstrap/bootstrap.min.js')}}"></script>
+    @endpush
 
 @endsection

@@ -28,13 +28,6 @@
     <link rel="stylesheet" href="/assets/css/lightbox.css">
     <link rel="stylesheet" href="/assets/css/my-custom-css.css"> <!-- My Custom CSS file (doesn't belong to the template) -->
 
-    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/templatemo-hexashop.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl-carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/my-custom-css.css') }}"> <!-- My Custom CSS file (doesn't belong to the template) --> --}}
-
     @yield('styles')
 
 <!--

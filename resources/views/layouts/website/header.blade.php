@@ -83,7 +83,7 @@
                             </li>
                         @else <!---------- = registered user (any user type in the system) ---------->
                             <li class="submenu">
-                                <a class="name" href="javascript:void(0);">{{auth()->user()->name}}</a>
+                                <a class="username" href="javascript:void(0);">{{auth()->user()->username ?? auth()->user()->name}}</a>
                                 <ul>
                                     @if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator' || auth()->user()->user_type == 'supplier')
                                         <li><a href="{{ route('dashboard') }}"><i class="fa fa-institution" style="font-size: 130%; padding-right: 2%;"></i>Dashboard</a></li>

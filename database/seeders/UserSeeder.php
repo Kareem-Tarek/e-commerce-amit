@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
         // User::factory(25)->create();
 
         $user = User::create([ //ID = 1 (admin)
-            'name'      => "Karim DEV",
-            'username'  => 'KarimDev',
+            'name'      => "Kareem Tarek",
+            'username'  => 'KareemDev',
             'phone'     => '01010110457',
             'bio'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus pariatur accusantium rerum rem alias consequuntur iusto harum maiores enim perferendis vitae inventore temporibus sint, doloremque iste natus commodi aut voluptas.',
             'email'     => 'admin@gmail.com',
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
 
         $user = User::create([ //ID = 2 (moderator)
             'name'      => "User_moderator",
-            'username'  => 'ModeratorDev',
+            'username'  => 'Moderator98',
             'phone'     => '01140657921',
             'bio'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, nam numquam consequuntur ullam dolorum velit laboriosam repellendus optio quis nihil dolores praesentium sed totam quisquam natus a vero explicabo iure?',
             'email'     => 'moderator@gmail.com',

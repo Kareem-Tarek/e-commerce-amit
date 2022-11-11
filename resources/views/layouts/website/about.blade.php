@@ -127,17 +127,30 @@
                                 </div>
                                 <img src="/assets/images/our-amazing-team/kareem.png" style="border-radius: 8px;">
                             </div>
-                            <div class="down-content">
+                            {{-- <div class="down-content" style="background-color: red;">
                                 <h4>Kareem Tarek</h4>
-                                <span>founder &amp; CEO</span>
+                                <span>Founder &amp; CEO</span>
                                 <p>Kareem Tarek is business magnate and investor. He is the founder, CEO &amp; Web Developer of AA.</p>
                                 <p>
                                     He started his life career in business and then shifted to IT career and used both careers 
                                     for his advantage to make his own online business company (AA).
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
+
+                    <div class="col-lg-12 mt-1">
+                        <div class="text-center" style="">
+                            <h4 style="font-weight: bold;">Kareem Tarek</h4>
+                            <span style="color: rgb(166, 165, 165);">Founder &amp; CEO</span>
+                            <p>Kareem Tarek is business magnate and investor. He is the founder, CEO &amp; Web Developer of AA.</p>
+                            <p>
+                                He started his life career in business and then shifted to IT career and used both careers 
+                                for his advantage to make his own online business company (AA).
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -156,21 +169,39 @@
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Formal</h4>
-                            <p>Formal wear or full dress is the Western dress code category for the most formal events, including weddings, religious events, confirmations, funerals, Easter and Christmas traditions, as well as certain state dinners, audiences, balls, and horse racing events.</p>
+                            <p>
+                                @foreach($categories_description as $category_description)
+                                    @if($category_description->name == "Formal")
+                                        {{ $category_description->description }}
+                                    @endif
+                                @endforeach
+                            </p>
                             <img src="/assets/images/service-01.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Casual</h4>
-                            <p>Casual wear is a Western dress code that is informal, occasional, spontaneous, and comfortable for daily use. Following the counterculture of the 1960s, casual clothes became popular in the Western world. When highlighting the comfort of casual attire, it may be referred to as loungewear or leisurewear. Casual is "informal" in the sense that it is not formal, but traditionally, "informal attire" refers to a Western dress code with suits that is one step below "semi-formal attire," making it more formal than "casual attire".</p>
+                            <p>
+                                @foreach($categories_description as $category_description)
+                                    @if($category_description->name == "Casual")
+                                        {{ $category_description->description }}
+                                    @endif
+                                @endforeach
+                            </p>
                             <img src="/assets/images/service-02.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="service-item">
                             <h4>Sports Wear</h4>
-                            <p>The term "sportswear" or "activewear" refers to apparel, including footwear, worn for sports or physical exercise. Most sports and physical activities require specialized gear for practical, comfort, and safety reasons.</p>
+                            <p>
+                                @foreach($categories_description as $category_description)
+                                    @if($category_description->name == "Sports Wear")
+                                        {{ $category_description->description }}
+                                    @endif
+                                @endforeach
+                            </p>
                             <img src="/assets/images/service-03.jpg" alt="">
                         </div>
                     </div>

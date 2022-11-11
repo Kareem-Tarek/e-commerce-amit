@@ -30,11 +30,10 @@ var count = 21; // intialization
 setInterval(function(){
     count--; //decrementation by 1
     document.querySelector('.countDown').innerHTML = count;
-    if (count == 0 /* ending */) {
-        window.location = 'http://localhost:8000/home'; //the action (such as execute/print/echo) 
-    }
-    else if(count < 0){ //extra ending condition to handle any kind of decrementation errors (counting in negatives)
-        window.location = 'http://localhost:8000/home'; //execute the same action or result!
+
+    if (count <= 0) { //(the wrong condition) ending condition to handle any kind of decrementation errors (zero & counting in negatives)
+        count += 1;
+        window.location = 'http://localhost:8000/home';
     }
     else if(count == 4 || count == 2){
         document.querySelector('.countDown').style.backgroundColor = '#D3D3D3';

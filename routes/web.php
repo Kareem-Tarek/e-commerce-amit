@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\DashboardHomeController;
 use App\Http\Controllers\Admin\DashboardProductController;
 use App\Http\Controllers\Admin\DashboardCategoryController;
 use App\Http\Controllers\Admin\DashboardCartController;
+use App\Http\Controllers\Admin\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardProfileController;
 /*----------------------------- End Dashboard Controllers usage -----------------------------*/
 
@@ -203,7 +204,7 @@ Route::group([
         /********************** End carts route. **********************/
 
         //-------------------- Start users route. --------------------//
-        Route::resource('users', UserController::class);
+        Route::resource('/users', DashboardUserController::class);
         Route::get('/profile', [DashboardProfileController::class, 'profile'])->name('profile');
         Route::get('/edit-profile', [DashboardProfileController::class, 'edit'])->name('edit-profile');
         Route::post('/edit-profile-post', [DashboardProfileController::class, 'profileUpdatePassword'])->name('edit-profile-post');
