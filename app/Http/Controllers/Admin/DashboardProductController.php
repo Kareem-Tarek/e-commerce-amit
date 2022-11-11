@@ -124,7 +124,12 @@ class DashboardProductController extends Controller
     {
         $products = Product::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
 
-        return view('dashboard.products.delete',compact('products'));
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.products.delete',compact('products'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
+        }
     }
 
     public function restore($id)

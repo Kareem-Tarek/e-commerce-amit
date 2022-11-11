@@ -12,7 +12,13 @@ class DashboardCategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at','asc')->paginate(30);
-        return view('dashboard.categories.index',compact('categories'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.categories.index',compact('categories'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect()->route('dashboard');
+        }
     }
 
     public function create()
@@ -49,8 +55,11 @@ class DashboardCategoryController extends Controller
         if(auth()->user()->user_type == "admin"){
             return view('dashboard.categories.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier"){
+        elseif(auth()->user()->user_type == "moderator"){
             return redirect('/dashboard/categories');
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
         }
     }
 
@@ -78,7 +87,13 @@ class DashboardCategoryController extends Controller
     public function delete()
     {
         $categories = Category::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
-        return view('dashboard.categories.delete',compact('categories'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.categories.delete',compact('categories'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect('/dashboard');
+        }
     }
 
     public function restore($id)
