@@ -151,7 +151,7 @@
                     <li><a href="javascript:void(0);" style="color: rgb(0, 0, 0);">Contact Us</a></li>
 
                     <li class="onhover-dropdown" style="cursor: context-menu;">
-                        <div class="notification-box" style="color: #0083FF; font-weight: bold;">{{auth()->user()->name ?? auth()->user()->username}}<i data-feather="chevron-down"></i></div>
+                        <div class="notification-box"><img style="border-radius: 5px;" width="40" class="username" src="{{auth()->user()->avatar}}" alt="{{auth()->user()->username.'avatar' ?? auth()->user()->name.'avatar'}}"><i data-feather="chevron-down"></i></div>
                         <ul class="notification-dropdown onhover-show-div">
 
                             @if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator' || auth()->user()->user_type == 'supplier')
