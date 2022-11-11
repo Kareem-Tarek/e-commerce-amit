@@ -12,7 +12,13 @@ class DashboardCategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at','asc')->paginate(30);
-        return view('dashboard.categories.index',compact('categories'));
+        
+        if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+            return view('dashboard.categories.index',compact('categories'));
+        }
+        elseif(auth()->user()->user_type == "supplier"){
+            return redirect()->route('dashboard');
+        }
     }
 
     public function create()
