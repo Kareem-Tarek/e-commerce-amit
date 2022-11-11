@@ -1,55 +1,54 @@
 @extends('layouts.admin.master')
 
-@section('title') 
-    All Users
+@section('title')
+    Deleted Users
 @endsection
 
 @section('content')
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3 class="mt-4">Users</h3>
+            <h3 class="mt-4">Deleted Users</h3>
         @endslot
-        <li class="breadcrumb-item active">Users</li>
+        <li class="breadcrumb-item"><a href="{{route('users.index')}}">Users</a> </li>
+        <li class="breadcrumb-item active">Deleted Users</li>
         @slot('bookmark')
             <a href="{{route('users.create')}}" class="btn btn-pill btn-air-success btn-success-gradien" type="button" title="Add New User">Add New User</a>
         @endslot
     @endcomponent
-
     @include('layouts.admin.partials.messages.message')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-
-                        <h5>Show Users - <span class="b-b-success">{{App\Models\User::count()}}</span></h5>
+                        <h5>Show deleted users - <span class="b-b-success">{{App\Models\User::onlyTrashed()->count()}}</span></h5>
                         <span>
-                            All users If you want to create and add new users, 
-                            you have to click on the (Add New User) button at 
-                            the top of the page from the left.
+                            All deleted users. If you want to create and add new sections, 
+                            you must click the (Add New User) button at the top of the page, 
+                            and if you want to restore any section, press (Restore) next to each user.
                         </span>
                     </div>
                     <div class="card-block row">
                         <div class="col-sm-12 col-lg-12 col-xl-12">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-striped">
                                     <thead>
-                                        <tr>
-                                            <th scope="col" class="text-center">#</th>
-                                            <th scope="col" class="text-center">Name</th>
-                                            <th scope="col" class="text-center">Username</th>
-                                            <th scope="col" class="text-center">Email</th>
-                                            <th scope="col" class="text-center">User Type</th>
-                                            <th scope="col" class="text-center">Gender</th>
-                                            <th scope="col" class="text-center">Phone</th>
-                                            <th scope="col" class="text-center">Bio</th>
-                                            <th scope="col" class="text-center">Date of Creation</th>
-                                            <th scope="col" class="text-center">Added By</th>
-                                            <th scope="col" class="text-center">Last Updated By</th>
-                                            @if(auth()->user()->user_type == "admin")
-                                                <th scope="col" class="text-center">Action</th>
-                                            @endif
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col" class="text-center">Name</th>
+                                        <th scope="col" class="text-center">Username</th>
+                                        <th scope="col" class="text-center">Email</th>
+                                        <th scope="col" class="text-center">User Type</th>
+                                        <th scope="col" class="text-center">Gender</th>
+                                        <th scope="col" class="text-center">Phone</th>
+                                        <th scope="col" class="text-center">Bio</th>
+                                        <th scope="col" class="text-center">Date of Creation</th>
+                                        <th scope="col" class="text-center">Added By</th>
+                                        <th scope="col" class="text-center">Last Updated By</th>
+                                        @if(auth()->user()->user_type == "admin")
+                                            <th scope="col" class="text-center">Action</th>
+                                        @endif
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     @forelse($users as $user)
@@ -91,14 +90,13 @@
                                         <td class="text-center">{{$user->create_user->name ?? '??'}}</td>
                                         <td class="text-center">{{$user->update_user->name ?? '??'}}</td>
                                         @if(auth()->user()->user_type == "admin")
-                                            <td class="text-center" style="width: 15%;">
+                                            <td class="text-center">
                                                 {!! Form::open([
-                                                    'route' => ['users.destroy',$user->id],
+                                                    'route' => ['users.forceDelete',$user->id],
                                                     'method' => 'delete'
                                                 ])!!}
-                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
-
-                                                <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to permanently delete - {{ $user->username }}?');" type="submit" title="{{'Permanent Delete'." ($user->username)"}}"><i class="fa-solid fa-trash"></i> Permanent Delete </button>
+                                                <a href="{{route('users.restore',$user->id)}}" onclick="return confirm('Are you sure that you want to restore - {{ $user->username }}?');" class="btn btn-primary btn-xs" type="button" title="{{'Restore'." ($user->username)"}}"><i class="fa-solid fa-trash-arrow-up"></i> Restore</a>
                                                 {!! Form::close() !!}
                                             </td>
                                         @endif
