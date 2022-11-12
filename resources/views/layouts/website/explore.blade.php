@@ -44,7 +44,19 @@
                         <div class="col-lg-6">
                             <div class="types border">
                                 <h4>Different Types</h4>
-                                <span style="font-size: 90%">Over {{\App\Models\Product::count()-5}} Products</span>
+                                {{-- <span style="font-size: 90%">Over {{\App\Models\Product::count()-10}} Products</span> --}}
+                                <span style="font-size: 90%">
+                                @auth
+                                    @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
+                                        Total Products: {{\App\Models\Product::count()}}
+                                    @else
+                                        Over {{\App\Models\Product::count()-10}} Products
+                                    @endif
+                                @endauth
+                                @if(!auth()->user())
+                                    Over {{\App\Models\Product::count()-10}} Products
+                                @endif
+                                </span>
                             </div>
                         </div>
                     </div>
