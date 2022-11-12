@@ -65,7 +65,7 @@ class ProductController extends Controller
 
     public function latest_items()
     {
-        $latest_items       = Product::orderBy('id' , 'DESC')->paginate(15);
+        $latest_items       = Product::orderBy('id' , 'DESC')->orderBy('created_at' , 'DESC')->paginate(15);
         $latest_items_count = $latest_items->count();
 
         return view('website.products.latest-items' , compact('latest_items' , 'latest_items_count'));

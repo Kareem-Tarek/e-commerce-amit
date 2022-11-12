@@ -47,6 +47,10 @@
           </li>
   
           <li class="dropdown">
+            <a href="{{ route('latest_items') }}">Latest Items <span class="caret"></span></a>
+        </li>
+          
+          <li class="dropdown">
               <a class="dropdown-toggle check-discount" href="javascript:void(0);" style="color:#24a80c; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#24a80c'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Check Discounts!
                   <span class="caret"></span>
