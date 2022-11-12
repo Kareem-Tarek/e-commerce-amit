@@ -21,13 +21,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             @foreach($latest_product as $latest_product_result)
-                            <div class="leather" style="/* background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ '/assets/images/'.$latest_product_result->image_name }}'); */">
+                            <div class="leather border" style="/* background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('{{ '/assets/images/'.$latest_product_result->image_name }}'); */">
                                 <h4>
                                     <a href="{{ route('single_product_page' , $latest_product_result->id) }}" style="color:inherit; transition: all 0.25s ease-in-out;" onMouseOver="this.style.color='#3385ff'" onMouseOut="this.style.color='inherit'">
                                         {{ $latest_product_result->name ?? 'No product found!' }}
                                     </a>
                                 </h4>
-                                <span>Checkout Latest Items</span>
+                                <a href="{{ route('latest_items') }}" style="color: #AAAAAA; transition: all 0.25s ease-in-out; font-size: 90%; font-style: italic;" onMouseOver="this.style.color='#261198'" onMouseOut="this.style.color='#AAAAAA'">Checkout Latest Items</a>
                             </div>
                             @endforeach
                         </div>
@@ -42,9 +42,21 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="types">
+                            <div class="types border">
                                 <h4>Different Types</h4>
-                                <span>Over {{\App\Models\Product::count()-5}} Products</span>
+                                {{-- <span style="font-size: 90%">Over {{\App\Models\Product::count()-10}} Products</span> --}}
+                                <span style="font-size: 90%">
+                                @auth
+                                    @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator")
+                                        Total Products: {{\App\Models\Product::count()}}
+                                    @else
+                                        Over {{\App\Models\Product::count()-10}} Products
+                                    @endif
+                                @endauth
+                                @if(!auth()->user())
+                                    Over {{\App\Models\Product::count()-10}} Products
+                                @endif
+                                </span>
                             </div>
                         </div>
                     </div>

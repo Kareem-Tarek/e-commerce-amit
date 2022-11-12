@@ -1,9 +1,9 @@
 <header class="main-nav">
-    <div class="sidebar-user text-center" style="margin-bottom: 5%;">
-        <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{ auth()->user()->avatar ?? ''}}" alt="{{auth()->user()->username.'avatar'}}" />
+    <div class="sidebar-user text-center mt-2" style="margin-bottom: 1%;">
+        <a class="setting-primary" href="javascript:void(0);"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{ auth()->user()->avatar ?? ''}}" alt="{{auth()->user()->username.'.avatar'}}" />
         @php $data = Carbon\Carbon::parse(Auth::user()->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
         @if($data <= 7) <!---------- in days ---------->
-            <div class="badge-bottom mt-2">
+            <div class="badge-bottom mt-1">
                 <span class="badge badge-primary">New</span>
             </div>
         @endif
@@ -13,7 +13,7 @@
     <p class="mt-1 font-roboto">{{auth()->user()->email ?? ''}}</p>
     </div>
 
-    <div class="sidebar-main-title text-center" style="color: #0083FF;">
+    <div class="sidebar-main-title text-center mt-2" style="color: #0083FF; border-bottom: 1px solid #E6EDEF;">
         <h6>
             @if(auth()->user()->user_type == "admin")
                 Admin
@@ -26,7 +26,7 @@
         </h6>
     </div>
 
-    <hr>
+    
 
     <nav>
         <div class="main-navbar">

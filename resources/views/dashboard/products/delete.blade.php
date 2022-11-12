@@ -108,7 +108,7 @@
                 </div>
                 <nav class="m-b-30" aria-label="Page navigation example">
                     <ul class="pagination justify-content-center pagination-primary">
-                        {!! $products->links('pagination::bootstrap-4') !!}
+                        {!! $products->links('pagination::bootstrap-5') !!}
                     </ul>
                 </nav>
             </div>

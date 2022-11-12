@@ -151,7 +151,7 @@
                     <li><a href="javascript:void(0);" style="color: rgb(0, 0, 0);">Contact Us</a></li>
 
                     <li class="onhover-dropdown" style="cursor: context-menu;">
-                        <div class="notification-box"><img style="border-radius: 4px;" width="40" class="username" src="{{auth()->user()->avatar}}" alt="{{auth()->user()->username.'avatar' ?? auth()->user()->name.'avatar'}}"><i data-feather="chevron-down"></i></div>
+                        <div class="notification-box"><img style="border-radius: 4px;" width="40" class="username" src="{{auth()->user()->avatar}}" alt="{{auth()->user()->username.'.avatar' ?? auth()->user()->name.'.avatar'}}"><i data-feather="chevron-down"></i></div>
                         <ul class="notification-dropdown onhover-show-div">
 
                             @if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'moderator' || auth()->user()->user_type == 'supplier')
@@ -235,11 +235,11 @@
                             <div class="card profile-header" style="margin-top: 10%;">
                                 {{-- <img class="img-fluid bg-img-cover" src="{{$user->getFirstMediaUrl('cover')}}" alt="cover {{$user->name}}" />
                                 <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover" src="{{$user->getFirstMediaUrl('cover')}}" alt="cover {{$user->name}}" /></div> --}}
-                                <img class="img-fluid bg-img-cover" src="{{$user->cover}}" alt="{{auth()->user()->username.'cover' ?? auth()->user()->name.'cover'}}" />
-                                <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover" src="{{$user->cover}}" alt="{{auth()->user()->username.'cover' ?? auth()->user()->name.'cover'}}" /></div>
+                                <img class="img-fluid bg-img-cover" src="{{$user->cover}}" alt="{{auth()->user()->username.'.cover' ?? auth()->user()->name.'.cover'}}" />
+                                <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover" src="{{$user->cover}}" alt="{{auth()->user()->username.'.cover' ?? auth()->user()->name.'.cover'}}" /></div>
                                 <div class="userpro-box" style="padding-top: 8%; margin-left: auto; margin-right: auto; background-color: rgba(255, 255, 255, 0.80);">
                                     <div class="img-wrraper">
-                                        <div class="avatar"><img class="img-fluid" src="{{$user->avatar}}" alt="{{auth()->user()->username.'avatar' ?? auth()->user()->name.'avatar'}}" /></div>
+                                        <div class="avatar"><img class="img-fluid" src="{{$user->avatar}}" alt="{{auth()->user()->username.'.avatar' ?? auth()->user()->name.'.avatar'}}" /></div>
                                         <a class="icon-wrapper" href="{{route('editProfile')}}"><i class="icofont icofont-pencil-alt-5"></i></a>
                                     </div>
                                     <div class="user-designation">
@@ -407,7 +407,7 @@
 
                             {{-- <nav class="m-b-30" aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center pagination-primary text-center">
-                                    {!! $cartItems->links('pagination::bootstrap-4') !!}
+                                    {!! $cartItems->links('pagination::bootstrap-5') !!}
                                 </ul>
                             </nav> --}}
                         @endif
