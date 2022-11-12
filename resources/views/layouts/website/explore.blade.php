@@ -27,7 +27,7 @@
                                         {{ $latest_product_result->name ?? 'No product found!' }}
                                     </a>
                                 </h4>
-                                <span>Checkout Latest Items</span>
+                                <a href="{{ route('latest_items') }}" style="color: #AAAAAA; transition: all 0.25s ease-in-out; font-style: italic;" onMouseOver="this.style.color='#261198'" onMouseOut="this.style.color='#AAAAAA'">Checkout Latest Items</a>
                             </div>
                             @endforeach
                         </div>

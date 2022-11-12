@@ -63,6 +63,14 @@ class ProductController extends Controller
         return view('website.products.all-product-items', compact('all_product_items' , 'all_product_items_count'));
     }
 
+    public function latest_items()
+    {
+        $latest_items       = Product::orderBy('id' , 'DESC')->paginate(15);
+        $latest_items_count = $latest_items->count();
+
+        return view('website.products.latest-items' , compact('latest_items' , 'latest_items_count'));
+    }
+
     public function clothes_all_filter()
     {
         $clothes_all       = Product::all()->where('is_accessory','no');

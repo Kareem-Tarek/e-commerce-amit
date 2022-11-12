@@ -22,31 +22,32 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     
      //method (1) - wrting the columns from the table
-        protected $fillable = [
-            'avatar', 
-            'cover', 
-            'name', 
-            'username',
-            'phone', 
-            'bio', 
-            'email',  
-            'password', 
-            'gender', 
-            'dob', 
-            'user_type', 
-            'address',
-            'country_id', 
-            'governorate_id', 
-            'city_id', 
-            'whatsapp',
-            'facebook',
-            'instagram',
-            'last_login_at',
-            'last_login_ip',
-        ];
+        // protected $fillable = [
+        //     'avatar', 
+        //     'cover', 
+        //     'name', 
+        //     'username',
+        //     'phone', 
+        //     'bio', 
+        //     'email',  
+        //     'password', 
+        //     'gender', 
+        //     'dob', 
+        //     'user_type', 
+        //     'address',
+        //     'country_id', 
+        //     'governorate_id', 
+        //     'email_verified_at',
+        //     'city_id', 
+        //     'whatsapp',
+        //     'facebook',
+        //     'instagram',
+        //     'last_login_at',
+        //     'last_login_ip',
+        // ];
     
     //method (2) - every column in the table in general
-        // protected $guarded = [];
+        protected $guarded = [];
 
     public function product(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

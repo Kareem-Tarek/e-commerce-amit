@@ -81,6 +81,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products'); 
 Route::get('/search' , [ProductController::class, 'search'])->name('search'); //product-results-landing-page (from the search 'query')
 Route::get('/all-product-items', [ProductController::class, 'all_product_items'])->name('all_product_items'); //all-products-page (everything in general)
 Route::get('/all-clothes', [ProductController::class, 'clothes_all_filter'])->name('clothes_all_filter'); //all-clothes-page
+Route::get('/latest-items', [ProductController::class, 'latest_items'])->name('latest_items'); //latest-items-page
 Route::get('/kids-wear', [ProductController::class, 'clothes_kids_filter'])->name('clothes_kids_filter'); //kids-clothes-page-only
 Route::get('/men-wear', [ProductController::class, 'clothes_men_filter'])->name('clothes_men_filter'); //men-clothes-page-only
 Route::get('/women-wear', [ProductController::class, 'clothes_women_filter'])->name('clothes_women_filter'); //women-clothes-page-only
