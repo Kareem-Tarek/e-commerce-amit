@@ -50,10 +50,10 @@ class DashboardUserController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     'username'  => ['required', 'string', 'max:255', 'unique:users'],
-        //     'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        // ]);
+        $validated = $request->validate([
+            'username'  => ['required', 'string', 'max:255', 'unique:users'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
 
         $users            = new User;
         $users->username  = $request->username;
@@ -125,7 +125,14 @@ class DashboardUserController extends Controller
         $users            = User::findOrFail($id);
         $users->username  = $request->username;
         $users->name      = $request->name;
-        //$users->email     = $request->email;
+        if(/* auth()->user()->user_type == "admin" && */ $users->id == auth()->user()->id){
+            $users->email = $request->email;
+        }
+        else{
+            // $users->email != $request->email;
+            return redirect()->route('users.index')->with('unauthorized_action', 'Sorry you are not allowed to do this action!');
+        }
+        // $users->email     = $request->email;
         $users->user_type = $request->user_type;
         $users->phone     = $request->phone;
         $users->gender    = $request->gender;

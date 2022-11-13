@@ -15,13 +15,19 @@
         @endslot
     @endcomponent
 
+    @if(session()->has('unauthorized_action'))
+        <div class="alert alert-danger text-left session-message">
+            {{-- <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button> --}}
+            <h3>Warning!</h3><br><span style="font-size: 150%;">•</span>&nbsp;&nbsp;{{ session()->get('unauthorized_action') }}
+        </div>
+    @endif
+
     @include('layouts.admin.partials.messages.message')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-
                         <h5>Show Users - <span class="b-b-success">{{App\Models\User::count()}}</span></h5>
                         <span>
                             All users If you want to create and add new users, 
