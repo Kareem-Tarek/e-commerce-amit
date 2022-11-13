@@ -1,15 +1,15 @@
 @extends('layouts.admin.master')
 
-@section('title') Edit ({{$model->name}}) @endsection
+@section('title') Edit ({{$model->name ?? $model->username}}) @endsection
 
 @section('content')
 
     @component('components.breadcrumb')
         @slot('breadcrumb_title')
-            <h3 class="mt-4">Edit ({{$model->name}})</h3>
+            <h3 class="mt-4">Edit ({{$model->name ?? $model->username}})</h3>
         @endslot
         <li class="breadcrumb-item"><a href="{{route('users.index')}}">Users</a> </li>
-        <li class="breadcrumb-item active">Edit ({{$model->name}})</li>
+        <li class="breadcrumb-item active">Edit ({{$model->name ?? $model->username}})</li>
         @slot('bookmark')
             <a href="{{route('users.create')}}" class="btn btn-pill btn-air-success btn-success-gradien" type="button" title="Add New User">Add New User</a>
         @endslot
