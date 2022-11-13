@@ -27,7 +27,13 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Email <span class="text-danger">*</span></label>
         <div class="col-lg-9">
-            <input class="form-control @error('email') is-invalid @enderror" value="{{Request::old('email') ? Request::old('email') : $model->email}}" type="text" name="email" placeholder="Enter user email" autocomplete="off">
+            @if(Route::is('users.create'))
+                <input class="form-control @error('email') is-invalid @enderror" value="{{Request::old('email') ? Request::old('email') : $model->email}}" type="text" name="email" placeholder="Enter user email" autocomplete="off">
+            @elseif(Route::is('users.edit') && $model->email == auth()->user()->email)
+                <input class="form-control @error('email') is-invalid @enderror" value="{{Request::old('email') ? Request::old('email') : $model->email}}" type="text" name="email" placeholder="Enter user email" autocomplete="off">
+            @elseif(Route::is('users.edit'))
+                <input disabled class="form-control @error('email') is-invalid @enderror" value="{{Request::old('email') ? Request::old('email') : $model->email}}" type="text" name="email" placeholder="Enter user email" autocomplete="off">
+            @endif
             @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -36,17 +42,31 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <label class="form-label col-lg-3">Password <span class="text-danger">*</span></label>
-        <div class="col-lg-9">
-            <input class="form-control @error('password') is-invalid @enderror" value="{{Request::old('password') ? Request::old('password') : $model->password}}" type="password" name="password" placeholder="Enter user password" autocomplete="off">
-            @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+    @if(Route::is('users.create'))
+        <div class="form-group row">
+            <label class="form-label col-lg-3">Password <span class="text-danger">*</span></label>
+            <div class="col-lg-9">
+                <input class="form-control @error('password') is-invalid @enderror" value="{{Request::old('password') ? Request::old('password') : $model->password}}" type="password" name="password" placeholder="Enter user password" autocomplete="off">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
         </div>
-    </div>
+
+        <div class="form-group row">
+            <label class="form-label col-lg-3">Confirm Password <span class="text-danger">*</span></label>
+            <div class="col-lg-9">
+                <input class="form-control @error('password') is-invalid @enderror" value="" type="password" name="confirm_password" placeholder="Enter user confirm password" autocomplete="off">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div> 
+    @endif
 
     <div class="form-group row">
         <label class="form-label col-lg-3">User Type <span class="text-danger">*</span></label>
@@ -96,4 +116,3 @@
     </div>
 
 </div>
-

@@ -96,10 +96,22 @@
                                                     'route' => ['users.destroy',$user->id],
                                                     'method' => 'delete'
                                                 ])!!}
-                                                <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
-
-                                                <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                @if($user->user_type == "admin" && $user->id != auth()->user()->id)
+                                                    {{-- <button style="display: none;" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button> --}}
+                                                @elseif($user->user_type == "admin" && auth()->user())
+                                                    <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
+                                                @else
+                                                    <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
+                                                @endif
                                                 {!! Form::close() !!}
+
+                                                @if($user->user_type == "admin" && $user->id != auth()->user()->id)
+                                                    {{-- <a style="display: none;" href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a> --}}
+                                                @elseif($user->user_type == "admin" && auth()->user())
+                                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                @else
+                                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                @endif
                                             </td>
                                         @endif
                                     </tr>
