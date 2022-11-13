@@ -18,6 +18,18 @@
 
     @include('layouts.admin.partials.validation-errors')
 
+    @if(session()->has('confirm_password_empty'))
+        <div class="alert alert-danger text-left session-message">
+            {{-- <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button> --}}
+            <h3>Warning!</h3><br><span style="font-size: 150%;">•</span>&nbsp;&nbsp;{{ session()->get('confirm_password_empty') }}
+        </div>
+    @elseif(session()->has('confirm_password_not_matching'))
+        <div class="alert alert-danger text-left session-message">
+            {{-- <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button> --}}
+            <h3>Warning!</h3><br><span style="font-size: 150%;">•</span>&nbsp;&nbsp;{{ session()->get('confirm_password_not_matching') }}
+        </div>
+    @endif
+
     <div class="col-sm-12 col-xl-6 xl-100">
         <div class="card">
             <div class="card-header pb-0">

@@ -21,11 +21,6 @@
                 <h5>Check Changes</h5>
             </div>
             <div class="card-body">
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    {{-- <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'ar') active  @endif" id="ar-tab" data-bs-toggle="pill" href="#ar" role="tab" aria-controls="ar" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'ar') true @else false @endif">Arabic<div class="media"></div></a></li>
-                    <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'en') active  @endif" id="en-tab" data-bs-toggle="pill" href="#en" role="tab" aria-controls="en" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'ar') true @else false @endif">English</a></li>
-                    <li class="nav-item"><a class="nav-link @if(LaravelLocalization::getCurrentLocale() == 'fr') active  @endif" id="fr-tab" data-bs-toggle="pill" href="#fr" role="tab" aria-controls="fr" aria-selected="@if(LaravelLocalization::getCurrentLocale() == 'ar') true @else false @endif">French</a></li> --}}
-                </ul>
                 <div class="tab-content " id="pills-tabContent">
                     <form action="{{route('products.update',$model->id)}}" method="post" id="alert-form">
                         @csrf
