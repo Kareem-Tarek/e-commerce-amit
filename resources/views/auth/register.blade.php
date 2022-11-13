@@ -85,9 +85,21 @@
                             <div class="col-lg-6" style="margin-left: 19.5%;">
                                 <select name="user_type" class="form-control" required>
                                     <option value="" selected disabled>Please choose a user type</option>
-                                    <option value="supplier">Supplier</option>
-                                    <option value="customer">Customer</option>
+                                    <option value="supplier" {{ old('user_type') == "supplier" ? 'selected' : '' }}>Supplier</option>
+                                    <option value="customer" {{ old('user_type') == "customer" ? 'selected' : '' }}>Customer</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" onkeydown="return /[0-9]/i.test(event.key)" autocomplete="phone" autofocus>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

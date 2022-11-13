@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'  => ['required', 'string', 'min:8', 'confirmed'],
             'user_type' => ['required', 'in:supplier,customer'],
+            'phone'     => ['string', 'min:11', 'max:11', 'unique:users'],
         ]);
     }
 
@@ -66,12 +67,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'avatar'    => '/assets/images/'.$data['avatar'],
             'username'  => $data['username'],
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']), // Encrypted password in the DB! (by using "Hash")
             // 'password' => $data['password'], // NOT encrypted password in the DB!
             'user_type' => $data['user_type'],
+            'phone'     => $data['phone'],
+            'avatar'    => '/assets/images/'.$data['avatar'],
         ]);
     }
 }
