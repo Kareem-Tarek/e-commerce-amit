@@ -18,6 +18,7 @@ class DashboardUserController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at','asc')->paginate(30);
+
         if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
             return view('dashboard.users.index', compact('users'));
         }
@@ -95,7 +96,13 @@ class DashboardUserController extends Controller
     {
         $model = User::findOrFail($id);
         
-        if(auth()->user()->user_type == "admin"){
+        if(auth()->user()->user_type == "admin" && $model->id == auth()->user()->id){
+            return view('dashboard.users.edit',compact('model'));
+        }
+        elseif(auth()->user()->user_type == "admin" && $model->user_type == "admin"){
+            return redirect('/dashboard/users');
+        }
+        elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){
             return view('dashboard.users.edit',compact('model'));
         }
         elseif(auth()->user()->user_type == "moderator"){
