@@ -58,7 +58,7 @@ class DashboardUserController extends Controller
         $users            = new User;
         $users->username  = $request->username;
         $users->name      = $request->name;
-        //$users->email     = $request->email;
+        $users->email     = $request->email;
         $users->password  = Hash::make($request->password);
         if($request->confirm_password == ""){
             return redirect()->back()->with('confirm_password_empty','Please confirm your password!');
