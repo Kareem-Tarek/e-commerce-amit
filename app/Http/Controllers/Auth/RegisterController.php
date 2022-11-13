@@ -66,6 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'avatar'    => '/assets/images/'.$data['avatar'],
             'username'  => $data['username'],
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']), // Encrypted password in the DB! (by using "Hash")
