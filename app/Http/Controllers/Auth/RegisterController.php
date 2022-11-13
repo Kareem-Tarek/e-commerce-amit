@@ -79,12 +79,12 @@ class RegisterController extends Controller
             'name'      => $data['name'],
             'username'  => $data['username'],
             'email'     => $data['email'],
-            'password'  => Hash::make($data['password']), // Encrypted password in the DB! (by using "Hash")
-            // 'password' => $data['password'], // NOT encrypted password in the DB!
+            'password'  => Hash::make($data['password']), //the correct method for password. Hashed password in the DB! (by using "Hash")
+            // 'password' => $data['password'], //the wrong method for password. NOT Hashed password in the DB!
             'user_type' => $data['user_type'],
             'phone'     => $data['phone'],
-            // 'avatar'    => '/assets/images/'.$data['avatar'], //the wrong method for avatar
             'avatar'    => $avatar, //the correct method for avatar
+            // 'avatar'    => '/assets/images/'.$data['avatar'], //the wrong method for avatar
         ]);
     }
 }
