@@ -247,11 +247,11 @@ class ProductController extends Controller
 
         $product = Product::find($id); // OR $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
 
-        if($product == null || $product == ""){
+        if($product == null){
             return view('website.products.productsErrors.404-product-page-not-found');
         }
         if($name != null){
-            $product_name = Product::where('name', $name);
+            Product::where('name', $name);
             return view('website.products.single-product' , compact('product' , 'productItem_id'));
         }
 
