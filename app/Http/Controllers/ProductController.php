@@ -241,19 +241,21 @@ class ProductController extends Controller
         return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
     }
 
-    public function single_product_page($id) // SPA (Single Page Application)
+    public function single_product_page($id, $name = null) // SPA (Single Page Application)
     {
-        // $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
-        //OR
-        $product = Product::find($id);
+        $productItem_id = Product::all()->where('id',$id);
+
+        $product = Product::find($id); // OR $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
+
         if($product == null || $product == ""){
             return view('website.products.productsErrors.404-product-page-not-found');
         }
-        // $product->name = $name;
-        $productItem_id = Product::all()->where('id',$id);
+        if($name != null){
+            $product_name = Product::where('name', $name);
+            return view('website.products.single-product' , compact('product' , 'productItem_id'));
+        }
 
         return view('website.products.single-product' , compact('product' , 'productItem_id'));
-        // return view('website.products.single-product')->withProduct($product);
     }
 
     /**

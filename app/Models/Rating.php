@@ -12,7 +12,7 @@ class Rating extends Model
     use HasApiTokens , HasFactory , SoftDeletes;
 
     protected $fillable = [
-        'rating',
+        'rating_level',
         'customer_id',
         'product_id',
         'product_name' ,
