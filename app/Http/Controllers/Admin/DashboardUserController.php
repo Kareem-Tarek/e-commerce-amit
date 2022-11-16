@@ -104,7 +104,7 @@ class DashboardUserController extends Controller
         elseif(auth()->user()->user_type == "admin" && $model->user_type == "admin"){ //the signed in admin couldn't update the other admin(s) info, so take the signed in admin to the users index page
             return redirect('/dashboard/users');
         }
-        elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){ //the signed in admin could update any other users' info except other admin
+        elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){ //the signed in admin could update any other users' info except the other admin(s)
             return view('dashboard.users.edit',compact('model'));
         }
         elseif(auth()->user()->user_type == "moderator"){ //the moderators are not allowed to do anything more than "adding" & "showing", so take them to the users index page 
