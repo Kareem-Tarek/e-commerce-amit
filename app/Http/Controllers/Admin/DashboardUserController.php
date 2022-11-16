@@ -50,10 +50,10 @@ class DashboardUserController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'username'  => ['required', 'string', 'max:255', 'unique:users'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]);
+        // $validated = $request->validate([
+        //     'username'  => ['required', 'string', 'max:255', 'unique:users'],
+        //     'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        // ]);
 
         $users            = new User;
         $users->username  = $request->username;
@@ -94,21 +94,23 @@ class DashboardUserController extends Controller
      */
     public function edit($id)
     {
+        //NOTE: in the users "form.blade.php" file admin could update his/her own email but not any other user, and if it happened the app will throw an error in the admin's face (unauthorized action)!
+
         $model = User::findOrFail($id);
-        
-        if(auth()->user()->user_type == "admin" && $model->id == auth()->user()->id){
+
+        if(auth()->user()->user_type == "admin" && $model->id == auth()->user()->id){ //the signed in admin could update his/her own info
             return view('dashboard.users.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "admin" && $model->user_type == "admin"){
+        elseif(auth()->user()->user_type == "admin" && $model->user_type == "admin"){ //the signed in admin couldn't update the other admin(s) info, so take the signed in admin to the users index page
             return redirect('/dashboard/users');
         }
-        elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){
+        elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){ //the signed in admin could update any other users' info except other admin
             return view('dashboard.users.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator"){
+        elseif(auth()->user()->user_type == "moderator"){ //the moderators are not allowed to do anything more than "adding" & "showing", so take them to the users index page 
             return redirect('/dashboard/users');
         }
-        elseif(auth()->user()->user_type == "supplier"){
+        elseif(auth()->user()->user_type == "supplier"){ //the suppliers are allowed to access the dashboard but only for the products they own (from the front-end & back-end)! 
             return redirect('/dashboard');
         }
     }
