@@ -119,7 +119,7 @@
                                         <div class="col-lg-12">
                                             <div class="men-item-carousel">
                                                 <div class="owl-men-item owl-carousel">
-                                                    @forelse($productItem_id as $productItem)
+                                                    @forelse($productItem_for_image_slider as $productItem)
                                                     <div class="item">
                                                         <div class="thumb">
                                                             <a href="{{ route('single_product_page' , $productItem) }}">

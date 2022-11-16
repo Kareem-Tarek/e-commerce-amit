@@ -243,19 +243,18 @@ class ProductController extends Controller
 
     public function single_product_page($id, $name = null) // SPA (Single Page Application)
     {
-        $productItem_id = Product::all()->where('id',$id);
-
         $product = Product::find($id); // OR $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually
+        $productItem_for_image_slider = $product->where('id', $id)->get(); //this is just a temporary variable that will be used in the single page for product image sldier
 
         if($product == null){
             return view('website.products.productsErrors.404-product-page-not-found');
         }
         if($name != null){
             Product::where('name', $name);
-            return view('website.products.single-product' , compact('product' , 'productItem_id'));
+            return view('website.products.single-product' , compact('product' , 'productItem_for_image_slider'));
         }
 
-        return view('website.products.single-product' , compact('product' , 'productItem_id'));
+        return view('website.products.single-product' , compact('product' , 'productItem_for_image_slider'));
     }
 
     /**
