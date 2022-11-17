@@ -92,19 +92,14 @@ It helps the developers to create 'variables' (that acts as CSS properties) whic
 Example: ... 
 
 :root{
---all_center_aligns: center;
+--center_aligns: center;
 }
 
-Selector_X {text-align: var(--all_center_aligns);}
-Selector_Y {text-align: var(--all_center_aligns);}
-Selector_Z {text-align: var(--all_center_aligns);}
+Selector_X {text-align: var(--center_aligns);}
+Selector_Y {text-align: var(--center_aligns);}
+Selector_Z {text-align: var(--center_aligns);}
 
 */
-
-:root{
---black_color: rgb(0, 0, 0);
---transition-35s: all 0.35s ease-in-out;
-}
 
 @media only screen and (min-width:350px) and (max-width:505px) {
 .search-container{margin-top: 20%;}
@@ -120,25 +115,25 @@ Selector_Z {text-align: var(--all_center_aligns);}
 .search-container{margin-top: 5%;}
 }
 
-.search-box-btn{background-color: var(--black_color); border-radius: 5px;}
+.search-box-btn{background-color: black; border-radius: 5px;}
 
-.search-box-btn:hover{background-color: rgb(255, 255, 255); transition: var(--transition-35s);}
+.search-box-btn:hover{background-color: rgb(255, 255, 255); transition: all 0.35s ease-in-out;}
 
 .search-box-btn-icon{color: snow;}
 
-.search-box-btn:hover .search-box-btn-icon{color: var(--black_color); transition: var(--transition-35s);}
+.search-box-btn:hover .search-box-btn-icon{color: black; transition: all 0.35s ease-in-out;}
 
-.ancord-item{color: var(--black_color);}
+.ancord-item{color: black;}
 
 .dropdown{padding-right: 50px; margin-top: 3%;}
 
 .percent-icon{color: snow; background-color: black; padding-right: 5px; padding-left: 5px; padding-top: 2.5px; padding-bottom: 2.5px; border-radius: 12px;}
 
-.dropdown .check-discount:hover .percent-icon{color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.45s linear;}
+.dropdown .check-discount:hover .percent-icon{color: black; background-color: rgb(255, 255, 255); transition: all 0.45s linear;}
 
-.dropdown .check-discount:not(:hover) .percent-icon{color: snow; background-color: rgb(0, 0, 0); transition: all 0.45s linear;}
+.dropdown .check-discount:not(:hover) .percent-icon{color: snow; background-color: black; transition: all 0.45s linear;}
 
-.dropdown-menu{border: 1px solid var(--black_color);}
+.dropdown-menu{border: 1px solid black;}
 
 .dropdown .dropdown-menu{padding-left: 4%;}
 
@@ -146,11 +141,11 @@ Selector_Z {text-align: var(--all_center_aligns);}
 
 .dropdown a:not(:hover) {transition: all 0.30s ease-in-out;}
 
-.dropdown a, .dropdown .dropdown-menu li a {color: var(--black_color);}
+.dropdown a, .dropdown .dropdown-menu li a {color: black;}
 
 .dropdown .dropdown-menu li a:hover {color: #0083FF; transition: all 0.30s ease-in-out;}
 
-.dropdown .dropdown-menu li a:not(:hover) {color: #000000; transition: all 0.30s ease-in-out;}
+.dropdown .dropdown-menu li a:not(:hover) {color: black; transition: all 0.30s ease-in-out;}
 
 .check-discounts{background-color: rgba(185, 185, 185, 0.35); padding: 3% 8%; border-radius: 5px;}
 </style>
