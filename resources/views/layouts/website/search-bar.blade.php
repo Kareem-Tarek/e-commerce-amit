@@ -51,6 +51,7 @@
         </li>
           
           <li class="dropdown">
+            <div class="check-discounts">
               <a class="dropdown-toggle check-discount" href="javascript:void(0);" style="color:#24a80c; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#24a80c'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Check Discounts!
                   <span class="caret"></span>
@@ -76,6 +77,7 @@
                   <li><a href="{{ route('81per-to-90per') }}">81% ~ 90%</a></li>
                   <li><a href="{{ route('91per-to-100per') }}">91% ~ 100%</a></li>
               </ul>
+            </div>
           </li>
       </ul>
   </div>
@@ -149,5 +151,7 @@ Selector_Z {text-align: var(--all_center_aligns);}
 .dropdown .dropdown-menu li a:hover {color: #0083FF; transition: all 0.30s ease-in-out;}
 
 .dropdown .dropdown-menu li a:not(:hover) {color: #000000; transition: all 0.30s ease-in-out;}
+
+.check-discounts{background-color: rgba(185, 185, 185, 0.35); padding: 3% 8%; border-radius: 5px;}
 </style>
 
