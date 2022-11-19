@@ -15,13 +15,19 @@
         @endslot
     @endcomponent
 
+    @if(session()->has('unauthorized_action'))
+        <div class="alert alert-danger text-left session-message">
+            {{-- <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button> --}}
+            <h3>Warning!</h3><br><span style="font-size: 150%;">•</span>&nbsp;&nbsp;{{ session()->get('unauthorized_action') }}
+        </div>
+    @endif
+
     @include('layouts.admin.partials.messages.message')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-
                         <h5>Show Users - <span class="b-b-success">{{App\Models\User::count()}}</span></h5>
                         <span>
                             All users If you want to create and add new users, 
@@ -98,18 +104,14 @@
                                                 ])!!}
                                                 @if($user->user_type == "admin" && $user->id != auth()->user()->id)
                                                     {{-- <button style="display: none;" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button> --}}
-                                                @elseif($user->user_type == "admin" && auth()->user())
-                                                    <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
-                                                @else
+                                                @else($user->user_type == "admin" && auth()->user())
                                                     <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $user->name }}?');" type="submit" title="{{'Delete'." ($user->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
                                                 @endif
                                                 {!! Form::close() !!}
 
                                                 @if($user->user_type == "admin" && $user->id != auth()->user()->id)
                                                     {{-- <a style="display: none;" href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a> --}}
-                                                @elseif($user->user_type == "admin" && auth()->user())
-                                                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
-                                                @else
+                                                @else($user->user_type == "admin" && auth()->user())
                                                     <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($user->name)"}}"><li class="icon-pencil"></li> Edit</a>
                                                 @endif
                                             </td>

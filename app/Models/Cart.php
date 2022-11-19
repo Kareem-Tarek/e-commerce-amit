@@ -41,9 +41,9 @@ class Cart extends Model
         return $this->hasMany(Product::class);
     }
 
-    // public function categories(): \Illuminate\Database\Eloquent\Relations\hasOne
+    // public function products() : \Illuminate\Database\Eloquent\Relations\belongsToMany
     // {
-    //     return $this->hasOne(Category::class);
+    //   return $this->belongsToMany(\App\Product::class);
     // }
 
     public function create_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

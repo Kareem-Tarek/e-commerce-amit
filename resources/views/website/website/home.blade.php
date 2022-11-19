@@ -233,7 +233,7 @@
                                     <div class="thumb">
                                         <div class="hover-content hover-content-for-product-items">
                                             <ul>
-                                                <li><a href="{{ route('single_product_page' , $product->id) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
+                                                <li><a href="{{ route('single_product_page' , [$product->id, $product->name]) }}" class="products-hover-icons eye-button"><i class="fa fa-eye"></i></a></li>
                                                 <li><a href="javascript:void(0);" class="products-hover-icons star-button"><i class="fa fa-star"></i></a></li>
                                                 <li>
                                                     <a href="javascript:void(0)" class="products-hover-icons add-to-cart-button" product-id="{{ $product->id }}"
@@ -243,7 +243,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <a href="{{ route('single_product_page' , $product->id) }}">
+                                        <a href="{{ route('single_product_page' , [$product->id, $product->name]) }}">
                                             <img src="{{ $product->image_name }}" alt="{{ $product->name }}" style="height: 450px; width: 100%; border: 2px solid black;">
                                             @php $data = Carbon\Carbon::parse($product->created_at)->diffInDays(Carbon\Carbon::now()); @endphp
                                             @if($data <= 7) <!---------- in days ---------->
@@ -259,7 +259,7 @@
                                     </div>
                                     <div class="down-content">
                                         <h4>
-                                            <a class="product_item_title" href="{{ route('single_product_page' , $product->id) }}">{{ $product->name }}</a>
+                                            <a class="product_item_title" href="{{ route('single_product_page' , [$product->id, $product->name]) }}">{{ $product->name }}</a>
                                             @auth
                                                 @if((auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator") && $product->available_quantity > 0)
                                                     <span style="@if($product->available_quantity <= 10) color: rgb(255, 106, 0); @else color: rgb(59, 188, 59); @endif">
@@ -298,7 +298,9 @@
                                             <li><i class="fa fa-star"></i></li>
                                         </ul> --}}
                                         <div class="text-left" style="color:rgb(72, 125, 171);">
-                                            (Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}) 
+                                            Total Ratings: {{ \App\Models\Rating::where('product_id', $product->id)->count() }}
+                                            —
+                                            {{-- Average Rating: {{ \App\Models\Rating::where('product_id', $product->id)->select('id','rating_level')->get() ?? '' }} --}}
                                         </div>
                                         @auth
                                             @if(auth()->user()->user_type == 'admin')
