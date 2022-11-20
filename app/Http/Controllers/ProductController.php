@@ -241,7 +241,7 @@ class ProductController extends Controller
         return view('website.products.items-discounts.91percent_100percent', compact('products' , 'items_count'));
     }
 
-    public function single_product_page(int $id, string $name = null) // SPA (Single Page Application)
+    public function single_product_page(int $id, $clothing_type = null, string $name = null) // SPA (Single Page Application)
     {
         $product                      = Product::find($id); // OR $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually "website.products.productsErrors.404-product-page-not-found"
         $productItem_for_image_slider = Product::where('id', $id)->get(); //this is just a temporary variable that will be used in the single page for product image sldier
@@ -254,6 +254,19 @@ class ProductController extends Controller
         //     Product::where('name', $name);
         //     return view('website.products.single-product' , compact('product' , 'productItem_for_image_slider'));
         // }
+        if($clothing_type != null){
+                Product::where('clothing_category', $clothing_type);
+                if($clothing_type == 1){
+                    $clothing_type = "Formal";
+                }
+                elseif($clothing_type == 2){
+                    $clothing_type = "Casual";
+                }
+                elseif($clothing_type == 3){
+                    $clothing_type = "Sports Wear";
+                }
+                return view('website.products.single-product' , compact('product' , 'productItem_for_image_slider'));
+            }
 
         return view('website.products.single-product' , compact('product' , 'productItem_for_image_slider'));
     }
