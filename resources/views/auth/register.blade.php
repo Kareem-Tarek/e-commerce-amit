@@ -62,7 +62,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="password-area form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -71,14 +71,32 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="password-area form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_check_box" type="checkbox"> Show Passowrd
                             </div>
                         </div>
+                    
+                        <script>
+                                var password_check_box = document.querySelector("#password_check_box");
+                                var password_input = document.querySelector("#password");
+                                var password_confirm_input = document.querySelector("#password-confirm");
+
+                                password_check_box.addEventListener("click", function() {
+                                    if(password_input.type === "password" && password_confirm_input.type === "password"){
+                                    password_input.type = "text";
+                                    password_confirm_input.type = "text";
+                                    } 
+                                    else{
+                                        password_input.type = "password";
+                                        password_confirm_input.type = "password";
+                                    }
+                                });
+                        </script>
 
                         <div class="row mb-3" style="margin-bottom:1%; width: 100%; margin-left:auto; margin-right: auto;">
                             <label>User Type <span class="text-danger">*</span></label>
@@ -92,7 +110,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}:</label>
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" onkeydown="return /[0-9b\+\(\)]/i.test(event.key)" autocomplete="phone" autofocus>
                                 @error('phone')
@@ -104,7 +122,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}</label>
+                            <label for="avatar" class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}:</label>
                             <div class="col-md-6">
                                 <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" autocomplete="avatar" autofocus>
                                 @error('avatar')

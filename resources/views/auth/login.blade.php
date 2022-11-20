@@ -40,9 +40,9 @@
 
                             </label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: flex">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                               <i onclick="show_hide_password_function();" id="dot-eye-icon" class="fa-solid fa-eye"></i>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,6 +50,40 @@
                                 @enderror
                             </div>
                         </div>
+                        <style>
+                            #dot-eye-icon{
+                                /*margin-left: 100px;*/ 
+                                position: absolute;
+                                cursor: pointer;
+                                padding: 10px;
+                                margin-left: 78%;
+                                
+                            }
+                            #password{width: %;}
+                        </style>
+                        <script>
+                            function show_hide_password_function(){
+                                const password_input = document.querySelector("#password");
+                                const dot_eye        = document.querySelector("#dot-eye-icon");
+
+                                if(password_input.getAttribute('type') === "password"){
+                                    password_input.setAttribute('type', 'text'); //also => password_input.type = "text"; (but not preferred)
+                                    if(dot_eye.classList.contains("fa-eye")){
+                                        dot_eye.classList.remove("fa-eye");
+                                    }
+                                    dot_eye.classList.add("fa-eye-slash");
+                                    dot_eye.style.color = "grey";
+                                } 
+                                else{
+                                    password_input.setAttribute('type', 'password'); //also => password_input.type = "password"; (but not preferred)
+                                    if(dot_eye.classList.contains("fa-eye-slash")){
+                                        dot_eye.classList.remove("fa-eye-slash");
+                                    }
+                                    dot_eye.classList.add("fa-eye");
+                                    dot_eye.style.color = "inherit";
+                                }
+                            }
+                        </script>
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4" style="display: flex; justify-content: space-between; ">
