@@ -59,7 +59,6 @@
                                 margin-left: 78%;
                                 
                             }
-                            #password{width: %;}
                         </style>
                         <script>
                             function show_hide_password_function(){
@@ -67,7 +66,7 @@
                                 const dot_eye        = document.querySelector("#dot-eye-icon");
 
                                 if(password_input.getAttribute('type') === "password"){
-                                    password_input.setAttribute('type', 'text'); //also => password_input.type = "text"; (but not preferred)
+                                    password_input.setAttribute('type', 'text'); //also => password_input.type = "text"; (but not preferred!)
                                     if(dot_eye.classList.contains("fa-eye")){
                                         dot_eye.classList.remove("fa-eye");
                                     }
@@ -75,7 +74,7 @@
                                     dot_eye.style.color = "grey";
                                 } 
                                 else{
-                                    password_input.setAttribute('type', 'password'); //also => password_input.type = "password"; (but not preferred)
+                                    password_input.setAttribute('type', 'password'); //also => password_input.type = "password"; (but not preferred!)
                                     if(dot_eye.classList.contains("fa-eye-slash")){
                                         dot_eye.classList.remove("fa-eye-slash");
                                     }
