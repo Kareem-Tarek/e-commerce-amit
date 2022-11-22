@@ -113,6 +113,8 @@ https://templatemo.com/tm-571-hexashop
     <!-- Global Init -->
     <script src="/assets/js/custom.js"></script>
 
+    <script src="/assets/js/my_custom.js"></script>
+
     <script>
 
         $(function() {
