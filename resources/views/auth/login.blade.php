@@ -36,11 +36,8 @@
                             </a> --}}
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}
-
-                            </label>
-
-                            <div class="col-md-6" style="display: flex">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <div class="col-md-6" style="display: flex;">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                <i onclick="show_hide_password_function_login();" id="dot-eye-icon" class="fa-solid fa-eye"></i>
                                 @error('password')
@@ -56,6 +53,7 @@
                                 position: absolute;
                                 cursor: pointer;
                                 padding: 10px;
+                                z-index: 100;
                                 margin-left: 78%;
                                 
                             }

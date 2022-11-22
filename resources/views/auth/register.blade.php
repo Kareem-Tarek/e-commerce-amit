@@ -60,7 +60,7 @@
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }} <span class="text-danger">*</span></label>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: flex;">
                                 <input id="password" type="password" class="password-area form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                 <i onclick="show_hide_password_function_register();" id="dot-eye-icon-password" class="fa-solid fa-eye"></i>
                                 @error('password')
@@ -73,7 +73,7 @@
                         
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: flex;">
                                 <input id="password-confirm" type="password" class="password-area form-control" name="password_confirmation" required autocomplete="new-password">
                                 <i onclick="show_hide_confirm_password_function_register();" id="dot-eye-icon-confirm-password" class="fa-solid fa-eye"></i>
                                 {{-- <input id="password_check_box" type="checkbox"> Show Passowrd --}}
@@ -83,12 +83,11 @@
                         <style>
                             #dot-eye-icon-password, 
                             #dot-eye-icon-confirm-password{
-                                /*margin-left: 100px;*/ 
                                 position: absolute;
                                 cursor: pointer;
-                                /*padding: 10px;*/
-                                /*margin-left: 78%;*/
-                                
+                                padding: 10px;
+                                z-index: 100;
+                                margin-left: 78%;
                             }
                         </style>
                     
