@@ -60,10 +60,9 @@
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }} <span class="text-danger">*</span></label>
-
                             <div class="col-md-6">
                                 <input id="password" type="password" class="password-area form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <i onclick="show_hide_password_function_register();" id="dot-eye-icon-password" class="fa-solid fa-eye"></i>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,14 +73,26 @@
                         
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
-
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="password-area form-control" name="password_confirmation" required autocomplete="new-password">
-                                <input id="password_check_box" type="checkbox"> Show Passowrd
+                                <i onclick="show_hide_confirm_password_function_register();" id="dot-eye-icon-confirm-password" class="fa-solid fa-eye"></i>
+                                {{-- <input id="password_check_box" type="checkbox"> Show Passowrd --}}
                             </div>
                         </div>
+
+                        <style>
+                            #dot-eye-icon-password, 
+                            #dot-eye-icon-confirm-password{
+                                /*margin-left: 100px;*/ 
+                                position: absolute;
+                                cursor: pointer;
+                                /*padding: 10px;*/
+                                /*margin-left: 78%;*/
+                                
+                            }
+                        </style>
                     
-                        <script>
+                        {{-- <script>
                                 var password_check_box = document.querySelector("#password_check_box");
                                 var password_input = document.querySelector("#password");
                                 var password_confirm_input = document.querySelector("#password-confirm");
@@ -96,7 +107,7 @@
                                         password_confirm_input.type = "password";
                                     }
                                 });
-                        </script>
+                        </script> --}}
 
                         <div class="row mb-3" style="margin-bottom:1%; width: 100%; margin-left:auto; margin-right: auto;">
                             <label>User Type <span class="text-danger">*</span></label>
