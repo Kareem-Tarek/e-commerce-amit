@@ -19,7 +19,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Username, Email Or Phone') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end" style="font-size: 99%;">{{ __('Username, Email Or Phone') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
@@ -47,7 +47,7 @@
                             </a> --}}
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end" style="font-size: 99%;">{{ __('Password') }}</label>
                             <div class="col-md-6" style="display: flex;">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
                                <i onclick="show_hide_password_function_login();" id="dot-eye-icon" class="fa-solid fa-eye"></i>
