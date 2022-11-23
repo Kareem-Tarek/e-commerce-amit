@@ -72,13 +72,21 @@ class LoginController extends Controller
     /*********************** for login by email, username or phone (currently in use) ***********************/
     public function credentials(Request $request)
     {
+        /*
+            NOTE: All are the same things:
+                    - $request->xyz
+                    - $request->get('xyz')
+                    - $request->input('xyz')
+         */
         if(is_numeric($request->get('email'))){
-        return ['phone' => $request->email,'password' => $request->get('password')];
+            return ['phone' => $request->email, 'password' => $request->password];
         }
-        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
-        return ['email' => $request->email, 'password' => $request->get('password')];
+        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)){
+            return ['email' => $request->email, 'password' => $request->password];
         }
-        return ['username' => $request->email, 'password' => $request->get('password')];
+        else{
+            return ['username' => $request->email, 'password' => $request->password];
+        }
 
         // return $request->only($request->get('email'), 'password');
     }
