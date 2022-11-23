@@ -87,8 +87,6 @@ class LoginController extends Controller
         else{
             return ['username' => $request->email, 'password' => $request->password];
         }
-
-        // return $request->only($request->get('email'), 'password');
     }
     /*********************** for login by email, username or phone (currently in use) ***********************/
 
