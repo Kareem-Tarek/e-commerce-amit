@@ -73,7 +73,7 @@ class LoginController extends Controller
     public function credentials(Request $request)
     {
         /*
-            NOTE: All are the same things:
+            NOTE: All are the same things: (And means that all are requests from the front-end from an inputs)
                     - $request->xyz
                     - $request->get('xyz')
                     - $request->input('xyz')
