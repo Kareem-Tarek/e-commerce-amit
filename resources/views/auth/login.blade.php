@@ -29,11 +29,11 @@
                                 @enderror
                             </div>
                         </div> --}}
-                        
+
                         <div class="form-group row">
-\                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Username Or Email') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username Or Email') }}</label>
                             <div class="col-md-6">
-                                <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>                        
+                                <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  autofocus>                        
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -41,6 +41,7 @@
                                 @enderror
                             </div>
                         </div>
+
                             {{-- <a href="{{route('password.request')}}" style="padding-left: 61%">
                                 Forgot Password?
                             </a> --}}
@@ -48,7 +49,7 @@
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
                             <div class="col-md-6" style="display: flex;">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
                                <i onclick="show_hide_password_function_login();" id="dot-eye-icon" class="fa-solid fa-eye"></i>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
