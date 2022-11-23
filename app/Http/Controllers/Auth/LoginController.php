@@ -74,9 +74,9 @@ class LoginController extends Controller
     {
         /*
             NOTE: All are the same things: (And means that all are requests from the front-end from an inputs)
-                    - $request->xyz
-                    - $request->get('xyz')
-                    - $request->input('xyz')
+                - $request->xyz
+                - $request->get('xyz')
+                - $request->input('xyz')
          */
         if(is_numeric($request->get('email'))){
             return ['phone' => $request->email, 'password' => $request->password];
