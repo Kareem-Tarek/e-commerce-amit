@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
             'phone'     => '01000000111',
             'bio'       => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, eligendi? Itaque impedit minima aperiam alias, quidem quo inventore dolores, ex aut laudantium velit voluptas. Maxime, vel dolores? Laboriosam, illo. Saepe?',
             'email'     => 'supplier@gmail.com',
-            'password'  => '$2y$10$2Z8CF/lDpvDYYDIP28j7he3vHlKpFExarjbU04U7In8bjem9KlKdi', // password (is encrypted): 123456789 
+            'password'  => '$2y$10$2Z8CF/lDpvDYYDIP28j7he3vHlKpFExarjbU04U7In8bjem9KlKdi', // password (is encrypted): 123456789
             // 'gender'    => '', // null, because there is no specific gender for supplier (vendor/business) account.
             // 'dob'       => '', // null, because there is no DOB for supplier (vendor/business) account.
             'user_type' => 'supplier',

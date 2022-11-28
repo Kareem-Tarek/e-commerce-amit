@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Carbon\Carbon;
-use Illuminate\Http\Request;    //added for the logout request function
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -73,7 +73,7 @@ class LoginController extends Controller
     public function credentials(Request $request)
     {
         /*
-            NOTE: All are the same things: (And means that all are requests from the front-end from an inputs)
+            NOTE: All the following are the same thing: (And means that all are requests from the front-end from an inputs)
                 - $request->xyz
                 - $request->get('xyz')
                 - $request->input('xyz')

@@ -42,6 +42,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col" class="text-center">#</th>
+                                            <th scope="col" class="text-center">Avatar</th>
                                             <th scope="col" class="text-center">Name</th>
                                             <th scope="col" class="text-center">Username</th>
                                             <th scope="col" class="text-center">Email</th>
@@ -61,6 +62,13 @@
                                     @forelse($users as $user)
                                     <tr>
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
+                                        <td class="text-center">
+                                            @if ($user->avatar != null)
+                                                <img src="{{ $user->avatar }}" alt="" width="60" height="60" style="border-radius: 2px;" />
+                                            @else
+                                                —
+                                            @endif
+                                        </td>
                                         <td class="text-center" style="width: 20%;">
                                             @if($user->name == null || $user->name == "")
                                                 —
