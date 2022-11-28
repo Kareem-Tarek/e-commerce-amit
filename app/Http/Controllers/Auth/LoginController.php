@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Carbon\Carbon;
-use Illuminate\Http\Request;    //added for the logout request function
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -44,6 +44,51 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /************************************ for login by email or username ************************************/
+    // public function login(Request $request)
+    // {   
+    //     $input = $request->all();
+
+    //     $this->validate($request, [
+    //         'username' => 'required',
+    //         'password' => 'required',
+    //     ]);
+
+    //     $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+    //     if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))){
+    //         return redirect()->route('home');
+    //     }
+    //     else{
+    //         return redirect()->route('login')
+    //             ->with('error','Email-Address And Password Are Wrong.');
+    //     }
+
+    // }
+    /************************************ for login by email or username ************************************/
+
+
+    /*********************** for login by email, username or phone (currently in use) ***********************/
+    public function credentials(Request $request)
+    {
+        /*
+            NOTE: All the following are the same thing: (And means that all are requests from the front-end from an inputs)
+                - $request->xyz
+                - $request->get('xyz')
+                - $request->input('xyz')
+         */
+        if(is_numeric($request->get('email'))){
+            return ['phone' => $request->email, 'password' => $request->password];
+        }
+        elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)){
+            return ['email' => $request->email, 'password' => $request->password];
+        }
+        else{
+            return ['username' => $request->email, 'password' => $request->password];
+        }
+    }
+    /*********************** for login by email, username or phone (currently in use) ***********************/
 
     function authenticated(Request $request, $user){ // used for login at (datetime) and the ip of the computer that was logged in with
         $user->update([

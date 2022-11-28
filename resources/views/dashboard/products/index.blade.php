@@ -56,7 +56,7 @@
                                     @forelse($products as $product)
                                     <tr>
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
-                                        <td class="text-center"><a href="{{ route('products.edit',[$product->id]) }}"><img src="{{$product->image_name}}" alt="{{$product->name.'img'}}" width="80" height="80"></a></td>
+                                        <td class="text-center"><a href="{{ route('products.edit',[$product->id]) }}"><img src="{{$product->image_name}}" alt="{{$product->name.'img'}}" width="80" height="80" style="border-radius: 2px;" /></a></td>
                                         <th class="text-center" style="width: 20%;"><a href="{{ route('products.edit',[$product->id]) }}" class="font-secondary">{{$product->name}}</a></th>
                                         {{-- <td class="text-center">{{$product->description}}</td> --}}
                                         <td class="text-center">
@@ -100,6 +100,7 @@
                                                 <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $product->name }}?');" type="submit" title="{{'Delete'." ($product->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
 
                                                 <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($product->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                <a href="{{route('products-sizes', $product->id)}}" class="btn btn-dark btn-xs" type="button" title="{{'products sizes'}}">Sizes</a>
                                                 {!! Form::close() !!}
                                             </td>
                                         @endif
