@@ -27,7 +27,7 @@
     <div class="form-group row">
         <label class="form-label col-lg-3">Image <span class="text-danger">*</span></label>
         <div class="col-lg-9">
-            <input class="form-control @error('image_name') is-invalid @enderror" value="{{Request::old('image_name') ? Request::old('image_name') : $model->image_name}}" type="file" name="image_name" autocomplete="off">
+            <input class="form-control @error('image_name') is-invalid @enderror" value="value="{{ old('image_name',$model->image_name) }}" type="file" name="image_name" autocomplete="off">
             @error('image_name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

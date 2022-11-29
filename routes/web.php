@@ -104,13 +104,12 @@ Route::get('/products-discounts-71%-to-80%', [ProductController::class, '_71_per
 Route::get('/products-discounts-81%-to-90%', [ProductController::class, '_81_percent_to_90_percent'])->name('81per-to-90per'); //products-discounts-between-81-to-90-percent-only
 Route::get('/products-discounts-91%-to-100%', [ProductController::class, '_91_percent_to_100_percent'])->name('91per-to-100per'); //products-discounts-between-91-to-100-percent-only
 Route::get('/product/{id}/{clothing_type?}/{name?}', [ProductController::class, 'single_product_page'])->name('single_product_page'); //single-product-page
-Route::get('/products-sizes/{id}', [SizeController::class, 'index'])->name('products-sizes'); //products-discounts-between-91-to-100-percent-only
 /************************************************************ End Products Routes ************************************************************/
 
 /******************************************** Start Some static website's pages Routes ********************************************/
-Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('mission-vision');
-Route::get('/about-us', [AboutController::class, 'index'])->name('about');
-Route::get('/faqs', [FAQsController::class, 'index'])->name('faqs');
+Route::get('/company/mission-vision', [MissionVisionController::class, 'index'])->name('mission-vision');
+Route::get('/company/about-us', [AboutController::class, 'index'])->name('about');
+Route::get('/company/faqs', [FAQsController::class, 'index'])->name('faqs');
 /******************************************** End Some static website's pages Routes ********************************************/
 
 /******************************************** Start Subscription Routes ********************************************/
@@ -187,6 +186,7 @@ Route::group([
         });
         /********************** Start products route. **********************/
         Route::resource('/products', DashboardProductController::class);
+        Route::get('/product/sizes/{id}/{name?}', [SizeController::class, 'index'])->name('products-sizes');
         Route::get('/product/{id}/{clothing_type?}/{name?}', [DashboardProductController::class, 'single_product_page_dashboard'])->name('single_product_page_dashboard'); //single-product-page (dashboard)
         Route::get('/product/delete', [DashboardProductController::class, 'delete'])->name('products.delete');
         Route::get('/product/restore/{id}/', [DashboardProductController::class, 'restore'])->name('products.restore');

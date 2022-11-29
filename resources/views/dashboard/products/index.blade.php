@@ -99,8 +99,8 @@
                                                 ])!!}
                                                 <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $product->name }}?');" type="submit" title="{{'Delete'." ($product->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
 
-                                                <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($product->name)"}}"><li class="icon-pencil"></li> Edit</a>
-                                                <a href="{{route('products-sizes', $product->id)}}" class="btn btn-dark btn-xs" type="button" title="{{'products sizes'}}">Sizes</a>
+                                                <a href="{{route('products.edit', [$product->id, $product->name])}}" class="btn btn-primary btn-xs" type="button" title="{{'Edit'." ($product->name)"}}"><li class="icon-pencil"></li> Edit</a>
+                                                <a href="{{route('products-sizes', [$product->id, $product->name])}}" class="btn btn-dark btn-xs" type="button" title="{{$product->name." (Sizes)"}}">Sizes</a>
                                                 {!! Form::close() !!}
                                             </td>
                                         @endif

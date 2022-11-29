@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             // $table->boolean('is_accessory')->default(1)->nullable();
             $table->enum('product_category' , ['men','women','kids']);
             $table->decimal('discount')->default(0)->nullable();
+            $table->string('brand_name')->nullable();
             // $table->unsignedBigInteger('user_id'); // for supplier relationship (from users table)
             // $table->foreign('user_id')->references('id')->on('users');
             // $table->integer('supplier_id');
