@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title') 
-    Products Sizes
+    {{ $product->name }} (Sizes)
 @endsection
 
 @section('content')
@@ -9,15 +9,13 @@
         @slot('breadcrumb_title')
             <h3 class="mt-4">Products</h3>
         @endslot
-        <li class="breadcrumb-item active">Products</li>
+        <li class="breadcrumb-item active">Products / <a href="{{ route('single_product_page_dashboard',[$product->id, $product->name]) }}">{{ $product->name }}</a></li>
         @slot('bookmark')
             <a href="{{route('products.create')}}" class="btn btn-pill btn-air-success btn-success-gradien" type="button" title="Add New Product">Add New Product</a>
         @endslot
     @endcomponent
 
     @include('layouts.admin.partials.messages.message')
-    
-    <h5>{{ $product_name->name }} ({{ $product_name->id }})</h5>
     
     {{-- @forelse ( as )
         

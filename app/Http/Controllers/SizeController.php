@@ -16,14 +16,14 @@ class SizeController extends Controller
 
     public function index($id)
     {
-        $sizes = Size::where('id', $id)->first();
+        $sizes    = Size::where('id', $id)->first();
         $products = Product::where('size_id', $sizes)->get();
-        $product_name = Product::find($id);
+        $product  = Product::find($id);
         
         // $products = Product::where('id', $id)->select('size_id');
         // $sizes    = Size::where('id', '=', $products)->get();
 
-        return view('dashboard.products.test', compact('products', 'sizes', 'product_name'));
+        return view('dashboard.products.product-size', compact('products', 'sizes', 'product'));
     }
 
     /**

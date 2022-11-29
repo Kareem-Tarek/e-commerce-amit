@@ -7,7 +7,7 @@
     <link rel="icon" href="{{asset('admin/images/favicon.png')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" type="image/x-icon">
     <title>
-        Dashboard - @yield('title')
+        @yield('title')
     </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
