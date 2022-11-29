@@ -72,8 +72,8 @@
             <tbody>
                 <tr>
                     <td scope="row">iii</td>
-                    <td>sss</td>
-                    <td>mmm</td>
+                    <td>aaa, hhh, jjj</td>
+                    <td>rrr, kkk, fff</td>
                     <td>ccc</td>
                 </tr>
             </tbody>
