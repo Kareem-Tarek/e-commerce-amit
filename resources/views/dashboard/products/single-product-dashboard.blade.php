@@ -22,18 +22,25 @@
         <img src="{{ $product->image_name }}" alt="{{ $product->name.'img' }}" width="220" height="200" style="border-radius: 1px;"/><br>
         <span style="font-size: 200%; font-weight: bolder; color: black;">{{ $product->name }}</span>
         <h6 style="font-size: 100%;">
-            Category - Clothing Type: 
-            <span style="color: rgb(83, 84, 82);">
-                {{ ucfirst($product->product_category) }} 
-                - 
-                @if($product->clothing_type == 1)
-                    {{ "Formal" }}
-                @elseif($product->clothing_type == 2)
-                    {{ "Casual" }}
-                @elseif($product->clothing_type == 3)
-                    {{ "Sports Wear" }}
-                @endif
-            </span>
+            @if($product->is_accessory == "no")
+                Category - Clothing Type: 
+                <span style="color: rgb(83, 84, 82);">
+                    {{ ucfirst($product->product_category) }} 
+                    - 
+                    @if($product->clothing_type == 1)
+                        {{ "Formal" }}
+                    @elseif($product->clothing_type == 2)
+                        {{ "Casual" }}
+                    @elseif($product->clothing_type == 3)
+                        {{ "Sports Wear" }}
+                    @endif
+                </span>
+            @else($product->is_accessory == "yes")
+                Category: 
+                <span style="color: rgb(83, 84, 82);">
+                    {{ ucfirst($product->product_category) }} 
+                </span>
+            @endif
         </h6>
         <h6 class="mb-4" style="font-weight: bold; color: black;">
             @if($product->discount <= 0 || $product->discount == null)
