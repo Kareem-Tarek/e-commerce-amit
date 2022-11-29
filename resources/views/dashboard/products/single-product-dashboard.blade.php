@@ -19,12 +19,12 @@
     @endcomponent
 
     <div class="text-cent pb-">
-        <img src="{{ $product->image_name }}" alt="{{ $product->name.'img' }}" width="300" style="border-radius: 1px;"/><br>
+        <img src="{{ $product->image_name }}" alt="{{ $product->name.'img' }}" width="220" height="200" style="border-radius: 1px;"/><br>
         <span style="font-size: 200%; font-weight: bolder; color: black;">{{ $product->name }}</span>
         <h6 style="font-size: 100%;">
             Category - Clothing Type: 
             <span style="color: rgb(83, 84, 82);">
-                {{ $product->product_category }} 
+                {{ ucfirst($product->product_category) }} 
                 - 
                 @if($product->clothing_type == 1)
                     {{ "Formal" }}
@@ -44,7 +44,10 @@
                 <span style="color: green;">{{ $product->price - ($product->price * $product->discount) }} EGP</span> <span style="color: rgb(155, 31, 151);">({{ $product->discount * 100 }}% OFF)</span>
             @endif
         </h6>
-        <h6 class="mb-5" style="color: black;">{{ $product->description }}</h6>
+        <h6 class="mb-5" style="color: black;">
+            <u>Description:</u><br>
+            {{ $product->description }}
+        </h6>
     </div>
 
     <div class="">

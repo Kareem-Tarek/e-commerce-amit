@@ -64,8 +64,8 @@
                                         </td>
                                         <td class="text-center">{{$cart->customer_email}}</td>
                                         <td class="text-center">{{$cart->customer_address ?? '—'}}</td>
-                                        <td class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}"><img src="{{$cart->product_image}}" alt="{{$cart->product_name.'img'}}" width="80" height="80"></a></td>
-                                        <th class="text-center"><a href="{{ route('products.edit',[$cart->product_id]) }}" class="font-secondary">{{$cart->product_name}}</a></th>
+                                        <td class="text-center"><a href="{{route('single_product_page_dashboard', [$cart->product_id, $cart->product_name])}}"><img src="{{$cart->product_image}}" alt="{{$cart->product_name.'img'}}" width="80" height="80"></a></td>
+                                        <th class="text-center"><a href="{{route('single_product_page_dashboard', [$cart->product_id, $cart->product_name])}}" class="font-secondary">{{$cart->product_name}}</a></th>
                                         <td class="text-center">{{ucfirst($cart->product_category)}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('categories.index') }}" style="color: rgb(63, 82, 205);">
