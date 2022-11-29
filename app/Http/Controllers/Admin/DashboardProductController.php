@@ -17,6 +17,21 @@ class DashboardProductController extends Controller
         return view('dashboard.products.index',compact('products'));
     }
 
+    public function single_product_page_dashboard(int $id, $clothing_type = null, string $name = null) // SPA (Single Page Application)
+    {
+        $product = Product::find($id); // OR $product = Product::findOrFail($id); //no need to use it because the error blade (404) is handled & customized manually "dashboard.products.productsErrors.404-product-page-not-found"
+        if($product == null){
+            return view('dashboard.products.productsErrors.404-product-page-not-found-dashboard');
+        }
+
+        // if($name != null){
+        //     Product::where('name', $name);
+        //     return view('website.products.single-product' , compact('product'));
+        // }
+
+        return view('dashboard.products.single-product-dashboard' , compact('product'));
+    }
+
     public function create()
     {
         return view('dashboard.products.create');
