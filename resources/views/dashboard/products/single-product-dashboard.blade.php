@@ -53,7 +53,9 @@
         </h6>
         <h6 class="mb-5" style="color: black;">
             <u>Description:</u><br>
-            {{ $product->description }}
+            <span>
+                {{ $product->description }}
+            </span>
         </h6>
     </div>
 
@@ -62,13 +64,17 @@
             <thead>
                 <tr>
                     <th>Brand name</th>
+                    <th>Available Sizes</th>
+                    <th>Available Colors</th>
                     <th>Supplier</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td scope="row">yyy</td>
-                    <td>yyy</td>
+                    <td scope="row">iii</td>
+                    <td>sss</td>
+                    <td>mmm</td>
+                    <td>ccc</td>
                 </tr>
             </tbody>
         </table>
