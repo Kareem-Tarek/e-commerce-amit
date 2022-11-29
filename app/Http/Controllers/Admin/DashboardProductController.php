@@ -110,7 +110,11 @@ class DashboardProductController extends Controller
         $products                     = Product::findOrFail($id);
         $products->name               = $request->name;
         $products->description        = $request->description;
-        $products->image_name         = "/assets/images/".$request->image_name;
+        ////////////////////////--------- START image's request ---------////////////////////////
+        if($request->hasFile("image_name")){
+            $products->image_name = "/assets/images/".$request->image_name;
+        }
+        ////////////////////////--------- END image's request ---------////////////////////////
         $products->price              = $request->price;
         $products->discount           = $request->discount;
         // $products->size               = $request->size;

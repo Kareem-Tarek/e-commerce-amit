@@ -103,10 +103,50 @@
     </div>
 
     <div class="text-center mb-4 mt-5">
-        <a href="{{ route('products.index') }}" class="back-to-products-page-link">Back To Products Page</a>
+        <a href="{{ route('products.edit', $product->id) }}" class="button-link-edit">Edit this product</a>
+        <a href="{{ route('products.destroy', $product->id) }}" class="button-link-delete">Delete this product</a>
+        {{-- {!! Form::open([
+            'route' => ['products.destroy',$product->id],
+            'method' => 'delete'
+        ])!!}
+        <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure that you want to delete - {{ $product->name }}?');" type="submit" title="{{'Delete'." ($product->name)"}}"><i class="fa-solid fa-trash"></i> Delete </button>
+        {!! Form::close() !!} --}}
+        <a href="{{ route('products.index') }}" class="button-link-back-to-products">Back To Products Page</a>
     </div>
 <style>
-    .back-to-products-page-link{
+    .button-link-edit{
+        background-color: #00265f; 
+        color: snow;
+        font-size: 80%; 
+        font-weight: bold; 
+        padding: 1%; 
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+    }
+
+    .button-link-edit:hover{
+        background-color: #011b42; 
+        color: snow;
+    }
+
+    .button-link-delete{
+        background-color: #aa0606; 
+        color: snow;
+        font-size: 80%; 
+        font-weight: bold; 
+        padding: 1%; 
+        padding-left: 2%;
+        padding-right: 2%;
+        border-radius: 3px;
+    }
+
+    .button-link-delete:hover{
+        background-color: #860202; 
+        color: snow;
+    }
+
+    .button-link-back-to-products{
         background-color: #2F82FB; 
         color: snow;
         font-size: 80%; 
@@ -117,7 +157,7 @@
         border-radius: 3px;
     }
 
-    .back-to-products-page-link:hover{
+    .button-link-back-to-products:hover{
         background-color: #0868F3; 
         color: snow;
     }
