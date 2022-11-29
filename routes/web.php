@@ -187,6 +187,7 @@ Route::group([
         });
         /********************** Start products route. **********************/
         Route::resource('/products', DashboardProductController::class);
+        Route::get('/product/{id}/{clothing_type?}/{name?}', [DashboardProductController::class, 'single_product_page_dashboard'])->name('single_product_page_dashboard'); //single-product-page (dashboard)
         Route::get('/product/delete', [DashboardProductController::class, 'delete'])->name('products.delete');
         Route::get('/product/restore/{id}/', [DashboardProductController::class, 'restore'])->name('products.restore');
         Route::delete('/product/forceDelete/{id}/', [DashboardProductController::class, 'forceDelete'])->name('products.forceDelete');

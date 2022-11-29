@@ -56,8 +56,8 @@
                                     @forelse($products as $product)
                                     <tr>
                                         <th scope="row" class="text-center">{{$loop->iteration}}</th>
-                                        <td class="text-center"><a href="{{ route('products.edit',[$product->id]) }}"><img src="{{$product->image_name}}" alt="{{$product->name.'img'}}" width="80" height="80" style="border-radius: 2px;" /></a></td>
-                                        <th class="text-center" style="width: 20%;"><a href="{{ route('products.edit',[$product->id]) }}" class="font-secondary">{{$product->name}}</a></th>
+                                        <td class="text-center"><a href="{{ route('single_product_page_dashboard',[$product->id, $product->name]) }}"><img src="{{$product->image_name}}" alt="{{$product->name.'img'}}" width="80" height="80" style="border-radius: 2px;" /></a></td>
+                                        <th class="text-center" style="width: 20%;"><a href="{{ route('single_product_page_dashboard',[$product->id, $product->name]) }}" class="font-secondary">{{$product->name}}</a></th>
                                         {{-- <td class="text-center">{{$product->description}}</td> --}}
                                         <td class="text-center">
                                             @if (($product->discount * 100 ) == 0)
