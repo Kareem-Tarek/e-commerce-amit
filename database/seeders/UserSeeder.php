@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'avatar'            => "/assets/images/kareem.png",
             'cover'             => "/assets/images/kareem_cover.jpg",
             'name'              => "Kareem Tarek",
-            'username'          => 'KareemDev',
+            'username'          => 'Kareem-Dev',
             'phone'             => '01010110457',
             'bio'               => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus pariatur accusantium rerum rem alias consequuntur iusto harum maiores enim perferendis vitae inventore temporibus sint, doloremque iste natus commodi aut voluptas.',
             'email'             => 'admin@gmail.com',

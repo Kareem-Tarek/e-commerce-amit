@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*----------------------------- Start Website Controllers usage -----------------------------*/
 use App\Http\Controllers\ProductController;
@@ -53,6 +54,13 @@ Route::group([], function () {    //group function for "home" route (same route 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [HomeController::class, 'index'])->name('home');
 });
+
+/******************************************** Start Socialite for GITHUB ********************************************/
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/sign-in/github', [LoginController::class, 'github']);
+    Route::get('/sign-in/github/redirect', [LoginController::class, 'githubRedirect']);
+});
+/******************************************** End Socialite for GITHUB ********************************************/
 
 /******************************************** Start profile & edit-profile Route ********************************************/
 Route::group([
