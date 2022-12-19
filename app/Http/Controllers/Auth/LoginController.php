@@ -7,6 +7,11 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Auth;
+use Hash;
+use Socialite;
+use Str;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -104,11 +109,30 @@ class LoginController extends Controller
     //     return redirect()->route('home');
     // }
 
-    // public function logout(Request $request)    //logout function
-    // {
-    //     $this->performLogout($request);
+    public function github()
+    {
+        // send the user's request to github
+        return Socialite::driver('github')->redirect();
+    }
 
-    //     return redirect()->route('home');
-    // }
+    public function githubRedirect()
+    {
+        // get oauth request back from github to authenticate user
+        $user = Socialite::driver('github')->user();
+
+        // if the user doesn't exist, then add them
+        // if they do, get the model
+        // either way, authenticate the user into the application and redirect afterwards
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'username' => $user->name , // username (column from users table) => $user->name (name from github)
+            'password' => Hash::make(Str::random(24)) ,
+        ]);
+
+        Auth::login($user, true);
+
+        return redirect()->route('home');
+    }
 
 }
