@@ -1,7 +1,7 @@
 <div class="container search-container">
   <div class="row justify-content-center">
       <form action="{{ url('/search') }}" method="GET">
-          <input class="search-box" type="text" placeholder="Search for a certain product?" name="search_query">
+          <input class="search-box" type="text" placeholder="Search for items or brands..." name="search_query">
           <button class="search-box-btn px-2" type="submit"><i class="fa fa-search search-box-btn-icon"></i></button>
       </form>
   </div>
@@ -52,7 +52,7 @@
           
           <li class="dropdown">
             <div class="check-discounts">
-              <a class="dropdown-toggle check-discount" href="javascript:void(0);" style="color:#24a80c; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#24a80c'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <a class="dropdown-toggle check-discount" href="javascript:void(0);" style="color:#383e36; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; transition:all 0.30s ease-in-out" onMouseOver="this.style.color='#B4B6BB'" onMouseOut="this.style.color='#383e36'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Check Discounts!
                   <span class="caret"></span>
                   {{-- <img src="/assets/images/subscription_discount.gif" alt="subscription_discount.gif" style="width: 9%; color: black;"> --}}

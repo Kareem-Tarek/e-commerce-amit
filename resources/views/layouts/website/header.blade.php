@@ -118,6 +118,18 @@
                         @endif
 
                         @auth
+                            @if(auth()->user()->email_verified_at == null)
+                                <li style="margin-top: 0.4%;">
+                                    <a href="{{ route('email-verification') }}" style="font-size: 90%;"><u>Verify Email Now!</u></a>
+                                </li>
+                            @else
+                                <li style="margin-top: 1.10%;">
+                                    <label style="font-size: 80%;">Verified <i class="fa-solid fa-circle-check"></i></label>
+                                </li>
+                            @endif
+                        @endauth
+
+                        @auth
                             @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
                                 <li style="padding-top: 0.25%;"><a href="{{route('products.create')}}" class="" style="float:; color: black; background-color: rgba(47, 130, 251, 0.1); padding: 0px 10px; border-radius: 4px;" type="button" title="Add New Product">Add New Product</a></li>
                             @elseif(auth()->user()->user_type == 'customer')

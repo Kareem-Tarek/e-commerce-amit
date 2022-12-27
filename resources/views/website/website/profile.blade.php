@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai&family=Harmattan&display=swap" rel="stylesheet">
     <!-- Font Awesome-->
     @includeIf('layouts.admin.partials.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <div class="loader-wrapper">
@@ -304,6 +305,22 @@
                                                             </div>
                                                             <div>
                                                                 <h5>{{$user->email ?? __('admin/home.alertEmail')}}</h5>
+                                                                <span>
+                                                                    @auth
+                                                                        @if(auth()->user()->email_verified_at == null)
+                                                                            <a href="{{ route('email-verification') }}" style="font-size: 90%;"><u>(Unverified. Verify Email Now!)</u></a>
+                                                                        @else
+                                                                            <label style="font-size: 80%;">Verified <i class="fa-solid fa-circle-check"></i></label>
+                                                                        @endif
+                                                                     @endauth
+                                                                </span>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="icon"><i class="fa-solid fa-user" style="color: #2494FD;"></i></div>
+                                                            <div>
+                                                                <h5>{{$user->user_type}}</h5>
                                                             </div>
                                                         </li>
 
@@ -315,7 +332,7 @@
                                                             </div>
                                                         </li>
                                                         <li>
-                                                            <div class="icon"><i class="icofont icofont-air-balloon"></i></div>
+                                                            <div class="icon"><i class="fa-solid fa-cake-candles" style="color: #2494FD;"></i></div>
                                                             <div>
                                                                 <h5>{{$user->dob ?? '???'}}</h5>
                                                             </div>
@@ -323,9 +340,9 @@
                                                         <li>
                                                             <!-- ucfirst(), it's a function that capitalizes the first letter in each word -->
                                                             @if($user->gender == 'male' || $user->gender == ucfirst('male'))
-                                                                <div class="icon"><i class="fa fa-male"></i></div>
+                                                                <div class="icon"><i class="fa fa-male" style="color: #2494FD;"></i></div>
                                                             @elseif($user->gender == 'female' || $user->gender == ucfirst('female'))
-                                                                <div class="icon"><i class="fa fa-venus"></i></div>
+                                                                <div class="icon"><i class="fa fa-venus" style="color: #2494FD;"></i></div>
                                                             @else <!-- elseif($user->gender == null || $user->gender == "") -->
                                                                 <div class="icon">
                                                                     <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-empty-science-education-dreamstale-lineal-dreamstale.png" style="width: 45%;"/>

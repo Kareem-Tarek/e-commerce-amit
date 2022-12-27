@@ -154,10 +154,10 @@
 
                         <div style="margin-top: 5%;">
                             <label>or Login with Your Social Media Account:</label>
-                            <a href="{{url('/redirect')}}" class="btn btn-facebook btn-user btn-block" style="background-color: #000000; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
+                            <a href="{{ route('github_oauth') }}" class="btn btn-facebook btn-user btn-block" style="background-color: #000000; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
                                 <i class="fa-brands fa-github"></i>&nbsp;&nbsp;Login with GitHub
                             </a>
-                            
+
                             <a href="{{url('/redirect')}}" class="btn btn-facebook btn-user btn-block" style="background-color: #2A426F; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
                                 <i class="fab fa-facebook-f fa-fw"></i>&nbsp;&nbsp;Login with Facebook
                             </a>

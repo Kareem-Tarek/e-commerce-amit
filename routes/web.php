@@ -57,7 +57,7 @@ Route::group([], function () {    //group function for "home" route (same route 
 
 /******************************************** Start Socialite for GITHUB ********************************************/
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/sign-in/github', [LoginController::class, 'github']);
+    Route::get('/sign-in/github', [LoginController::class, 'github'])->name('github_oauth');
     Route::get('/sign-in/github/redirect', [LoginController::class, 'githubRedirect']);
 });
 /******************************************** End Socialite for GITHUB ********************************************/

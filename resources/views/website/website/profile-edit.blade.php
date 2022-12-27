@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai&family=Harmattan&display=swap" rel="stylesheet">
     <!-- Font Awesome-->
     @includeIf('layouts.admin.partials.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <div class="loader-wrapper">
@@ -332,7 +333,11 @@
                                         <div class="col-sm-6 col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Username</label>
-                                                <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="Enter your username" autocomplete="off" value="{{Request::old('username') ? Request::old('username') : $model->username}}"/>
+                                                {{-- @if(auth()->user()->username == Socialite::driver('github')->user())
+                                                    <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="Enter your username" autocomplete="off" value="{{Request::old('username') ? Request::old('username') : $model->username}}" disabled/>
+                                                @else --}}
+                                                    <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" placeholder="Enter your username" autocomplete="off" value="{{Request::old('username') ? Request::old('username') : $model->username}}"/>
+                                                {{-- @endif --}}
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
