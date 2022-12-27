@@ -103,7 +103,7 @@
 
                         <div style="margin-top: 5%;">
                             <label>or Login with Your Social Media Account:</label>
-                            <a href="/sign-in/github" class="btn btn-facebook btn-user btn-block" style="background-color: #000000; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
+                            <a href="{{ route('github_oauth') }}" class="btn btn-facebook btn-user btn-block" style="background-color: #000000; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
                                 <i class="fa-brands fa-github"></i>&nbsp;&nbsp;Login with GitHub
                             </a>
 
