@@ -49,12 +49,14 @@
         - Amins & Moderators (RD) for carts.
 ___________________________________________________________________________________________________________________________________________________
 ## Steps for installing the project:
-- Run `git clone https://github.com/Kareem-Tarek/e-commerce-amit.git`.
-- Run `composer install` or `composer update`.
-- Run `cp .env.example .env`.
-- Run `php artisan key:generate`.
-- Create DB in mysql DBMS (phpMyAdmin or HeidiSQL, etc.) with any name you want. And in the project's folder in ".env" look up for the following code that says "DB_DATABASE=" then type after the same name of the DB name you created, so it will be like that "DB_DATABASE=the same name of the DB name you created".
-- Run in the terminal the following code `php artisan migrate:fresh --seed` in project's directory.
+- In the project's directory type in the terminal..
+    - Run `git clone https://github.com/Kareem-Tarek/e-commerce-amit.git`.
+    - After thhe previous step is done, type in the terminal "cd e-commerce-amit" to go access the project's folder directory.
+    - Then in the terminal run `composer install` or `composer update`.
+    - Run `cp .env.example .env`.
+    - Run `php artisan key:generate`.
+    - Create DB in mysql DBMS (phpMyAdmin or HeidiSQL, etc.) with any name you want. And in the project's folder in ".env" look up for the following code that says "DB_DATABASE=" then type after the same name of the DB name you created, so it will be like that "DB_DATABASE=the same name of the DB name you created".
+    - Run in the terminal the following code `php artisan migrate:fresh --seed` in project's directory.
 ___________________________________________________________________________________________________________________________________________________
 ## Steps for running the project:
 - In the project's directory (after the completing the the project's installation) type in the terminal..
