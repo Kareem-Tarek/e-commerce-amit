@@ -4,7 +4,7 @@
 * Project Idea: E-commerce
 * Developer: KareemDev 
 * Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev or Kareem-Tarek, Google: kareemtarekpk)
-* Project Features:
+* Project Features: ...
     #### Website for consumers (1st template).
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
@@ -55,11 +55,11 @@ ________________________________________________________________________________
     - Then in the terminal run `composer install` or `composer update`.
     - Run `cp .env.example .env`.
     - Run `php artisan key:generate`.
-    - Create DB in mysql DBMS (phpMyAdmin or HeidiSQL, etc.) with any name you want. And in the project's folder in ".env" look up for the following code that says "DB_DATABASE=" then type after the same name of the DB name you created, so it will be like that "DB_DATABASE=the same name of the DB name you created".
+    - Create DB in mysql DBMS (phpMyAdmin or HeidiSQL, etc.) with any name you want. And in the project's folder in ".env" file look up for the following code that says "DB_DATABASE=" then type after the "=" sign the same name of the DB name you created, so it will be like that "DB_DATABASE=the same name of the DB name you created".
     - Run in the terminal the following code `php artisan migrate:fresh --seed` in project's directory.
 ___________________________________________________________________________________________________________________________________________________
 ## Steps for running the project:
 - In the project's directory (after the completing the the project's installation) type in the terminal..
     - Run `npm install` then `npm update` then `npm run dev`.
     - Run `php -S localhost:8000 -t public` or `php artisan serve --port=8000`.
-    - Open any browser and type in the url "http://localhost:8000/" then press enter then you will be directed on the landing page of the website.
+    - Open any browser and type in the url "http://localhost:8000/" then press enter. Then you will be directed on the landing page of the website.
