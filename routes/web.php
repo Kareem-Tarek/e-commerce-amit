@@ -62,6 +62,13 @@ Route::group(['middleware' => 'guest'], function () {
 });
 /******************************************** End Socialite for GITHUB ********************************************/
 
+/******************************************** Start Socialite for GOOGLE ********************************************/
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/sign-in/google', [LoginController::class, 'google'])->name('google_oauth');
+    Route::get('/sign-in/google/redirect', [LoginController::class, 'googleRedirect']);
+});
+/******************************************** End Socialite for GOOGLE ********************************************/
+
 /******************************************** Start profile & edit-profile Route ********************************************/
 Route::group([
     'middleware' => ['auth'] // more than one middleware for the one or more route
