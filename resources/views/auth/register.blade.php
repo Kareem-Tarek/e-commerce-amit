@@ -158,7 +158,7 @@
                                 <i class="fa-brands fa-github"></i>&nbsp;&nbsp;Login with GitHub
                             </a>
 
-                            <a href="javascript:void(0);" class="btn btn-facebook btn-user btn-block" style="background-color: #2A426F; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
+                            <a href="{{ route('facebook_oauth') }}" class="btn btn-facebook btn-user btn-block" style="background-color: #2A426F; color: snow; width: 65%; margin-right: auto; margin-left: auto;">
                                 <i class="fab fa-facebook-f fa-fw"></i>&nbsp;&nbsp;Login with Facebook
                             </a>
 

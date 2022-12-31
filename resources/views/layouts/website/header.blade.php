@@ -120,7 +120,7 @@
                         @auth
                             @if(auth()->user()->email_verified_at == null)
                                 <li style="margin-top: 0.4%;">
-                                    <a href="{{ route('email-verification') }}" style="font-size: 90%;"><u>Verify Email Now!</u></a>
+                                    <a href="{{ route('email-verification') }}"><u>Unverified! <i class="fa-solid fa-circle-xmark"></i></u></a>
                                 </li>
                             @else
                                 <li style="margin-top: 1.10%; ">
