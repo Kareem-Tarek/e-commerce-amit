@@ -107,10 +107,10 @@ class DashboardUserController extends Controller
         elseif(auth()->user()->user_type == "admin" && $model->user_type != "admin"){ //the signed in admin could update any other users' info except the other admin(s)
             return view('dashboard.users.edit',compact('model'));
         }
-        elseif(auth()->user()->user_type == "moderator"){ //the moderators are not allowed to do anything more than "adding" & "showing", so take them to the users index page 
+        elseif(auth()->user()->user_type == "moderator"){ //the moderators are not allowed to do anything more than "adding" & "showing", so take them to the users index page
             return redirect('/dashboard/users');
         }
-        elseif(auth()->user()->user_type == "supplier"){ //the suppliers are allowed to access the dashboard but only for the products they own (from the front-end & back-end)! 
+        elseif(auth()->user()->user_type == "supplier"){ //the suppliers are allowed to access the dashboard but only for the products they own (from the front-end & back-end)!
             return redirect('/dashboard');
         }
     }
@@ -161,7 +161,7 @@ class DashboardUserController extends Controller
     public function delete()
     {
         $users = User::orderBy('created_at','asc')->onlyTrashed()->paginate(30);
-        
+
         if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
             return view('dashboard.users.delete',compact('users'));
         }

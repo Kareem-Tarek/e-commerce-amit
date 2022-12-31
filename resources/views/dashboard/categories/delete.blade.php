@@ -23,8 +23,8 @@
                     <div class="card-header">
                         <h5>Show deleted categories - <span class="b-b-success">{{App\Models\Category::onlyTrashed()->count()}}</span></h5>
                         <span>
-                            All deleted categories. If you want to create and add new sections, 
-                            you must click the (Add New Categories) button at the top of the page, 
+                            All deleted categories. If you want to create and add new sections,
+                            you must click the (Add New Categories) button at the top of the page,
                             and if you want to restore any section, press (Restore) next to each category.
                         </span>
                     </div>

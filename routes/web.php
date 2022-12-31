@@ -183,7 +183,7 @@ Route::post('/addRating/{id}', [RatingController::class, 'addRating'])->middlewa
 /******************************************** End Rating Route ********************************************/
 Route::group([
     'middleware' => ['unregistered_users' , 'only_admins_and_moderators']
-], function () { 
+], function () {
     Route::get('/contact-info-submitted', [ContactController::class, 'contact_success_view'])->name('contact_info_submitted');
 });
 Route::post('/contact-submit' , [ContactController::class, 'submit_contact_form']);

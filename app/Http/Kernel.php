@@ -77,12 +77,12 @@ class Kernel extends HttpKernel
         /////////////// end admin, moderator & supplier user types middleware for dashboard ///////////////
     /*--------------------------------------------------------------------------------------------------------------------*/
         /////////////// start guest cart page - already logged in as a customer middleware ///////////////
-        'cart_already_logged_in_as_a_customer' => \App\Http\Middleware\cartAlreadyLoggedIn::class, /* it will take the registered users (as customers) to the cart page 
+        'cart_already_logged_in_as_a_customer' => \App\Http\Middleware\CartAlreadyLoggedIn::class, /* it will take the registered users (as customers) to the cart page
                                                                                                       not to the guest cart page because they are already logged in */
         /////////////// end guest cart page - already logged in as a customer middleware ///////////////
     /*--------------------------------------------------------------------------------------------------------------------*/
         /////////////// **************************************************************** ///////////////
-        'unregistered_users' => \App\Http\Middleware\unregisteredUsers::class, /* it will take the unregistered users to a certain page. In this middleware's logic 
+        'unregistered_users' => \App\Http\Middleware\unregisteredUsers::class, /* it will take the unregistered users to a certain page. In this middleware's logic
                                                                                   code the certain page is "home" which gives the functionality the correct logic */
         /////////////// **************************************************************** ///////////////
     /*--------------------------------------------------------------------------------------------------------------------*/
@@ -104,7 +104,7 @@ class Kernel extends HttpKernel
     /*--------------------------------------------------------------------------------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------------------*/
         /////////////// **************************************************************** ///////////////
-        
+
         /////////////// **************************************************************** ///////////////
     /*--------------------------------------------------------------------------------------------------------------------*/
 

@@ -13,12 +13,12 @@
 @include('layouts.website.search-bar')
 <!-- ***** Search bar End ***** -->
 
-@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then 
+@if($cartItems_count < 1) <!---- when the cart is empty for each user (customers ONLY!) then
                                 hide the table's heading because it is out of the loop already ---->
 <style>
     table{display: none;}
-    .proceed-to-checkout-div{display: none;} 
-</style> 
+    .proceed-to-checkout-div{display: none;}
+</style>
 @endif
 
 @if(session()->has('quantity_is_null_message'))
@@ -35,12 +35,12 @@
     <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('exceeded_available_quantity_message') }}
-    </div> 
+    </div>
 @elseif(session()->has('quantity_is_zero_delete_message'))
     <div class="alert alert-success text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
         {{ session()->get('quantity_is_zero_delete_message') }}
-    </div> 
+    </div>
 @elseif(session()->has('quantity_is_negative_message'))
     <div class="alert alert-danger text-center session-message">
         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -84,7 +84,7 @@
         </tr>
     </thead>
 
- @forelse($cartItems as $cartItem)
+    @forelse($cartItems as $cartItem)
         <tbody>
             <tr>
                 <th>{{ $loop->iteration}}</th>
@@ -115,7 +115,7 @@
                         <button  type="button" class="button-plus" name="quantity_value_plus" style="background-color: /*#28A745*/ black; border-radius: 15px;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='black'"><i class="fa-solid fa-plus" style="color: snow;"></i></button>
                     </form>
                 </td>
-                
+
                 @if($cartItem->discount > 0)
                     <td style="width: 9%; background-color: #f8ecf4;">
                         <span style="color:rgb(155, 31, 151); font-weight: bold;">{{ $cartItem->discount * 100  }}% OFF</span>
@@ -165,35 +165,35 @@
                     <a href="{{ route('products') }}" class="browse-products-link">Browse Products</a>
                 </div>
             </div>
-        </div> 
-        
-        <?php 
-            /* 
-            @empty => acts like else from the if condition and for showing the other choice wich will be the error 
+        </div>
+
+        <?php
+            /*
+            @empty => acts like else from the if condition and for showing the other choice wich will be the error
             (or the undefined data from the DB) if the data wasn't found in the code in "forelse" loop.
-            */ 
-         ?>
- @endforelse
+            */
+        ?>
+    @endforelse
 </table>
 
 <div class="proceed-to-checkout-div text-center mt-5">
     <a href="{{ route('checkout_details') }}" class="proceed-to-checkout-button"><i class="fa-solid fa-money-bill"></i>&nbsp;&nbsp;PROCEED TO CHECKOUT</a>
 </div>
-      
+
 <style>
     .browse-products-link{
-        background-color: #2F82FB; 
+        background-color: #2F82FB;
         color: snow;
-        font-size: 80%; 
-        font-weight: bold; 
-        padding: 1%; 
+        font-size: 80%;
+        font-weight: bold;
+        padding: 1%;
         padding-left: 2%;
         padding-right: 2%;
         border-radius: 3px;
     }
 
     .browse-products-link:hover{
-        background-color: #0868F3; 
+        background-color: #0868F3;
         color: snow;
     }
 
@@ -222,7 +222,7 @@ cons button_minus   = document.querySelector('.button-minus'),
      button_minus   = document.querySelector('.button-minus');
 
      let x = 1;
-    
+
      plus.addEventListener("click" , ()=>{
         a++;
         a = (a < 10) ? "0" + a : a;

@@ -18,9 +18,9 @@ class onlyGuests
     {
         // Here in this logic it means the "guest" since it's not any of the user types from the DB
         if(isset(auth()->user()->user_type)){
-            if(auth()->user()->user_type == "customer" || auth()->user()->user_type == "supplier" || 
-               auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
-                
+            if(auth()->user()->user_type == "customer" || auth()->user()->user_type == "supplier" ||
+                auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator"){
+
                 return redirect()->route('home');
             }
         }

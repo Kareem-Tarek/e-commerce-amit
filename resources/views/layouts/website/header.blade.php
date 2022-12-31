@@ -80,7 +80,7 @@
                                 {{-- <div class="badge-bottom">
                                     <a href="{{ route('register') }}"><span class="badge badge-primary">Register Now!</span></a>
                                 </div> --}}
-                            </li> 
+                            </li>
                         @else <!---------- = registered user (any user type in the system) ---------->
                             <li class="submenu">
                                 {{-- <a class="username" href="javascript:void(0);">{{auth()->user()->username ?? auth()->user()->name}}</a> --}}
@@ -101,9 +101,9 @@
                             </li>
                             @auth
                                 <li style="margin-top: 1.10%;">
-                                    <label style="color:#8197ac;">
+                                    <label style="color:#8197ac; ">
                                         <!-- ucfirst(), is a back-end built-in function that capitalizes the first letter in each word -->
-                                        @if(auth()->user()->user_type == 'admin') 
+                                        @if(auth()->user()->user_type == 'admin')
                                             {{ ucfirst(auth()->user()->user_type) }} <!-- same as "Admin" -->
                                         @elseif(auth()->user()->user_type == 'moderator')
                                             {{ ucfirst(auth()->user()->user_type) }} <!-- same as "Moderator" -->
@@ -123,16 +123,19 @@
                                     <a href="{{ route('email-verification') }}" style="font-size: 90%;"><u>Verify Email Now!</u></a>
                                 </li>
                             @else
-                                <li style="margin-top: 1.10%;">
-                                    <label style="font-size: 80%;">Verified <i class="fa-solid fa-circle-check"></i></label>
+                                <li style="margin-top: 1.10%; ">
+                                    <label>Verified <i class="fa-solid fa-circle-check"></i></label>
                                 </li>
                             @endif
                         @endauth
 
                         @auth
-                            @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
+                            {{-- @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
                                 <li style="padding-top: 0.25%;"><a href="{{route('products.create')}}" class="" style="float:; color: black; background-color: rgba(47, 130, 251, 0.1); padding: 0px 10px; border-radius: 4px;" type="button" title="Add New Product">Add New Product</a></li>
                             @elseif(auth()->user()->user_type == 'customer')
+                                <li style="padding-top: 0.25%;"><a href="{{ route('cart-registered') }}"><i class="fa-solid fa-cart-shopping" style="font-size: 120%;"></i><span>({{\App\Models\Cart::where('customer_id',auth()->user()->id)->count()}})</span></a></li>
+                            @endif --}}
+                            @if(auth()->user()->user_type == 'customer')
                                 <li style="padding-top: 0.25%;"><a href="{{ route('cart-registered') }}"><i class="fa-solid fa-cart-shopping" style="font-size: 120%;"></i><span>({{\App\Models\Cart::where('customer_id',auth()->user()->id)->count()}})</span></a></li>
                             @endif
                         @endauth

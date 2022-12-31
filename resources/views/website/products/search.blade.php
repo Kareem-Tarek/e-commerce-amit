@@ -8,7 +8,7 @@
         Search box is empty!
     @else <?php //for wrong & correct data from the DB ?>
         @if($products_result_count == 0)
-            Results - {{ '"'.$search_text_input.'" ['.$products_result_count.']' }} - Not found! <?php /* "." is for concatenating static front-end 
+            Results - {{ '"'.$search_text_input.'" ['.$products_result_count.']' }} - Not found! <?php /* "." is for concatenating static front-end
                                                                                                     codes with dynamic back-end codes */ ?>
         @else
             Results - {{ '"'.$search_text_input.'" ['.$products_result_count.']' }}
@@ -18,6 +18,16 @@
 
 @section('content')
 <style>
+<<<<<<< HEAD
+    .session-message{
+        width: 60%;
+        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+=======
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
     /* .table-search-results{margin-left: auto; margin-right: auto;} */
 </style>
 
@@ -71,7 +81,7 @@
             @if($search_text_input == "")
                 <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto;  width: 40%;">
                     <span style="font-size: 110%; font-weight: bold;">The search box is empty. You didn't enter anything in it!</span>
-                </div> 
+                </div>
             {{-- @elseif($search_text != $products_result)
                 <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2%; width: 40%;">
                     <span style="font-size: 110%; font-weight: bold;">"{{ $search_text }}" Not Found!</span>
@@ -96,7 +106,7 @@
                         @if(auth()->user()->user_type == "admin" || auth()->user()->user_type == "moderator" || auth()->user()->user_type == "supplier")
                             <div class="d-flex justify-content-center mb-4">
                                 <a href="{{route('products.create')}}" class="btn btn-dark" style="" type="button" title="Add New Product">Add New Product</a>
-                            </div>    
+                            </div>
                         @endif
                     @endauth
                 @endif
@@ -127,7 +137,7 @@
                         {{ session()->get('quantity_is_negative_message') }}
                     </div>
                 @endif
-                
+
                 @if(session()->has('addRating_message'))
                     <div class="alert alert-success text-center session-message">
                         <button type="button" class="close" data-dismiss="alert" style="color: rgb(173, 6, 6)">x</button>
@@ -216,7 +226,7 @@
                                                     @endif
 
                                                     {{-- {{ $product->clothing_type }} --}}
-                                                    
+
                                                     {{-- @inject('categories_clothing_type','App\Models\Category')
                                                     {!! Form::select('name',$categories_clothing_type->pluck('name','id')) !!} --}}
                                                 </div>
@@ -253,21 +263,25 @@
                                     </div>
                                 @endif
                         </div>
-                     @empty
+                        @empty
                         {{-- <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
                             <span>{{ $search_text }} not found!</span>
                         </div>
+<<<<<<< HEAD
+                        <?php
+=======
                         <?php 
+>>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
                             /*
-                            Note: 
-                            in this case (the search functionality) error is handled with if condition (in line 67 ~ 69) 
+                            Note:
+                            in this case (the search functionality) error is handled with if condition (in line 67 ~ 69)
                             and the result proves that the data count is equals to (0) which is no data to retrieve from
                             the DB (because the entered query didn't match the data that already exists in the DB
-                            which is described as the following => $search_text != $products_result).  
+                            which is described as the following => $search_text != $products_result).
 
-                            @empty => acts like else from the if condition and for showing the other choice wich will be the error 
+                            @empty => acts like else from the if condition and for showing the other choice wich will be the error
                             (or the undefined data from the DB) if the data wasn't found in the code in "forelse" loop.
-                            */ 
+                            */
                         ?> --}}
                     @endforelse
                 </div>
