@@ -51,7 +51,6 @@
                             <ul>
                                 <li><a href="{{ route('about') }}">About Us</a></li>
                                 <li><a href="{{ route('mission-vision') }}">Mission & Vision</a></li>
-                                <li><a href="javascript:void(0);">Single Product</a></li>
                                 @auth
                                     @if(auth()->user()->user_type == "customer" || auth()->user()->user_type == "supplier")
                                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
