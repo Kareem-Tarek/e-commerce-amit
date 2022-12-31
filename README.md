@@ -1,11 +1,11 @@
-### Full-Stack Web Development Graduation Project
+### Full-Stack Web Development Project
 
 * Project Title: Anywhere Anytime (AA) 
 * Project Idea: E-commerce
 * Developer: KareemDev 
 * Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev)
 * Project Features:
-    - Website for consumers (1st template).
+    ## Website for consumers (1st template).
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
         - Cart page.
@@ -33,7 +33,7 @@
         - Products sample page (quick view in a sliders).
         - Profile Management page (including "edit/showing profile data page" + "update profile data page").
         - Logout functionality.
-    - Dashboard for Admins & Moderators (2nd template).
+    ## Dashboard for Admins & Moderators (2nd template).
         - Home page (including some statistics & counters for specific things in the business such as the number of men products that have sales only).
         - Single Page Application (SPA) for all the products.
         - The delete functionality is soft so anything will be deleted could also be restored "restore feature" + also there is permanent (force) delete feature.
@@ -48,7 +48,7 @@
             - Moderators (CR)
         - Amins & Moderators (RD) for carts.
 ___________________________________________________________________________________________________________________________________________________
-Steps for installing the project:
+## Steps for installing the project:
 - Run `git clone https://github.com/Kareem-Tarek/e-commerce-amit.git`.
 - Run `composer install` or `composer update`.
 - Run `cp .env.example .env`.
@@ -56,7 +56,7 @@ Steps for installing the project:
 - Create DB in mysql DBMS (phpMyAdmin or HeidiSQL, etc.) with any name you want. And in the project's folder in ".env" look up for the following code that says "DB_DATABASE=" then type after the same name of the DB name you created, so it will be like that "DB_DATABASE=the same name of the DB name you created".
 - Run in the terminal the following code `php artisan migrate:fresh --seed` in project's directory.
 ___________________________________________________________________________________________________________________________________________________
-Steps for running the project:
+## Steps for running the project:
 - In the project's directory (after the completing the the project's installation) type in the terminal..
     - Run `npm install` then `npm update` then `npm run dev`.
     - Run `php -S localhost:8000 -t public` or `php artisan serve --port=8000`.
