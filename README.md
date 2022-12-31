@@ -5,7 +5,7 @@
 * Developer: KareemDev 
 * Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev or Kareem-Tarek, Google: kareemtarekpk)
 * Project Features: ...
-    #### Website for consumers (1st template).
+    #### Website for consumers/customers (1st template).
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
         - Cart page.
