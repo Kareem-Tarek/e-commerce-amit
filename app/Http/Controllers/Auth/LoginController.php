@@ -109,6 +109,22 @@ class LoginController extends Controller
     //     return redirect()->route('home');
     // }
 
+    public function _OAuthSignInInfo($user)
+    {
+        // if the user doesn't exist, then add them
+        // if they do, get the model
+        // either way, authenticate the user into the application and redirect afterwards
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ], [
+            'username' => $user->name , // username (column from users table) => $user->name (name from third-party app)
+            'password' => Hash::make(Str::random(24)) ,
+            'avatar'   => $user->avatar ,
+        ]);
+
+        Auth::login($user, true);
+    }
+
     public function github()
     {
         // send the user's request to github
@@ -119,19 +135,7 @@ class LoginController extends Controller
     {
         // get oauth request back from github to authenticate user
         $user = Socialite::driver('github')->user();
-
-        // if the user doesn't exist, then add them
-        // if they do, get the model
-        // either way, authenticate the user into the application and redirect afterwards
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'username' => $user->name , // username (column from users table) => $user->name (name from github)
-            'password' => Hash::make(Str::random(24)) ,
-            'avatar'   => $user->avatar ,
-        ]);
-
-        Auth::login($user, true);
+        $this->_OAuthSignInInfo($user);
 
         return redirect()->route('home');
     }
@@ -146,19 +150,7 @@ class LoginController extends Controller
     {
         // get oauth request back from google to authenticate user
         $user = Socialite::driver('google')->user();
-
-        // if the user doesn't exist, then add them
-        // if they do, get the model
-        // either way, authenticate the user into the application and redirect afterwards
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'username' => $user->name , // username (column from users table) => $user->name (name from google)
-            'password' => Hash::make(Str::random(24)) ,
-            'avatar'   => $user->avatar ,
-        ]);
-
-        Auth::login($user, true);
+        $this->_OAuthSignInInfo($user);
 
         return redirect()->route('home');
     }
@@ -173,19 +165,7 @@ class LoginController extends Controller
     {
         // get oauth request back from facebook to authenticate user
         $user = Socialite::driver('facebook')->user();
-
-        // if the user doesn't exist, then add them
-        // if they do, get the model
-        // either way, authenticate the user into the application and redirect afterwards
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'username' => $user->name , // username (column from users table) => $user->name (name from facebook)
-            'password' => Hash::make(Str::random(24)) ,
-            'avatar'   => $user->avatar ,
-        ]);
-
-        Auth::login($user, true);
+        $this->_OAuthSignInInfo($user);
 
         return redirect()->route('home');
     }
