@@ -11,6 +11,7 @@
         - Cart page.
         - Checkout page.
         - Favorites (Wishlist) page.
+        - Products rating.
         - Latest Items page.
         - Search functionality.
         - Mailtrap (SMTP server) tool, used for email testing.
@@ -25,6 +26,7 @@
         - Products discounts %.
         - Discounts page.
         - Single Page Application (SPA) for all the products.
+        - New badge for products that lasts for 7 days only for the new added products to the website.
         - Home page.
         - Mission & Vision page.
         - FAQ's page.
