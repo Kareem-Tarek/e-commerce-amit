@@ -147,6 +147,6 @@ Selector_Z {text-align: var(--center_aligns);}
 
 .dropdown .dropdown-menu li a:not(:hover) {color: black; transition: all 0.30s ease-in-out;}
 
-.check-discounts{background-color: rgba(185, 185, 185, 0.35); padding: 3% 8%; border-radius: 5px;}
+.check-discounts{background-color: rgba(220, 219, 219, 0.35); padding: 3% 8%; border-radius: 5px;}
 </style>
 
