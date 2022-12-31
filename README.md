@@ -1,11 +1,11 @@
-### Full-Stack Web Development Project
+## Full-Stack Web Development Project
 
 * Project Title: Anywhere Anytime (AA) 
 * Project Idea: E-commerce
 * Developer: KareemDev 
-* Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev)
+* Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev or Kareem-Tarek, Google: kareemtarekpk)
 * Project Features:
-    ## Website for consumers (1st template).
+    #### Website for consumers (1st template).
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
         - Cart page.
@@ -33,7 +33,7 @@
         - Products sample page (quick view in a sliders).
         - Profile Management page (including "edit/showing profile data page" + "update profile data page").
         - Logout functionality.
-    ## Dashboard for Admins & Moderators (2nd template).
+    #### Dashboard for Admins & Moderators (2nd template).
         - Home page (including some statistics & counters for specific things in the business such as the number of men products that have sales only).
         - Single Page Application (SPA) for all the products.
         - The delete functionality is soft so anything will be deleted could also be restored "restore feature" + also there is permanent (force) delete feature.
