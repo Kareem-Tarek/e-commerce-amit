@@ -18,7 +18,6 @@
 
 @section('content')
 <style>
-<<<<<<< HEAD
     .session-message{
         width: 60%;
         margin-top: 1%;
@@ -26,8 +25,6 @@
         margin-left: auto;
         margin-right: auto;
     }
-=======
->>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
     /* .table-search-results{margin-left: auto; margin-right: auto;} */
 </style>
 
@@ -267,11 +264,7 @@
                         {{-- <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; width: 40%">
                             <span>{{ $search_text }} not found!</span>
                         </div>
-<<<<<<< HEAD
                         <?php
-=======
-                        <?php 
->>>>>>> f17e9bc2d448dc8c6174e1bd822845b7145ca750
                             /*
                             Note:
                             in this case (the search functionality) error is handled with if condition (in line 67 ~ 69)
