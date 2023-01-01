@@ -6,11 +6,8 @@
 * Developer's contact info: (Whatsapp: +201010110457, GitHub: KareemDev or Kareem-Tarek, Google: kareemtarekpk)
 * Project Features: ...
     #### Website for consumers/customers (1st template).
-        - Login form page.
-        - Register form page.
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
-        - Users are allowed to show/hide (text/password) password by toggling a dot eye icon in the login & registration form.
         - Cart page.
         - Checkout page.
         - Favorites (Wishlist) page.
@@ -49,6 +46,7 @@
             - Admins (CRUD)
             - Moderators (CR)
         - Users.
+            - Note: Admins couldn't edit or delete in the other admins data. But they could update their own selves (profile) and also all the other users (but except the other admins) from the dashboard.
             - Admins (CRUD)
             - Moderators (CR)
         - Amins & Moderators (RD) for carts.
