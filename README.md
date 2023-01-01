@@ -8,6 +8,7 @@
     #### Website for consumers/customers (1st template).
         - Laravel socialite package: Signing In by creating an account in the website or by using a third-party app (OAuth) such as Facebook, Github or Google.
         - Users are allowed to sign in by using (email, username or phone number) and password.
+        - Users are allowed to show/hide (text/password) password by toggling a dot eye icon.
         - Cart page.
         - Checkout page.
         - Favorites (Wishlist) page.
